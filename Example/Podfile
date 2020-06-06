@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'AckooSDK_Example' do
+  pod 'AckooSDK', :path => '../'
+
+  target 'AckooSDK_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
