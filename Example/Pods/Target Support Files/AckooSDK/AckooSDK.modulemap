@@ -1,0 +1,6 @@
+framework module AckooSDK {
+  umbrella header "AckooSDK-umbrella.h"
+
+  export *
+  module * { export * }
+}
