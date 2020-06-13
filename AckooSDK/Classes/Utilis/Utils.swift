@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-open class Utils {
+class Utils {
     public static func convertImageToDate(_ image:UIImage) -> (Data?,format:String) {
         
         let imageData:Data

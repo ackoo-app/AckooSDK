@@ -40,6 +40,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
+    private func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
+        print("Continue User Activity called: ")
+        if userActivity.activityType == NSUserActivityTypeBrowsingWeb {
+            let url = userActivity.webpageURL!
+            print(url.absoluteString)
+            let alert = UIAlertController(title: "Title", message: "Please Select an Option", preferredStyle: .actionSheet)
+            alert.addAction(UIAlertAction(title: "Approve", style: .default, handler: { (_) in
+                print("User click Approve button")
+            }))
+            alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (_) in
+                print("User click Delete button")
+            }))
+
+            alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: { (_) in
+                print("User click Dismiss button")
+            }))
+            self.window?.rootViewController?.present(alert, animated: true, completion: nil)
+        }
+        return true
+    }
 
 
 }

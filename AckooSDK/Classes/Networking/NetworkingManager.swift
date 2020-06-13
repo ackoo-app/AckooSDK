@@ -13,7 +13,9 @@ import UIKit
 import MobileCoreServices
 import SystemConfiguration
 
-public enum BuildMode: Int {
+
+/// Build mode that defines which build mode to user
+ enum BuildMode: Int {
     case qa = 1
     case dev
     case production
@@ -22,6 +24,8 @@ public enum BuildMode: Int {
 
 var BUILD_MODE:BuildMode = BuildMode.dev
 
+
+/// 
  class NetworkingManager {
     
     //Singleton object
@@ -64,20 +68,13 @@ var BUILD_MODE:BuildMode = BuildMode.dev
         return apiBaseURL
      }
     
-    func prepareRequestToServerWith(_ requestString:String, methodType:String,params:Any?) -> URLRequest  {
+    func prepareRequestToServerWith(_ requestString:String, methodType:String,params:Data?) -> URLRequest  {
         
         var request = URLRequest(url: URL(string: API_BASE_URL! + requestString)!)
         request.httpMethod = methodType
         request = setHeadersToRequest(request)
         if params != nil {
-            
-            do {
-            
-                request.httpBody = try JSONSerialization.data(withJSONObject: params!, options: [])
-            }
-            catch {
-                
-            }
+            request.httpBody = params
         }
         
         let hData = try! JSONSerialization.data(withJSONObject: request.allHTTPHeaderFields!, options: [])
@@ -161,7 +158,7 @@ var BUILD_MODE:BuildMode = BuildMode.dev
     
 
     //MARK:- POST Request
-    func postRequest(_ params: Any, url: String, callback: @escaping (_ succeeded: Bool, _ response: Any?) -> Void) {
+    func postRequest(_ params: Data, url: String, callback: @escaping (_ succeeded: Bool, _ response: Any?) -> Void) {
         
         if Reachability.isConnectedToNetwork() == false
         {
@@ -174,7 +171,7 @@ var BUILD_MODE:BuildMode = BuildMode.dev
     }
     
     //MARK:- PUT Request
-    func putRequest(_ params: Any?, url: String,additionalHeaderParamDict:Dictionary<String,Any>? = nil, callback: @escaping (_ succeeded: Bool, _ response: Any?) -> Void) {
+    func putRequest(_ params: Data?, url: String,additionalHeaderParamDict:Dictionary<String,Any>? = nil, callback: @escaping (_ succeeded: Bool, _ response: Any?) -> Void) {
         
         if Reachability.isConnectedToNetwork() == false
         {
@@ -195,7 +192,7 @@ var BUILD_MODE:BuildMode = BuildMode.dev
     }
     
     //MARK:- DELETE Request
-    func deleteRequest(_ params: Any?, url: String, callback: @escaping (_ succeeded: Bool, _ response: Any?) -> Void) {
+    func deleteRequest(_ params: Data?, url: String, callback: @escaping (_ succeeded: Bool, _ response: Any?) -> Void) {
         
         let request:URLRequest = prepareRequestToServerWith(url, methodType: "DELETE", params: params)
         self.createDataTastWithRequest(request, callback: callback)
@@ -422,7 +419,7 @@ var BUILD_MODE:BuildMode = BuildMode.dev
 }
 
 
-open class Reachability {
+class Reachability {
     
     class func isConnectedToNetwork() -> Bool {
         

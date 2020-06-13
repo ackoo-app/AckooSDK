@@ -8,7 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		06E152DDCD99E592B47C234F89F9E998 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
-		417A91E2443B4BF9F8BA4E8FE6E19ABF /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432EE15448C4E19C0CE922764FB2A301 /* Utils.swift */; };
+		365491212491E8B700721EF3 /* UserIdentity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365491202491E8B700721EF3 /* UserIdentity.swift */; };
+		368FA7EA24909936004B813D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368FA7E824909936004B813D /* Constants.swift */; };
+		368FA7EB24909936004B813D /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368FA7E924909936004B813D /* Utils.swift */; };
+		368FA7EE2490993F004B813D /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368FA7ED2490993F004B813D /* NetworkingManager.swift */; };
+		368FA7F2249099E2004B813D /* AckooSDKManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368FA7F1249099E2004B813D /* AckooSDKManager.swift */; };
+		368FA7F524909A71004B813D /* BaseActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368FA7F424909A71004B813D /* BaseActivity.swift */; };
+		368FA7F724909AA1004B813D /* UserActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368FA7F624909AA1004B813D /* UserActivity.swift */; };
+		368FA7FA24909ADB004B813D /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368FA7F924909ADB004B813D /* Order.swift */; };
+		368FA7FC24909AFE004B813D /* OrderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368FA7FB24909AFE004B813D /* OrderItem.swift */; };
 		49A1DF2B68FE945F9D3DEE21D227A1B7 /* Pods-AckooSDK_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 856A2ABB021EC4DD221DAB7CB1736BD2 /* Pods-AckooSDK_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		50443C1B78D6FA745B4AD0DF71C79E0F /* Pods-AckooSDK_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 211CEBB87D86D8562CB2FEFD241B05A6 /* Pods-AckooSDK_Example-dummy.m */; };
 		5B6CE3FC7F7B4EA8B4FA2BAECE1742C5 /* AckooSDK-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F0D62CC532508C0A6A8A3368281FBB24 /* AckooSDK-dummy.m */; };
@@ -16,8 +24,6 @@
 		992FA6E7A2BEE0FC4A4BAFAD59270710 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
 		A0BA55C574E30D579EEEA7DF5ABCBB0A /* Pods-AckooSDK_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7B0EEE8A90ACE050EA5988B00A5BA4BA /* Pods-AckooSDK_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A11E1618A7F95A760C5B307A903610E3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
-		A2A807A30835A31319474EB33D2457D8 /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4424B601C97BDF7489249EA290CC3343 /* NetworkingManager.swift */; };
-		E2F23255C15A97984DD75B26D46A3B7D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9EB773115523AF4266D10DDE198B05 /* Constants.swift */; };
 		EB8AA19B7BBDF48BCB9564E99DFD4823 /* AckooSDK-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 173BC54CE7D3AB41C5F02A8A65730479 /* AckooSDK-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
@@ -40,7 +46,6 @@
 
 /* Begin PBXFileReference section */
 		0884474363281104E6899765B08EA839 /* AckooSDK.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = AckooSDK.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		0B9EB773115523AF4266D10DDE198B05 /* Constants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = AckooSDK/Classes/Constants.swift; sourceTree = "<group>"; };
 		0DB23C9396EA80F921FF0BF1A1E86907 /* Pods-AckooSDK_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-AckooSDK_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		14EE1FAE7227CCB98F9D25291DE5A9BB /* Pods-AckooSDK_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-AckooSDK_Example.modulemap"; sourceTree = "<group>"; };
 		173BC54CE7D3AB41C5F02A8A65730479 /* AckooSDK-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AckooSDK-umbrella.h"; sourceTree = "<group>"; };
@@ -49,10 +54,17 @@
 		2E2757FC0A5E1D77498D423BF0B5BC9D /* Pods-AckooSDK_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-AckooSDK_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		30F65F4DA8B83397C0D325DC867456A6 /* Pods-AckooSDK_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AckooSDK_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		365491202491E8B700721EF3 /* UserIdentity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserIdentity.swift; sourceTree = "<group>"; };
+		368FA7E824909936004B813D /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		368FA7E924909936004B813D /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		368FA7ED2490993F004B813D /* NetworkingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
+		368FA7F1249099E2004B813D /* AckooSDKManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AckooSDKManager.swift; path = AckooSDK/Classes/AckooSDKManager.swift; sourceTree = "<group>"; };
+		368FA7F424909A71004B813D /* BaseActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseActivity.swift; sourceTree = "<group>"; };
+		368FA7F624909AA1004B813D /* UserActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserActivity.swift; sourceTree = "<group>"; };
+		368FA7F924909ADB004B813D /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
+		368FA7FB24909AFE004B813D /* OrderItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderItem.swift; sourceTree = "<group>"; };
 		3EAF2C08FC25842563EFB2684C112D3E /* Pods_AckooSDK_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AckooSDK_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FF3882F52E9E1A04968B0B734E18302 /* Pods-AckooSDK_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-AckooSDK_Example-acknowledgements.plist"; sourceTree = "<group>"; };
-		432EE15448C4E19C0CE922764FB2A301 /* Utils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Utils.swift; path = AckooSDK/Classes/Utils.swift; sourceTree = "<group>"; };
-		4424B601C97BDF7489249EA290CC3343 /* NetworkingManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NetworkingManager.swift; path = AckooSDK/Classes/NetworkingManager.swift; sourceTree = "<group>"; };
 		4856C902686937AE22D39D933E140EA5 /* Pods-AckooSDK_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-AckooSDK_Tests-Info.plist"; sourceTree = "<group>"; };
 		5D0F47F98A6A26EB931E0ECAC3F94EBE /* Pods_AckooSDK_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AckooSDK_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		799650344BF241A9EDC55265D45F3431 /* Pods-AckooSDK_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-AckooSDK_Tests.modulemap"; sourceTree = "<group>"; };
@@ -128,6 +140,46 @@
 			path = "Target Support Files/Pods-AckooSDK_Tests";
 			sourceTree = "<group>";
 		};
+		368FA7E724909936004B813D /* Utilis */ = {
+			isa = PBXGroup;
+			children = (
+				368FA7E824909936004B813D /* Constants.swift */,
+				368FA7E924909936004B813D /* Utils.swift */,
+			);
+			name = Utilis;
+			path = AckooSDK/Classes/Utilis;
+			sourceTree = "<group>";
+		};
+		368FA7EC2490993F004B813D /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				368FA7ED2490993F004B813D /* NetworkingManager.swift */,
+			);
+			name = Networking;
+			path = AckooSDK/Classes/Networking;
+			sourceTree = "<group>";
+		};
+		368FA7F324909A53004B813D /* Activity */ = {
+			isa = PBXGroup;
+			children = (
+				368FA7F424909A71004B813D /* BaseActivity.swift */,
+				368FA7F624909AA1004B813D /* UserActivity.swift */,
+				365491202491E8B700721EF3 /* UserIdentity.swift */,
+			);
+			name = Activity;
+			path = AckooSDK/Classes/Activity;
+			sourceTree = "<group>";
+		};
+		368FA7F824909AC2004B813D /* Order */ = {
+			isa = PBXGroup;
+			children = (
+				368FA7F924909ADB004B813D /* Order.swift */,
+				368FA7FB24909AFE004B813D /* OrderItem.swift */,
+			);
+			name = Order;
+			path = AckooSDK/Classes/Order;
+			sourceTree = "<group>";
+		};
 		381192605B381CC5C21F6E848288F084 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -145,9 +197,11 @@
 		41D7E5D41917FCB64B2F3A96C418ECA4 /* AckooSDK */ = {
 			isa = PBXGroup;
 			children = (
-				0B9EB773115523AF4266D10DDE198B05 /* Constants.swift */,
-				4424B601C97BDF7489249EA290CC3343 /* NetworkingManager.swift */,
-				432EE15448C4E19C0CE922764FB2A301 /* Utils.swift */,
+				368FA7F824909AC2004B813D /* Order */,
+				368FA7F1249099E2004B813D /* AckooSDKManager.swift */,
+				368FA7F324909A53004B813D /* Activity */,
+				368FA7EC2490993F004B813D /* Networking */,
+				368FA7E724909936004B813D /* Utilis */,
 				6D61247BF848AD00AB1511540FB6AB78 /* Pod */,
 				381192605B381CC5C21F6E848288F084 /* Support Files */,
 			);
@@ -387,9 +441,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B6CE3FC7F7B4EA8B4FA2BAECE1742C5 /* AckooSDK-dummy.m in Sources */,
-				E2F23255C15A97984DD75B26D46A3B7D /* Constants.swift in Sources */,
-				A2A807A30835A31319474EB33D2457D8 /* NetworkingManager.swift in Sources */,
-				417A91E2443B4BF9F8BA4E8FE6E19ABF /* Utils.swift in Sources */,
+				368FA7F724909AA1004B813D /* UserActivity.swift in Sources */,
+				368FA7FC24909AFE004B813D /* OrderItem.swift in Sources */,
+				368FA7FA24909ADB004B813D /* Order.swift in Sources */,
+				365491212491E8B700721EF3 /* UserIdentity.swift in Sources */,
+				368FA7EE2490993F004B813D /* NetworkingManager.swift in Sources */,
+				368FA7F2249099E2004B813D /* AckooSDKManager.swift in Sources */,
+				368FA7EA24909936004B813D /* Constants.swift in Sources */,
+				368FA7EB24909936004B813D /* Utils.swift in Sources */,
+				368FA7F524909A71004B813D /* BaseActivity.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
