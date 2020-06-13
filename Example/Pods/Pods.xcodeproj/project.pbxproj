@@ -54,6 +54,7 @@
 		2E2757FC0A5E1D77498D423BF0B5BC9D /* Pods-AckooSDK_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-AckooSDK_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		30F65F4DA8B83397C0D325DC867456A6 /* Pods-AckooSDK_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AckooSDK_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		3631EA002494B36B00372F36 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Package.swift; path = AckooSDK/Classes/Package.swift; sourceTree = "<group>"; };
 		365491202491E8B700721EF3 /* UserIdentity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserIdentity.swift; sourceTree = "<group>"; };
 		368FA7E824909936004B813D /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		368FA7E924909936004B813D /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
@@ -199,6 +200,7 @@
 			children = (
 				368FA7F824909AC2004B813D /* Order */,
 				368FA7F1249099E2004B813D /* AckooSDKManager.swift */,
+				3631EA002494B36B00372F36 /* Package.swift */,
 				368FA7F324909A53004B813D /* Activity */,
 				368FA7EC2490993F004B813D /* Networking */,
 				368FA7E724909936004B813D /* Utilis */,

@@ -47,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let url = userActivity.webpageURL!
             print(url.absoluteString)
             let alert = UIAlertController(title: "Title", message: "Please Select an Option", preferredStyle: .actionSheet)
-            alert.addAction(UIAlertAction(title: "Approve", style: .default, handler: { (_) in
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (_) in
                 print("User click Approve button")
             }))
             alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (_) in
