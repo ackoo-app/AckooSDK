@@ -8,7 +8,7 @@
 import PackageDescription
 
 let package = Package(name: "AckooSDK",
-                      platforms: [.iOS(.v10)],
+                      platforms: [.iOS(.v11)],
                       products: [.library(name: "AckooSDK",
                                           targets: ["AckooSDK"])],
                       swiftLanguageVersions: [.v5])

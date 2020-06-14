@@ -26,13 +26,11 @@ public class UserActivity:BaseActivity {
     
     /// UserActivity Initializer
     /// - Parameters:
-    ///   - token: unique token that associated with user
     ///   - isLoggedIn: wether user is logged In at the time of performing this activity
     ///   - email: email address of the user
     ///   - order: Order details
-    init(token:String,isLoggedIn:Bool,email:String?,order:Order?) {
-        
-        self.token = token
+    public init(isLoggedIn:Bool,email:String?,order:Order?) {
+        self.token = UserActivity.getToken()
         self.isLoggedIn = isLoggedIn
         self.email = email
         self.orderDetail = order
@@ -43,5 +41,9 @@ public class UserActivity:BaseActivity {
         fatalError("init(from:) has not been implemented")
     }
     
+    static func getToken() -> String {
+        return ""
+    }
+ 
    
 }
