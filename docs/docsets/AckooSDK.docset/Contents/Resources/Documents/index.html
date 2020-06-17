@@ -13,7 +13,7 @@
     <a title="AckooSDK  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">AckooSDK 0.1.1 Docs</a> (100% documented)</p>
+        <p><a href="index.html">AckooSDK 0.1.4 Docs</a> (100% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -39,10 +39,10 @@
                 <a href="Classes/Order.html">Order</a>
               </li>
               <li class="nav-group-task">
-                <a href="Classes.html#/s:8AckooSDK9OrderItemC">OrderItem</a>
+                <a href="Classes/OrderItem.html">OrderItem</a>
               </li>
               <li class="nav-group-task">
-                <a href="Classes.html#/s:8AckooSDK12UserActivityC">UserActivity</a>
+                <a href="Classes/UserActivity.html">UserActivity</a>
               </li>
             </ul>
           </li>
@@ -76,9 +76,130 @@
 it, simply add the following line to your Podfile:</p>
 <pre class="highlight ruby"><code><span class="n">pod</span> <span class="s1">'AckooSDK'</span>
 </code></pre>
+<h2 id='usage' class='heading'>Usage</h2>
+<h3 id='appdelegate' class='heading'>AppDelegate</h3>
+
+<p>Implement continue userActivity in your Appdelegate class or </p>
+<pre class="highlight plaintext"><code>func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -&gt; Void) -&gt; Bool {
+    print("Continue User Activity called: ")
+    if userActivity.activityType == NSUserActivityTypeBrowsingWeb {
+        let url = userActivity.webpageURL!
+        print(url.absoluteString)
+    }
+}
+
+func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
+    print("Continue User Activity called: ")
+    if userActivity.activityType == NSUserActivityTypeBrowsingWeb {
+        let url = userActivity.webpageURL!
+        print(url.absoluteString)
+    }
+}
+
+</code></pre>
+
+<p>From here you will get information for which product the user has opened you application. </p>
+<h3 id='tracking-user-events' class='heading'>Tracking user events</h3>
+
+<p>When user performs any activity. You need to pass on this information to the AckooSDK. Currently SDK supports following events</p>
+<pre class="highlight plaintext"><code>
+/// Type of the event that AckooSDK supports. Which will be sent
+/// When usere performs the particular action (like register, open app, login, purchase)
+public enum AckooEventType {
+    /// When user installs application
+    case installApp
+
+    /// When user opens app
+    case openApp
+
+    /// When user registers itself with the system
+    case register
+
+    /// when user logs-in in the app
+    case login
+
+    /// When user make the actual purchase of the item
+    case purchase
+}
+
+</code></pre>
+
+<p>For any of the event to report to the SDK, You need to create instance of UserActivity class. </p>
+<pre class="highlight plaintext"><code>/// User activity that holds information regarding user's actions
+public class UserActivity:BaseActivity {
+
+
+    /// wether user is logged In at the time of performing this activity
+    var isLoggedIn:Bool
+
+    /// email address of the user
+    var email:String?
+
+
+    /// Order details
+    var orderDetail:Order?
+
+}
+
+</code></pre>
+
+<p>There are 2 other instance of the class which needs to be created along with UserActivity in case of user has actually purchase anything from the app. For reporting events other than purchase you do not need to pass that parameter. You can pass  order as &lsquo;nil&rsquo; for other type of events</p>
+<pre class="highlight plaintext"><code>/// Order details
+/// Information regarding purchased order
+public class Order:Codable {
+    /// Order Id
+    let id:String
+
+    /// Total amount of all the order items
+    var totalAmount:Double?
+
+    /// currency string (USD, GBP, EUR)
+    var currencySymbol:String?
+
+    /// Order Item
+    var items:[OrderItem]
+
+    /// order created date and time in UTC
+    var createdOn:TimeInterval
+
+    /// order last modified date and time in UTC
+    var modifiedOn:TimeInterval
+
+
+    /// order validated date and time in UTC
+    var validatedOn:TimeInterval?
+
+}
+
+/// Order item with details like sku, name amount
+public class OrderItem:Codable {
+
+
+    /// sku of the product
+    let sku:String
+
+    /// product name
+    let name:String
+
+    /// total amount
+    let amount:Double
+}
+
+</code></pre>
+
+<p>Once this instance are created with related information. You need to register this event toSDK</p>
+<pre class="highlight plaintext"><code>let item:OrderItem = OrderItem.init(sku: "CM01-R", name: "Item A", amount: 13.35)
+           let date:TimeInterval = Date().timeIntervalSince1970
+           let order:Order = Order(id: "135497-25943", totalAmount: 13.35, symbol: "USD", items: [item], createdOn:date , modifiedOn: date, validatedOn: date)
+           let activity:UserActivity = UserActivity.init(isLoggedIn: true, email: "user@gmail.com", order: order)
+           AckooSDKManager.shared().reportActivity(type: .purchase, activity: activity) { (succeeded, response) in
+               print(succeeded)
+           }
+
+</code></pre>
 <h2 id='author' class='heading'>Author</h2>
 
-<p>mihirpmehta, <a href="mailto:mihirpmehta@gmail.com">mihirpmehta@gmail.com</a></p>
+<p>Ackoo, <a href="mailto:mihirpmehta@gmail.com">mihirpmehta@gmail.com</a></p>
 <h2 id='license' class='heading'>License</h2>
 
 <p>AckooSDK is available under the MIT license. See the LICENSE file for more info.</p>
@@ -86,7 +207,7 @@ it, simply add the following line to your Podfile:</p>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2020 <a class="link" href="https://www.ackoo.app/" target="_blank" rel="external">mihirpmehta</a>. All rights reserved. (Last updated: 2020-06-10)</p>
+          <p>&copy; 2020 <a class="link" href="https://www.ackoo.app/" target="_blank" rel="external">mihirpmehta</a>. All rights reserved. (Last updated: 2020-06-14)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

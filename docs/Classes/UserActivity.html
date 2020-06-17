@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>AckooSDKManager Class Reference</title>
+    <title>UserActivity Class Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,8 +10,8 @@
     
   </head>
   <body>
-    <a name="//apple_ref/swift/Class/AckooSDKManager" class="dashAnchor"></a>
-    <a title="AckooSDKManager Class Reference"></a>
+    <a name="//apple_ref/swift/Class/UserActivity" class="dashAnchor"></a>
+    <a title="UserActivity Class Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html">AckooSDK 0.1.4 Docs</a> (100% documented)</p>
@@ -21,7 +21,7 @@
       <p id="breadcrumbs">
         <a href="../index.html">AckooSDK Reference</a>
         <img id="carat" src="../img/carat.png" />
-        AckooSDKManager Class Reference
+        UserActivity Class Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -60,34 +60,25 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>AckooSDKManager</h1>
+            <h1>UserActivity</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">AckooSDKManager</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">UserActivity</span> <span class="p">:</span> <span class="kt"><a href="../Classes.html#/s:8AckooSDK12BaseActivityC">BaseActivity</a></span></code></pre>
 
                 </div>
               </div>
-            <p>AckooSDKManager class to report all activity to backend</p>
+            <p>User activity that holds information regarding user&rsquo;s actions</p>
 
           </section>
           <section class="section task-group-section">
             <div class="task-group">
-              <div class="task-name-container">
-                <a name="/Accessors"></a>
-                <a name="//apple_ref/swift/Section/Accessors" class="dashAnchor"></a>
-                <div class="section-name-container">
-                  <a class="section-name-link" href="#/Accessors"></a>
-                  <h3 class="section-name"><p>Accessors</p>
-</h3>
-                </div>
-              </div>
               <ul>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:8AckooSDK0A10SDKManagerC6sharedACyFZ"></a>
-                    <a name="//apple_ref/swift/Method/shared()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:8AckooSDK0A10SDKManagerC6sharedACyFZ">shared()</a>
+                    <a name="/s:8AckooSDK12UserActivityC10isLoggedIn5email5orderACSb_SSSgAA5OrderCSgtcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(isLoggedIn:email:order:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8AckooSDK12UserActivityC10isLoggedIn5email5orderACSb_SSSgAA5OrderCSgtcfc">init(isLoggedIn:<wbr>email:<wbr>order:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -95,46 +86,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>access shared singleton object</p>
+                        <p>UserActivity Initializer</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">shared</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">AckooSDKManager</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:8AckooSDK0A10SDKManagerC14reportActivity4type8activity8callbackyAA0A9EventTypeO_AA04UserE0CySb_yptctF"></a>
-                    <a name="//apple_ref/swift/Method/reportActivity(type:activity:callback:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:8AckooSDK0A10SDKManagerC14reportActivity4type8activity8callbackyAA0A9EventTypeO_AA04UserE0CySb_yptctF">reportActivity(type:<wbr>activity:<wbr>callback:<wbr>)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Report user activity to Ackoo backend</p>
-<div class="aside aside-attention">
-    <p class="aside-title">Attention</p>
-    callback will be always called on the main thread.
-
-</div>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">reportActivity</span><span class="p">(</span><span class="nv">type</span><span class="p">:</span> <span class="kt"><a href="../Enums/AckooEventType.html">AckooEventType</a></span><span class="p">,</span> <span class="nv">activity</span><span class="p">:</span> <span class="kt"><a href="../Classes/UserActivity.html">UserActivity</a></span><span class="p">,</span> <span class="nv">callback</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">succeeded</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">,</span> <span class="n">_</span> <span class="nv">response</span><span class="p">:</span> <span class="kt">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">isLoggedIn</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">,</span> <span class="nv">email</span><span class="p">:</span> <span class="kt">String</span><span class="p">?,</span> <span class="nv">order</span><span class="p">:</span> <span class="kt"><a href="../Classes/Order.html">Order</a></span><span class="p">?)</span></code></pre>
 
                         </div>
                       </div>
@@ -145,36 +104,36 @@
                             <tr>
                               <td>
                                 <code>
-                                <em>type</em>
+                                <em>isLoggedIn</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
-                                  <p>type of event</p>
+                                  <p>wether user is logged In at the time of performing this activity</p>
                                 </div>
                               </td>
                             </tr>
                             <tr>
                               <td>
                                 <code>
-                                <em>activity</em>
+                                <em>email</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
-                                  <p>activity class that holds relevant information like token, email address</p>
+                                  <p>email address of the user</p>
                                 </div>
                               </td>
                             </tr>
                             <tr>
                               <td>
                                 <code>
-                                <em>callback</em>
+                                <em>order</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
-                                  <p>call back with server response or error.</p>
+                                  <p>Order details</p>
                                 </div>
                               </td>
                             </tr>
