@@ -8,23 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		06E152DDCD99E592B47C234F89F9E998 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
-		3265E156DE5BD09A8DA24C8A4C7C7ADA /* UserIdentity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7003CD63DF60F08365EFB8D71E881B53 /* UserIdentity.swift */; };
-		3B7D496370728110801D17E8907484FA /* BaseActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3C2DB96261EFF04DC0BFDF1FDDD0DC /* BaseActivity.swift */; };
+		09B8CAD2B3C264659A1A6C5259B9AADF /* OrderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC3BD065A737C4A2B674AA4A53919A7 /* OrderItem.swift */; };
 		49A1DF2B68FE945F9D3DEE21D227A1B7 /* Pods-AckooSDK_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 856A2ABB021EC4DD221DAB7CB1736BD2 /* Pods-AckooSDK_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		50443C1B78D6FA745B4AD0DF71C79E0F /* Pods-AckooSDK_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 211CEBB87D86D8562CB2FEFD241B05A6 /* Pods-AckooSDK_Example-dummy.m */; };
-		5643ECB0D830A04519DBB66975893B24 /* AckooSDK-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D55338E3FCC4C49CF5C79ADB332B19A8 /* AckooSDK-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7BE8F47AA29E55374AEF656E03F124BC /* AckooSDK-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FBDC5D874794DC7D4739B0686C1EC449 /* AckooSDK-dummy.m */; };
+		5395558ED8E220EAC803F0341FB14A42 /* AckooSDK-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F4FBBF2DC68C5F3C74262669C56FFE3 /* AckooSDK-dummy.m */; };
+		61CAA4E52ED9CEC69A85438113B93CA5 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88F604190788366219CFB4507C7F9EE /* Utils.swift */; };
+		6629DF42EFA6E17028F871B6D2B8DB0A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AA448DA8B7350E0CD3B879FF877614 /* Constants.swift */; };
+		7EE6949C1B2F0920F221B23792C88C4E /* AckooSDKManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CE06431BAE8A1698CED69F3E4D9F1D /* AckooSDKManager.swift */; };
+		7F3C296A07BB1109AD121DE24397494B /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C572DB8B7379A73935584CEABED1DF /* NetworkingManager.swift */; };
 		82B1579AAE90C6889F53AF4D490FE622 /* Pods-AckooSDK_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E4EC0FFA512050246874498E35DBDE0 /* Pods-AckooSDK_Tests-dummy.m */; };
-		8804933829ED1637EDB460FC1F8215C8 /* UserActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7A30AF0DCC5587989B8D8E191D8A02 /* UserActivity.swift */; };
-		9B6179C85118787185B41ECDFEAE4D6E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		8D57614CE34E1CF5B1E33377A606D18D /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D907A223AE7F0D7FED8086CE1F6EDC1 /* Order.swift */; };
+		98A0D0B7764A88F144E1314ECFCDF088 /* UserIdentity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509492902AF3530216D409B2DE09C229 /* UserIdentity.swift */; };
 		A0BA55C574E30D579EEEA7DF5ABCBB0A /* Pods-AckooSDK_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7B0EEE8A90ACE050EA5988B00A5BA4BA /* Pods-AckooSDK_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A11E1618A7F95A760C5B307A903610E3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
-		A78FB225139F35A54DB10207238D9833 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E8C8AF5AD237AC3DF1B569E7967F34 /* Order.swift */; };
-		B1F74F3A8FC29380E29CD559D6A33115 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E727977179400C6FF9086D53CF36430 /* Utils.swift */; };
-		B7A43C4CDE630171717828BD409C4EAC /* AckooSDKManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58C9E668C757F10C859C88191547182 /* AckooSDKManager.swift */; };
-		C63E37743501EE603609BAD80BEDDC91 /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFABD400380689BFED7A4720997182D /* NetworkingManager.swift */; };
-		CF50BDE0C017C17060D6BBA9D30491DE /* OrderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB804DF71B44D6503EEE9828AABFBD8D /* OrderItem.swift */; };
-		D4DA955E3D4F74CAC71BFADD00BC71A0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1A0AA34A4675EF4B2B8CEC30854255 /* Constants.swift */; };
+		B5D4D5C12A32B73825E5281D7058380E /* UserActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0677C4965EEAC647636D11F74E133680 /* UserActivity.swift */; };
+		C6EC7CC2EE7EF95C9D31F13EFAA1D5C1 /* Payload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689460839EBF40B4E474FDC9D0D01C70 /* Payload.swift */; };
+		DF9EA626FD65BD9453F6D9D4590903F3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		E7FEF7C49310103B7A6BC09DC316CF5A /* BaseActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB20F65CE05C98EB885E93C8E42CD21D /* BaseActivity.swift */; };
+		EF5F11DDA7083838F4EA5533A391CD13 /* AckooSDK-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F7D0B0BB78319F6BC03F20054CC0F463 /* AckooSDK-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,88 +46,93 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0244D1E085258BC1758A2F4326FE9596 /* AckooEventType.html */ = {isa = PBXFileReference; includeInIndex = 1; name = AckooEventType.html; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/Enums/AckooEventType.html; sourceTree = "<group>"; };
-		046982F1C3B25530AAA554E79A754528 /* Order.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Order.html; path = docs/Classes/Order.html; sourceTree = "<group>"; };
-		066A497D2ED3F47944FABF206B449C12 /* Structs.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Structs.html; path = docs/Structs.html; sourceTree = "<group>"; };
-		079140DFF3CB1B93966B59EE94423E40 /* jazzy.css */ = {isa = PBXFileReference; includeInIndex = 1; name = jazzy.css; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/css/jazzy.css; sourceTree = "<group>"; };
-		0A16C9636DBE05CE4E72E8CDF89559EA /* badge.svg */ = {isa = PBXFileReference; includeInIndex = 1; name = badge.svg; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/badge.svg; sourceTree = "<group>"; };
+		011CD9D6739A50380AAC18D2CAC9AB29 /* AckooSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AckooSDK.release.xcconfig; sourceTree = "<group>"; };
+		05CE06431BAE8A1698CED69F3E4D9F1D /* AckooSDKManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AckooSDKManager.swift; path = AckooSDK/Classes/AckooSDKManager.swift; sourceTree = "<group>"; };
+		0677C4965EEAC647636D11F74E133680 /* UserActivity.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UserActivity.swift; sourceTree = "<group>"; };
+		0C1C039F8C53051A1C950C0AD2EE0883 /* Utils.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Utils.html; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/Classes/Utils.html; sourceTree = "<group>"; };
+		0D907A223AE7F0D7FED8086CE1F6EDC1 /* Order.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		0DB23C9396EA80F921FF0BF1A1E86907 /* Pods-AckooSDK_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-AckooSDK_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
-		145E6F9DC50D7D4D2EEC96FBC6782B4A /* jquery.min.js */ = {isa = PBXFileReference; includeInIndex = 1; name = jquery.min.js; path = docs/js/jquery.min.js; sourceTree = "<group>"; };
+		0F4FBBF2DC68C5F3C74262669C56FFE3 /* AckooSDK-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "AckooSDK-dummy.m"; sourceTree = "<group>"; };
+		10641C7219EF390C8A64CA67B9BE84B1 /* Classes.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Classes.html; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/Classes.html; sourceTree = "<group>"; };
 		14EE1FAE7227CCB98F9D25291DE5A9BB /* Pods-AckooSDK_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-AckooSDK_Example.modulemap"; sourceTree = "<group>"; };
-		1D3B0B9732416C0C2529B135C5D73D33 /* AckooSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AckooSDK.release.xcconfig; sourceTree = "<group>"; };
 		211CEBB87D86D8562CB2FEFD241B05A6 /* Pods-AckooSDK_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-AckooSDK_Example-dummy.m"; sourceTree = "<group>"; };
-		2719CA92F08DB16AEE86DAC5A2A72B87 /* highlight.css */ = {isa = PBXFileReference; includeInIndex = 1; name = highlight.css; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/css/highlight.css; sourceTree = "<group>"; };
-		2ADE4EF5B4ED7EED7602D089BDE1E996 /* AckooSDK-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AckooSDK-prefix.pch"; sourceTree = "<group>"; };
+		2415A4A94F809D0BA13641E3862D91CB /* badge.svg */ = {isa = PBXFileReference; includeInIndex = 1; name = badge.svg; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/badge.svg; sourceTree = "<group>"; };
+		277F3745626E43B6C63B4AA5F5E43A1C /* UserActivity.html */ = {isa = PBXFileReference; includeInIndex = 1; name = UserActivity.html; path = docs/Classes/UserActivity.html; sourceTree = "<group>"; };
+		28AA448DA8B7350E0CD3B879FF877614 /* Constants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		2A08EE201BF40376397CC04CD5C14479 /* carat.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = carat.png; path = docs/img/carat.png; sourceTree = "<group>"; };
 		2BAFEADAF9DBCF17B25646648B08FEBA /* Pods-AckooSDK_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AckooSDK_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		2D0D49CE0222BC0716CA4EC921BB10B3 /* Enums.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Enums.html; path = docs/Enums.html; sourceTree = "<group>"; };
 		2E2757FC0A5E1D77498D423BF0B5BC9D /* Pods-AckooSDK_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-AckooSDK_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		30F65F4DA8B83397C0D325DC867456A6 /* Pods-AckooSDK_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AckooSDK_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		3C00B9153B8AA5435459D4F496DBE586 /* BuildMode.html */ = {isa = PBXFileReference; includeInIndex = 1; name = BuildMode.html; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/Enums/BuildMode.html; sourceTree = "<group>"; };
-		3E727977179400C6FF9086D53CF36430 /* Utils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
-		3E8CE762127BF3A523A60C7F364BBAD1 /* undocumented.json */ = {isa = PBXFileReference; includeInIndex = 1; name = undocumented.json; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/undocumented.json; sourceTree = "<group>"; };
+		329EF87FEC009125176D839FC49673FA /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		3928AED7065CC19674C6DA0A0624BFC2 /* jazzy.js */ = {isa = PBXFileReference; includeInIndex = 1; name = jazzy.js; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/js/jazzy.js; sourceTree = "<group>"; };
 		3EAF2C08FC25842563EFB2684C112D3E /* Pods_AckooSDK_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_AckooSDK_Example.framework; path = "Pods-AckooSDK_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3F0407AE1391992C62BFD1D490902628 /* carat.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = carat.png; path = docs/img/carat.png; sourceTree = "<group>"; };
 		3FF3882F52E9E1A04968B0B734E18302 /* Pods-AckooSDK_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-AckooSDK_Example-acknowledgements.plist"; sourceTree = "<group>"; };
-		40443700463D7FD4E845F95DCB8A3856 /* index.html */ = {isa = PBXFileReference; includeInIndex = 1; name = index.html; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/index.html; sourceTree = "<group>"; };
 		4856C902686937AE22D39D933E140EA5 /* Pods-AckooSDK_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-AckooSDK_Tests-Info.plist"; sourceTree = "<group>"; };
-		49FB59F6B12A656285F76B23A4D46895 /* badge.svg */ = {isa = PBXFileReference; includeInIndex = 1; name = badge.svg; path = docs/badge.svg; sourceTree = "<group>"; };
-		4A3B646B4A40748B77FBAEE8C97A9C78 /* jazzy.js */ = {isa = PBXFileReference; includeInIndex = 1; name = jazzy.js; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/js/jazzy.js; sourceTree = "<group>"; };
-		4F1119293C1ACA2FD5BC85217691A79E /* gh.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = gh.png; path = docs/img/gh.png; sourceTree = "<group>"; };
-		554B3A86076EA98BA6C1D72555ADB1B2 /* jazzy.css */ = {isa = PBXFileReference; includeInIndex = 1; name = jazzy.css; path = docs/css/jazzy.css; sourceTree = "<group>"; };
+		509492902AF3530216D409B2DE09C229 /* UserIdentity.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UserIdentity.swift; sourceTree = "<group>"; };
+		51C0B941873C640B8C487E94E2B82EB2 /* BuildMode.html */ = {isa = PBXFileReference; includeInIndex = 1; name = BuildMode.html; path = docs/Enums/BuildMode.html; sourceTree = "<group>"; };
+		55A1BB0DB19B30AFBA6B72DA3A441201 /* jquery.min.js */ = {isa = PBXFileReference; includeInIndex = 1; name = jquery.min.js; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/js/jquery.min.js; sourceTree = "<group>"; };
+		5692CB9C880D20AABAEE2CC21798590E /* OrderItem.html */ = {isa = PBXFileReference; includeInIndex = 1; name = OrderItem.html; path = docs/Classes/OrderItem.html; sourceTree = "<group>"; };
 		5D0F47F98A6A26EB931E0ECAC3F94EBE /* Pods_AckooSDK_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_AckooSDK_Tests.framework; path = "Pods-AckooSDK_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5EBBF636CD0C3A6EDF11D639C4992469 /* Utils.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Utils.html; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/Classes/Utils.html; sourceTree = "<group>"; };
-		61E8C8AF5AD237AC3DF1B569E7967F34 /* Order.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
-		627056C13E1D963F20A5462B457A12C3 /* dash.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = dash.png; path = docs/img/dash.png; sourceTree = "<group>"; };
-		687932ABE81E3AF9B15B4EAFBC2D1FDC /* Enums.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Enums.html; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/Enums.html; sourceTree = "<group>"; };
-		69FCC4D3B3C4EFDB9AEE071F12D86FA7 /* Structs.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Structs.html; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/Structs.html; sourceTree = "<group>"; };
-		6CB34C5CB30C7105A304E5F6E352B922 /* carat.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = carat.png; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/img/carat.png; sourceTree = "<group>"; };
-		6F4C677DCC57AAFF962AF10EEAB62E2C /* highlight.css */ = {isa = PBXFileReference; includeInIndex = 1; name = highlight.css; path = docs/css/highlight.css; sourceTree = "<group>"; };
-		7003CD63DF60F08365EFB8D71E881B53 /* UserIdentity.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UserIdentity.swift; sourceTree = "<group>"; };
-		7231595512A070C26287A63FC096EE15 /* Classes.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Classes.html; path = docs/Classes.html; sourceTree = "<group>"; };
-		730E84A33B5E7FD555D722D150FFE4E4 /* jazzy.js */ = {isa = PBXFileReference; includeInIndex = 1; name = jazzy.js; path = docs/js/jazzy.js; sourceTree = "<group>"; };
+		5F12D64914010F2E839C63C11A24C5FC /* Enums.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Enums.html; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/Enums.html; sourceTree = "<group>"; };
+		604A53F6335B8C5D6BA51AAE8CEB6BE9 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		648E11291FA63829AAA64CC1371D257E /* gh.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = gh.png; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/img/gh.png; sourceTree = "<group>"; };
+		689460839EBF40B4E474FDC9D0D01C70 /* Payload.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Payload.swift; sourceTree = "<group>"; };
+		6CD687856916793A4BF54E005F751714 /* AckooSDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AckooSDK.debug.xcconfig; sourceTree = "<group>"; };
+		6D4CF4F066BDF486FCDBF5B7689A8F9B /* AckooSDKManager.html */ = {isa = PBXFileReference; includeInIndex = 1; name = AckooSDKManager.html; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/Classes/AckooSDKManager.html; sourceTree = "<group>"; };
+		72DCC075757F7C40242D58529B47C07A /* highlight.css */ = {isa = PBXFileReference; includeInIndex = 1; name = highlight.css; path = docs/css/highlight.css; sourceTree = "<group>"; };
+		74C0AB59ED0DC6B0CE4B0539392980DE /* AckooSDK.tgz */ = {isa = PBXFileReference; includeInIndex = 1; name = AckooSDK.tgz; path = docs/docsets/AckooSDK.tgz; sourceTree = "<group>"; };
+		75DAB625B0FCCB02BF692DC8D767AEDA /* AckooEventType.html */ = {isa = PBXFileReference; includeInIndex = 1; name = AckooEventType.html; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/Enums/AckooEventType.html; sourceTree = "<group>"; };
+		76FA52FB05570F0990BDAD4CD5C62DA7 /* jazzy.css */ = {isa = PBXFileReference; includeInIndex = 1; name = jazzy.css; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/css/jazzy.css; sourceTree = "<group>"; };
+		7793A2312BA2A6825CE4E864FF4E9FAE /* jazzy.js */ = {isa = PBXFileReference; includeInIndex = 1; name = jazzy.js; path = docs/js/jazzy.js; sourceTree = "<group>"; };
 		799650344BF241A9EDC55265D45F3431 /* Pods-AckooSDK_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-AckooSDK_Tests.modulemap"; sourceTree = "<group>"; };
+		7A56737DDE2B2B268D116B268650BFEC /* dash.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = dash.png; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/img/dash.png; sourceTree = "<group>"; };
 		7B0EEE8A90ACE050EA5988B00A5BA4BA /* Pods-AckooSDK_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-AckooSDK_Tests-umbrella.h"; sourceTree = "<group>"; };
 		7D55C653C184E693822033AD62418FC5 /* Pods-AckooSDK_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-AckooSDK_Example-frameworks.sh"; sourceTree = "<group>"; };
+		83F3064D82A7DE351099E709E92AA37D /* carat.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = carat.png; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/img/carat.png; sourceTree = "<group>"; };
 		856A2ABB021EC4DD221DAB7CB1736BD2 /* Pods-AckooSDK_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-AckooSDK_Example-umbrella.h"; sourceTree = "<group>"; };
-		86099FB7ED3DB85C352C87ADD499E894 /* AckooSDKManager.html */ = {isa = PBXFileReference; includeInIndex = 1; name = AckooSDKManager.html; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/Classes/AckooSDKManager.html; sourceTree = "<group>"; };
+		887A4912E01E0B9E65A0BD181BC661B3 /* index.html */ = {isa = PBXFileReference; includeInIndex = 1; name = index.html; path = docs/index.html; sourceTree = "<group>"; };
+		8BC3BD065A737C4A2B674AA4A53919A7 /* OrderItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = OrderItem.swift; sourceTree = "<group>"; };
+		8BD0C55F3D6CBF9468F5615391BECEAD /* dash.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = dash.png; path = docs/img/dash.png; sourceTree = "<group>"; };
+		8C0FAFA994F10E06EC009BA0A73E182C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Info.plist; path = docs/docsets/AckooSDK.docset/Contents/Info.plist; sourceTree = "<group>"; };
 		8E4EC0FFA512050246874498E35DBDE0 /* Pods-AckooSDK_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-AckooSDK_Tests-dummy.m"; sourceTree = "<group>"; };
+		8E5ADCB629854AA0FFF207AD60AB5F18 /* AckooSDK-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AckooSDK-prefix.pch"; sourceTree = "<group>"; };
+		8EDE3CAB497EDB8F7EB96ADC6E303121 /* Utils.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Utils.html; path = docs/Classes/Utils.html; sourceTree = "<group>"; };
+		912EC5285D2D39C869ED3C252221142A /* AckooSDKManager.html */ = {isa = PBXFileReference; includeInIndex = 1; name = AckooSDKManager.html; path = docs/Classes/AckooSDKManager.html; sourceTree = "<group>"; };
 		935E820BDA694B9BC4AC34A7A8A3BD8A /* AckooSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = AckooSDK.framework; path = AckooSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9CC9B74B902ED9D32599E1EEC0E0D3AB /* gh.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = gh.png; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/img/gh.png; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		A5ED05F5265AA76562A371AB106F6933 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
-		AD1A0AA34A4675EF4B2B8CEC30854255 /* Constants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		AE4705F3D01BA5E7FF87184B87F4ADDE /* Order.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Order.html; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/Classes/Order.html; sourceTree = "<group>"; };
-		AE639D88F2C07F7844D498F1E9FB121D /* AckooSDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AckooSDK.debug.xcconfig; sourceTree = "<group>"; };
-		AEAC091A63FDC04679FF69EE9C23DA93 /* search.json */ = {isa = PBXFileReference; includeInIndex = 1; name = search.json; path = docs/search.json; sourceTree = "<group>"; };
-		B58C9E668C757F10C859C88191547182 /* AckooSDKManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AckooSDKManager.swift; path = AckooSDK/Classes/AckooSDKManager.swift; sourceTree = "<group>"; };
-		B99717C2995FD032A5B66048809254F8 /* BuildMode.html */ = {isa = PBXFileReference; includeInIndex = 1; name = BuildMode.html; path = docs/Enums/BuildMode.html; sourceTree = "<group>"; };
-		B9B42220F3CF7514639F3357193F2140 /* search.json */ = {isa = PBXFileReference; includeInIndex = 1; name = search.json; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/search.json; sourceTree = "<group>"; };
-		BCC7CA8364D6F0D5BA1FD49859BBDAC4 /* AckooSDK.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = AckooSDK.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9DCD9B91D91C44C7D1958ADD47BE66D0 /* OrderItem.html */ = {isa = PBXFileReference; includeInIndex = 1; name = OrderItem.html; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/Classes/OrderItem.html; sourceTree = "<group>"; };
+		9EEAB6969C9AFEC46E74F1F324768CD2 /* BuildMode.html */ = {isa = PBXFileReference; includeInIndex = 1; name = BuildMode.html; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/Enums/BuildMode.html; sourceTree = "<group>"; };
+		A2D35F4FA9F10AE7EF17A3E802BF91C5 /* UserActivity.html */ = {isa = PBXFileReference; includeInIndex = 1; name = UserActivity.html; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/Classes/UserActivity.html; sourceTree = "<group>"; };
+		A5EEFDEA2F308F48368FCA2C82528774 /* Structs.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Structs.html; path = docs/Structs.html; sourceTree = "<group>"; };
+		A6C572DB8B7379A73935584CEABED1DF /* NetworkingManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
+		AB20F65CE05C98EB885E93C8E42CD21D /* BaseActivity.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BaseActivity.swift; sourceTree = "<group>"; };
+		B0ABA5F773422314838A2E3F6E457F47 /* Classes.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Classes.html; path = docs/Classes.html; sourceTree = "<group>"; };
+		B2A11E35DD3C414B6F33D4CADB9A60CF /* undocumented.json */ = {isa = PBXFileReference; includeInIndex = 1; name = undocumented.json; path = docs/undocumented.json; sourceTree = "<group>"; };
+		B642C3F8357C26713F1DEC9184930146 /* gh.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = gh.png; path = docs/img/gh.png; sourceTree = "<group>"; };
+		BC37927FCDDD0FB7926B93AFC7E0E302 /* AckooSDK.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = AckooSDK.modulemap; sourceTree = "<group>"; };
+		BC81299297754F8DC299D4997A5CFE92 /* search.json */ = {isa = PBXFileReference; includeInIndex = 1; name = search.json; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/search.json; sourceTree = "<group>"; };
 		BFEF16DDB8885392FA81309D1C8E6C53 /* Pods-AckooSDK_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AckooSDK_Example.release.xcconfig"; sourceTree = "<group>"; };
-		CA1EC7A9CF771371B4F9CDA8BDF0B5A5 /* dash.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = dash.png; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/img/dash.png; sourceTree = "<group>"; };
-		CB804DF71B44D6503EEE9828AABFBD8D /* OrderItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = OrderItem.swift; sourceTree = "<group>"; };
-		CCD678AB9BA7DEBFA37A4F909690A41F /* docSet.dsidx */ = {isa = PBXFileReference; includeInIndex = 1; name = docSet.dsidx; path = docs/docsets/AckooSDK.docset/Contents/Resources/docSet.dsidx; sourceTree = "<group>"; };
-		CFFABD400380689BFED7A4720997182D /* NetworkingManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
+		C0D9EFB962E09542EBB1DE03853704C4 /* undocumented.json */ = {isa = PBXFileReference; includeInIndex = 1; name = undocumented.json; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/undocumented.json; sourceTree = "<group>"; };
+		C91C24FA4EBE05E6636C2E059B767A9D /* Enums.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Enums.html; path = docs/Enums.html; sourceTree = "<group>"; };
+		C942E97CA32F69F9A0C85806C840B8F2 /* AckooEventType.html */ = {isa = PBXFileReference; includeInIndex = 1; name = AckooEventType.html; path = docs/Enums/AckooEventType.html; sourceTree = "<group>"; };
+		CF63E15BD3AEBA14D3BADDA27BFF00B5 /* AckooSDK.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = AckooSDK.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		D1CEEE45D37BE9B5ADA9303A1CD5C53B /* Pods-AckooSDK_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-AckooSDK_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
-		D20F48FAC433F8D756389F3922235ACD /* index.html */ = {isa = PBXFileReference; includeInIndex = 1; name = index.html; path = docs/index.html; sourceTree = "<group>"; };
-		D34066146744E91C5D64868E17A6B2DC /* AckooEventType.html */ = {isa = PBXFileReference; includeInIndex = 1; name = AckooEventType.html; path = docs/Enums/AckooEventType.html; sourceTree = "<group>"; };
-		D55338E3FCC4C49CF5C79ADB332B19A8 /* AckooSDK-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AckooSDK-umbrella.h"; sourceTree = "<group>"; };
-		D68DF23BEE13DE234FAF60A365BFA6CA /* AckooSDKManager.html */ = {isa = PBXFileReference; includeInIndex = 1; name = AckooSDKManager.html; path = docs/Classes/AckooSDKManager.html; sourceTree = "<group>"; };
-		D78DAFC0D048B5478897525C17BF7EA8 /* AckooSDK.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = AckooSDK.modulemap; sourceTree = "<group>"; };
-		D9B09F98AEA08A48FA126269E4E72A73 /* jquery.min.js */ = {isa = PBXFileReference; includeInIndex = 1; name = jquery.min.js; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/js/jquery.min.js; sourceTree = "<group>"; };
-		DA9A7E24298D0E353F49010AF97C066C /* Utils.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Utils.html; path = docs/Classes/Utils.html; sourceTree = "<group>"; };
-		DDD7F3CB96464CD215AC9BA9DA1B7352 /* Classes.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Classes.html; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/Classes.html; sourceTree = "<group>"; };
-		E2F997E6F47D00D628EE07AD6FF1A670 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Info.plist; path = docs/docsets/AckooSDK.docset/Contents/Info.plist; sourceTree = "<group>"; };
+		D64658D40A4364B780D56A71050AEFB1 /* Structs.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Structs.html; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/Structs.html; sourceTree = "<group>"; };
+		E1B21611985F7CE88BB42DD1ADD5D226 /* highlight.css */ = {isa = PBXFileReference; includeInIndex = 1; name = highlight.css; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/css/highlight.css; sourceTree = "<group>"; };
 		E6B38057C8C0389FF54D4342D672E5AD /* Pods-AckooSDK_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AckooSDK_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		E96FC64707B7F30B953A764B61969386 /* Pods-AckooSDK_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-AckooSDK_Example-Info.plist"; sourceTree = "<group>"; };
-		ED7A30AF0DCC5587989B8D8E191D8A02 /* UserActivity.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UserActivity.swift; sourceTree = "<group>"; };
-		F27FE92A2BF543BC3A6799CD4DB6E267 /* AckooSDK-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "AckooSDK-Info.plist"; sourceTree = "<group>"; };
-		F42E12DA6328857919346870A919271C /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
-		F9AB411D653AA57F2DF928CD2F57ACB4 /* undocumented.json */ = {isa = PBXFileReference; includeInIndex = 1; name = undocumented.json; path = docs/undocumented.json; sourceTree = "<group>"; };
-		FBDC5D874794DC7D4739B0686C1EC449 /* AckooSDK-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "AckooSDK-dummy.m"; sourceTree = "<group>"; };
-		FE3C2DB96261EFF04DC0BFDF1FDDD0DC /* BaseActivity.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BaseActivity.swift; sourceTree = "<group>"; };
-		FF94C6D3B3A9CF16B9E302C7AB25106D /* AckooSDK.tgz */ = {isa = PBXFileReference; includeInIndex = 1; name = AckooSDK.tgz; path = docs/docsets/AckooSDK.tgz; sourceTree = "<group>"; };
+		EBD94F6947314A01EAACC868D43BC9B0 /* AckooSDK-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "AckooSDK-Info.plist"; sourceTree = "<group>"; };
+		ED0930BF7CD20E5A892DF4E1863E315E /* jquery.min.js */ = {isa = PBXFileReference; includeInIndex = 1; name = jquery.min.js; path = docs/js/jquery.min.js; sourceTree = "<group>"; };
+		EEBF8F4A82BB181E2F1B7826DC383AA2 /* Order.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Order.html; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/Classes/Order.html; sourceTree = "<group>"; };
+		EF2CA60E077C8AD59A560401C2EB8CF2 /* jazzy.css */ = {isa = PBXFileReference; includeInIndex = 1; name = jazzy.css; path = docs/css/jazzy.css; sourceTree = "<group>"; };
+		EFBB479AE63A2F924B83DE2E73406197 /* docSet.dsidx */ = {isa = PBXFileReference; includeInIndex = 1; name = docSet.dsidx; path = docs/docsets/AckooSDK.docset/Contents/Resources/docSet.dsidx; sourceTree = "<group>"; };
+		F460DA2892A86EB944681D6088C5B816 /* Order.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Order.html; path = docs/Classes/Order.html; sourceTree = "<group>"; };
+		F7D0B0BB78319F6BC03F20054CC0F463 /* AckooSDK-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AckooSDK-umbrella.h"; sourceTree = "<group>"; };
+		F88F604190788366219CFB4507C7F9EE /* Utils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		F9D455DBBB8D34990C9067C35303B90B /* badge.svg */ = {isa = PBXFileReference; includeInIndex = 1; name = badge.svg; path = docs/badge.svg; sourceTree = "<group>"; };
+		FA3FB95E2392F4C00A7265D1A9E62CE9 /* index.html */ = {isa = PBXFileReference; includeInIndex = 1; name = index.html; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/index.html; sourceTree = "<group>"; };
+		FEDCB2B3548F525AA90E902FF858F7D2 /* search.json */ = {isa = PBXFileReference; includeInIndex = 1; name = search.json; path = docs/search.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,11 +144,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		98DF3F98F6FB0AA316708F00B821B3AB /* Frameworks */ = {
+		9466DD989EBEFF6CDF85B72F381AE259 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9B6179C85118787185B41ECDFEAE4D6E /* Foundation.framework in Frameworks */,
+				DF9EA626FD65BD9453F6D9D4590903F3 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,13 +163,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		099C068BA02F572F3767E07B35399E80 /* Networking */ = {
+		0B3A68C9FB82C47873314A120B8F338B /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				CFFABD400380689BFED7A4720997182D /* NetworkingManager.swift */,
+				BC37927FCDDD0FB7926B93AFC7E0E302 /* AckooSDK.modulemap */,
+				0F4FBBF2DC68C5F3C74262669C56FFE3 /* AckooSDK-dummy.m */,
+				EBD94F6947314A01EAACC868D43BC9B0 /* AckooSDK-Info.plist */,
+				8E5ADCB629854AA0FFF207AD60AB5F18 /* AckooSDK-prefix.pch */,
+				F7D0B0BB78319F6BC03F20054CC0F463 /* AckooSDK-umbrella.h */,
+				6CD687856916793A4BF54E005F751714 /* AckooSDK.debug.xcconfig */,
+				011CD9D6739A50380AAC18D2CAC9AB29 /* AckooSDK.release.xcconfig */,
 			);
-			name = Networking;
-			path = AckooSDK/Classes/Networking;
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/AckooSDK";
+			sourceTree = "<group>";
+		};
+		0CAA1F1469B8B3C39EEB729A778B8E16 /* Activity */ = {
+			isa = PBXGroup;
+			children = (
+				AB20F65CE05C98EB885E93C8E42CD21D /* BaseActivity.swift */,
+				689460839EBF40B4E474FDC9D0D01C70 /* Payload.swift */,
+				0677C4965EEAC647636D11F74E133680 /* UserActivity.swift */,
+				509492902AF3530216D409B2DE09C229 /* UserIdentity.swift */,
+			);
+			name = Activity;
+			path = AckooSDK/Classes/Activity;
 			sourceTree = "<group>";
 		};
 		1B6A44DBF37A42B04B9660C28E10CA21 /* Targets Support Files */ = {
@@ -191,78 +215,6 @@
 			path = "Target Support Files/Pods-AckooSDK_Tests";
 			sourceTree = "<group>";
 		};
-		23F66DB575F9DFE6548712D6B3050618 /* Utilis */ = {
-			isa = PBXGroup;
-			children = (
-				AD1A0AA34A4675EF4B2B8CEC30854255 /* Constants.swift */,
-				3E727977179400C6FF9086D53CF36430 /* Utils.swift */,
-			);
-			name = Utilis;
-			path = AckooSDK/Classes/Utilis;
-			sourceTree = "<group>";
-		};
-		254252EF05B7927989EC08B450F73B4C /* Pod */ = {
-			isa = PBXGroup;
-			children = (
-				D34066146744E91C5D64868E17A6B2DC /* AckooEventType.html */,
-				0244D1E085258BC1758A2F4326FE9596 /* AckooEventType.html */,
-				BCC7CA8364D6F0D5BA1FD49859BBDAC4 /* AckooSDK.podspec */,
-				FF94C6D3B3A9CF16B9E302C7AB25106D /* AckooSDK.tgz */,
-				86099FB7ED3DB85C352C87ADD499E894 /* AckooSDKManager.html */,
-				D68DF23BEE13DE234FAF60A365BFA6CA /* AckooSDKManager.html */,
-				0A16C9636DBE05CE4E72E8CDF89559EA /* badge.svg */,
-				49FB59F6B12A656285F76B23A4D46895 /* badge.svg */,
-				B99717C2995FD032A5B66048809254F8 /* BuildMode.html */,
-				3C00B9153B8AA5435459D4F496DBE586 /* BuildMode.html */,
-				3F0407AE1391992C62BFD1D490902628 /* carat.png */,
-				6CB34C5CB30C7105A304E5F6E352B922 /* carat.png */,
-				DDD7F3CB96464CD215AC9BA9DA1B7352 /* Classes.html */,
-				7231595512A070C26287A63FC096EE15 /* Classes.html */,
-				627056C13E1D963F20A5462B457A12C3 /* dash.png */,
-				CA1EC7A9CF771371B4F9CDA8BDF0B5A5 /* dash.png */,
-				CCD678AB9BA7DEBFA37A4F909690A41F /* docSet.dsidx */,
-				2D0D49CE0222BC0716CA4EC921BB10B3 /* Enums.html */,
-				687932ABE81E3AF9B15B4EAFBC2D1FDC /* Enums.html */,
-				4F1119293C1ACA2FD5BC85217691A79E /* gh.png */,
-				9CC9B74B902ED9D32599E1EEC0E0D3AB /* gh.png */,
-				2719CA92F08DB16AEE86DAC5A2A72B87 /* highlight.css */,
-				6F4C677DCC57AAFF962AF10EEAB62E2C /* highlight.css */,
-				D20F48FAC433F8D756389F3922235ACD /* index.html */,
-				40443700463D7FD4E845F95DCB8A3856 /* index.html */,
-				E2F997E6F47D00D628EE07AD6FF1A670 /* Info.plist */,
-				079140DFF3CB1B93966B59EE94423E40 /* jazzy.css */,
-				554B3A86076EA98BA6C1D72555ADB1B2 /* jazzy.css */,
-				730E84A33B5E7FD555D722D150FFE4E4 /* jazzy.js */,
-				4A3B646B4A40748B77FBAEE8C97A9C78 /* jazzy.js */,
-				145E6F9DC50D7D4D2EEC96FBC6782B4A /* jquery.min.js */,
-				D9B09F98AEA08A48FA126269E4E72A73 /* jquery.min.js */,
-				F42E12DA6328857919346870A919271C /* LICENSE */,
-				046982F1C3B25530AAA554E79A754528 /* Order.html */,
-				AE4705F3D01BA5E7FF87184B87F4ADDE /* Order.html */,
-				A5ED05F5265AA76562A371AB106F6933 /* README.md */,
-				AEAC091A63FDC04679FF69EE9C23DA93 /* search.json */,
-				B9B42220F3CF7514639F3357193F2140 /* search.json */,
-				066A497D2ED3F47944FABF206B449C12 /* Structs.html */,
-				69FCC4D3B3C4EFDB9AEE071F12D86FA7 /* Structs.html */,
-				3E8CE762127BF3A523A60C7F364BBAD1 /* undocumented.json */,
-				F9AB411D653AA57F2DF928CD2F57ACB4 /* undocumented.json */,
-				5EBBF636CD0C3A6EDF11D639C4992469 /* Utils.html */,
-				DA9A7E24298D0E353F49010AF97C066C /* Utils.html */,
-			);
-			name = Pod;
-			sourceTree = "<group>";
-		};
-		2C59C5C7979F557A9F647BFECF48973B /* Activity */ = {
-			isa = PBXGroup;
-			children = (
-				FE3C2DB96261EFF04DC0BFDF1FDDD0DC /* BaseActivity.swift */,
-				ED7A30AF0DCC5587989B8D8E191D8A02 /* UserActivity.swift */,
-				7003CD63DF60F08365EFB8D71E881B53 /* UserIdentity.swift */,
-			);
-			name = Activity;
-			path = AckooSDK/Classes/Activity;
-			sourceTree = "<group>";
-		};
 		57B42EBE0AD4359F67A2AACE136AA824 /* Pods-AckooSDK_Example */ = {
 			isa = PBXGroup;
 			children = (
@@ -283,34 +235,89 @@
 		79699354FC6B0AF58EF746F50C1923E4 /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
-				90A99387AD2528D72195036412BFB678 /* AckooSDK */,
+				A5448D9AC51F902E4E13B88FFADB03D1 /* AckooSDK */,
 			);
 			name = "Development Pods";
 			sourceTree = "<group>";
 		};
-		90A99387AD2528D72195036412BFB678 /* AckooSDK */ = {
+		7B11B3B6EB25D34ECB03D67B3323A2F3 /* Pod */ = {
 			isa = PBXGroup;
 			children = (
-				B58C9E668C757F10C859C88191547182 /* AckooSDKManager.swift */,
-				2C59C5C7979F557A9F647BFECF48973B /* Activity */,
-				099C068BA02F572F3767E07B35399E80 /* Networking */,
-				A1A34614EE5D158AD6F18E01A316A2FF /* Order */,
-				254252EF05B7927989EC08B450F73B4C /* Pod */,
-				F7B00C1155E34F682F7C9325BA964D85 /* Support Files */,
-				23F66DB575F9DFE6548712D6B3050618 /* Utilis */,
+				75DAB625B0FCCB02BF692DC8D767AEDA /* AckooEventType.html */,
+				C942E97CA32F69F9A0C85806C840B8F2 /* AckooEventType.html */,
+				CF63E15BD3AEBA14D3BADDA27BFF00B5 /* AckooSDK.podspec */,
+				74C0AB59ED0DC6B0CE4B0539392980DE /* AckooSDK.tgz */,
+				6D4CF4F066BDF486FCDBF5B7689A8F9B /* AckooSDKManager.html */,
+				912EC5285D2D39C869ED3C252221142A /* AckooSDKManager.html */,
+				F9D455DBBB8D34990C9067C35303B90B /* badge.svg */,
+				2415A4A94F809D0BA13641E3862D91CB /* badge.svg */,
+				51C0B941873C640B8C487E94E2B82EB2 /* BuildMode.html */,
+				9EEAB6969C9AFEC46E74F1F324768CD2 /* BuildMode.html */,
+				2A08EE201BF40376397CC04CD5C14479 /* carat.png */,
+				83F3064D82A7DE351099E709E92AA37D /* carat.png */,
+				10641C7219EF390C8A64CA67B9BE84B1 /* Classes.html */,
+				B0ABA5F773422314838A2E3F6E457F47 /* Classes.html */,
+				7A56737DDE2B2B268D116B268650BFEC /* dash.png */,
+				8BD0C55F3D6CBF9468F5615391BECEAD /* dash.png */,
+				EFBB479AE63A2F924B83DE2E73406197 /* docSet.dsidx */,
+				C91C24FA4EBE05E6636C2E059B767A9D /* Enums.html */,
+				5F12D64914010F2E839C63C11A24C5FC /* Enums.html */,
+				648E11291FA63829AAA64CC1371D257E /* gh.png */,
+				B642C3F8357C26713F1DEC9184930146 /* gh.png */,
+				E1B21611985F7CE88BB42DD1ADD5D226 /* highlight.css */,
+				72DCC075757F7C40242D58529B47C07A /* highlight.css */,
+				887A4912E01E0B9E65A0BD181BC661B3 /* index.html */,
+				FA3FB95E2392F4C00A7265D1A9E62CE9 /* index.html */,
+				8C0FAFA994F10E06EC009BA0A73E182C /* Info.plist */,
+				76FA52FB05570F0990BDAD4CD5C62DA7 /* jazzy.css */,
+				EF2CA60E077C8AD59A560401C2EB8CF2 /* jazzy.css */,
+				3928AED7065CC19674C6DA0A0624BFC2 /* jazzy.js */,
+				7793A2312BA2A6825CE4E864FF4E9FAE /* jazzy.js */,
+				55A1BB0DB19B30AFBA6B72DA3A441201 /* jquery.min.js */,
+				ED0930BF7CD20E5A892DF4E1863E315E /* jquery.min.js */,
+				604A53F6335B8C5D6BA51AAE8CEB6BE9 /* LICENSE */,
+				EEBF8F4A82BB181E2F1B7826DC383AA2 /* Order.html */,
+				F460DA2892A86EB944681D6088C5B816 /* Order.html */,
+				5692CB9C880D20AABAEE2CC21798590E /* OrderItem.html */,
+				9DCD9B91D91C44C7D1958ADD47BE66D0 /* OrderItem.html */,
+				329EF87FEC009125176D839FC49673FA /* README.md */,
+				FEDCB2B3548F525AA90E902FF858F7D2 /* search.json */,
+				BC81299297754F8DC299D4997A5CFE92 /* search.json */,
+				A5EEFDEA2F308F48368FCA2C82528774 /* Structs.html */,
+				D64658D40A4364B780D56A71050AEFB1 /* Structs.html */,
+				C0D9EFB962E09542EBB1DE03853704C4 /* undocumented.json */,
+				B2A11E35DD3C414B6F33D4CADB9A60CF /* undocumented.json */,
+				277F3745626E43B6C63B4AA5F5E43A1C /* UserActivity.html */,
+				A2D35F4FA9F10AE7EF17A3E802BF91C5 /* UserActivity.html */,
+				0C1C039F8C53051A1C950C0AD2EE0883 /* Utils.html */,
+				8EDE3CAB497EDB8F7EB96ADC6E303121 /* Utils.html */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
+		9005514A2AA66DD38CEC5B1A9BFC207B /* Utilis */ = {
+			isa = PBXGroup;
+			children = (
+				28AA448DA8B7350E0CD3B879FF877614 /* Constants.swift */,
+				F88F604190788366219CFB4507C7F9EE /* Utils.swift */,
+			);
+			name = Utilis;
+			path = AckooSDK/Classes/Utilis;
+			sourceTree = "<group>";
+		};
+		A5448D9AC51F902E4E13B88FFADB03D1 /* AckooSDK */ = {
+			isa = PBXGroup;
+			children = (
+				05CE06431BAE8A1698CED69F3E4D9F1D /* AckooSDKManager.swift */,
+				0CAA1F1469B8B3C39EEB729A778B8E16 /* Activity */,
+				D137A997EA5787D1B032F9E4B853CD2E /* Networking */,
+				E4A7475101BBE6B1B436C2C8C06EADAA /* Order */,
+				7B11B3B6EB25D34ECB03D67B3323A2F3 /* Pod */,
+				0B3A68C9FB82C47873314A120B8F338B /* Support Files */,
+				9005514A2AA66DD38CEC5B1A9BFC207B /* Utilis */,
 			);
 			name = AckooSDK;
 			path = ../..;
-			sourceTree = "<group>";
-		};
-		A1A34614EE5D158AD6F18E01A316A2FF /* Order */ = {
-			isa = PBXGroup;
-			children = (
-				61E8C8AF5AD237AC3DF1B569E7967F34 /* Order.swift */,
-				CB804DF71B44D6503EEE9828AABFBD8D /* OrderItem.swift */,
-			);
-			name = Order;
-			path = AckooSDK/Classes/Order;
 			sourceTree = "<group>";
 		};
 		B6A6CF407D96490828A83F8F0B485649 /* Products */ = {
@@ -342,6 +349,15 @@
 			);
 			sourceTree = "<group>";
 		};
+		D137A997EA5787D1B032F9E4B853CD2E /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				A6C572DB8B7379A73935584CEABED1DF /* NetworkingManager.swift */,
+			);
+			name = Networking;
+			path = AckooSDK/Classes/Networking;
+			sourceTree = "<group>";
+		};
 		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -350,19 +366,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		F7B00C1155E34F682F7C9325BA964D85 /* Support Files */ = {
+		E4A7475101BBE6B1B436C2C8C06EADAA /* Order */ = {
 			isa = PBXGroup;
 			children = (
-				D78DAFC0D048B5478897525C17BF7EA8 /* AckooSDK.modulemap */,
-				FBDC5D874794DC7D4739B0686C1EC449 /* AckooSDK-dummy.m */,
-				F27FE92A2BF543BC3A6799CD4DB6E267 /* AckooSDK-Info.plist */,
-				2ADE4EF5B4ED7EED7602D089BDE1E996 /* AckooSDK-prefix.pch */,
-				D55338E3FCC4C49CF5C79ADB332B19A8 /* AckooSDK-umbrella.h */,
-				AE639D88F2C07F7844D498F1E9FB121D /* AckooSDK.debug.xcconfig */,
-				1D3B0B9732416C0C2529B135C5D73D33 /* AckooSDK.release.xcconfig */,
+				0D907A223AE7F0D7FED8086CE1F6EDC1 /* Order.swift */,
+				8BC3BD065A737C4A2B674AA4A53919A7 /* OrderItem.swift */,
 			);
-			name = "Support Files";
-			path = "Example/Pods/Target Support Files/AckooSDK";
+			name = Order;
+			path = AckooSDK/Classes/Order;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -384,11 +395,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B7C3D2CCA2C720AB4B4FDDF4A5E96E3A /* Headers */ = {
+		B2A8DD7E61FAA52851A8C46270304FE2 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5643ECB0D830A04519DBB66975893B24 /* AckooSDK-umbrella.h in Headers */,
+				EF5F11DDA7083838F4EA5533A391CD13 /* AckooSDK-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,12 +408,12 @@
 /* Begin PBXNativeTarget section */
 		5958E0208BD4887ABB5DFD1D3C865E81 /* AckooSDK */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A0CA6E58C0625F9106DA1CF3B8CBA580 /* Build configuration list for PBXNativeTarget "AckooSDK" */;
+			buildConfigurationList = 85B4C8DBB5CB7067D9E839AFD42CDC94 /* Build configuration list for PBXNativeTarget "AckooSDK" */;
 			buildPhases = (
-				B7C3D2CCA2C720AB4B4FDDF4A5E96E3A /* Headers */,
-				F5064D22EC77135EE7CFACE905FBD948 /* Sources */,
-				98DF3F98F6FB0AA316708F00B821B3AB /* Frameworks */,
-				140DAC659B2E9AEDD43837E29FFE45AD /* Resources */,
+				B2A8DD7E61FAA52851A8C46270304FE2 /* Headers */,
+				51170A6A42B84B6C345455E77A5FAA6A /* Sources */,
+				9466DD989EBEFF6CDF85B72F381AE259 /* Frameworks */,
+				43F317C06C7BCE51208E9B35948B6788 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -481,7 +492,7 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		140DAC659B2E9AEDD43837E29FFE45AD /* Resources */ = {
+		43F317C06C7BCE51208E9B35948B6788 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -513,28 +524,29 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		51170A6A42B84B6C345455E77A5FAA6A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5395558ED8E220EAC803F0341FB14A42 /* AckooSDK-dummy.m in Sources */,
+				7EE6949C1B2F0920F221B23792C88C4E /* AckooSDKManager.swift in Sources */,
+				E7FEF7C49310103B7A6BC09DC316CF5A /* BaseActivity.swift in Sources */,
+				6629DF42EFA6E17028F871B6D2B8DB0A /* Constants.swift in Sources */,
+				7F3C296A07BB1109AD121DE24397494B /* NetworkingManager.swift in Sources */,
+				8D57614CE34E1CF5B1E33377A606D18D /* Order.swift in Sources */,
+				09B8CAD2B3C264659A1A6C5259B9AADF /* OrderItem.swift in Sources */,
+				C6EC7CC2EE7EF95C9D31F13EFAA1D5C1 /* Payload.swift in Sources */,
+				B5D4D5C12A32B73825E5281D7058380E /* UserActivity.swift in Sources */,
+				98A0D0B7764A88F144E1314ECFCDF088 /* UserIdentity.swift in Sources */,
+				61CAA4E52ED9CEC69A85438113B93CA5 /* Utils.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		892354826F9DB515DD651E6F12F69362 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				82B1579AAE90C6889F53AF4D490FE622 /* Pods-AckooSDK_Tests-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F5064D22EC77135EE7CFACE905FBD948 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7BE8F47AA29E55374AEF656E03F124BC /* AckooSDK-dummy.m in Sources */,
-				B7A43C4CDE630171717828BD409C4EAC /* AckooSDKManager.swift in Sources */,
-				3B7D496370728110801D17E8907484FA /* BaseActivity.swift in Sources */,
-				D4DA955E3D4F74CAC71BFADD00BC71A0 /* Constants.swift in Sources */,
-				C63E37743501EE603609BAD80BEDDC91 /* NetworkingManager.swift in Sources */,
-				A78FB225139F35A54DB10207238D9833 /* Order.swift in Sources */,
-				CF50BDE0C017C17060D6BBA9D30491DE /* OrderItem.swift in Sources */,
-				8804933829ED1637EDB460FC1F8215C8 /* UserActivity.swift in Sources */,
-				3265E156DE5BD09A8DA24C8A4C7C7ADA /* UserIdentity.swift in Sources */,
-				B1F74F3A8FC29380E29CD559D6A33115 /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -556,39 +568,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		1CB29AD7C460E4EBBEB7441201A9BF8D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = AE639D88F2C07F7844D498F1E9FB121D /* AckooSDK.debug.xcconfig */;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/AckooSDK/AckooSDK-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/AckooSDK/AckooSDK-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/AckooSDK/AckooSDK.modulemap";
-				PRODUCT_MODULE_NAME = AckooSDK;
-				PRODUCT_NAME = AckooSDK;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 		257497152829C177993B5EC99C1D227A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -791,9 +770,9 @@
 			};
 			name = Release;
 		};
-		CB7D6DC12597BA43B69277D1AC4587D0 /* Release */ = {
+		C9906C49701A54ED59AE82617761A70B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1D3B0B9732416C0C2529B135C5D73D33 /* AckooSDK.release.xcconfig */;
+			baseConfigurationReference = 6CD687856916793A4BF54E005F751714 /* AckooSDK.debug.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -819,11 +798,10 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Release;
+			name = Debug;
 		};
 		DD8F832993327D1DD8046C3CBCBD97CD /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -889,6 +867,40 @@
 			};
 			name = Debug;
 		};
+		F3752782F6650F8C507C46728C5EF227 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 011CD9D6739A50380AAC18D2CAC9AB29 /* AckooSDK.release.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/AckooSDK/AckooSDK-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/AckooSDK/AckooSDK-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/AckooSDK/AckooSDK.modulemap";
+				PRODUCT_MODULE_NAME = AckooSDK;
+				PRODUCT_NAME = AckooSDK;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -919,11 +931,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A0CA6E58C0625F9106DA1CF3B8CBA580 /* Build configuration list for PBXNativeTarget "AckooSDK" */ = {
+		85B4C8DBB5CB7067D9E839AFD42CDC94 /* Build configuration list for PBXNativeTarget "AckooSDK" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1CB29AD7C460E4EBBEB7441201A9BF8D /* Debug */,
-				CB7D6DC12597BA43B69277D1AC4587D0 /* Release */,
+				C9906C49701A54ED59AE82617761A70B /* Debug */,
+				F3752782F6650F8C507C46728C5EF227 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

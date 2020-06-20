@@ -10,21 +10,21 @@ import AdSupport
 
 /// Type of the event that AckooSDK supports. Which will be sent
 /// When usere performs the particular action (like register, open app, login, purchase)
-public enum AckooEventType {
+public enum AckooEventType:String,Encodable {
     /// When user installs application
-    case installApp
+    case installApp = "INSTALL"
     
     /// When user opens app
-    case openApp
+    case openApp = "APP_OPEN"
     
     /// When user registers itself with the system
-    case register
+    case register = "USER_REGISTER"
     
     /// when user logs-in in the app
-    case login
+    case login = "USER_LOGIN"
     
     /// When user make the actual purchase of the item
-    case purchase
+    case purchase = "PURCHASE"
 }
 
 
@@ -36,7 +36,7 @@ public class AckooSDKManager {
     /// The shared singleton AckooSDKManager object
     /// Which will be used report related activity to the backend.
     private static var sharedManager: AckooSDKManager = {
-        let sdkManager = AckooSDKManager(baseURL: URL(string: "")!)
+        let sdkManager = AckooSDKManager(baseURL: URL(string: NetworkingManager.sharedInstance.getApiBaseUrl(buildMode: BUILD_MODE))!)
         // Configuration
         // initalise Network manger with Base URL
         
@@ -63,9 +63,9 @@ public class AckooSDKManager {
     ///   - activity: activity class that holds relevant information like token, email address
     ///   - callback: call back with server response or error.
     public func reportActivity(type:AckooEventType,activity:UserActivity,callback: @escaping (_ succeeded: Bool, _ response: Any) -> Void) {
-        let requestURL = "UserActivity"
-        
-        let jsonData = try! JSONEncoder().encode(activity)
+        let requestURL = "events"
+        let payLoad:Payload = Payload(type: type, activity: activity)
+        let jsonData = try! JSONEncoder().encode(payLoad)
         NetworkingManager.sharedInstance.postRequest(jsonData, url: requestURL, callback: {(_ succeeded: Bool, _ response: Any) -> Void in
             DispatchQueue.main.async(execute: {() -> Void in
                 callback(succeeded, response)

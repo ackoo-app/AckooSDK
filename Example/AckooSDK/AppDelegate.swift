@@ -13,7 +13,7 @@ import AckooSDK
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var productName:String?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -46,21 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if userActivity.activityType == NSUserActivityTypeBrowsingWeb {
             let url = userActivity.webpageURL!
             print(url.absoluteString)
-            
-            let item:OrderItem = OrderItem.init(sku: "CM01-R", name: "Item A", amount: 13.35)
-            let date:TimeInterval = Date().timeIntervalSince1970
-            let order:Order = Order(id: "135497-25943", totalAmount: 13.35, symbol: "USD", items: [item], createdOn:date , modifiedOn: date, validatedOn: date)
-            let activity:UserActivity = UserActivity.init(isLoggedIn: true, email: "user@gmail.com", order: order)
-            
-            
-            
-            AckooSDKManager.shared().reportActivity(type: .purchase, activity: activity) { (succeeded, response) in
-                print(succeeded)
-            }
-            
-            
-            
-            
+           productName = url.pathComponents.last
             let alert = UIAlertController(title: "\(url.absoluteString)", message: "Please Select an Option", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (_) in
                 print("User click Approve button")

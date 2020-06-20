@@ -1,5 +1,5 @@
 PODS:
-  - AckooSDK (0.1.3)
+  - AckooSDK (0.1.4)
 
 DEPENDENCIES:
   - AckooSDK (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AckooSDK: 53638a3fccf0990dc42e5fb345cdcb03d48626f4
+  AckooSDK: a2e03bcc95659502570dbe007f48716c739123d0
 
 PODFILE CHECKSUM: 59e7f863d09ac375d16dde523de47942b09adbfa
 

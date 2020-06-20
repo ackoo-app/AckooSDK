@@ -50,19 +50,19 @@ var BUILD_MODE:BuildMode = BuildMode.dev
             case .qa:
                 print("QA")
 
-                apiBaseURL = "https://api-qa.ackoo.no/api/" //QA
+                apiBaseURL = "https://cryptic-garden-59749.herokuapp.com/" //QA
             break
             case .dev:
                 print("DEV")
-                apiBaseURL = "https://api-dev.ackoo.no/api/" //Dev
+                apiBaseURL = "https://cryptic-garden-59749.herokuapp.com/" //Dev
             break
             case .production:
                 print("PRODUCTION")
-                apiBaseURL = "https://api.ackoo.no/api/" //Production
+                apiBaseURL = "https://cryptic-garden-59749.herokuapp.com/" //Production
             break
             case .staging:
                 print("STAGING")
-                apiBaseURL = "https://api-stg.ackoo.no/api/" //Staging
+                apiBaseURL = "https://cryptic-garden-59749.herokuapp.com/" //Staging
             break
          }
         return apiBaseURL
@@ -444,7 +444,7 @@ class Reachability {
 
 
 extension NSMutableData {
-    
+    // Non Relevent Code here
     func appendString(_ string: String) {
         
         let data = string.data(using: String.Encoding.utf8, allowLossyConversion: true)
