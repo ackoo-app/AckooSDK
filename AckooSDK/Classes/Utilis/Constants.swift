@@ -14,7 +14,8 @@ struct Constants {
     }
     struct ENGLISH {
         
-        static let NO_INTERNET_MESSAGE:String = "Internett er ikke tilgjengelig"
+        static let NO_INTERNET_MESSAGE:String = "Internet not reachable"
+        static let INVALID_REQUEST:String = "Host is invalid"
     }
 
 }

@@ -44,21 +44,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
         print("Continue User Activity called: ")
         if userActivity.activityType == NSUserActivityTypeBrowsingWeb {
-            let url = userActivity.webpageURL!
-            print(url.absoluteString)
-           productName = url.pathComponents.last
-            let alert = UIAlertController(title: "\(url.absoluteString)", message: "Please Select an Option", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (_) in
-                print("User click Approve button")
-            }))
-            alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (_) in
-                print("User click Delete button")
-            }))
+            if let url = userActivity.webpageURL {
+                print(url.absoluteString)
+                productName = url.pathComponents.last
+                let alert = UIAlertController(title: "\(url.absoluteString)", message: "Please Select an Option", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (_) in
+                    print("User click Approve button")
+                }))
+                alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (_) in
+                    print("User click Delete button")
+                }))
 
-            alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: { (_) in
-                print("User click Dismiss button")
-            }))
-            self.window?.rootViewController?.present(alert, animated: true, completion: nil)
+                alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: { (_) in
+                    print("User click Dismiss button")
+                }))
+                self.window?.rootViewController?.present(alert, animated: true, completion: nil)
+            }
+           
+            
         }
         return true
     }

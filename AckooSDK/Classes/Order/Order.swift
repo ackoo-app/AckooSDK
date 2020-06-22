@@ -15,7 +15,7 @@ public class Order:Codable {
     let id:String
     
     /// Total amount of all the order items
-    var totalAmount:Double?
+    var totalAmount:Double
     
     /// currency string (USD, GBP, EUR)
     var currencySymbol:String?

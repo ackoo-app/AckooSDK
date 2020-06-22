@@ -40,7 +40,7 @@ class ViewController: UIViewController {
     
     func sendReportActivity(_ name: AckooEventType) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let item:OrderItem = OrderItem.init(sku: "CM01-R", name: appDelegate.productName!, amount: 13.35)
+        let item:OrderItem = OrderItem.init(sku: "CM01-R", name: appDelegate.productName ?? "Default Product", amount: 13.35)
         let date:TimeInterval = Date().timeIntervalSince1970
         let order:Order = Order(id: "135497-25943", totalAmount: 13.35, symbol: "USD", items: [item], createdOn:date , modifiedOn: date, validatedOn: date)
         let activity:UserActivity = UserActivity.init(isLoggedIn: true, email: "user@gmail.com", order: order)

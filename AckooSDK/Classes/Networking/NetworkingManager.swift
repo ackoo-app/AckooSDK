@@ -33,7 +33,7 @@ var BUILD_MODE:BuildMode = BuildMode.dev
     
     let currentBuildMode:BuildMode = BUILD_MODE
     
-    var API_BASE_URL:String?
+    var API_BASE_URL:String = "https://cryptic-garden-59749.herokuapp.com/"
 
      init() {
         API_BASE_URL = getApiBaseUrl(buildMode: currentBuildMode)
@@ -45,7 +45,7 @@ var BUILD_MODE:BuildMode = BuildMode.dev
     
     func getApiBaseUrl(buildMode: BuildMode) -> String {
      
-        var apiBaseURL: String!
+        var apiBaseURL: String
         switch buildMode {
             case .qa:
                 print("QA")
@@ -68,29 +68,37 @@ var BUILD_MODE:BuildMode = BuildMode.dev
         return apiBaseURL
      }
     
-    func prepareRequestToServerWith(_ requestString:String, methodType:String,params:Data?) -> URLRequest  {
+    func prepareRequestToServerWith(_ requestString:String, methodType:String,params:Data?) -> URLRequest?  {
         
-        var request = URLRequest(url: URL(string: API_BASE_URL! + requestString)!)
+        guard let url = URL(string: API_BASE_URL + requestString) else {
+            print("not valid url")
+            return nil
+        }
+        var request:URLRequest = URLRequest(url: url)
         request.httpMethod = methodType
         request = setHeadersToRequest(request)
         if params != nil {
             request.httpBody = params
         }
-        
-        let hData = try! JSONSerialization.data(withJSONObject: request.allHTTPHeaderFields!, options: [])
-        
-        let hString = String(data: hData, encoding: String.Encoding.utf8)
-        
-        print("URL : \(request.url!.absoluteString) \nHeader : \(hString!) \n");
-        
-        if let data = request.httpBody {
+        do {
+            let hData = try JSONSerialization.data(withJSONObject: request.allHTTPHeaderFields ?? [:], options: [])
             
-            let str = String(data: data, encoding: String.Encoding.utf8)
+            let hString = String(data: hData, encoding: String.Encoding.utf8)
             
-            print("\nBody : \(str!) ");
+            print("URL : \(String(describing: request.url?.absoluteString)) \nHeader : \(String(describing: hString)) \n");
+            
+            if let data = request.httpBody {
+                
+                let str = String(data: data, encoding: String.Encoding.utf8)
+                
+                print("\nBody : \(String(describing: str)) ");
+            }
+            
+            return request
+        } catch {
+            print("json error: \(error.localizedDescription)")
+             return nil
         }
-        
-        return request
         
     }
 
@@ -166,106 +174,109 @@ var BUILD_MODE:BuildMode = BuildMode.dev
             return
         }
         
-        let request:URLRequest = prepareRequestToServerWith(url, methodType: "POST", params: params)
+        guard let request:URLRequest = prepareRequestToServerWith(url, methodType: "POST", params: params) else {
+            callback(false, [Constants.RESPONSE_KEYS.NEW_ERROR_MESSAGE:Constants.ENGLISH.INVALID_REQUEST])
+            return
+        }
         self.createDataTastWithRequest(request, callback: callback)
     }
     
     //MARK:- PUT Request
-    func putRequest(_ params: Data?, url: String,additionalHeaderParamDict:Dictionary<String,Any>? = nil, callback: @escaping (_ succeeded: Bool, _ response: Any?) -> Void) {
-        
-        if Reachability.isConnectedToNetwork() == false
-        {
-            callback(false, [Constants.RESPONSE_KEYS.NEW_ERROR_MESSAGE:Constants.ENGLISH.NO_INTERNET_MESSAGE])
-            return
-        }
-        
-        var request:URLRequest = prepareRequestToServerWith(url, methodType: "PUT", params: params)
-        if additionalHeaderParamDict != nil {
-            request = self.addAdditionalHeaderParamsToRequest(request, addionalHeaderParam: additionalHeaderParamDict!)
-            
-            let hData = try! JSONSerialization.data(withJSONObject: request.allHTTPHeaderFields!, options: [])
-            let hString = String(data: hData, encoding: String.Encoding.utf8)
-            
-            print("FINAL URL : \(request.url!.absoluteString) \n Revised Header : \(hString!) \n");
-        }
-        self.createDataTastWithRequest(request, callback: callback)
-    }
-    
-    //MARK:- DELETE Request
-    func deleteRequest(_ params: Data?, url: String, callback: @escaping (_ succeeded: Bool, _ response: Any?) -> Void) {
-        
-        let request:URLRequest = prepareRequestToServerWith(url, methodType: "DELETE", params: params)
-        self.createDataTastWithRequest(request, callback: callback)
-    }
+//    func putRequest(_ params: Data?, url: String,additionalHeaderParamDict:Dictionary<String,Any>? = nil, callback: @escaping (_ succeeded: Bool, _ response: Any?) -> Void) {
+//
+//        if Reachability.isConnectedToNetwork() == false
+//        {
+//            callback(false, [Constants.RESPONSE_KEYS.NEW_ERROR_MESSAGE:Constants.ENGLISH.NO_INTERNET_MESSAGE])
+//            return
+//        }
+//
+//        var request:URLRequest = prepareRequestToServerWith(url, methodType: "PUT", params: params)
+//        if additionalHeaderParamDict != nil {
+//            request = self.addAdditionalHeaderParamsToRequest(request, addionalHeaderParam: additionalHeaderParamDict!)
+//
+//            let hData = try! JSONSerialization.data(withJSONObject: request.allHTTPHeaderFields!, options: [])
+//            let hString = String(data: hData, encoding: String.Encoding.utf8)
+//
+//            print("FINAL URL : \(request.url!.absoluteString) \n Revised Header : \(hString!) \n");
+//        }
+//        self.createDataTastWithRequest(request, callback: callback)
+//    }
+//
+//    //MARK:- DELETE Request
+//    func deleteRequest(_ params: Data?, url: String, callback: @escaping (_ succeeded: Bool, _ response: Any?) -> Void) {
+//
+//        let request:URLRequest = prepareRequestToServerWith(url, methodType: "DELETE", params: params)
+//        self.createDataTastWithRequest(request, callback: callback)
+//    }
     
     //MARK:- GET Request
     
-    func getRequest(_ url: String,_ additionalHeaderParamDict:Dictionary<String,Any>? = nil, callback: @escaping (_ succeeded: Bool, _ response: Any?) -> Void) {
-        
-        if Reachability.isConnectedToNetwork() == false
-        {
-            callback(false, [Constants.RESPONSE_KEYS.NEW_ERROR_MESSAGE:Constants.ENGLISH.NO_INTERNET_MESSAGE])
-            return
-        }
-        
-        var request:URLRequest = prepareRequestToServerWith(url, methodType: "GET", params: nil)
-        if additionalHeaderParamDict != nil {
-            request = self.addAdditionalHeaderParamsToRequest(request, addionalHeaderParam: additionalHeaderParamDict!)
-            
-            let hData = try! JSONSerialization.data(withJSONObject: request.allHTTPHeaderFields!, options: [])
-            let hString = String(data: hData, encoding: String.Encoding.utf8)
-            
-            print("FINAL URL : \(request.url!.absoluteString) \n Revised Header : \(hString!) \n");
-        }
-        self.createDataTastWithRequest(request, callback: callback)
-    }
-    func getRequest(_ url: String, additionalHeaderParamDict:Dictionary<String,Any>? = nil, callback: @escaping (_ succeeded: Bool, _ response: Data?) -> Void) {
-        
-        if Reachability.isConnectedToNetwork() == false
-        {
-            if let theJSONData:Data = try? JSONSerialization.data(
-                withJSONObject: [Constants.RESPONSE_KEYS.NEW_ERROR_MESSAGE:Constants.ENGLISH.NO_INTERNET_MESSAGE],
-                options: []) {
-                callback(false, theJSONData)
-            }
-            return
-        }
-        
-        var request:URLRequest = prepareRequestToServerWith(url, methodType: "GET", params: nil)
-        if additionalHeaderParamDict != nil {
-            request = self.addAdditionalHeaderParamsToRequest(request, addionalHeaderParam: additionalHeaderParamDict!)
-            
-            let hData = try! JSONSerialization.data(withJSONObject: request.allHTTPHeaderFields!, options: [])
-            let hString = String(data: hData, encoding: String.Encoding.utf8)
-            
-            print("FINAL URL : \(request.url!.absoluteString) \n Revised Header : \(hString!) \n");
-        }
-        self.createDataTastWithRequest(request, callback: callback)
-    }
-    
-    //MARK:- MULTIPART Request
-    func postImageAsMutlipartRequest(_ url: String,image:UIImage, callback: @escaping (_ succeeded: Bool, _ response: Any?) -> Void) {
-        
-      var request:URLRequest = prepareRequestToServerWith(url, methodType: "POST", params: nil)
-        request.timeoutInterval = 180
-        let imageData:(Data?,String) = Utils.convertImageToDate(image)
-        
-        let boundary = generateBoundaryString()
-        
-        
-        
-        let fullData = photoDataToFormData(imageData.0!,boundary:boundary,fileName:imageData.1)
-        
-        request.setValue("multipart/form-data; boundary=" + boundary,
-                         forHTTPHeaderField: "Content-Type")
-        
-        // REQUIRED!
-        request.setValue(String(fullData.count), forHTTPHeaderField: "Content-Length")
-        
-        request.httpBody = fullData
-        
-        self.createDataTastWithRequest(request, callback: callback)
-    }
+//    func getRequest(_ url: String,_ additionalHeaderParamDict:Dictionary<String,Any>? = nil, callback: @escaping (_ succeeded: Bool, _ response: Any?) -> Void) {
+//
+//        if Reachability.isConnectedToNetwork() == false
+//        {
+//            callback(false, [Constants.RESPONSE_KEYS.NEW_ERROR_MESSAGE:Constants.ENGLISH.NO_INTERNET_MESSAGE])
+//            return
+//        }
+//
+//        var request:URLRequest = prepareRequestToServerWith(url, methodType: "GET", params: nil)
+//        if additionalHeaderParamDict != nil {
+//            request = self.addAdditionalHeaderParamsToRequest(request, addionalHeaderParam: additionalHeaderParamDict!)
+//
+//            let hData = try! JSONSerialization.data(withJSONObject: request.allHTTPHeaderFields!, options: [])
+//            let hString = String(data: hData, encoding: String.Encoding.utf8)
+//
+//            print("FINAL URL : \(request.url!.absoluteString) \n Revised Header : \(hString!) \n");
+//        }
+//        self.createDataTastWithRequest(request, callback: callback)
+//    }
+//    func getRequest(_ url: String, additionalHeaderParamDict:Dictionary<String,Any>? = nil, callback: @escaping (_ succeeded: Bool, _ response: Data?) -> Void) {
+//
+//        if Reachability.isConnectedToNetwork() == false
+//        {
+//            if let theJSONData:Data = try? JSONSerialization.data(
+//                withJSONObject: [Constants.RESPONSE_KEYS.NEW_ERROR_MESSAGE:Constants.ENGLISH.NO_INTERNET_MESSAGE],
+//                options: []) {
+//                callback(false, theJSONData)
+//            }
+//            return
+//        }
+//
+//        var request:URLRequest = prepareRequestToServerWith(url, methodType: "GET", params: nil)
+//        if additionalHeaderParamDict != nil {
+//            request = self.addAdditionalHeaderParamsToRequest(request, addionalHeaderParam: additionalHeaderParamDict!)
+//
+//            let hData = try! JSONSerialization.data(withJSONObject: request.allHTTPHeaderFields!, options: [])
+//            let hString = String(data: hData, encoding: String.Encoding.utf8)
+//
+//            print("FINAL URL : \(request.url!.absoluteString) \n Revised Header : \(hString!) \n");
+//        }
+//        self.createDataTastWithRequest(request, callback: callback)
+//    }
+//
+//    //MARK:- MULTIPART Request
+//    func postImageAsMutlipartRequest(_ url: String,image:UIImage, callback: @escaping (_ succeeded: Bool, _ response: Any?) -> Void) {
+//
+//      var request:URLRequest = prepareRequestToServerWith(url, methodType: "POST", params: nil)
+//        request.timeoutInterval = 180
+//        let imageData:(Data?,String) = Utils.convertImageToDate(image)
+//
+//        let boundary = generateBoundaryString()
+//
+//
+//
+//        let fullData = photoDataToFormData(imageData.0!,boundary:boundary,fileName:imageData.1)
+//
+//        request.setValue("multipart/form-data; boundary=" + boundary,
+//                         forHTTPHeaderField: "Content-Type")
+//
+//        // REQUIRED
+//        request.setValue(String(fullData.count), forHTTPHeaderField: "Content-Length")
+//
+//        request.httpBody = fullData
+//
+//        self.createDataTastWithRequest(request, callback: callback)
+//    }
     
     //MARK:- Helpers
     
@@ -311,11 +322,11 @@ var BUILD_MODE:BuildMode = BuildMode.dev
         catch let error as NSError {
             
             let httpResponse = response as? HTTPURLResponse
-            print("json error: \(error.localizedDescription)\nCode:\(httpResponse!.statusCode)")
-            print("\(response.url!)")
+            print("json error: \(error.localizedDescription)\nCode:\(String(describing: httpResponse?.statusCode))")
+            print("\(String(describing: response.url))")
             print("\(String(describing: String(data: data, encoding:String.Encoding.utf8)))")
             
-            let responseDict = [Constants.RESPONSE_KEYS.NEW_ERROR_MESSAGE:HTTPURLResponse.localizedString(forStatusCode: httpResponse!.statusCode)]
+            let responseDict = [Constants.RESPONSE_KEYS.NEW_ERROR_MESSAGE:HTTPURLResponse.localizedString(forStatusCode: httpResponse?.statusCode ?? 400)]
             
             let responseDict2 = [Constants.RESPONSE_KEYS.NEW_ERROR_MESSAGE:error.localizedDescription]
             
@@ -377,45 +388,45 @@ var BUILD_MODE:BuildMode = BuildMode.dev
         return "Boundary-\(UUID().uuidString)"
     }
     
-    func photoDataToFormData(_ data:Data,boundary:String,fileName:String) -> Data {
-        let fullData = NSMutableData()
-        
-        // 1 - Boundary should start with --
-        let lineOne = "--" + boundary + "\r\n"
-        fullData.append(lineOne.data(
-            using: String.Encoding.utf8,
-            allowLossyConversion: false)!)
-        
-        // 2
-        let lineTwo = "Content-Disposition: form-data; name=\"image\"; filename=\"upload." + fileName + "\"\r\n"
-        print(lineTwo)
-        fullData.append(lineTwo.data(
-            using: String.Encoding.utf8,
-            allowLossyConversion: false)!)
-        
-        // 3
-        let lineThree = "Content-Type: image/" + fileName + "\r\n\r\n"
-        fullData.append(lineThree.data(
-            using: String.Encoding.utf8,
-            allowLossyConversion: false)!)
-        
-        // 4
-        fullData.append(data)
-        
-        // 5
-        let lineFive = "\r\n"
-        fullData.append(lineFive.data(
-            using: String.Encoding.utf8,
-            allowLossyConversion: false)!)
-        
-        // 6 - The end. Notice -- at the start and at the end
-        let lineSix = "--" + boundary + "--\r\n"
-        fullData.append(lineSix.data(
-            using: String.Encoding.utf8,
-            allowLossyConversion: false)!)
-        
-        return fullData as Data
-    }
+//    func photoDataToFormData(_ data:Data,boundary:String,fileName:String) -> Data {
+//        let fullData = NSMutableData()
+//
+//        // 1 - Boundary should start with --
+//        let lineOne = "--" + boundary + "\r\n"
+//        fullData.append(lineOne.data(
+//            using: String.Encoding.utf8,
+//            allowLossyConversion: false)!)
+//
+//        // 2
+//        let lineTwo = "Content-Disposition: form-data; name=\"image\"; filename=\"upload." + fileName + "\"\r\n"
+//        print(lineTwo)
+//        fullData.append(lineTwo.data(
+//            using: String.Encoding.utf8,
+//            allowLossyConversion: false)!)
+//
+//        // 3
+//        let lineThree = "Content-Type: image/" + fileName + "\r\n\r\n"
+//        fullData.append(lineThree.data(
+//            using: String.Encoding.utf8,
+//            allowLossyConversion: false)!)
+//
+//        // 4
+//        fullData.append(data)
+//
+//        // 5
+//        let lineFive = "\r\n"
+//        fullData.append(lineFive.data(
+//            using: String.Encoding.utf8,
+//            allowLossyConversion: false)!)
+//
+//        // 6 - The end. Notice -- at the start and at the end
+//        let lineSix = "--" + boundary + "--\r\n"
+//        fullData.append(lineSix.data(
+//            using: String.Encoding.utf8,
+//            allowLossyConversion: false)!)
+//
+//        return fullData as Data
+//    }
 }
 
 
@@ -447,7 +458,9 @@ extension NSMutableData {
     // Non Relevent Code here
     func appendString(_ string: String) {
         
-        let data = string.data(using: String.Encoding.utf8, allowLossyConversion: true)
-        append(data!)
+        if let data = string.data(using: String.Encoding.utf8, allowLossyConversion: true) {
+            append(data)
+        }
+        
     }
 }
