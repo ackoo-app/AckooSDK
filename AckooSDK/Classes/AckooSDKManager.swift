@@ -37,9 +37,6 @@ public class AckooSDKManager {
     /// Which will be used report related activity to the backend.
     private static var sharedManager: AckooSDKManager = {
         let sdkManager = AckooSDKManager(baseURL: URL(string: NetworkingManager.sharedInstance.getApiBaseUrl(buildMode: BUILD_MODE))!)
-        // Configuration
-        // initalise Network manger with Base URL
-        
         return sdkManager
     }()
     private var fingerPrintingParam:FingerPrintingOption = FingerPrintingOption()
@@ -53,6 +50,8 @@ public class AckooSDKManager {
     // MARK: - Accessors
     /// access shared singleton object
     public class func shared() -> AckooSDKManager {
+        // get token in the background here
+        
         return sharedManager
     }
     
@@ -63,14 +62,41 @@ public class AckooSDKManager {
     ///   - activity: activity class that holds relevant information like token, email address
     ///   - callback: call back with server response or error.
     public func reportActivity(type:AckooEventType,activity:UserActivity,callback: @escaping (_ succeeded: Bool, _ response: Any) -> Void) {
+        
+        // Check if token is acquired
+        if !activity.token.isEmpty {
+            // No need to do anything
+            self.makeAnActualApiCall(type: type, activity: activity, callback: callback)
+        } else {
+            self.getTokenFromServer { (succeeded, response) in
+                print(response)
+                if let responseDict:[String:Any] = response as? [String:Any], let sessionToken:String = responseDict["sessionToken"] as? String {
+                    activity.token = sessionToken
+                    UserDefaults.standard.set(sessionToken, forKey: Constants.SDK_KEYS.TOKEN_SESSION)
+                    UserDefaults.standard.synchronize()
+                    self.makeAnActualApiCall(type: type, activity: activity, callback: callback)
+                }
+                
+            }
+        }
+        
+        
+       
+    }
+    private func makeAnActualApiCall(type:AckooEventType,activity:UserActivity,callback: @escaping (_ succeeded: Bool, _ response: Any) -> Void) {
         let requestURL = "events"
-        let payLoad:Payload = Payload(type: type, activity: activity)
-        let jsonData = try! JSONEncoder().encode(payLoad)
-        NetworkingManager.sharedInstance.postRequest(jsonData, url: requestURL, callback: {(_ succeeded: Bool, _ response: Any) -> Void in
-            DispatchQueue.main.async(execute: {() -> Void in
-                callback(succeeded, response)
-            })
-        })
+               let payLoad:Payload = Payload(type: type, activity: activity)
+               do {
+               let jsonData = try JSONEncoder().encode(payLoad)
+                   NetworkingManager.sharedInstance.postRequest(jsonData, url: requestURL, callback: {(_ succeeded: Bool, _ response: Any) -> Void in
+                       DispatchQueue.main.async(execute: {() -> Void in
+                           callback(succeeded, response)
+                       })
+                   })
+               }
+               catch {
+                   callback(false, [Constants.RESPONSE_KEYS.NEW_ERROR_MESSAGE:Constants.ENGLISH.INVALID_REQUEST])
+               }
     }
     private func getIDFAOfDevice() -> String {
         // Get and return IDFA
@@ -82,8 +108,26 @@ public class AckooSDKManager {
     
     private func getUserIdentity() -> UserIdentity {
         let identity:UserIdentity = UserIdentity(idfaUuidString: self.getIDFAOfDevice())
-        identity.fingerPrintingParam = self.getDevicInfo()
+        identity.fingerprint = self.getDevicInfo()
         return identity
+    }
+    private func getTokenFromServer(callback: @escaping (_ succeeded: Bool, _ response: Any) -> Void) {
+        let identity:UserIdentity = self.getUserIdentity()
+        let requestURL = "users/fingerprint"
+        
+        do {
+        let jsonData = try JSONEncoder().encode(identity)
+            NetworkingManager.sharedInstance.postRequest(jsonData, url: requestURL, callback: {(_ succeeded: Bool, _ response: Any) -> Void in
+                // set token here
+                print(response)
+                callback(succeeded, response)
+                
+            })
+        }
+        catch {
+            print("Error in retrieving token")
+            callback(false, [Constants.RESPONSE_KEYS.NEW_ERROR_MESSAGE:Constants.ENGLISH.INVALID_REQUEST])
+        }
     }
 
 }

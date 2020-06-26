@@ -12,7 +12,7 @@ import Foundation
 public class UserActivity:BaseActivity {
     
     /// unique token that associated with user
-    let token:String
+    var token:String
     
     /// wether user is logged In at the time of performing this activity
     var isLoggedIn:Bool
@@ -36,12 +36,10 @@ public class UserActivity:BaseActivity {
         self.orderDetail = order
         super.init()
     }
-    
-    required init(from decoder: Decoder) throws {
-        fatalError("init(from:) has not been implemented")
-    }
-    
     static func getToken() -> String {
+        if let token:String = UserDefaults.standard.object(forKey: Constants.SDK_KEYS.TOKEN_SESSION) as? String {
+            return token
+        }
         return ""
     }
  
