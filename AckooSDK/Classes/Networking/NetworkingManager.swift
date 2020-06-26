@@ -17,12 +17,12 @@ import SystemConfiguration
 /// Build mode that defines which build mode to user
  enum BuildMode: Int {
     case qa = 1
-    case dev
-    case production
-    case staging
+//    case dev
+//    case production
+//    case staging
 }
 
-var BUILD_MODE:BuildMode = BuildMode.dev
+var BUILD_MODE:BuildMode = BuildMode.qa
 
 
 /// 
@@ -37,31 +37,20 @@ var BUILD_MODE:BuildMode = BuildMode.dev
         API_BASE_URL = getApiBaseUrl(buildMode: currentBuildMode)
     }
     
-    func getCurrentBuildMode() -> BuildMode {
-        return currentBuildMode
-    }
+//    func getCurrentBuildMode() -> BuildMode {
+//        return currentBuildMode
+//    }
     
     func getApiBaseUrl(buildMode: BuildMode) -> String {
      
         var apiBaseURL: String
         switch buildMode {
             case .qa:
-                print("QA")
+                //print("QA")
 
                 apiBaseURL = "https://cryptic-garden-59749.herokuapp.com/" //QA
             break
-            case .dev:
-                print("DEV")
-                apiBaseURL = "https://cryptic-garden-59749.herokuapp.com/" //Dev
-            break
-            case .production:
-                print("PRODUCTION")
-                apiBaseURL = "https://cryptic-garden-59749.herokuapp.com/" //Production
-            break
-            case .staging:
-                print("STAGING")
-                apiBaseURL = "https://cryptic-garden-59749.herokuapp.com/" //Staging
-            break
+           
          }
         return apiBaseURL
      }
@@ -69,7 +58,7 @@ var BUILD_MODE:BuildMode = BuildMode.dev
     func prepareRequestToServerWith(_ requestString:String, methodType:String,params:Data?) -> URLRequest?  {
         
         guard let url = URL(string: API_BASE_URL + requestString) else {
-            print("not valid url")
+            //print("not valid url")
             return nil
         }
         var request:URLRequest = URLRequest(url: url)
@@ -81,20 +70,16 @@ var BUILD_MODE:BuildMode = BuildMode.dev
         do {
             let hData = try JSONSerialization.data(withJSONObject: request.allHTTPHeaderFields ?? [:], options: [])
             
-            let hString = String(data: hData, encoding: String.Encoding.utf8)
+            //let hString = String(data: hData, encoding: String.Encoding.utf8)
             
-            print("URL : \(String(describing: request.url?.absoluteString)) \nHeader : \(String(describing: hString)) \n");
-            
+            //print("URL : \(String(describing: request.url?.absoluteString)) \nHeader : \(String(describing: hString)) \n");
             if let data = request.httpBody {
-                
-                let str = String(data: data, encoding: String.Encoding.utf8)
-                
-                print("\nBody : \(String(describing: str)) ");
+                //let str = String(data: data, encoding: String.Encoding.utf8)
+                //print("\nBody : \(String(describing: str)) ");
             }
-            
             return request
         } catch {
-            print("json error: \(error.localizedDescription)")
+            //print("json error: \(error.localizedDescription)")
              return nil
         }
         
@@ -113,54 +98,13 @@ var BUILD_MODE:BuildMode = BuildMode.dev
         //session.dataTas
         
         let task = session.dataTask(with: request, completionHandler: {  (data:Data?, response:URLResponse?, error:Error?) in
-            //print("\(params)")
+            ////print("\(params)")
             self.validateResponse(data, response: response, error: error, callback: callback)
             return ()
         })
         task.resume()
     }
-    func createDataTastWithRequest( _ request:URLRequest,  callback: @escaping (_ succeeded: Bool, _ response: Data?) -> Void) {
-        
-        if Reachability.isConnectedToNetwork() == false
-        {
-            if let theJSONData:Data = try? JSONSerialization.data(
-                withJSONObject: [Constants.RESPONSE_KEYS.NEW_ERROR_MESSAGE:Constants.ENGLISH.NO_INTERNET_MESSAGE],
-                options: []) {
-                callback(false, theJSONData)
-            }
-            return
-        }
-        
-        let session = URLSession.shared
-        
-        //session.dataTas
-        
-        let task = session.dataTask(with: request, completionHandler: {  (data:Data?, response:URLResponse?, error:Error?) in
-            //print("\(params)")
-            if let httpResponse = response as? HTTPURLResponse ,httpResponse.statusCode == 200 {
-                
-                callback(true, data)
-                
-            }
-            else {
-                callback(false, data)
-            }
-            return ()
-        })
-        task.resume()
-    }
-    
-    //  MARK: Add Additional Header Params To Request
-    func addAdditionalHeaderParamsToRequest(_ requestURL:URLRequest, addionalHeaderParam:Dictionary<String,Any>) -> URLRequest  {
-        
-        var request = requestURL
-        
-        for (key, value) in addionalHeaderParam {
-            print("Param: Value: \(value as Any) for key: \"\(key as String)\"")
-            request.addValue(String(describing: value), forHTTPHeaderField: key)
-        }
-        return request
-    }
+
     
 
     //MARK:- POST Request
@@ -179,110 +123,15 @@ var BUILD_MODE:BuildMode = BuildMode.dev
         self.createDataTastWithRequest(request, callback: callback)
     }
     
-    //MARK:- PUT Request
-//    func putRequest(_ params: Data?, url: String,additionalHeaderParamDict:Dictionary<String,Any>? = nil, callback: @escaping (_ succeeded: Bool, _ response: Any?) -> Void) {
-//
-//        if Reachability.isConnectedToNetwork() == false
-//        {
-//            callback(false, [Constants.RESPONSE_KEYS.NEW_ERROR_MESSAGE:Constants.ENGLISH.NO_INTERNET_MESSAGE])
-//            return
-//        }
-//
-//        var request:URLRequest = prepareRequestToServerWith(url, methodType: "PUT", params: params)
-//        if additionalHeaderParamDict != nil {
-//            request = self.addAdditionalHeaderParamsToRequest(request, addionalHeaderParam: additionalHeaderParamDict!)
-//
-//            let hData = try! JSONSerialization.data(withJSONObject: request.allHTTPHeaderFields!, options: [])
-//            let hString = String(data: hData, encoding: String.Encoding.utf8)
-//
-//            print("FINAL URL : \(request.url!.absoluteString) \n Revised Header : \(hString!) \n");
-//        }
-//        self.createDataTastWithRequest(request, callback: callback)
-//    }
-//
-//    //MARK:- DELETE Request
-//    func deleteRequest(_ params: Data?, url: String, callback: @escaping (_ succeeded: Bool, _ response: Any?) -> Void) {
-//
-//        let request:URLRequest = prepareRequestToServerWith(url, methodType: "DELETE", params: params)
-//        self.createDataTastWithRequest(request, callback: callback)
-//    }
-    
-    //MARK:- GET Request
-    
-//    func getRequest(_ url: String,_ additionalHeaderParamDict:Dictionary<String,Any>? = nil, callback: @escaping (_ succeeded: Bool, _ response: Any?) -> Void) {
-//
-//        if Reachability.isConnectedToNetwork() == false
-//        {
-//            callback(false, [Constants.RESPONSE_KEYS.NEW_ERROR_MESSAGE:Constants.ENGLISH.NO_INTERNET_MESSAGE])
-//            return
-//        }
-//
-//        var request:URLRequest = prepareRequestToServerWith(url, methodType: "GET", params: nil)
-//        if additionalHeaderParamDict != nil {
-//            request = self.addAdditionalHeaderParamsToRequest(request, addionalHeaderParam: additionalHeaderParamDict!)
-//
-//            let hData = try! JSONSerialization.data(withJSONObject: request.allHTTPHeaderFields!, options: [])
-//            let hString = String(data: hData, encoding: String.Encoding.utf8)
-//
-//            print("FINAL URL : \(request.url!.absoluteString) \n Revised Header : \(hString!) \n");
-//        }
-//        self.createDataTastWithRequest(request, callback: callback)
-//    }
-//    func getRequest(_ url: String, additionalHeaderParamDict:Dictionary<String,Any>? = nil, callback: @escaping (_ succeeded: Bool, _ response: Data?) -> Void) {
-//
-//        if Reachability.isConnectedToNetwork() == false
-//        {
-//            if let theJSONData:Data = try? JSONSerialization.data(
-//                withJSONObject: [Constants.RESPONSE_KEYS.NEW_ERROR_MESSAGE:Constants.ENGLISH.NO_INTERNET_MESSAGE],
-//                options: []) {
-//                callback(false, theJSONData)
-//            }
-//            return
-//        }
-//
-//        var request:URLRequest = prepareRequestToServerWith(url, methodType: "GET", params: nil)
-//        if additionalHeaderParamDict != nil {
-//            request = self.addAdditionalHeaderParamsToRequest(request, addionalHeaderParam: additionalHeaderParamDict!)
-//
-//            let hData = try! JSONSerialization.data(withJSONObject: request.allHTTPHeaderFields!, options: [])
-//            let hString = String(data: hData, encoding: String.Encoding.utf8)
-//
-//            print("FINAL URL : \(request.url!.absoluteString) \n Revised Header : \(hString!) \n");
-//        }
-//        self.createDataTastWithRequest(request, callback: callback)
-//    }
-//
-//    //MARK:- MULTIPART Request
-//    func postImageAsMutlipartRequest(_ url: String,image:UIImage, callback: @escaping (_ succeeded: Bool, _ response: Any?) -> Void) {
-//
-//      var request:URLRequest = prepareRequestToServerWith(url, methodType: "POST", params: nil)
-//        request.timeoutInterval = 180
-//        let imageData:(Data?,String) = Utils.convertImageToDate(image)
-//
-//        let boundary = generateBoundaryString()
-//
-//
-//
-//        let fullData = photoDataToFormData(imageData.0!,boundary:boundary,fileName:imageData.1)
-//
-//        request.setValue("multipart/form-data; boundary=" + boundary,
-//                         forHTTPHeaderField: "Content-Type")
-//
-//        // REQUIRED
-//        request.setValue(String(fullData.count), forHTTPHeaderField: "Content-Length")
-//
-//        request.httpBody = fullData
-//
-//        self.createDataTastWithRequest(request, callback: callback)
-//    }
+ 
     
     //MARK:- Helpers
     
     func validateResponse(_ data:Data?,response:URLResponse?,error:Error?,callback: (_ succeeded: Bool, _ response: Any?) -> Void){
-        //print("URL ")
+        ////print("URL ")
         guard let data:Data = data, let response:URLResponse = response, error == nil else {
             
-            print("Error = \(String(describing: error))")
+            //print("Error = \(String(describing: error))")
             let responseDict = [Constants.RESPONSE_KEYS.NEW_ERROR_MESSAGE:error?.localizedDescription]
             
             callback(false, responseDict as Any?)
@@ -291,14 +140,11 @@ var BUILD_MODE:BuildMode = BuildMode.dev
         
         
         
-        print("Response: \(String(describing: String(data: data, encoding: String.Encoding.utf8))) for URL \(String(describing: response.url))")
+        //print("Response: \(String(describing: String(data: data, encoding: String.Encoding.utf8))) for URL \(String(describing: response.url))")
         do {
             
             let json = try JSONSerialization.jsonObject(with: data, options: [])
-                //print("\(response)")
-            
-           
-                
+                ////print("\(response)")
             if let jsonDict:Dictionary<String,AnyObject> = json as? Dictionary<String,AnyObject> {
                 if jsonDict.count == 0 {
                     callback(false, [:])
@@ -320,9 +166,9 @@ var BUILD_MODE:BuildMode = BuildMode.dev
         catch let error as NSError {
             
             let httpResponse = response as? HTTPURLResponse
-            print("json error: \(error.localizedDescription)\nCode:\(String(describing: httpResponse?.statusCode))")
-            print("\(String(describing: response.url))")
-            print("\(String(describing: String(data: data, encoding:String.Encoding.utf8)))")
+            //print("json error: \(error.localizedDescription)\nCode:\(String(describing: httpResponse?.statusCode))")
+            //print("\(String(describing: response.url))")
+            //print("\(String(describing: String(data: data, encoding:String.Encoding.utf8)))")
             
             let responseDict = [Constants.RESPONSE_KEYS.NEW_ERROR_MESSAGE:HTTPURLResponse.localizedString(forStatusCode: httpResponse?.statusCode ?? 400)]
             
@@ -331,9 +177,7 @@ var BUILD_MODE:BuildMode = BuildMode.dev
             if let httpResponse = response as? HTTPURLResponse {
                 
                 if httpResponse.statusCode == 200 {
-                    
                     callback(false, responseDict2)
-                    
                 }
                 else {
                     callback(false, responseDict)
@@ -346,18 +190,15 @@ var BUILD_MODE:BuildMode = BuildMode.dev
     }
     func successCall(response:URLResponse?,json:Any,callback: (_ succeeded: Bool, _ response: Any?) -> Void){
         if let httpResponse = response as? HTTPURLResponse {
-            print("Status Code: \(httpResponse.statusCode)")
+            //print("Status Code: \(httpResponse.statusCode)")
             if httpResponse.statusCode == 200 {
-                
                 callback(true, json)
-                
             }
             else {
                 callback(false, json)
             }
         }
         else {
-            
             callback(false, [:])
         }
 
@@ -369,65 +210,11 @@ var BUILD_MODE:BuildMode = BuildMode.dev
         var request = request
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         return request
-        //print(request.allHTTPHeaderFields)
+        ////print(request.allHTTPHeaderFields)
     }
     
-    func currentTimeMillis() -> Int64{
-        let nowDouble = Date().timeIntervalSince1970
-        return Int64(nowDouble*1000)
-    }
-    
-    //MARK: - For Multipart (Image)
-    /// Create boundary string for multipart/form-data request
-    ///
-    /// - returns:            The boundary string that consists of "Boundary-" followed by a UUID string.
-    
-    func generateBoundaryString() -> String {
-        return "Boundary-\(UUID().uuidString)"
-    }
-    
-//    func photoDataToFormData(_ data:Data,boundary:String,fileName:String) -> Data {
-//        let fullData = NSMutableData()
-//
-//        // 1 - Boundary should start with --
-//        let lineOne = "--" + boundary + "\r\n"
-//        fullData.append(lineOne.data(
-//            using: String.Encoding.utf8,
-//            allowLossyConversion: false)!)
-//
-//        // 2
-//        let lineTwo = "Content-Disposition: form-data; name=\"image\"; filename=\"upload." + fileName + "\"\r\n"
-//        print(lineTwo)
-//        fullData.append(lineTwo.data(
-//            using: String.Encoding.utf8,
-//            allowLossyConversion: false)!)
-//
-//        // 3
-//        let lineThree = "Content-Type: image/" + fileName + "\r\n\r\n"
-//        fullData.append(lineThree.data(
-//            using: String.Encoding.utf8,
-//            allowLossyConversion: false)!)
-//
-//        // 4
-//        fullData.append(data)
-//
-//        // 5
-//        let lineFive = "\r\n"
-//        fullData.append(lineFive.data(
-//            using: String.Encoding.utf8,
-//            allowLossyConversion: false)!)
-//
-//        // 6 - The end. Notice -- at the start and at the end
-//        let lineSix = "--" + boundary + "--\r\n"
-//        fullData.append(lineSix.data(
-//            using: String.Encoding.utf8,
-//            allowLossyConversion: false)!)
-//
-//        return fullData as Data
-//    }
+
 }
-
-
 class Reachability {
     
     class func isConnectedToNetwork() -> Bool {
@@ -451,14 +238,3 @@ class Reachability {
     
 }
 
-
-extension NSMutableData {
-    // Non Relevent Code here
-    func appendString(_ string: String) {
-        
-        if let data = string.data(using: String.Encoding.utf8, allowLossyConversion: true) {
-            append(data)
-        }
-        
-    }
-}

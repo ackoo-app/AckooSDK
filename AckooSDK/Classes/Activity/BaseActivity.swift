@@ -9,6 +9,6 @@ import Foundation
 
 
 /// User Activity Base class
-public class BaseActivity:Codable {
+public class BaseActivity:Encodable {
     
 }
