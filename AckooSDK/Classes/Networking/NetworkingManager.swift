@@ -30,16 +30,14 @@ var BUILD_MODE:BuildMode = BuildMode.dev
     
     //Singleton object
     static let sharedInstance = NetworkingManager()
-    
     let currentBuildMode:BuildMode = BUILD_MODE
-    
     var API_BASE_URL:String = "https://cryptic-garden-59749.herokuapp.com/"
 
      init() {
         API_BASE_URL = getApiBaseUrl(buildMode: currentBuildMode)
     }
     
-    func getCurrentBuildMode() -> BuildMode{
+    func getCurrentBuildMode() -> BuildMode {
         return currentBuildMode
     }
     

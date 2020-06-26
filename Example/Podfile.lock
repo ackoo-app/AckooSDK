@@ -1,16 +1,27 @@
 PODS:
-  - AckooSDK (0.1.4)
+  - AckooSDK (0.1.5)
+  - Nimble (8.1.1)
+  - Quick (3.0.0)
 
 DEPENDENCIES:
   - AckooSDK (from `../`)
+  - Nimble
+  - Quick
+
+SPEC REPOS:
+  trunk:
+    - Nimble
+    - Quick
 
 EXTERNAL SOURCES:
   AckooSDK:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AckooSDK: a2e03bcc95659502570dbe007f48716c739123d0
+  AckooSDK: 0a37f330c79628d7bdc11594f81924fe133a5591
+  Nimble: 5f8a2fb6fa343a7242dfdd9d42f7267419d464b2
+  Quick: 6d9559f40647bc4d510103842ef2fdd882d753e2
 
-PODFILE CHECKSUM: 59e7f863d09ac375d16dde523de47942b09adbfa
+PODFILE CHECKSUM: 2564c52c90371330471f369fdb4abd35d1a6ceca
 
 COCOAPODS: 1.9.3

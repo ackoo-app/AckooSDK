@@ -5,7 +5,9 @@ target 'AckooSDK_Example' do
 
   target 'AckooSDK_Tests' do
     inherit! :search_paths
-
+    pod 'Quick'
+    pod 'Nimble'
+  
     
   end
 end

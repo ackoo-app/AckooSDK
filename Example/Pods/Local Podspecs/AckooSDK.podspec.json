@@ -1,6 +1,6 @@
 {
   "name": "AckooSDK",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "summary": "iOS SDK that keep track of the purchase with the help of iOS universal links.",
   "description": "iOS SDK that keep track of the purchase from source app to target app with the help of iOS universal links.",
   "homepage": "https://www.ackoo.app/",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/ackoo-app/AckooSDK.git",
-    "tag": "0.1.4"
+    "tag": "0.1.5"
   },
   "platforms": {
     "ios": "11.0"
