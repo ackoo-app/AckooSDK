@@ -66,7 +66,7 @@ public class AckooSDKManager {
         // Check if token is acquired
         if !activity.token.isEmpty {
             // No need to do anything
-            self.makeAnActualApiCall(type: type, activity: activity, callback: callback)
+            self.makeAnActualApiCall(type: type, activity: activity, order: nil, callback: callback)
         } else {
             self.getTokenFromServer { (succeeded, response) in
                 print(response)
@@ -74,7 +74,7 @@ public class AckooSDKManager {
                     activity.token = sessionToken
                     UserDefaults.standard.set(sessionToken, forKey: Constants.SDK_KEYS.TOKEN_SESSION)
                     UserDefaults.standard.synchronize()
-                    self.makeAnActualApiCall(type: type, activity: activity, callback: callback)
+                    self.makeAnActualApiCall(type: type, activity: activity, order: nil, callback: callback)
                 }
                 
             }
@@ -83,20 +83,59 @@ public class AckooSDKManager {
         
        
     }
-    private func makeAnActualApiCall(type:AckooEventType,activity:UserActivity,callback: @escaping (_ succeeded: Bool, _ response: Any) -> Void) {
+    
+    /// Report user purchase activity to Ackoo backend
+       /// - Attention: callback will be always called on the main thread.
+       /// - Parameters:
+       ///   - type: type of event
+       ///   - activity: activity class that holds relevant information like token, email address
+       ///   - callback: call back with server response or error.
+    public func reportPurchase(type:AckooEventType,activity:UserActivity,order:Order,callback: @escaping (_ succeeded: Bool, _ response: Any) -> Void) {
+           
+           // Check if token is acquired
+           if !activity.token.isEmpty {
+               // No need to do anything
+            self.makeAnActualApiCall(type: type, activity: activity, order: order, callback: callback)
+           } else {
+               self.getTokenFromServer { (succeeded, response) in
+                   print(response)
+                   if let responseDict:[String:Any] = response as? [String:Any], let sessionToken:String = responseDict["sessionToken"] as? String {
+                       activity.token = sessionToken
+                       UserDefaults.standard.set(sessionToken, forKey: Constants.SDK_KEYS.TOKEN_SESSION)
+                       UserDefaults.standard.synchronize()
+                    self.makeAnActualApiCall(type: type, activity: activity, order: order, callback: callback)
+                   }
+                   
+               }
+           }
+           
+           
+          
+       }
+    
+    private func makeAnActualApiCall(type:AckooEventType,activity:UserActivity,order:Order?,callback: @escaping (_ succeeded: Bool, _ response: Any) -> Void) {
         let requestURL = "events"
-               let payLoad:Payload = Payload(type: type, activity: activity)
-               do {
-               let jsonData = try JSONEncoder().encode(payLoad)
-                   NetworkingManager.sharedInstance.postRequest(jsonData, url: requestURL, callback: {(_ succeeded: Bool, _ response: Any) -> Void in
-                       DispatchQueue.main.async(execute: {() -> Void in
-                           callback(succeeded, response)
-                       })
-                   })
-               }
-               catch {
-                   callback(false, [Constants.RESPONSE_KEYS.NEW_ERROR_MESSAGE:Constants.ENGLISH.INVALID_REQUEST])
-               }
+        let payLoad:Payload
+        if (type == .purchase) {
+            let payLoadProperty:PayloadProperty = PayloadProperty(order: order, activity: activity)
+            payLoad = Payload(type: type, payload: payLoadProperty)
+        } else {
+            let payLoadProperty:PayloadProperty = PayloadProperty(order: nil, activity: activity)
+            payLoad = Payload(type: type, payload: payLoadProperty)
+        }
+        
+               
+       do {
+       let jsonData = try JSONEncoder().encode(payLoad)
+           NetworkingManager.sharedInstance.postRequest(jsonData, url: requestURL, callback: {(_ succeeded: Bool, _ response: Any) -> Void in
+               DispatchQueue.main.async(execute: {() -> Void in
+                   callback(succeeded, response)
+               })
+           })
+       }
+       catch {
+           callback(false, [Constants.RESPONSE_KEYS.NEW_ERROR_MESSAGE:Constants.ENGLISH.INVALID_REQUEST])
+       }
     }
     private func getIDFAOfDevice() -> String {
         // Get and return IDFA

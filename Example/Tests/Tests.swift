@@ -9,58 +9,41 @@ class TableOfContentsSpec: QuickSpec {
         UserDefaults.standard.synchronize()
     }
     override func spec() {
-    describe("these will fail") {
+        describe("these will fail") {
             context("these will pass") {
-
-                       
-                       it("Will call purchas event") {
-                          let item:OrderItem = OrderItem.init(sku: "CM01-R", name: "Default Product", amount: 13.35)
-                          let date:TimeInterval = Date().timeIntervalSince1970
-                          let order:Order = Order(id: "135497-25943", totalAmount: 13.35, symbol: "USD", items: [item], createdOn:date , modifiedOn: date, validatedOn: date)
-                          let activity:UserActivity = UserActivity.init(isLoggedIn: true, email: "user@gmail.com", order: order)
-                         
-
-                        waitUntil (timeout: 10) { done in
-                                AckooSDKManager.shared().reportActivity(type: .purchase, activity: activity) { (succeeded, response) in
-                                    expect(succeeded).to(beTrue())
-                                    done()
-                                                          
-                                }
-                              
-                               
-                           }
-                       }
-                
-                    it("will call open event") {
-                       let activity:UserActivity = UserActivity.init(isLoggedIn: true, email: "user@gmail.com", order: nil)
-                     waitUntil (timeout: 10) { done in
-                             AckooSDKManager.shared().reportActivity(type: .openApp, activity: activity) { (succeeded, response) in
-                                 expect(succeeded).to(beTrue())
-                                 done()
-                                                       
-                             }
-                           
-                            
+                it("Will call purchas event") {
+                    let item:OrderItem = OrderItem.init(sku: "CM01-R", name: "Default Product", amount: 13.35)
+                    let date:TimeInterval = Date().timeIntervalSince1970
+                    let order:Order = Order(id: "135497-25943", totalAmount: 13.35, symbol: "USD", items: [item], createdOn:date , modifiedOn: date, validatedOn: date)
+                    let activity:UserActivity = UserActivity.init(isLoggedIn: true, email: "user@gmail.com")
+                    waitUntil (timeout: 10) { done in
+                        AckooSDKManager.shared().reportPurchase(type: .purchase, activity: activity, order: order) { (succeeded, response) in
+                            expect(succeeded).to(beTrue())
+                            done()
                         }
-                    }
-                
-                it("will eventually fail") {
-                   let activity:UserActivity = UserActivity.init(isLoggedIn: true, email: "user@gmail.com", order: nil)
-                 waitUntil (timeout: 10) { done in
-                         AckooSDKManager.shared().reportActivity(type: .installApp, activity: activity) { (succeeded, response) in
-                             expect(succeeded).to(beFalse())
-                             done()
-                                                   
-                         }
-                       
-                        
                     }
                 }
                 
-                   }
-                   
-        
-        
+                it("will call open event") {
+                    let activity:UserActivity = UserActivity.init(isLoggedIn: true, email: "user@gmail.com")
+                    waitUntil (timeout: 10) { done in
+                        AckooSDKManager.shared().reportActivity(type: .openApp, activity: activity) { (succeeded, response) in
+                            expect(succeeded).to(beTrue())
+                            done()
+                        }
+                    }
+                }
+                
+                it("will eventually fail") {
+                    let activity:UserActivity = UserActivity.init(isLoggedIn: true, email: "user@gmail.com")
+                    waitUntil (timeout: 10) { done in
+                        AckooSDKManager.shared().reportActivity(type: .installApp, activity: activity) { (succeeded, response) in
+                            expect(succeeded).to(beFalse())
+                            done()
+                        }
+                    }
+                }
+            }
         }
     }
 }

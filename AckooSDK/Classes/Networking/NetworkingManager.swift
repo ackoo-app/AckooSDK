@@ -67,21 +67,21 @@ var BUILD_MODE:BuildMode = BuildMode.qa
         if params != nil {
             request.httpBody = params
         }
-        do {
-            let hData = try JSONSerialization.data(withJSONObject: request.allHTTPHeaderFields ?? [:], options: [])
+        //do {
+            //let hData = try JSONSerialization.data(withJSONObject: request.allHTTPHeaderFields ?? [:], options: [])
             
             //let hString = String(data: hData, encoding: String.Encoding.utf8)
             
             //print("URL : \(String(describing: request.url?.absoluteString)) \nHeader : \(String(describing: hString)) \n");
-            if let data = request.httpBody {
+            //if let data = request.httpBody {
                 //let str = String(data: data, encoding: String.Encoding.utf8)
                 //print("\nBody : \(String(describing: str)) ");
-            }
-            return request
-        } catch {
-            //print("json error: \(error.localizedDescription)")
-             return nil
-        }
+            //}
+        return request
+//        } catch {
+//            //print("json error: \(error.localizedDescription)")
+//             return nil
+//        }
         
     }
 

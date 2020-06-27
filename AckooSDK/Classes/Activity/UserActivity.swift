@@ -20,20 +20,17 @@ public class UserActivity:BaseActivity {
     /// email address of the user
     var email:String?
     
-    
-    /// Order details
-    var orderDetail:Order?
-    
+
     /// UserActivity Initializer
     /// - Parameters:
     ///   - isLoggedIn: wether user is logged In at the time of performing this activity
     ///   - email: email address of the user
     ///   - order: Order details
-    public init(isLoggedIn:Bool,email:String?,order:Order?) {
+    public init(isLoggedIn:Bool,email:String?) {
         self.token = UserActivity.getToken()
         self.isLoggedIn = isLoggedIn
         self.email = email
-        self.orderDetail = order
+        
         super.init()
     }
     static func getToken() -> String {

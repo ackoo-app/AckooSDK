@@ -72,7 +72,7 @@ public enum AckooEventType {
 }
 
 ```
-For any of the event to report to the SDK, You need to create instance of UserActivity class. 
+For any of the event to report to the SDK , You need to create instance of UserActivity class. 
 
 ```
 /// User activity that holds information regarding user's actions
@@ -92,8 +92,9 @@ public class UserActivity:BaseActivity {
 }
 
 ```
+In case of Reporting actual purchase event to Ackoo you need to create 2 other object 
 
-There are 2 other instance of the class which needs to be created along with UserActivity in case of user has actually purchase anything from the app. For reporting events other than purchase you do not need to pass that parameter. You can pass  order as 'nil' for other type of events
+There are 2 other instance of the class which needs to be created along with UserActivity in case of user has actually purchase anything from the app.
 
 ```
 /// Order details
@@ -139,18 +140,39 @@ public class OrderItem:Codable {
 
 ```
 Once this instance are created with related information. You need to register this event toSDK
+For reporting purchase you need to call **reportPurchase**
 
 ```
-let item:OrderItem = OrderItem.init(sku: "CM01-R", name: "Item A", amount: 13.35)
-           let date:TimeInterval = Date().timeIntervalSince1970
-           let order:Order = Order(id: "135497-25943", totalAmount: 13.35, symbol: "USD", items: [item], createdOn:date , modifiedOn: date, validatedOn: date)
-           let activity:UserActivity = UserActivity.init(isLoggedIn: true, email: "user@gmail.com", order: order)
-           AckooSDKManager.shared().reportActivity(type: .purchase, activity: activity) { (succeeded, response) in
-               print(succeeded)
-           }
+let date:TimeInterval = Date().timeIntervalSince1970
+let activity:UserActivity = UserActivity.init(isLoggedIn: true, email: "user@gmail.com")
+let item:OrderItem = OrderItem.init(sku: "CM01-R", name: productName, amount: 13.35)
+let order:Order = Order(id: "135497-25943", totalAmount: 13.35, symbol: "USD", items: [item], createdOn:date , modifiedOn: date, validatedOn: date)
+AckooSDKManager.shared().reportPurchase(type: name, activity: activity, order: order) { (succeeded, response) in
+   print(succeeded)
+}
+
            
 ```           
-           
+For reporting normal events like login, openApp etc call **reportActivity**
+
+```
+
+ 
+ let date:TimeInterval = Date().timeIntervalSince1970
+
+ let activity:UserActivity = UserActivity.init(isLoggedIn: true, email: "user@gmail.com")
+ 
+ let item:OrderItem = OrderItem.init(sku: "CM01-R", name: appDelegate.productName ?? "Default Product", amount: 13.35)
+  let order:Order = Order(id: "135497-25943", totalAmount: 13.35, symbol: "USD", items: [item], createdOn:date , modifiedOn: date, validatedOn: date)
+ AckooSDKManager.shared().reportPurchase(type: name, activity: activity, order: order) { (succeeded, response) in
+     print(succeeded)
+ }
+ 
+ 
+
+```
+
+
 
 ## Author
 
