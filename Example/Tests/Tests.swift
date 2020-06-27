@@ -11,7 +11,7 @@ class TableOfContentsSpec: QuickSpec {
     override func spec() {
         describe("these will fail") {
             context("these will pass") {
-                UserDefaults.resetStandardUserDefaults()
+                UserDefaults.standard.removeObject(forKey: "AckooSDKSession")
                 UserDefaults.standard.synchronize()
                 it("Will call purchas event") {
                     let item:OrderItem = OrderItem.init(sku: "CM01-R", name: "Default Product", amount: 13.35)
@@ -40,7 +40,7 @@ class TableOfContentsSpec: QuickSpec {
                 }
                 
                 it("will call open event") {
-                    UserDefaults.resetStandardUserDefaults()
+                    UserDefaults.standard.removeObject(forKey: "AckooSDKSession")
                     UserDefaults.standard.synchronize()
                     let activity:UserActivity = UserActivity.init(isLoggedIn: true, email: "user@gmail.com")
                     waitUntil (timeout: 10) { done in
@@ -52,16 +52,16 @@ class TableOfContentsSpec: QuickSpec {
                 }
                 
                 it("will call open event after use default") {
-                                   UserDefaults.resetStandardUserDefaults()
-                                   UserDefaults.standard.synchronize()
-                                   let activity:UserActivity = UserActivity.init(isLoggedIn: true, email: "user@gmail.com")
-                                   waitUntil (timeout: 10) { done in
-                                       AckooSDKManager.shared().reportActivity(type: .openApp, activity: activity) { (succeeded, response) in
-                                           expect(succeeded).to(beTrue())
-                                           done()
-                                       }
-                                   }
-                               }
+                    UserDefaults.standard.removeObject(forKey: "AckooSDKSession")
+                    UserDefaults.standard.synchronize()
+                    let activity:UserActivity = UserActivity.init(isLoggedIn: true, email: "user@gmail.com")
+                    waitUntil (timeout: 10) { done in
+                        AckooSDKManager.shared().reportActivity(type: .openApp, activity: activity) { (succeeded, response) in
+                            expect(succeeded).to(beTrue())
+                            done()
+                        }
+                    }
+                }
                 
                 it("will eventually fail") {
                     let activity:UserActivity = UserActivity.init(isLoggedIn: true, email: "user@gmail.com")

@@ -108,9 +108,6 @@ public class AckooSDKManager {
                    
                }
            }
-           
-           
-          
        }
     
     private func makeAnActualApiCall(type:AckooEventType,activity:UserActivity,order:Order?,callback: @escaping (_ succeeded: Bool, _ response: Any) -> Void) {
