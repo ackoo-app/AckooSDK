@@ -139,7 +139,7 @@ public class OrderItem:Codable {
 }
 
 ```
-Once this instance are created with related information. You need to register this event toSDK
+Once this instance are created with related information. You need to register this event to SDK
 For reporting purchase you need to call **reportPurchase**
 
 ```
@@ -156,20 +156,10 @@ AckooSDKManager.shared().reportPurchase(type: name, activity: activity, order: o
 For reporting normal events like login, openApp etc call **reportActivity**
 
 ```
-
- 
- let date:TimeInterval = Date().timeIntervalSince1970
-
  let activity:UserActivity = UserActivity.init(isLoggedIn: true, email: "user@gmail.com")
- 
- let item:OrderItem = OrderItem.init(sku: "CM01-R", name: appDelegate.productName ?? "Default Product", amount: 13.35)
-  let order:Order = Order(id: "135497-25943", totalAmount: 13.35, symbol: "USD", items: [item], createdOn:date , modifiedOn: date, validatedOn: date)
- AckooSDKManager.shared().reportPurchase(type: name, activity: activity, order: order) { (succeeded, response) in
+ AckooSDKManager.shared().reportActivity(type: name, activity: activity) { (succeeded, response) in
      print(succeeded)
  }
- 
- 
-
 ```
 
 
