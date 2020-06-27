@@ -1,5 +1,5 @@
 PODS:
-  - AckooSDK (0.1.5)
+  - AckooSDK (0.1.8)
   - Nimble (8.1.1)
   - Quick (3.0.0)
 
@@ -18,7 +18,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AckooSDK: 0a37f330c79628d7bdc11594f81924fe133a5591
+  AckooSDK: 9324b9a58223728a358c5a3f2221c5b8d4ce15a4
   Nimble: 5f8a2fb6fa343a7242dfdd9d42f7267419d464b2
   Quick: 6d9559f40647bc4d510103842ef2fdd882d753e2
 
