@@ -24,7 +24,7 @@ pod 'AckooSDK'
 
 ### AppDelegate
 
-Implement continue userActivity in your Appdelegate class or 
+Implement **application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {** in your Appdelegate class or SceneDelegate class
 
 ```
 func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
@@ -162,6 +162,10 @@ For reporting normal events like login, openApp etc call **reportActivity**
  }
 ```
 
+## Importan Note
+This SDK uses advertisingIdentifier for purpose if identifying user after fresh installation after navigating from the Ackoo app. When you submit the app please tick **"Attribute this App Installation to a Previously Served Advertisement"** Please refer this screen shot
+
+![App_Submission_IDFA](https://user-images.githubusercontent.com/1177076/85919226-24758a00-b887-11ea-985c-fa2895c10e99.png)
 
 
 ## Author
