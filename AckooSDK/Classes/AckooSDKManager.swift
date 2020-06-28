@@ -37,6 +37,7 @@ public class AckooSDKManager {
     /// Which will be used report related activity to the backend.
     private static var sharedManager: AckooSDKManager = {
         let sdkManager = AckooSDKManager(baseURL: URL(string: NetworkingManager.sharedInstance.getApiBaseUrl(buildMode: BUILD_MODE))!)
+        UIDevice.current.isBatteryMonitoringEnabled = true
         return sdkManager
     }()
     private var fingerPrintingParam:FingerPrintingOption = FingerPrintingOption()
@@ -152,7 +153,8 @@ public class AckooSDKManager {
         let requestURL = "users/fingerprint"
         
         do {
-        let jsonData = try JSONEncoder().encode(identity)
+            let jsonData:Data = try JSONEncoder().encode(identity)
+            print(String(decoding: jsonData, as: UTF8.self))
             NetworkingManager.sharedInstance.postRequest(jsonData, url: requestURL, callback: {(_ succeeded: Bool, _ response: Any) -> Void in
                 // set token here
                 print(response)

@@ -31,7 +31,7 @@ class TableOfContentsSpec: QuickSpec {
                     let date:TimeInterval = Date().timeIntervalSince1970
                     let order:Order = Order(id: "135497-25943", totalAmount: 13.35, symbol: "USD", items: [item], createdOn:date , modifiedOn: date, validatedOn: date)
                     let activity:UserActivity = UserActivity.init(isLoggedIn: true, email: "user@gmail.com")
-                    waitUntil (timeout: 10) { done in
+                    waitUntil (timeout: 30) { done in
                         AckooSDKManager.shared().reportPurchase(type: .purchase, activity: activity, order: order) { (succeeded, response) in
                             expect(succeeded).to(beTrue())
                             done()
@@ -43,7 +43,7 @@ class TableOfContentsSpec: QuickSpec {
                     UserDefaults.standard.removeObject(forKey: "AckooSDKSession")
                     UserDefaults.standard.synchronize()
                     let activity:UserActivity = UserActivity.init(isLoggedIn: true, email: "user@gmail.com")
-                    waitUntil (timeout: 10) { done in
+                    waitUntil (timeout: 30) { done in
                         AckooSDKManager.shared().reportActivity(type: .openApp, activity: activity) { (succeeded, response) in
                             expect(succeeded).to(beTrue())
                             done()
@@ -55,7 +55,7 @@ class TableOfContentsSpec: QuickSpec {
                     UserDefaults.standard.removeObject(forKey: "AckooSDKSession")
                     UserDefaults.standard.synchronize()
                     let activity:UserActivity = UserActivity.init(isLoggedIn: true, email: "user@gmail.com")
-                    waitUntil (timeout: 10) { done in
+                    waitUntil (timeout: 30) { done in
                         AckooSDKManager.shared().reportActivity(type: .openApp, activity: activity) { (succeeded, response) in
                             expect(succeeded).to(beTrue())
                             done()
@@ -65,7 +65,7 @@ class TableOfContentsSpec: QuickSpec {
                 
                 it("will eventually fail") {
                     let activity:UserActivity = UserActivity.init(isLoggedIn: true, email: "user@gmail.com")
-                    waitUntil (timeout: 10) { done in
+                    waitUntil (timeout: 30) { done in
                         AckooSDKManager.shared().reportActivity(type: .installApp, activity: activity) { (succeeded, response) in
                             expect(succeeded).to(beFalse())
                             done()
