@@ -11,9 +11,16 @@ import CoreTelephony
 class UserIdentity:Encodable {
     var advertisingId:String?
     var fingerprint:FingerPrintingOption?
+    let batteryLevel:Float
     
     init(idfaUuidString:String) {
+        UIDevice.current.isBatteryMonitoringEnabled = true
         self.advertisingId = idfaUuidString
+        if UIDevice.current.isBatteryMonitoringEnabled {
+            self.batteryLevel =  UIDevice.current.batteryLevel
+        } else {
+            self.batteryLevel = 0.0
+        }
     }
 }
 
@@ -43,9 +50,9 @@ class DeviceHardware:Encodable {
     let model:String = UIDevice.current.modelName
     let storageCapacity:Int
     let deviceName = UIDevice.current.name
-    var batteryLevel:Float
+    
     init() {
-        UIDevice.current.isBatteryMonitoringEnabled = true
+        
         let fileManager = FileManager.default
         if let path = fileManager.urls(for: .libraryDirectory, in: .systemDomainMask).last?.path,
             let systemSize = try? fileManager.attributesOfFileSystem(forPath: path)[.systemSize] as? Int
@@ -54,11 +61,7 @@ class DeviceHardware:Encodable {
         } else {
             self.storageCapacity = 0
         }
-        if UIDevice.current.isBatteryMonitoringEnabled {
-            self.batteryLevel =  UIDevice.current.batteryLevel
-        } else {
-            self.batteryLevel = 0.0
-        }
+        
     }
 }
 

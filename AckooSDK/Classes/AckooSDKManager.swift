@@ -154,7 +154,7 @@ public class AckooSDKManager {
         
         do {
             let jsonData:Data = try JSONEncoder().encode(identity)
-            print(String(decoding: jsonData, as: UTF8.self))
+            //print(String(decoding: jsonData, as: UTF8.self))
             NetworkingManager.sharedInstance.postRequest(jsonData, url: requestURL, callback: {(_ succeeded: Bool, _ response: Any) -> Void in
                 // set token here
                 print(response)
