@@ -209,6 +209,7 @@ var BUILD_MODE:BuildMode = BuildMode.qa
         
         var request = request
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue(Bundle.main.bundleIdentifier ?? "NA", forHTTPHeaderField: "App-Source")
         return request
         ////print(request.allHTTPHeaderFields)
     }
