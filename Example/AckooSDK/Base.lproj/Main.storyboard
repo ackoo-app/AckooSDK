@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -19,8 +19,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JJP-XL-3kG">
-                                <rect key="frame" x="36" y="36" width="96" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JJP-XL-3kG">
+                                <rect key="frame" x="36" y="36" width="41" height="30"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Login">
                                     <color key="titleColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -39,7 +39,7 @@
                                     <action selector="signup:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="CMa-i2-waT"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oVb-LX-x5i">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oVb-LX-x5i">
                                 <rect key="frame" x="168" y="36" width="39" height="30"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Open">
@@ -49,7 +49,7 @@
                                     <action selector="open:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="PT1-QL-gVH"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jXA-oC-6m8">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jXA-oC-6m8">
                                 <rect key="frame" x="294" y="36" width="45" height="30"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Install">
@@ -72,7 +72,7 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="oVb-LX-x5i" firstAttribute="leading" secondItem="JJP-XL-3kG" secondAttribute="trailing" constant="36" id="0fU-eA-Osr"/>
+                            <constraint firstItem="oVb-LX-x5i" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="JJP-XL-3kG" secondAttribute="trailing" id="0fU-eA-Osr"/>
                             <constraint firstItem="JJP-XL-3kG" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="36" id="2NX-uJ-rWd"/>
                             <constraint firstItem="ike-8o-uuU" firstAttribute="leading" secondItem="aLh-pv-PVP" secondAttribute="trailing" constant="36" id="7JD-2K-Vkg"/>
                             <constraint firstItem="oVb-LX-x5i" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="36" id="9Vw-vs-Fh6"/>
@@ -83,7 +83,7 @@
                             <constraint firstItem="JJP-XL-3kG" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="36" id="WfO-th-jUt"/>
                             <constraint firstItem="ike-8o-uuU" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="a9b-BN-SWP"/>
                             <constraint firstItem="oVb-LX-x5i" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="cPn-6q-89i"/>
-                            <constraint firstItem="jXA-oC-6m8" firstAttribute="leading" secondItem="oVb-LX-x5i" secondAttribute="trailing" constant="36" id="d3j-rQ-hL6"/>
+                            <constraint firstItem="jXA-oC-6m8" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="oVb-LX-x5i" secondAttribute="trailing" id="d3j-rQ-hL6"/>
                             <constraint firstAttribute="trailing" secondItem="jXA-oC-6m8" secondAttribute="trailing" constant="36" id="wOo-QX-o44"/>
                         </constraints>
                     </view>
