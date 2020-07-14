@@ -42,12 +42,10 @@ var BUILD_MODE:BuildMode = BuildMode.qa
 //    }
     
     func getApiBaseUrl(buildMode: BuildMode) -> String {
-     
         var apiBaseURL: String
         switch buildMode {
             case .qa:
                 //print("QA")
-
                 apiBaseURL = "https://cryptic-garden-59749.herokuapp.com/" //QA
             break
            
@@ -206,10 +204,10 @@ var BUILD_MODE:BuildMode = BuildMode.qa
     
     //Set required header parameters to request
     func setHeadersToRequest( _ request: URLRequest) -> URLRequest {
-        
         var request = request
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue(Bundle.main.bundleIdentifier ?? "NA", forHTTPHeaderField: "App-Source")
+        request.addValue(Bundle.main.bundleIdentifier ?? "NA", forHTTPHeaderField: "app-token")
+        request.addValue(UserActivity.getToken(), forHTTPHeaderField: "session-token")
         return request
         ////print(request.allHTTPHeaderFields)
     }

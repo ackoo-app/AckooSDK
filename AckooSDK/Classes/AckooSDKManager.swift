@@ -29,7 +29,7 @@ public enum AckooEventType:String,Encodable {
 
 
 /// AckooSDKManager class to report all activity to backend
-public class AckooSDKManager {
+public class AckooSDKManager:NSObject {
     // MARK: -
     // MARK: - Properties
     
@@ -46,7 +46,11 @@ public class AckooSDKManager {
 
     /// Initialization
     private init(baseURL: URL) {
+       
         self.baseURL = baseURL
+         super.init()
+        let notificationCenter = NotificationCenter.default
+               notificationCenter.addObserver(self, selector: #selector(appMovedToForeground), name: UIApplication.didBecomeActiveNotification, object: nil)
     }
     // MARK: - Accessors
     /// access shared singleton object
@@ -55,7 +59,14 @@ public class AckooSDKManager {
         
         return sharedManager
     }
-    
+    @objc func appMovedToForeground() {
+        self.getTokenFromServer { (succeeded, response) in
+            print(response)
+            if let responseDict:[String:Any] = response as? [String:Any], let sessionToken:String = responseDict["sessionToken"] as? String {
+                self.storeSessionInUserDefault(sessionToken: sessionToken)
+            }
+        }
+    }
     /// Report user activity to Ackoo backend
     /// - Attention: callback will be always called on the main thread.
     /// - Parameters:
@@ -73,16 +84,19 @@ public class AckooSDKManager {
                 print(response)
                 if let responseDict:[String:Any] = response as? [String:Any], let sessionToken:String = responseDict["sessionToken"] as? String {
                     activity.token = sessionToken
-                    UserDefaults.standard.set(sessionToken, forKey: Constants.SDK_KEYS.TOKEN_SESSION)
-                    UserDefaults.standard.synchronize()
+                    self.storeSessionInUserDefault(sessionToken: sessionToken)
                     self.makeAnActualApiCall(type: type, activity: activity, order: nil, callback: callback)
                 }
-                
             }
         }
         
         
        
+    }
+    
+    func storeSessionInUserDefault(sessionToken:String) {
+        UserDefaults.standard.set(sessionToken, forKey: Constants.SDK_KEYS.TOKEN_SESSION)
+        UserDefaults.standard.synchronize()
     }
     
     /// Report user purchase activity to Ackoo backend
@@ -150,7 +164,8 @@ public class AckooSDKManager {
     }
     private func getTokenFromServer(callback: @escaping (_ succeeded: Bool, _ response: Any) -> Void) {
         let identity:UserIdentity = self.getUserIdentity()
-        let requestURL = "users/fingerprint"
+            
+        let requestURL = "users/partner/fingerprint"
         
         do {
             let jsonData:Data = try JSONEncoder().encode(identity)
