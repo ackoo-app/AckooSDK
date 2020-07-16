@@ -25,8 +25,9 @@ import SystemConfiguration
 var BUILD_MODE:BuildMode = BuildMode.qa
 
 
-/// 
- class NetworkingManager {
+///
+
+class NetworkingManager {
     
     //Singleton object
     static let sharedInstance = NetworkingManager()

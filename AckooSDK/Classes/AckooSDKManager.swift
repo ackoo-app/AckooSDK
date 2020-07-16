@@ -7,10 +7,11 @@
 
 import Foundation
 import AdSupport
+import UIKit
 
 /// Type of the event that AckooSDK supports. Which will be sent
 /// When usere performs the particular action (like register, open app, login, purchase)
-public enum AckooEventType:String,Encodable {
+public enum AckooEventTypeString:String,Encodable {
     /// When user installs application
     case installApp = "INSTALL"
     
@@ -27,8 +28,12 @@ public enum AckooEventType:String,Encodable {
     case purchase = "PURCHASE"
 }
 
+@objc public enum AckooEventType: Int,Encodable {
+    case installApp, openApp, register,login,purchase
+}
 
 /// AckooSDKManager class to report all activity to backend
+@objc(AckooSDKManager)
 public class AckooSDKManager:NSObject {
     // MARK: -
     // MARK: - Properties
@@ -54,7 +59,7 @@ public class AckooSDKManager:NSObject {
     }
     // MARK: - Accessors
     /// access shared singleton object
-    public class func shared() -> AckooSDKManager {
+    @objc public class func shared() -> AckooSDKManager {
         // get token in the background here
         
         return sharedManager
@@ -73,6 +78,7 @@ public class AckooSDKManager:NSObject {
     ///   - type: type of event
     ///   - activity: activity class that holds relevant information like token, email address
     ///   - callback: call back with server response or error.
+    @objc
     public func reportActivity(type:AckooEventType,activity:UserActivity,callback: @escaping (_ succeeded: Bool, _ response: Any) -> Void) {
         
         // Check if token is acquired
@@ -86,6 +92,9 @@ public class AckooSDKManager:NSObject {
                     activity.token = sessionToken
                     self.storeSessionInUserDefault(sessionToken: sessionToken)
                     self.makeAnActualApiCall(type: type, activity: activity, order: nil, callback: callback)
+                } else {
+                    //Session not found
+                    callback(false, [Constants.RESPONSE_KEYS.NEW_ERROR_MESSAGE:Constants.ENGLISH.SESSION_NOT_VALID])
                 }
             }
         }
@@ -93,6 +102,7 @@ public class AckooSDKManager:NSObject {
         
        
     }
+    
     
     func storeSessionInUserDefault(sessionToken:String) {
         UserDefaults.standard.set(sessionToken, forKey: Constants.SDK_KEYS.TOKEN_SESSION)
@@ -105,7 +115,7 @@ public class AckooSDKManager:NSObject {
        ///   - type: type of event
        ///   - activity: activity class that holds relevant information like token, email address
        ///   - callback: call back with server response or error.
-    public func reportPurchase(type:AckooEventType,activity:UserActivity,order:Order,callback: @escaping (_ succeeded: Bool, _ response: Any) -> Void) {
+    @objc public func reportPurchase(type:AckooEventType,activity:UserActivity,order:Order,callback: @escaping (_ succeeded: Bool, _ response: Any) -> Void) {
            
            // Check if token is acquired
            if !activity.token.isEmpty {
@@ -119,6 +129,9 @@ public class AckooSDKManager:NSObject {
                        UserDefaults.standard.set(sessionToken, forKey: Constants.SDK_KEYS.TOKEN_SESSION)
                        UserDefaults.standard.synchronize()
                     self.makeAnActualApiCall(type: type, activity: activity, order: order, callback: callback)
+                   } else {
+                       //Session not found
+                       callback(false, [Constants.RESPONSE_KEYS.NEW_ERROR_MESSAGE:Constants.ENGLISH.SESSION_NOT_VALID])
                    }
                    
                }
@@ -130,13 +143,11 @@ public class AckooSDKManager:NSObject {
         let payLoad:Payload
         if (type == .purchase) {
             let payLoadProperty:PayloadProperty = PayloadProperty(order: order, activity: activity)
-            payLoad = Payload(type: type, payload: payLoadProperty)
+            payLoad = Payload(type: getEventTypeInt(event: type), payload: payLoadProperty)
         } else {
             let payLoadProperty:PayloadProperty = PayloadProperty(order: nil, activity: activity)
-            payLoad = Payload(type: type, payload: payLoadProperty)
+            payLoad = Payload(type: getEventTypeInt(event: type), payload: payLoadProperty)
         }
-        
-               
        do {
        let jsonData = try JSONEncoder().encode(payLoad)
            NetworkingManager.sharedInstance.postRequest(jsonData, url: requestURL, callback: {(_ succeeded: Bool, _ response: Any) -> Void in
@@ -148,6 +159,20 @@ public class AckooSDKManager:NSObject {
        catch {
            callback(false, [Constants.RESPONSE_KEYS.NEW_ERROR_MESSAGE:Constants.ENGLISH.INVALID_REQUEST])
        }
+    }
+    private func getEventTypeInt(event:AckooEventType) -> AckooEventTypeString {
+        switch event {
+        case .installApp:
+            return .installApp
+        case .openApp:
+            return .openApp
+        case .register:
+            return .register
+        case .login:
+            return .login
+        case .purchase:
+            return .purchase
+        }
     }
     private func getIDFAOfDevice() -> String {
         // Get and return IDFA

@@ -9,6 +9,7 @@ import Foundation
 
 
 /// User activity that holds information regarding user's actions
+@objc(UserActivity)
 public class UserActivity:BaseActivity {
     
     /// unique token that associated with user
@@ -26,6 +27,7 @@ public class UserActivity:BaseActivity {
     ///   - isLoggedIn: wether user is logged In at the time of performing this activity
     ///   - email: email address of the user
     ///   - order: Order details
+    @objc
     public init(isLoggedIn:Bool,email:String?) {
         self.token = UserActivity.getToken()
         self.isLoggedIn = isLoggedIn

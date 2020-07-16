@@ -7,6 +7,8 @@
 
 import Foundation
 import CoreTelephony
+import UIKit
+
 
 class UserIdentity:Encodable {
     var advertisingId:String?
@@ -30,6 +32,7 @@ class FingerPrintingOption:Encodable {
     let network:DeviceNetwork = DeviceNetwork()
 }
 
+
 class DeviceLocale:Encodable {
     let languageCode = Locale.current.languageCode
     let regionCode = Locale.current.regionCode
@@ -45,6 +48,8 @@ class DeviceLocale:Encodable {
         }
     }
 }
+
+
 
 class DeviceHardware:Encodable {
     let model:String = UIDevice.current.modelName
