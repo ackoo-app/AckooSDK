@@ -34,4 +34,8 @@ public class OrderItem:NSObject,Codable {
         self.name = name
         self.amount = amount
     }
+  
+  static func requiresMainQueueSetup() -> Bool {
+      return false
+  }
 }

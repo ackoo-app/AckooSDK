@@ -41,6 +41,8 @@ public class UserActivity:BaseActivity {
         }
         return ""
     }
- 
+    static func requiresMainQueueSetup() -> Bool {
+        return false
+    }
    
 }

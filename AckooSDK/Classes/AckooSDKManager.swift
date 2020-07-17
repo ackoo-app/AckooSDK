@@ -33,6 +33,7 @@ public enum AckooEventTypeString:String,Encodable {
 }
 
 /// AckooSDKManager class to report all activity to backend
+/// Description
 @objc(AckooSDKManager)
 public class AckooSDKManager:NSObject {
     // MARK: -
@@ -98,17 +99,32 @@ public class AckooSDKManager:NSObject {
                 }
             }
         }
-        
-        
-       
     }
     
+    /// Checks if user is valid or not
+    /// - Parameters:
+    ///   - callback: call back with true or false
+    @objc
+    public func isUserValidForSDK(callback: @escaping (_ valid: Bool ) -> Void) {
+        self.getTokenFromServer { (succeeded, response) in
+            print(response)
+            if let responseDict:[String:Any] = response as? [String:Any], let sessionToken:String = responseDict["sessionToken"] as? String {
+                self.storeSessionInUserDefault(sessionToken: sessionToken)
+                callback(true)
+            } else {
+                //Session not found
+                callback(false)
+            }
+        }
+    }
     
     func storeSessionInUserDefault(sessionToken:String) {
         UserDefaults.standard.set(sessionToken, forKey: Constants.SDK_KEYS.TOKEN_SESSION)
         UserDefaults.standard.synchronize()
     }
-    
+    static func requiresMainQueueSetup() -> Bool {
+        return true
+    }
     /// Report user purchase activity to Ackoo backend
        /// - Attention: callback will be always called on the main thread.
        /// - Parameters:

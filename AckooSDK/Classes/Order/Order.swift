@@ -54,4 +54,8 @@ public class Order:NSObject,Codable {
         self.modifiedOn = modifiedOn
         self.validatedOn = validatedOn
     }
+  
+  static func requiresMainQueueSetup() -> Bool {
+      return false
+  }
 }
