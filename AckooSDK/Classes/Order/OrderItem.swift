@@ -14,7 +14,7 @@ public class OrderItem:NSObject,Codable {
     
     
     /// sku of the product
-    let sku:String
+    let sku:String?
     
     /// product name
     let name:String
@@ -29,7 +29,7 @@ public class OrderItem:NSObject,Codable {
     ///   - name: product name
     ///   - amount: total amount
     @objc
-    public init(sku:String,name:String,amount:Double) {
+    public init(sku:String?,name:String,amount:Double) {
         self.sku = sku
         self.name = name
         self.amount = amount

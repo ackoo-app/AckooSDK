@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1130"
+   LastUpgradeVersion = "1160"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-               BuildableName = "AckooSDK_Example.app"
+               BuildableName = "PartnerApp_Demo.app"
                BlueprintName = "AckooSDK_Example"
                ReferencedContainer = "container:AckooSDK.xcodeproj">
             </BuildableReference>
@@ -47,7 +47,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-            BuildableName = "AckooSDK_Example.app"
+            BuildableName = "PartnerApp_Demo.app"
             BlueprintName = "AckooSDK_Example"
             ReferencedContainer = "container:AckooSDK.xcodeproj">
          </BuildableReference>
@@ -89,7 +89,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-            BuildableName = "AckooSDK_Example.app"
+            BuildableName = "PartnerApp_Demo.app"
             BlueprintName = "AckooSDK_Example"
             ReferencedContainer = "container:AckooSDK.xcodeproj">
          </BuildableReference>
@@ -106,7 +106,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-            BuildableName = "AckooSDK_Example.app"
+            BuildableName = "PartnerApp_Demo.app"
             BlueprintName = "AckooSDK_Example"
             ReferencedContainer = "container:AckooSDK.xcodeproj">
          </BuildableReference>

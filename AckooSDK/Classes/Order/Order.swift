@@ -25,10 +25,10 @@ public class Order:NSObject,Codable {
     var items:[OrderItem]
     
     /// order created date and time in UTC
-    var createdOn:TimeInterval
+    var createdOn:TimeInterval?
     
     /// order last modified date and time in UTC
-    var modifiedOn:TimeInterval
+    var modifiedOn:TimeInterval?
     
     
     /// order validated date and time in UTC
@@ -44,8 +44,8 @@ public class Order:NSObject,Codable {
     ///   - createdOn: order created date and time in UTC
     ///   - modifiedOn: order last modified date and time in UTC
     ///   - validatedOn: order validated date and time in UTC
-    @objc   
-    public init(id:String,totalAmount:Double,symbol:String?,items:[OrderItem],createdOn:TimeInterval,modifiedOn:TimeInterval,validatedOn:TimeInterval) {
+    
+    public init(id:String,totalAmount:Double,symbol:String?,items:[OrderItem],createdOn:TimeInterval?,modifiedOn:TimeInterval?,validatedOn:TimeInterval?) {
         self.id = id
         self.totalAmount = totalAmount
         self.currencySymbol = symbol

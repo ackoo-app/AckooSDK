@@ -16,7 +16,7 @@ public class UserActivity:BaseActivity {
     var token:String
     
     /// wether user is logged In at the time of performing this activity
-    var isLoggedIn:Bool
+    var isLoggedIn:Bool?
     
     /// email address of the user
     var email:String?
@@ -27,8 +27,7 @@ public class UserActivity:BaseActivity {
     ///   - isLoggedIn: wether user is logged In at the time of performing this activity
     ///   - email: email address of the user
     ///   - order: Order details
-    @objc
-    public init(isLoggedIn:Bool,email:String?) {
+    public init(isLoggedIn:Bool?,email:String?) {
         self.token = UserActivity.getToken()
         self.isLoggedIn = isLoggedIn
         self.email = email
