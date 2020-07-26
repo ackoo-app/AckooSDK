@@ -7,8 +7,8 @@
 
 import Foundation
 
-@objc(Constants)
-class Constants:NSObject {
+
+class Constants {
     
     
     struct RESPONSE_KEYS {
@@ -23,5 +23,10 @@ class Constants:NSObject {
         static let INVALID_REQUEST:String = "Host is invalid"
         static let SESSION_NOT_VALID:String = "User is not a valid Ackoo user"
     }
+    struct URL_PATH {
+        static let TRACK:String = "partner/track"
+        static let FINGER_PRINT:String = "partner/fingerprint"
+    }
+    
 
 }

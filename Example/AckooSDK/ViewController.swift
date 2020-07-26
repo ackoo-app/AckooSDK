@@ -34,7 +34,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func signup(_ sender: Any) {
-        self.sendReportActivity(.register)
+       // self.sendReportActivity(.register)
         
     }
     
@@ -55,7 +55,11 @@ class ViewController: UIViewController {
                 print(succeeded)
             }
         }
-        
+//        AckooSDKManager.shared().isUserValidForSDK { (isValid) in
+//            if (isValid) {
+//                //report the activity or purchase
+//            }
+//        }
         
     }
 }

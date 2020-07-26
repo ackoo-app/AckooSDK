@@ -11,11 +11,11 @@ import Foundation
 
 class Payload:Encodable {
     let name:AckooEventTypeString
-    let properties:PayloadProperty
+    let props:PayloadProperty
     
     init(type:AckooEventTypeString,payload:PayloadProperty) {
         self.name = type
-        self.properties = payload
+        self.props = payload
         
     }
 }

@@ -20,7 +20,7 @@ it, simply add the following line to your Podfile:
 pod 'AckooSDK'
 ```
 
-## Usage
+## Usage 
 
 ### AppDelegate
 
@@ -46,7 +46,7 @@ func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
 ```
 From here you will get information for which product the user has opened you application. 
 
-### Tracking user events
+### Tracking user events in Native Swift or Objective-C app
 
 When user performs any activity. You need to pass on this information to the AckooSDK. Currently SDK supports following events
 
@@ -61,9 +61,6 @@ public enum AckooEventType {
     /// When user opens app
     case openApp
     
-    /// When user registers itself with the system
-    case register
-    
     /// when user logs-in in the app
     case login
     
@@ -71,6 +68,14 @@ public enum AckooEventType {
     case purchase
 }
 
+```
+You can check if the current user is valid AckooSDK user or not by calling below method 
+```
+AckooSDKManager.shared().isUserValidForSDK { (isValid) in
+    if (isValid) {
+        //report the activity or purchase
+    }
+}
 ```
 For any of the event to report to the SDK , You need to create instance of UserActivity class. 
 
@@ -161,6 +166,74 @@ For reporting normal events like login, openApp etc call **reportActivity**
      print(succeeded)
  }
 ```
+
+### Tracking user events from React-Native apps
+
+If your application is using react-native app. You can use specially designed **RNAckooSDKManager** class and it's method for ReactNative project integration
+
+You will need to create Objective-C bridging file (.m) inside your iOS project and add following method to export
+
+```
+
+#import <Foundation/Foundation.h>
+#import <React/RCTBridgeModule.h>
+//RCTResponseSenderBlock
+@interface RCT_EXTERN_MODULE(RNAckooSDKManager, NSObject)
+RCT_EXTERN_METHOD(reportActivity:(NSDictionary *)values RNCallBack: (RCTResponseSenderBlock)callback);
+RCT_EXTERN_METHOD(reportPurchase:(NSDictionary *)values RNCallBack: (RCTResponseSenderBlock)callback);
+RCT_EXTERN_METHOD(isTheUSerValidForAckooSDK: (RCTResponseSenderBlock)RNCallBack);
+@end
+
+```
+You can than call these methods directly from the javascript js code
+
+
+
+
+```
+import {NativeModules} from 'react-native';
+
+...
+...
+
+//Checking if the use is valid Ackoo user
+NativeModules.RNAckooSDKManager.isTheUSerValidForAckooSDK(
+  (error, ...value) => {
+    console.log('error is ' + error);
+    console.log('value is ' + value);
+  },
+);
+
+
+//report user activity
+const event = {type: 2, email: 'info@ackoo.app', IsLoggedIn: false};
+console.log('Before Calling Native 12345');
+NativeModules.RNAckooSDKManager.reportActivity(event, (error, ...values) => {
+  console.log('reportActivity error is ' + JSON.stringify(error));
+  console.log('reportActivity value is ' + JSON.stringify(values));
+});
+
+
+//Report actual purchase
+const items = [{productName: 'Game-Console', sku: '45d04kl4', amount: 35.67}];
+const order = {
+  orderItems: items,
+  orderId: '053509034',
+  totalAmount: 35.67,
+  symbol: 'USD',
+  createdOn: 1595348752205,
+  modifiedOn: 1595348752205,
+  validateOn: 1595348752205,
+};
+
+NativeModules.RNAckooSDKManager.reportPurchase(order, (error, ...values) => {
+  console.log('reportPurchase error is ' + JSON.stringify(error));
+  console.log('reportPurchase value is ' + JSON.stringify(values));
+});
+```
+
+
+
 
 ## Importan Note
 This SDK uses advertisingIdentifier for purpose if identifying user after fresh installation after navigating from the Ackoo app. When you submit the app please tick **"Attribute this App Installation to a Previously Served Advertisement"** Please refer this screen shot

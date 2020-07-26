@@ -72,6 +72,16 @@
                ReferencedContainer = "container:AckooSDK.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "7C12FE8224C6208400EBF222"
+               BuildableName = "PartnerApp_DemoTests.xctest"
+               BlueprintName = "PartnerApp_DemoTests"
+               ReferencedContainer = "container:AckooSDK.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

@@ -10,8 +10,8 @@ import Foundation
 
 /// Order details
 /// Information regarding purchased order
-@objc(Order)
-public class Order:NSObject,Codable {
+
+public class Order:Codable {
     /// Order Id
     let id:String
     

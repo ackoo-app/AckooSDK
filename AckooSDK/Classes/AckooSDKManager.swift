@@ -18,24 +18,23 @@ public enum AckooEventTypeString:String,Encodable {
     /// When user opens app
     case openApp = "APP_OPEN"
     
-    /// When user registers itself with the system
-    case register = "USER_REGISTER"
+  
     
     /// when user logs-in in the app
-    case login = "USER_LOGIN"
+    case login = "PARTNER_APP_LOGIN"
     
     /// When user make the actual purchase of the item
-    case purchase = "PURCHASE"
+    case purchase = "PARTNER_APP_PURCHASE"
 }
 
-@objc public enum AckooEventType: Int,Encodable {
-    case installApp, openApp, register,login,purchase
+ public enum AckooEventType: Int,Encodable {
+    case installApp, openApp,login,purchase
 }
 
 /// AckooSDKManager class to report all activity to backend
 /// Description
-@objc(AckooSDKManager)
-public class AckooSDKManager:NSObject {
+
+public class AckooSDKManager {
     // MARK: -
     // MARK: - Properties
     
@@ -54,21 +53,21 @@ public class AckooSDKManager:NSObject {
     private init(baseURL: URL) {
        
         self.baseURL = baseURL
-         super.init()
+         
         let notificationCenter = NotificationCenter.default
                notificationCenter.addObserver(self, selector: #selector(appMovedToForeground), name: UIApplication.didBecomeActiveNotification, object: nil)
     }
     // MARK: - Accessors
     /// access shared singleton object
-    @objc public class func shared() -> AckooSDKManager {
+     public class func shared() -> AckooSDKManager {
         // get token in the background here
         
         return sharedManager
     }
-    @objc func appMovedToForeground() {
+  @objc func appMovedToForeground() {
         self.getTokenFromServer { (succeeded, response) in
             print(response)
-            if let responseDict:[String:Any] = response as? [String:Any], let sessionToken:String = responseDict["sessionToken"] as? String {
+            if let response:[String:Any] =  response as? [String:Any] ,let responseDict:[String:Any] = response["data"] as? [String:Any], let sessionToken:String = responseDict["sessionToken"] as? String {
                 self.storeSessionInUserDefault(sessionToken: sessionToken)
             }
         }
@@ -79,7 +78,7 @@ public class AckooSDKManager:NSObject {
     ///   - type: type of event
     ///   - activity: activity class that holds relevant information like token, email address
     ///   - callback: call back with server response or error.
-    @objc
+    
     public func reportActivity(type:AckooEventType,activity:UserActivity,callback: @escaping (_ succeeded: Bool, _ response: Any) -> Void) {
         
         // Check if token is acquired
@@ -89,7 +88,7 @@ public class AckooSDKManager:NSObject {
         } else {
             self.getTokenFromServer { (succeeded, response) in
                 print(response)
-                if let responseDict:[String:Any] = response as? [String:Any], let sessionToken:String = responseDict["sessionToken"] as? String {
+                if let response:[String:Any] =  response as? [String:Any] ,let responseDict:[String:Any] = response["data"] as? [String:Any], let sessionToken:String = responseDict["sessionToken"] as? String {
                     activity.token = sessionToken
                     self.storeSessionInUserDefault(sessionToken: sessionToken)
                     self.makeAnActualApiCall(type: type, activity: activity, order: nil, callback: callback)
@@ -104,11 +103,11 @@ public class AckooSDKManager:NSObject {
     /// Checks if user is valid or not
     /// - Parameters:
     ///   - callback: call back with true or false
-    @objc
+    
     public func isUserValidForSDK(callback: @escaping (_ valid: Bool ) -> Void) {
         self.getTokenFromServer { (succeeded, response) in
             print(response)
-            if let responseDict:[String:Any] = response as? [String:Any], let sessionToken:String = responseDict["sessionToken"] as? String {
+            if let response:[String:Any] =  response as? [String:Any] ,let responseDict:[String:Any] = response["data"] as? [String:Any], let sessionToken:String = responseDict["sessionToken"] as? String {
                 self.storeSessionInUserDefault(sessionToken: sessionToken)
                 callback(true)
             } else {
@@ -131,7 +130,7 @@ public class AckooSDKManager:NSObject {
        ///   - type: type of event
        ///   - activity: activity class that holds relevant information like token, email address
        ///   - callback: call back with server response or error.
-    @objc public func reportPurchase(type:AckooEventType,activity:UserActivity,order:Order,callback: @escaping (_ succeeded: Bool, _ response: Any) -> Void) {
+     public func reportPurchase(type:AckooEventType,activity:UserActivity,order:Order,callback: @escaping (_ succeeded: Bool, _ response: Any) -> Void) {
            
            // Check if token is acquired
            if !activity.token.isEmpty {
@@ -140,7 +139,8 @@ public class AckooSDKManager:NSObject {
            } else {
                self.getTokenFromServer { (succeeded, response) in
                    print(response)
-                   if let responseDict:[String:Any] = response as? [String:Any], let sessionToken:String = responseDict["sessionToken"] as? String {
+                
+                   if let response:[String:Any] =  response as? [String:Any] ,let responseDict:[String:Any] = response["data"] as? [String:Any], let sessionToken:String = responseDict["sessionToken"] as? String {
                        activity.token = sessionToken
                        UserDefaults.standard.set(sessionToken, forKey: Constants.SDK_KEYS.TOKEN_SESSION)
                        UserDefaults.standard.synchronize()
@@ -155,7 +155,7 @@ public class AckooSDKManager:NSObject {
        }
     
     private func makeAnActualApiCall(type:AckooEventType,activity:UserActivity,order:Order?,callback: @escaping (_ succeeded: Bool, _ response: Any) -> Void) {
-        let requestURL = "events"
+        let requestURL = Constants.URL_PATH.TRACK
         let payLoad:Payload
         if (type == .purchase) {
             let payLoadProperty:PayloadProperty = PayloadProperty(order: order, activity: activity)
@@ -182,8 +182,6 @@ public class AckooSDKManager:NSObject {
             return .installApp
         case .openApp:
             return .openApp
-        case .register:
-            return .register
         case .login:
             return .login
         case .purchase:
@@ -206,7 +204,7 @@ public class AckooSDKManager:NSObject {
     private func getTokenFromServer(callback: @escaping (_ succeeded: Bool, _ response: Any) -> Void) {
         let identity:UserIdentity = self.getUserIdentity()
             
-        let requestURL = "users/partner/fingerprint"
+        let requestURL = Constants.URL_PATH.FINGER_PRINT
         
         do {
             let jsonData:Data = try JSONEncoder().encode(identity)

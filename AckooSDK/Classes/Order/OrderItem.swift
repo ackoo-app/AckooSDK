@@ -9,8 +9,8 @@ import Foundation
 
 
 /// Order item with details like sku, name amount
-@objc(OrderItem)
-public class OrderItem:NSObject,Codable {
+
+public class OrderItem:Codable {
     
     
     /// sku of the product
@@ -28,7 +28,7 @@ public class OrderItem:NSObject,Codable {
     ///   - sku: sku of the product
     ///   - name: product name
     ///   - amount: total amount
-    @objc
+    
     public init(sku:String?,name:String,amount:Double) {
         self.sku = sku
         self.name = name

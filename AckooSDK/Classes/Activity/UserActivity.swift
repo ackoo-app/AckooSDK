@@ -9,7 +9,7 @@ import Foundation
 
 
 /// User activity that holds information regarding user's actions
-@objc(UserActivity)
+
 public class UserActivity:BaseActivity {
     
     /// unique token that associated with user

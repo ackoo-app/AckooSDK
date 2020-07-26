@@ -66,21 +66,21 @@ class NetworkingManager {
         if params != nil {
             request.httpBody = params
         }
-        //do {
-            //let hData = try JSONSerialization.data(withJSONObject: request.allHTTPHeaderFields ?? [:], options: [])
+        do {
+            let hData = try JSONSerialization.data(withJSONObject: request.allHTTPHeaderFields ?? [:], options: [])
             
-            //let hString = String(data: hData, encoding: String.Encoding.utf8)
+            let hString = String(data: hData, encoding: String.Encoding.utf8)
             
-            //print("URL : \(String(describing: request.url?.absoluteString)) \nHeader : \(String(describing: hString)) \n");
-            //if let data = request.httpBody {
-                //let str = String(data: data, encoding: String.Encoding.utf8)
-                //print("\nBody : \(String(describing: str)) ");
-            //}
+            print("URL : \(String(describing: request.url?.absoluteString)) \nHeader : \(String(describing: hString)) \n");
+            if let data = request.httpBody {
+                let str = String(data: data, encoding: String.Encoding.utf8)
+                print("\nBody : \(String(describing: str)) ");
+            }
         return request
-//        } catch {
-//            //print("json error: \(error.localizedDescription)")
-//             return nil
-//        }
+        } catch {
+            //print("json error: \(error.localizedDescription)")
+             return nil
+        }
         
     }
 
@@ -139,7 +139,7 @@ class NetworkingManager {
         
         
         
-        //print("Response: \(String(describing: String(data: data, encoding: String.Encoding.utf8))) for URL \(String(describing: response.url))")
+        print("Response: \(String(describing: String(data: data, encoding: String.Encoding.utf8))) for URL \(String(describing: response.url))")
         do {
             
             let json = try JSONSerialization.jsonObject(with: data, options: [])

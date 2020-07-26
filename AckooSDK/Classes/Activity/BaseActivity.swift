@@ -9,6 +9,6 @@ import Foundation
 
 
 /// User Activity Base class
-public class BaseActivity:NSObject,Encodable {
+public class BaseActivity:Encodable {
     
 }
