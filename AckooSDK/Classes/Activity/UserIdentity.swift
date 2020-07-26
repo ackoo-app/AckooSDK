@@ -14,6 +14,7 @@ class UserIdentity:Encodable {
     var advertisingId:String?
     var fingerprint:FingerPrintingOption?
     let batteryLevel:Float
+    let isFirstOpen:Bool
     
     init(idfaUuidString:String) {
         UIDevice.current.isBatteryMonitoringEnabled = true
@@ -23,6 +24,12 @@ class UserIdentity:Encodable {
         } else {
             self.batteryLevel = 0.0
         }
+        if let firstOpen:Bool = UserDefaults.standard.object(forKey: "AckooisFirstOpen") as? Bool {
+            self.isFirstOpen = firstOpen
+        } else {
+            self.isFirstOpen = true
+            UserDefaults.standard.set(false, forKey: "AckooisFirstOpen")
+        }
     }
 }
 
@@ -30,6 +37,7 @@ class FingerPrintingOption:Encodable {
     let locale:DeviceLocale = DeviceLocale()
     let hardware:DeviceHardware = DeviceHardware()
     let network:DeviceNetwork = DeviceNetwork()
+    
 }
 
 
@@ -42,9 +50,9 @@ class DeviceLocale:Encodable {
     
     init() {
         if let keyboardString = UserDefaults.standard.object(forKey: "AppleKeyboards") as? [String] {
-           self.keyboards = keyboardString
+            self.keyboards = keyboardString
         } else {
-           keyboards = []
+            keyboards = []
         }
     }
 }
@@ -72,7 +80,7 @@ class DeviceHardware:Encodable {
 
 class DeviceNetwork:Encodable {
     let mobileNetworkCode:String
-       let mobileCountryCode:String
+    let mobileCountryCode:String
     init() {
         let networkInfo = CTTelephonyNetworkInfo()
         let carrier = networkInfo.subscriberCellularProvider

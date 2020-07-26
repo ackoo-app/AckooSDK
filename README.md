@@ -26,7 +26,7 @@ pod 'AckooSDK'
 
 Implement **application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {** in your Appdelegate class or SceneDelegate class
 
-```
+```swift
 func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
     print("Continue User Activity called: ")
     if userActivity.activityType == NSUserActivityTypeBrowsingWeb {
@@ -50,7 +50,7 @@ From here you will get information for which product the user has opened you app
 
 When user performs any activity. You need to pass on this information to the AckooSDK. Currently SDK supports following events
 
-```
+```swift
 
 /// Type of the event that AckooSDK supports. Which will be sent
 /// When usere performs the particular action (like register, open app, login, purchase)
@@ -70,7 +70,7 @@ public enum AckooEventType {
 
 ```
 You can check if the current user is valid AckooSDK user or not by calling below method 
-```
+```swift
 AckooSDKManager.shared().isUserValidForSDK { (isValid) in
     if (isValid) {
         //report the activity or purchase
@@ -79,7 +79,7 @@ AckooSDKManager.shared().isUserValidForSDK { (isValid) in
 ```
 For any of the event to report to the SDK , You need to create instance of UserActivity class. 
 
-```
+```swift
 /// User activity that holds information regarding user's actions
 public class UserActivity:BaseActivity {
     
@@ -101,7 +101,7 @@ In case of Reporting actual purchase event to Ackoo you need to create 2 other o
 
 There are 2 other instance of the class which needs to be created along with UserActivity in case of user has actually purchase anything from the app.
 
-```
+```swift
 /// Order details
 /// Information regarding purchased order
 public class Order:Codable {
@@ -147,7 +147,7 @@ public class OrderItem:Codable {
 Once this instance are created with related information. You need to register this event to SDK
 For reporting purchase you need to call **reportPurchase**
 
-```
+```swift
 let date:TimeInterval = Date().timeIntervalSince1970
 let activity:UserActivity = UserActivity.init(isLoggedIn: true, email: "user@gmail.com")
 let item:OrderItem = OrderItem.init(sku: "CM01-R", name: productName, amount: 13.35)
@@ -160,7 +160,7 @@ AckooSDKManager.shared().reportPurchase(type: name, activity: activity, order: o
 ```           
 For reporting normal events like login, openApp etc call **reportActivity**
 
-```
+```swift
  let activity:UserActivity = UserActivity.init(isLoggedIn: true, email: "user@gmail.com")
  AckooSDKManager.shared().reportActivity(type: name, activity: activity) { (succeeded, response) in
      print(succeeded)
@@ -173,7 +173,7 @@ If your application is using react-native app. You can use specially designed **
 
 You will need to create Objective-C bridging file (.m) inside your iOS project and add following method to export
 
-```
+``` objc
 
 #import <Foundation/Foundation.h>
 #import <React/RCTBridgeModule.h>
@@ -190,7 +190,7 @@ You can than call these methods directly from the javascript js code
 
 
 
-```
+``` javascript
 import {NativeModules} from 'react-native';
 
 ...
@@ -243,8 +243,6 @@ This SDK uses advertisingIdentifier for purpose if identifying user after fresh 
 
 ## Author
 
-Ackoo, mihirpmehta@gmail.com
+Ackoo, khaled@ackoo.app
 
-## License
 
-AckooSDK is available under the MIT license. See the LICENSE file for more info.
