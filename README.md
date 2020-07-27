@@ -17,6 +17,9 @@ AckooSDK is available through [CocoaPods](https://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
+platform :ios, '11.0'
+source 'https://github.com/ackoo-app/AckooPrivateTrunk.git'
+...
 pod 'AckooSDK'
 ```
 
