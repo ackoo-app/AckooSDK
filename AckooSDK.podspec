@@ -30,9 +30,9 @@ Pod::Spec.new do |s|
   s.swift_versions = '5.0'
   s.source_files = 'AckooSDK/Classes/**/*'
   
-  # s.resource_bundles = {
-  #   'AckooSDK' => ['AckooSDK/Assets/*.png']
-  # }
+   s.resource_bundles = {
+     'AckooSDK' => ['AckooSDK/Assets/*.plist']
+   }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'

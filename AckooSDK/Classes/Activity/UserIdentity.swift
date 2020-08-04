@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import AdSupport
 import CoreTelephony
 import UIKit
 
@@ -15,10 +16,10 @@ class UserIdentity:Encodable {
     var fingerprint:FingerPrintingOption?
     let batteryLevel:Float
     let isFirstOpen:Bool
-    
-    init(idfaUuidString:String) {
+    private var fingerPrintingParam:FingerPrintingOption = FingerPrintingOption()
+    init() {
         UIDevice.current.isBatteryMonitoringEnabled = true
-        self.advertisingId = idfaUuidString
+        self.advertisingId = UserIdentity.getIDFAOfDevice()
         if UIDevice.current.isBatteryMonitoringEnabled {
             self.batteryLevel =  UIDevice.current.batteryLevel
         } else {
@@ -30,6 +31,14 @@ class UserIdentity:Encodable {
             self.isFirstOpen = true
             UserDefaults.standard.set(false, forKey: "AckooisFirstOpen")
         }
+        self.fingerprint = self.getDevicInfo()
+    }
+    class private func getIDFAOfDevice() -> String {
+        // Get and return IDFA
+        return ASIdentifierManager.shared().advertisingIdentifier.uuidString
+    }
+    private func getDevicInfo() -> FingerPrintingOption {
+        return self.fingerPrintingParam
     }
 }
 

@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import AdSupport
 import UIKit
 
 /// Type of the event that AckooSDK supports. Which will be sent
@@ -41,12 +40,18 @@ public class AckooSDKManager {
     /// The shared singleton AckooSDKManager object
     /// Which will be used report related activity to the backend.
     private static var sharedManager: AckooSDKManager = {
-        let sdkManager = AckooSDKManager(baseURL: URL(string: NetworkingManager.sharedInstance.getApiBaseUrl(buildMode: BUILD_MODE))!)
+        let sdkManager = AckooSDKManager(baseURL: URL(string: NetworkingManager.getApiBaseUrl(buildMode: BUILD_MODE))!)
         UIDevice.current.isBatteryMonitoringEnabled = true
         return sdkManager
     }()
-    private var fingerPrintingParam:FingerPrintingOption = FingerPrintingOption()
-
+    
+    private var isUserActive:Bool = false {
+        didSet {
+            if isUserActive == false {
+                UserDefaults.standard.removeObject(forKey: Constants.SDK_KEYS.TOKEN_SESSION)
+            }
+        }
+    }
     private let baseURL: URL
 
     /// Initialization
@@ -69,9 +74,19 @@ public class AckooSDKManager {
             print(response)
             if let response:[String:Any] =  response as? [String:Any] ,let responseDict:[String:Any] = response["data"] as? [String:Any], let sessionToken:String = responseDict["sessionToken"] as? String {
                 self.storeSessionInUserDefault(sessionToken: sessionToken)
+            } else {
+                self.isUserActive = false
             }
         }
     }
+    public func setSDKSessionFromUniversalLink(link:URL) {
+        let params:[String:String] = link.queryParams()
+        if let sessionToken:String = params["sessionToken"] {
+            self.storeSessionInUserDefault(sessionToken: sessionToken)
+        }
+    }
+    
+    
     /// Report user activity to Ackoo backend
     /// - Attention: callback will be always called on the main thread.
     /// - Parameters:
@@ -95,6 +110,7 @@ public class AckooSDKManager {
                 } else {
                     //Session not found
                     callback(false, [Constants.RESPONSE_KEYS.NEW_ERROR_MESSAGE:Constants.ENGLISH.SESSION_NOT_VALID])
+                    self.isUserActive = false
                 }
             }
         }
@@ -104,22 +120,14 @@ public class AckooSDKManager {
     /// - Parameters:
     ///   - callback: call back with true or false
     
-    public func isUserValidForSDK(callback: @escaping (_ valid: Bool ) -> Void) {
-        self.getTokenFromServer { (succeeded, response) in
-            print(response)
-            if let response:[String:Any] =  response as? [String:Any] ,let responseDict:[String:Any] = response["data"] as? [String:Any], let sessionToken:String = responseDict["sessionToken"] as? String {
-                self.storeSessionInUserDefault(sessionToken: sessionToken)
-                callback(true)
-            } else {
-                //Session not found
-                callback(false)
-            }
-        }
+    public func isUserValidForSDK() -> Bool {
+        return self.isUserActive
     }
     
     func storeSessionInUserDefault(sessionToken:String) {
         UserDefaults.standard.set(sessionToken, forKey: Constants.SDK_KEYS.TOKEN_SESSION)
         UserDefaults.standard.synchronize()
+        isUserActive = true
     }
     static func requiresMainQueueSetup() -> Bool {
         return true
@@ -148,6 +156,7 @@ public class AckooSDKManager {
                    } else {
                        //Session not found
                        callback(false, [Constants.RESPONSE_KEYS.NEW_ERROR_MESSAGE:Constants.ENGLISH.SESSION_NOT_VALID])
+                        self.isUserActive = false
                    }
                    
                }
@@ -188,17 +197,10 @@ public class AckooSDKManager {
             return .purchase
         }
     }
-    private func getIDFAOfDevice() -> String {
-        // Get and return IDFA
-        return ASIdentifierManager.shared().advertisingIdentifier.uuidString
-    }
-    private func getDevicInfo() -> FingerPrintingOption {
-        return self.fingerPrintingParam
-    }
+    
     
     private func getUserIdentity() -> UserIdentity {
-        let identity:UserIdentity = UserIdentity(idfaUuidString: self.getIDFAOfDevice())
-        identity.fingerprint = self.getDevicInfo()
+        let identity:UserIdentity = UserIdentity()
         return identity
     }
     private func getTokenFromServer(callback: @escaping (_ succeeded: Bool, _ response: Any) -> Void) {

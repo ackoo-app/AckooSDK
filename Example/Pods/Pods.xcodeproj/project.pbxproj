@@ -62,6 +62,8 @@
 		78A51B7FCC1DFB888AAA254529013C12 /* BeginWith.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C23CE0D464DE87135CF865903FCBAA /* BeginWith.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		7AC93EB6DCDA9226165D5BC354FE7BC6 /* DSL.m in Sources */ = {isa = PBXBuildFile; fileRef = 514A45971EF52E1B3C380DD376C2169E /* DSL.m */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		7C12FE8E24C620A800EBF222 /* RNAckooSDKManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C12FE8D24C620A800EBF222 /* RNAckooSDKManager.swift */; };
+		7C62054E24D59F9F007628E8 /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 7C62054D24D59F9F007628E8 /* .gitkeep */; };
+		7C62055024D59FD2007628E8 /* AckooSDK.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7C62054F24D59FD2007628E8 /* AckooSDK.plist */; };
 		7CE6049975894E447F2D4071C74F6F8F /* Callsite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C07C7B9BAE6E4EC395DFFAE4976469 /* Callsite.swift */; };
 		7DAC86DCBC36C10F43FA5FEB819B7BF1 /* Functional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0181ECE4A9BD71C2CE5A46678EA0001E /* Functional.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		7EB28FEC3D0ABA1A2A6CFE57C400F74D /* QuickSpec.h in Headers */ = {isa = PBXBuildFile; fileRef = AB19DA99C44C2FDA8B4564B8EFCF93E7 /* QuickSpec.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -285,6 +287,8 @@
 		7B6FCE807AF0C208CEA4F07B1C90CCDD /* CwlCatchException.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CwlCatchException.swift; path = Carthage/Checkouts/CwlPreconditionTesting/Dependencies/CwlCatchException/Sources/CwlCatchException/CwlCatchException.swift; sourceTree = "<group>"; };
 		7BBE8546CC745827786002E076A4CB4B /* BeIdenticalTo.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeIdenticalTo.swift; path = Sources/Nimble/Matchers/BeIdenticalTo.swift; sourceTree = "<group>"; };
 		7C12FE8D24C620A800EBF222 /* RNAckooSDKManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RNAckooSDKManager.swift; path = AckooSDK/Classes/RNAckooSDKManager.swift; sourceTree = "<group>"; };
+		7C62054D24D59F9F007628E8 /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		7C62054F24D59FD2007628E8 /* AckooSDK.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = AckooSDK.plist; sourceTree = "<group>"; };
 		7E244ECE5809FD788C2527163F7014DB /* BuildMode.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = BuildMode.html; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/Enums/BuildMode.html; sourceTree = "<group>"; };
 		800564A227A3ABED62183F374F3669DD /* ExampleMetadata.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExampleMetadata.swift; path = Sources/Quick/ExampleMetadata.swift; sourceTree = "<group>"; };
 		8432B2DF07A5B12B5029305ED6411733 /* dash.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = dash.png; path = docs/img/dash.png; sourceTree = "<group>"; };
@@ -620,6 +624,16 @@
 			path = "../Target Support Files/Quick";
 			sourceTree = "<group>";
 		};
+		7C62054C24D59F9F007628E8 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				7C62054D24D59F9F007628E8 /* .gitkeep */,
+				7C62054F24D59FD2007628E8 /* AckooSDK.plist */,
+			);
+			name = Assets;
+			path = ../../AckooSDK/Assets;
+			sourceTree = "<group>";
+		};
 		8F3F68C0F5DCDC469CF1F64D70F77F9C /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -790,6 +804,7 @@
 		E3744A9890C086713B3DB44B537F222A /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
+				7C62054C24D59F9F007628E8 /* Assets */,
 				50072101B438BE2EA8785654DB0748D5 /* AckooSDK */,
 			);
 			name = "Development Pods";
@@ -984,6 +999,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C62055024D59FD2007628E8 /* AckooSDK.plist in Resources */,
+				7C62054E24D59F9F007628E8 /* .gitkeep in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

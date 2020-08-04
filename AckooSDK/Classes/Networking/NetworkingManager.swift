@@ -24,7 +24,13 @@ import SystemConfiguration
 
 var BUILD_MODE:BuildMode = BuildMode.qa
 
-
+struct Config: Decodable {
+    private enum CodingKeys: String, CodingKey {
+        case ackooBaseURL
+    }
+    let ackooBaseURL: String
+    
+}
 ///
 
 class NetworkingManager {
@@ -32,22 +38,32 @@ class NetworkingManager {
     //Singleton object
     static let sharedInstance = NetworkingManager()
     let currentBuildMode:BuildMode = BUILD_MODE
-    var API_BASE_URL:String = "https://cryptic-garden-59749.herokuapp.com/"
+    var API_BASE_URL:String
 
      init() {
-        API_BASE_URL = getApiBaseUrl(buildMode: currentBuildMode)
+        self.API_BASE_URL = NetworkingManager.getApiBaseUrl(buildMode: currentBuildMode)
     }
     
-//    func getCurrentBuildMode() -> BuildMode {
-//        return currentBuildMode
-//    }
+    class func parseConfig() -> Config? {
+        if let bundle:Bundle = Bundle(identifier: "org.cocoapods.AckooSDK"),let url = bundle.url(forResource: "AckooSDK", withExtension: "plist") {
+            
+        let data = try! Data(contentsOf: url)
+            let decoder = PropertyListDecoder()
+            return try! decoder.decode(Config.self, from: data)
+        }
+        return nil
+    }
     
-    func getApiBaseUrl(buildMode: BuildMode) -> String {
-        var apiBaseURL: String
+    class func getApiBaseUrl(buildMode: BuildMode) -> String {
+        var apiBaseURL: String = ""
         switch buildMode {
             case .qa:
                 //print("QA")
-                apiBaseURL = "https://cryptic-garden-59749.herokuapp.com/" //QA
+                if let config:Config = self.parseConfig() {
+                    apiBaseURL = config.ackooBaseURL //QA
+                }
+                //Read from AckooBaseURL
+                
             break
            
          }

@@ -111,10 +111,7 @@ class RNAckooSDKManager:NSObject {
     }
     @objc
     func isTheUSerValidForAckooSDK(_ RNCallBack:@escaping RNResponseSenderBlock)  {
-        AckooSDKManager.shared().isUserValidForSDK { (isValid) in
-          print("Is valid is = \(isValid)")
-            RNCallBack([NSNull(),isValid])
-        }
+        RNCallBack([NSNull(),AckooSDKManager.shared().isUserValidForSDK()])
     }
     @objc
     static func requiresMainQueueSetup() -> Bool {

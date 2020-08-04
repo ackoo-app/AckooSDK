@@ -7,6 +7,19 @@
 
 import Foundation
 import UIKit
+
+extension URL {
+    func queryParams() -> [String:String] {
+        let queryItems = URLComponents(url: self, resolvingAgainstBaseURL: false)?.queryItems
+        let queryTuples: [(String, String)] = queryItems?.compactMap{
+            guard let value = $0.value else { return nil }
+            return ($0.name, value)
+        } ?? []
+        return Dictionary(uniqueKeysWithValues: queryTuples)
+    }
+}
+
+
 class Utils {
 //    public static func convertImageToDate(_ image:UIImage) -> (Data?,format:String) {
 //        
