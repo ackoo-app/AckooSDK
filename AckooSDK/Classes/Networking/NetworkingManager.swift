@@ -224,7 +224,11 @@ class NetworkingManager {
         var request = request
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue(Bundle.main.bundleIdentifier ?? "NA", forHTTPHeaderField: "app-token")
-        request.addValue(UserActivity.getToken(), forHTTPHeaderField: "session-token")
+        let sessionToken:String = UserActivity.getToken()
+        if !sessionToken.isEmpty {
+            request.addValue(sessionToken, forHTTPHeaderField: "session-token")
+        }
+        
         return request
         ////print(request.allHTTPHeaderFields)
     }

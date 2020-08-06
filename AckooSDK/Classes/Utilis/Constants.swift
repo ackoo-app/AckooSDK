@@ -15,7 +15,7 @@ class Constants {
         static let NEW_ERROR_MESSAGE:String = "Message"
     }
     struct SDK_KEYS {
-        static let TOKEN_SESSION:String = "AckooSDKSession"
+        static let SESSION_TOKEN:String = "AckooSDKSessionToken"
     }
     struct ENGLISH {
         
@@ -23,9 +23,9 @@ class Constants {
         static let INVALID_REQUEST:String = "Host is invalid"
         static let SESSION_NOT_VALID:String = "User is not a valid Ackoo user"
     }
-    struct URL_PATH {
+    struct URL_PATHS {
         static let TRACK:String = "partner/track"
-        static let FINGER_PRINT:String = "partner/fingerprint"
+        static let FINGERPRINT:String = "partner/fingerprint"
     }
     
 

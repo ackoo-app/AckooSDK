@@ -11,7 +11,7 @@ class TableOfContentsSpec: QuickSpec {
     override func spec() {
         describe("these will fail") {
             context("these will pass") {
-                UserDefaults.standard.removeObject(forKey: "AckooSDKSession")
+                UserDefaults.standard.removeObject(forKey: "AckooSDKSessionToken")
                 UserDefaults.standard.synchronize()
                 it("Will call purchas event") {
                     let item:OrderItem = OrderItem.init(sku: "CM01-R", name: "Default Product", amount: 13.35)
@@ -40,7 +40,7 @@ class TableOfContentsSpec: QuickSpec {
                 }
                 
                 it("will call open event") {
-                    UserDefaults.standard.removeObject(forKey: "AckooSDKSession")
+                    UserDefaults.standard.removeObject(forKey: "AckooSDKSessionToken")
                     UserDefaults.standard.synchronize()
                     let activity:UserActivity = UserActivity.init(isLoggedIn: true, email: "user@gmail.com")
                     waitUntil (timeout: 30) { done in
@@ -52,7 +52,7 @@ class TableOfContentsSpec: QuickSpec {
                 }
                 
                 it("will call open event after use default") {
-                    UserDefaults.standard.removeObject(forKey: "AckooSDKSession")
+                    UserDefaults.standard.removeObject(forKey: "AckooSDKSessionToken")
                     UserDefaults.standard.synchronize()
                     let activity:UserActivity = UserActivity.init(isLoggedIn: true, email: "user@gmail.com")
                     waitUntil (timeout: 30) { done in

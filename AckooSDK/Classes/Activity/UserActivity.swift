@@ -12,9 +12,7 @@ import Foundation
 
 public class UserActivity:BaseActivity {
     
-    /// unique token that associated with user
-    var token:String
-    
+   
     /// wether user is logged In at the time of performing this activity
     var isLoggedIn:Bool?
     
@@ -28,14 +26,14 @@ public class UserActivity:BaseActivity {
     ///   - email: email address of the user
     ///   - order: Order details
     public init(isLoggedIn:Bool?,email:String?) {
-        self.token = UserActivity.getToken()
+       
         self.isLoggedIn = isLoggedIn
         self.email = email
         
         super.init()
     }
     static func getToken() -> String {
-        if let token:String = UserDefaults.standard.object(forKey: Constants.SDK_KEYS.TOKEN_SESSION) as? String {
+        if let token:String = UserDefaults.standard.object(forKey: Constants.SDK_KEYS.SESSION_TOKEN) as? String {
             return token
         }
         return ""
