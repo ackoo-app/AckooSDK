@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -10,7 +10,7 @@
         <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="AckooSDK_Example" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="PartnerApp_Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -19,72 +19,44 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JJP-XL-3kG">
-                                <rect key="frame" x="36" y="36" width="41" height="30"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Login">
-                                    <color key="titleColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="login:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="BO4-HC-4h5"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aLh-pv-PVP">
-                                <rect key="frame" x="36" y="102" width="81" height="30"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Sign up">
-                                    <color key="titleColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="signup:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="CMa-i2-waT"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oVb-LX-x5i">
-                                <rect key="frame" x="168" y="36" width="39" height="30"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Open">
-                                    <color key="titleColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="open:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="PT1-QL-gVH"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jXA-oC-6m8">
-                                <rect key="frame" x="294" y="36" width="45" height="30"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Install">
-                                    <color key="titleColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="install:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="LaN-kE-Oki"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ike-8o-uuU">
-                                <rect key="frame" x="153" y="102" width="69" height="30"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Purchase">
-                                    <color key="titleColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="purchase:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="gJB-hy-G67"/>
-                                </connections>
-                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Teela" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cIQ-TU-YdG">
+                                <rect key="frame" x="132.5" y="303" width="110.5" height="61"/>
+                                <fontDescription key="fontDescription" name="SnellRoundhand-Bold" family="Snell Roundhand" pointSize="48"/>
+                                <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="btj-DQ-rX3">
+                                <rect key="frame" x="153" y="404" width="69" height="80"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JJP-XL-3kG">
+                                        <rect key="frame" x="14" y="0.0" width="41" height="30"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="Login">
+                                            <color key="titleColor" systemColor="systemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="login:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="BO4-HC-4h5"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ike-8o-uuU">
+                                        <rect key="frame" x="0.0" y="50" width="69" height="30"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="Purchase">
+                                            <color key="titleColor" systemColor="systemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="purchase:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="gJB-hy-G67"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="oVb-LX-x5i" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="JJP-XL-3kG" secondAttribute="trailing" id="0fU-eA-Osr"/>
-                            <constraint firstItem="JJP-XL-3kG" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="36" id="2NX-uJ-rWd"/>
-                            <constraint firstItem="ike-8o-uuU" firstAttribute="leading" secondItem="aLh-pv-PVP" secondAttribute="trailing" constant="36" id="7JD-2K-Vkg"/>
-                            <constraint firstItem="oVb-LX-x5i" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="36" id="9Vw-vs-Fh6"/>
-                            <constraint firstItem="jXA-oC-6m8" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="36" id="A60-Ur-GuE"/>
-                            <constraint firstItem="ike-8o-uuU" firstAttribute="top" secondItem="oVb-LX-x5i" secondAttribute="bottom" constant="36" id="AHl-4r-Mzd"/>
-                            <constraint firstItem="aLh-pv-PVP" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="36" id="CJW-HI-AWK"/>
-                            <constraint firstItem="aLh-pv-PVP" firstAttribute="top" secondItem="JJP-XL-3kG" secondAttribute="bottom" constant="36" id="Fr3-XU-HkT"/>
-                            <constraint firstItem="JJP-XL-3kG" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="36" id="WfO-th-jUt"/>
-                            <constraint firstItem="ike-8o-uuU" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="a9b-BN-SWP"/>
-                            <constraint firstItem="oVb-LX-x5i" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="cPn-6q-89i"/>
-                            <constraint firstItem="jXA-oC-6m8" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="oVb-LX-x5i" secondAttribute="trailing" id="d3j-rQ-hL6"/>
-                            <constraint firstAttribute="trailing" secondItem="jXA-oC-6m8" secondAttribute="trailing" constant="36" id="wOo-QX-o44"/>
+                            <constraint firstItem="btj-DQ-rX3" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="12W-bn-bEb"/>
+                            <constraint firstItem="cIQ-TU-YdG" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="H1f-0i-Yf6"/>
+                            <constraint firstItem="cIQ-TU-YdG" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="ohy-Oa-Hn2"/>
+                            <constraint firstItem="btj-DQ-rX3" firstAttribute="top" secondItem="cIQ-TU-YdG" secondAttribute="bottom" constant="40" id="xll-xE-IpS"/>
                         </constraints>
                     </view>
                 </viewController>
