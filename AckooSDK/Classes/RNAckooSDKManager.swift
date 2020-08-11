@@ -96,7 +96,7 @@ class RNAckooSDKManager:NSObject {
         }
         let activity:UserActivity = UserActivity(isLoggedIn: isLoggedIn, email: email)
         
-        AckooSDKManager.shared().reportPurchase(type: .purchase, activity: activity, order: order) { (succeeded, response) in
+        AckooSDKManager.shared().reportPurchase( activity: activity, order: order) { (succeeded, response) in
             if (succeeded) {
                 if let responseAny:AnyHashable = response as? AnyHashable {
                     RNCallBack([NSNull(),responseAny])

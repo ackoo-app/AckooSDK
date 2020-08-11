@@ -16,7 +16,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
     @IBAction func open(_ sender: Any) {
-        self.sendReportActivity(.openApp)
+        self.sendReportActivity(.login)
     }
     @IBAction func purchase(_ sender: Any) {
          self.sendReportActivity(.purchase)
@@ -30,7 +30,7 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     @IBAction func install(_ sender: Any) {
-         self.sendReportActivity(.installApp)
+         self.sendReportActivity(.login)
     }
     
     @IBAction func signup(_ sender: Any) {
@@ -47,7 +47,7 @@ class ViewController: UIViewController {
         if (name == .purchase) {
             let item:OrderItem = OrderItem.init(sku: "CM01-R", name: appDelegate.productName ?? "Default Product", amount: 13.35)
              let order:Order = Order(id: "135497-25943", totalAmount: 13.35, symbol: "USD", items: [item], createdOn:date , modifiedOn: date, validatedOn: date)
-            AckooSDKManager.shared().reportPurchase(type: name, activity: activity, order: order) { (succeeded, response) in
+            AckooSDKManager.shared().reportPurchase( activity: activity, order: order) { (succeeded, response) in
                 print(succeeded)
             }
         } else {
