@@ -33,11 +33,12 @@ public class AckooSDKManager {
     /// The shared singleton AckooSDKManager object
     /// Which will be used report related activity to the backend.
     private static var sharedManager: AckooSDKManager = {
-        let sdkManager = AckooSDKManager(baseURL: URL(string: NetworkingManager.getApiBaseUrl(buildMode: BUILD_MODE))!)
-        
+        let sdkManager = AckooSDKManager()
         return sdkManager
     }()
-    
+    public class func initaliseSharedInstance(appToken:String) {
+        AckooSDKManager.shared().appToken = appToken
+    }
     private var isUserActive:Bool = false {
         didSet {
             if isUserActive == false {
@@ -45,10 +46,10 @@ public class AckooSDKManager {
             }
         }
     }
-   
+    private var appToken:String = ""
 
     /// Initialization
-    private init(baseURL: URL) {
+    private init() {
        
         //self.baseURL = baseURL
          
