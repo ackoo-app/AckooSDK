@@ -9,16 +9,11 @@ import Foundation
 
 /// User activity that holds information regarding user's actions
 
-class Payload:Encodable {
+struct Payload:Encodable {
     let name:AckooEventTypeString
-    let props:PayloadProperty
-    
-    init(type:AckooEventTypeString,payload:PayloadProperty) {
-        self.name = type
-        self.props = payload
-        
-    }
+    let props:[String: String]
 }
+
 class PayloadProperty:Encodable {
     /// Order details
     var orderDetail:Order?

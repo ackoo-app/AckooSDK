@@ -31,7 +31,7 @@ class RNAckooSDKManager:NSObject {
             isLoggedIn = isLoggedInBool
         }
         let activity:UserActivity = UserActivity(isLoggedIn: isLoggedIn, email: email)
-        AckooSDKManager.shared().reportActivity(type: typeEnum, activity: activity) { (succeeded, response) in
+        AckooSDKManager.shared().reportActivity(type: typeEnum) { (succeeded, response) in
             if (succeeded) {
                 if let responseAny:AnyHashable = response as? AnyHashable {
                   print("Swift response is \(response)")
@@ -50,24 +50,24 @@ class RNAckooSDKManager:NSObject {
     @objc
     func reportPurchase(_ values:NSDictionary,RNCallBack:@escaping RNResponseSenderBlock)  {
         
-        guard let orderItemsArr:[[AnyHashable:Any]] = values["orderItems"] as? [[AnyHashable:Any]],orderItemsArr.count > 0 else {
-            RNCallBack(["Argument does not have order items",NSNull()])
-            return
-        }
+        // guard let orderItemsArr:[[AnyHashable:Any]] = values["orderItems"] as? [[AnyHashable:Any]],orderItemsArr.count > 0 else {
+        //     RNCallBack(["Argument does not have order items",NSNull()])
+        //     return
+        // }
         var orderItems:[OrderItem] = []
-        for orderItem in orderItemsArr {
-            guard let name:String = orderItem["productName"] as? String else {
-                RNCallBack(["Product Name doesn't exist",NSNull()])
-                return
-            }
-            guard let amount:Double = orderItem["amount"] as? Double else {
-                RNCallBack(["Product amount doesn't exist",NSNull()])
-                return
-            }
-            let sku:String? = orderItem["sku"] as? String
-            let orderItem:OrderItem = OrderItem(sku: sku, name: name, amount: amount)
-            orderItems.append(orderItem)
-        }
+        // for orderItem in orderItemsArr {
+        //     guard let name:String = orderItem["productName"] as? String else {
+        //         RNCallBack(["Product Name doesn't exist",NSNull()])
+        //         return
+        //     }
+        //     guard let amount:Double = orderItem["amount"] as? Double else {
+        //         RNCallBack(["Product amount doesn't exist",NSNull()])
+        //         return
+        //     }
+        //     let sku:String? = orderItem["sku"] as? String
+        //     let orderItem:OrderItem = OrderItem(sku: sku, name: name, amount: amount)
+        //     orderItems.append(orderItem)
+        // }
         guard let orderId:String = values["orderId"] as? String else {
             RNCallBack(["Order Informaton doesn't contains valid Id",NSNull()])
             return
@@ -79,11 +79,8 @@ class RNAckooSDKManager:NSObject {
             return
         }
         let symbol:String? = values["symbol"] as? String
-        let createdOn:Double? = values["createdOn"] as? Double
-        let modifiedOn:Double? = values["modifiedOn"] as? Double
-        let validatedOn:Double? = values["validatedOn"] as? Double
         
-        let order:Order = Order(id: orderId, totalAmount: totalAmount, symbol: symbol, items: orderItems, createdOn: createdOn, modifiedOn: modifiedOn, validatedOn: validatedOn)
+        let order:Order = Order(id: orderId, totalAmount: totalAmount, symbol: symbol!, items: orderItems)
         
         
         var email:String? = nil
@@ -96,7 +93,7 @@ class RNAckooSDKManager:NSObject {
         }
         let activity:UserActivity = UserActivity(isLoggedIn: isLoggedIn, email: email)
         
-        AckooSDKManager.shared().reportPurchase( activity: activity, order: order) { (succeeded, response) in
+        AckooSDKManager.shared().reportPurchase( order: order) { (succeeded, response) in
             if (succeeded) {
                 if let responseAny:AnyHashable = response as? AnyHashable {
                     RNCallBack([NSNull(),responseAny])
