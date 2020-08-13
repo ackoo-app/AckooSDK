@@ -73,7 +73,9 @@ public class AckooSDKManager {
     }
     
     public func identify(id: String, user: [String: String], callback: @escaping (_ succeeded: Bool, _ response: Any) -> Void) {
-        let payload = Payload(name: .login, props: user);
+        var updatedUser = user;
+        updatedUser["userId"] = id;
+        let payload = Payload(name: .login, props: updatedUser);
         if self.isUserActive {
             // No need to do anything
             self.sendEventToServer(payload: payload, callback: callback)
@@ -95,7 +97,7 @@ public class AckooSDKManager {
     ///   - activity: activity class that holds relevant information like token, email address
     ///   - callback: call back with server response or error.
     
-    public func reportActivity(type:AckooEventType ,callback: @escaping (_ succeeded: Bool, _ response: Any) -> Void) {
+    public func reportActivity(type:AckooEventType, callback: @escaping (_ succeeded: Bool, _ response: Any) -> Void) {
         let payload = Payload(name: getEventTypeInt(event:type), props: ["a": "b"]);
         
         // Check if token is acquired
