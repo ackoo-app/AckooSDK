@@ -2,6 +2,7 @@ use_frameworks!
 platform :ios, '11.0'
 target 'AckooSDK_Example' do
   pod 'AckooSDK', :path => '../'
+  pod 'SwiftFormat/CLI'
 
   target 'PartnerApp_DemoTests' do
     inherit! :search_paths

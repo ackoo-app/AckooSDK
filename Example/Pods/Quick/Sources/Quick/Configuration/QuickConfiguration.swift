@@ -3,15 +3,15 @@ import XCTest
 
 #if SWIFT_PACKAGE
 
-open class QuickConfiguration: NSObject {
-    open class func configure(_ configuration: Configuration) {}
-}
+    open class QuickConfiguration: NSObject {
+        open class func configure(_: Configuration) {}
+    }
 
 #endif
 
 extension QuickConfiguration {
     #if !canImport(Darwin)
-    private static var configurationSubclasses: [QuickConfiguration.Type] = []
+        private static var configurationSubclasses: [QuickConfiguration.Type] = []
     #endif
 
     /// Finds all direct subclasses of QuickConfiguration and passes them to the block provided.
@@ -21,47 +21,47 @@ extension QuickConfiguration {
     ///                    This block will be executed once for each subclass of QuickConfiguration.
     private static func enumerateSubclasses(_ block: (QuickConfiguration.Type) -> Void) {
         #if canImport(Darwin)
-        let classesCount = objc_getClassList(nil, 0)
+            let classesCount = objc_getClassList(nil, 0)
 
-        guard classesCount > 0 else {
-            return
-        }
+            guard classesCount > 0 else {
+                return
+            }
 
-        let classes = UnsafeMutablePointer<AnyClass?>.allocate(capacity: Int(classesCount))
-        defer { free(classes) }
+            let classes = UnsafeMutablePointer<AnyClass?>.allocate(capacity: Int(classesCount))
+            defer { free(classes) }
 
-        objc_getClassList(AutoreleasingUnsafeMutablePointer(classes), classesCount)
+            objc_getClassList(AutoreleasingUnsafeMutablePointer(classes), classesCount)
 
-        var configurationSubclasses: [QuickConfiguration.Type] = []
-        for index in 0..<classesCount {
-            guard
-                let subclass = classes[Int(index)],
-                let superclass = class_getSuperclass(subclass),
-                superclass is QuickConfiguration.Type
+            var configurationSubclasses: [QuickConfiguration.Type] = []
+            for index in 0 ..< classesCount {
+                guard
+                    let subclass = classes[Int(index)],
+                    let superclass = class_getSuperclass(subclass),
+                    superclass is QuickConfiguration.Type
                 else { continue }
 
-            // swiftlint:disable:next force_cast
-            configurationSubclasses.append(subclass as! QuickConfiguration.Type)
-        }
+                // swiftlint:disable:next force_cast
+                configurationSubclasses.append(subclass as! QuickConfiguration.Type)
+            }
         #endif
 
         configurationSubclasses.forEach(block)
     }
 
     #if canImport(Darwin)
-    @objc
-    static func configureSubclassesIfNeeded(world: World) {
-        _configureSubclassesIfNeeded(world: world)
-    }
-    #else
-    static func configureSubclassesIfNeeded(_ configurationSubclasses: [QuickConfiguration.Type]? = nil, world: World) {
-        // Storing subclasses for later use (will be used when running additional test suites)
-        if let configurationSubclasses = configurationSubclasses {
-            self.configurationSubclasses = configurationSubclasses
+        @objc
+        static func configureSubclassesIfNeeded(world: World) {
+            _configureSubclassesIfNeeded(world: world)
         }
+    #else
+        static func configureSubclassesIfNeeded(_ configurationSubclasses: [QuickConfiguration.Type]? = nil, world: World) {
+            // Storing subclasses for later use (will be used when running additional test suites)
+            if let configurationSubclasses = configurationSubclasses {
+                self.configurationSubclasses = configurationSubclasses
+            }
 
-        _configureSubclassesIfNeeded(world: world)
-    }
+            _configureSubclassesIfNeeded(world: world)
+        }
     #endif
 
     private static func _configureSubclassesIfNeeded(world: World) {

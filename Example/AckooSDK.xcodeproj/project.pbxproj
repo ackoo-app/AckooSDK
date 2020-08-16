@@ -200,10 +200,10 @@
 			buildPhases = (
 				BB81761FC94D622F086F89D6 /* [CP] Check Pods Manifest.lock */,
 				607FACCE1AFB9204008FA782 /* Resources */,
+				7C106CC724DEE08C0033CA51 /* ShellScript */,
 				607FACCC1AFB9204008FA782 /* Sources */,
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				C709580DEF8511C346B40771 /* [CP] Embed Pods Frameworks */,
-				7C106CC724DEE08C0033CA51 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -332,7 +332,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n#if which swiftlint >/dev/null; then\n#  swiftlint\n#else\n#  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\n#fi\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n#if which swiftlint >/dev/null; then\n#  swiftlint\n\"${PODS_ROOT}/SwiftFormat/CommandLineTool/swiftformat\" \"$SRCROOT\"\n";
 		};
 		A3E461F14F39282FE8514B0F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

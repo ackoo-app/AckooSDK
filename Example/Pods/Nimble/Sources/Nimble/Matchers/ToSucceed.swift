@@ -27,7 +27,7 @@ public func succeed() -> Predicate<() -> ToSucceedResult> {
                 bool: true,
                 message: .expectedCustomValueTo("succeed", "<succeeded>")
             )
-        case .failed(let reason):
+        case let .failed(reason):
             return PredicateResult(
                 bool: false,
                 message: .expectedCustomValueTo("succeed", "<failed> because <\(reason)>")

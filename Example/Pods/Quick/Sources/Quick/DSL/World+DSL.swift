@@ -1,10 +1,10 @@
 import Foundation
 
 /**
-    Adds methods to World to support top-level DSL functions (Swift) and
-    macros (Objective-C). These functions map directly to the DSL that test
-    writers use in their specs.
-*/
+ Adds methods to World to support top-level DSL functions (Swift) and
+ macros (Objective-C). These functions map directly to the DSL that test
+ writers use in their specs.
+ */
 extension World {
     internal func beforeSuite(_ closure: @escaping BeforeSuiteClosure) {
         suiteHooks.appendBefore(closure)
@@ -35,19 +35,19 @@ extension World {
         guard currentExampleMetadata == nil else {
             raiseError("'context' cannot be used inside '\(currentPhase)', 'context' may only be used inside 'context' or 'describe'.")
         }
-        self.describe(description, flags: flags, closure: closure)
+        describe(description, flags: flags, closure: closure)
     }
 
     internal func fdescribe(_ description: String, flags: FilterFlags, closure: () -> Void) {
         var focusedFlags = flags
         focusedFlags[Filter.focused] = true
-        self.describe(description, flags: focusedFlags, closure: closure)
+        describe(description, flags: focusedFlags, closure: closure)
     }
 
     internal func xdescribe(_ description: String, flags: FilterFlags, closure: () -> Void) {
         var pendingFlags = flags
         pendingFlags[Filter.pending] = true
-        self.describe(description, flags: pendingFlags, closure: closure)
+        describe(description, flags: pendingFlags, closure: closure)
     }
 
     internal func beforeEach(_ closure: @escaping BeforeExampleClosure) {
@@ -57,16 +57,16 @@ extension World {
         currentExampleGroup.hooks.appendBefore(closure)
     }
 
-#if canImport(Darwin)
-    @objc(beforeEachWithMetadata:)
-    internal func beforeEach(closure: @escaping BeforeExampleWithMetadataClosure) {
-        currentExampleGroup.hooks.appendBefore(closure)
-    }
-#else
-    internal func beforeEach(closure: @escaping BeforeExampleWithMetadataClosure) {
-        currentExampleGroup.hooks.appendBefore(closure)
-    }
-#endif
+    #if canImport(Darwin)
+        @objc(beforeEachWithMetadata:)
+        internal func beforeEach(closure: @escaping BeforeExampleWithMetadataClosure) {
+            currentExampleGroup.hooks.appendBefore(closure)
+        }
+    #else
+        internal func beforeEach(closure: @escaping BeforeExampleWithMetadataClosure) {
+            currentExampleGroup.hooks.appendBefore(closure)
+        }
+    #endif
 
     internal func afterEach(_ closure: @escaping AfterExampleClosure) {
         guard currentExampleMetadata == nil else {
@@ -75,16 +75,16 @@ extension World {
         currentExampleGroup.hooks.appendAfter(closure)
     }
 
-#if canImport(Darwin)
-    @objc(afterEachWithMetadata:)
-    internal func afterEach(closure: @escaping AfterExampleWithMetadataClosure) {
-        currentExampleGroup.hooks.appendAfter(closure)
-    }
-#else
-    internal func afterEach(closure: @escaping AfterExampleWithMetadataClosure) {
-        currentExampleGroup.hooks.appendAfter(closure)
-    }
-#endif
+    #if canImport(Darwin)
+        @objc(afterEachWithMetadata:)
+        internal func afterEach(closure: @escaping AfterExampleWithMetadataClosure) {
+            currentExampleGroup.hooks.appendAfter(closure)
+        }
+    #else
+        internal func afterEach(closure: @escaping AfterExampleWithMetadataClosure) {
+            currentExampleGroup.hooks.appendAfter(closure)
+        }
+    #endif
 
     @nonobjc
     internal func it(_ description: String, flags: FilterFlags, file: FileString, line: UInt, closure: @escaping () throws -> Void) {
@@ -106,14 +106,14 @@ extension World {
     internal func fit(_ description: String, flags: FilterFlags, file: FileString, line: UInt, closure: @escaping () throws -> Void) {
         var focusedFlags = flags
         focusedFlags[Filter.focused] = true
-        self.it(description, flags: focusedFlags, file: file, line: line, closure: closure)
+        it(description, flags: focusedFlags, file: file, line: line, closure: closure)
     }
 
     @nonobjc
     internal func xit(_ description: String, flags: FilterFlags, file: FileString, line: UInt, closure: @escaping () throws -> Void) {
         var pendingFlags = flags
         pendingFlags[Filter.pending] = true
-        self.it(description, flags: pendingFlags, file: file, line: line, closure: closure)
+        it(description, flags: pendingFlags, file: file, line: line, closure: closure)
     }
 
     @nonobjc
@@ -140,7 +140,7 @@ extension World {
     internal func fitBehavesLike(_ name: String, sharedExampleContext: @escaping SharedExampleContext, flags: FilterFlags, file: FileString, line: UInt) {
         var focusedFlags = flags
         focusedFlags[Filter.focused] = true
-        self.itBehavesLike(name, sharedExampleContext: sharedExampleContext, flags: focusedFlags, file: file, line: line)
+        itBehavesLike(name, sharedExampleContext: sharedExampleContext, flags: focusedFlags, file: file, line: line)
     }
 
     internal func itBehavesLike<C>(_ behavior: Behavior<C>.Type, context: @escaping () -> C, flags: FilterFlags, file: FileString, line: UInt) {
@@ -164,38 +164,38 @@ extension World {
     internal func fitBehavesLike<C>(_ behavior: Behavior<C>.Type, context: @escaping () -> C, flags: FilterFlags, file: FileString, line: UInt) {
         var focusedFlags = flags
         focusedFlags[Filter.focused] = true
-        self.itBehavesLike(behavior, context: context, flags: focusedFlags, file: file, line: line)
+        itBehavesLike(behavior, context: context, flags: focusedFlags, file: file, line: line)
     }
 
     internal func xitBehavesLike<C>(_ behavior: Behavior<C>.Type, context: @escaping () -> C, flags: FilterFlags, file: FileString, line: UInt) {
         var pendingFlags = flags
         pendingFlags[Filter.pending] = true
-        self.itBehavesLike(behavior, context: context, flags: pendingFlags, file: file, line: line)
+        itBehavesLike(behavior, context: context, flags: pendingFlags, file: file, line: line)
     }
 
-#if canImport(Darwin) && !SWIFT_PACKAGE
-    @objc(itWithDescription:flags:file:line:closure:)
-    internal func objc_it(_ description: String, flags: FilterFlags, file: FileString, line: UInt, closure: @escaping () -> Void) {
-        it(description, flags: flags, file: file, line: line, closure: closure)
-    }
+    #if canImport(Darwin) && !SWIFT_PACKAGE
+        @objc(itWithDescription:flags:file:line:closure:)
+        internal func objc_it(_ description: String, flags: FilterFlags, file: FileString, line: UInt, closure: @escaping () -> Void) {
+            it(description, flags: flags, file: file, line: line, closure: closure)
+        }
 
-    @objc(fitWithDescription:flags:file:line:closure:)
-    internal func objc_fit(_ description: String, flags: FilterFlags, file: FileString, line: UInt, closure: @escaping () -> Void) {
-        fit(description, flags: flags, file: file, line: line, closure: closure)
-    }
+        @objc(fitWithDescription:flags:file:line:closure:)
+        internal func objc_fit(_ description: String, flags: FilterFlags, file: FileString, line: UInt, closure: @escaping () -> Void) {
+            fit(description, flags: flags, file: file, line: line, closure: closure)
+        }
 
-    @objc(xitWithDescription:flags:file:line:closure:)
-    internal func objc_xit(_ description: String, flags: FilterFlags, file: FileString, line: UInt, closure: @escaping () -> Void) {
-        xit(description, flags: flags, file: file, line: line, closure: closure)
-    }
+        @objc(xitWithDescription:flags:file:line:closure:)
+        internal func objc_xit(_ description: String, flags: FilterFlags, file: FileString, line: UInt, closure: @escaping () -> Void) {
+            xit(description, flags: flags, file: file, line: line, closure: closure)
+        }
 
-    @objc(itBehavesLikeSharedExampleNamed:sharedExampleContext:flags:file:line:)
-    internal func objc_itBehavesLike(_ name: String, sharedExampleContext: @escaping SharedExampleContext, flags: FilterFlags, file: FileString, line: UInt) {
-        itBehavesLike(name, sharedExampleContext: sharedExampleContext, flags: flags, file: file, line: line)
-    }
-#endif
+        @objc(itBehavesLikeSharedExampleNamed:sharedExampleContext:flags:file:line:)
+        internal func objc_itBehavesLike(_ name: String, sharedExampleContext: @escaping SharedExampleContext, flags: FilterFlags, file: FileString, line: UInt) {
+            itBehavesLike(name, sharedExampleContext: sharedExampleContext, flags: flags, file: file, line: line)
+        }
+    #endif
 
-    internal func pending(_ description: String, closure: () -> Void) {
+    internal func pending(_ description: String, closure _: () -> Void) {
         print("Pending: \(description)")
     }
 

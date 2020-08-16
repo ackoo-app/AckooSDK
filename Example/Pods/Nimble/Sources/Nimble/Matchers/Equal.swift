@@ -12,7 +12,7 @@ public func equal<T: Equatable>(_ expectedValue: T?) -> Predicate<T> {
             return PredicateResult(status: .fail, message: msg.appendedBeNilHint())
         case (nil, nil), (_, nil):
             return PredicateResult(status: .fail, message: msg)
-        case (let expected?, let actual?):
+        case let (expected?, actual?):
             let matches = expected == actual
             return PredicateResult(bool: matches, message: msg)
         }
@@ -90,26 +90,26 @@ private func equal<T>(_ expectedValue: Set<T>?, stringify: @escaping (Set<T>?) -
         if extra.count > 0 {
             errorMessage = errorMessage.appended(message: ", extra <\(stringify(extra))>")
         }
-        return  PredicateResult(
+        return PredicateResult(
             status: .doesNotMatch,
             message: errorMessage
         )
     }
 }
 
-public func ==<T: Equatable>(lhs: Expectation<T>, rhs: T?) {
+public func == <T: Equatable>(lhs: Expectation<T>, rhs: T?) {
     lhs.to(equal(rhs))
 }
 
-public func !=<T: Equatable>(lhs: Expectation<T>, rhs: T?) {
+public func != <T: Equatable>(lhs: Expectation<T>, rhs: T?) {
     lhs.toNot(equal(rhs))
 }
 
-public func ==<T: Equatable>(lhs: Expectation<[T]>, rhs: [T]?) {
+public func == <T: Equatable>(lhs: Expectation<[T]>, rhs: [T]?) {
     lhs.to(equal(rhs))
 }
 
-public func !=<T: Equatable>(lhs: Expectation<[T]>, rhs: [T]?) {
+public func != <T: Equatable>(lhs: Expectation<[T]>, rhs: [T]?) {
     lhs.toNot(equal(rhs))
 }
 
@@ -121,28 +121,28 @@ public func != <T>(lhs: Expectation<Set<T>>, rhs: Set<T>?) {
     lhs.toNot(equal(rhs))
 }
 
-public func ==<T: Comparable>(lhs: Expectation<Set<T>>, rhs: Set<T>?) {
+public func == <T: Comparable>(lhs: Expectation<Set<T>>, rhs: Set<T>?) {
     lhs.to(equal(rhs))
 }
 
-public func !=<T: Comparable>(lhs: Expectation<Set<T>>, rhs: Set<T>?) {
+public func != <T: Comparable>(lhs: Expectation<Set<T>>, rhs: Set<T>?) {
     lhs.toNot(equal(rhs))
 }
 
-public func ==<T, C: Equatable>(lhs: Expectation<[T: C]>, rhs: [T: C]?) {
+public func == <T, C: Equatable>(lhs: Expectation<[T: C]>, rhs: [T: C]?) {
     lhs.to(equal(rhs))
 }
 
-public func !=<T, C: Equatable>(lhs: Expectation<[T: C]>, rhs: [T: C]?) {
+public func != <T, C: Equatable>(lhs: Expectation<[T: C]>, rhs: [T: C]?) {
     lhs.toNot(equal(rhs))
 }
 
 #if canImport(Darwin)
-extension NMBObjCMatcher {
-    @objc public class func equalMatcher(_ expected: NSObject) -> NMBMatcher {
-        return NMBPredicate { actualExpression in
-            return try equal(expected).satisfies(actualExpression).toObjectiveC()
+    extension NMBObjCMatcher {
+        @objc public class func equalMatcher(_ expected: NSObject) -> NMBMatcher {
+            return NMBPredicate { actualExpression in
+                try equal(expected).satisfies(actualExpression).toObjectiveC()
+            }
         }
     }
-}
 #endif

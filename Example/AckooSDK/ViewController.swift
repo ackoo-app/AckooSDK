@@ -6,101 +6,98 @@
 //  Copyright (c) 2020 mihirpmehta. All rights reserved.
 //
 
-import UIKit
 import AckooSDK
+import Foundation
+import UIKit
 
 class ViewController: UIViewController {
-    
-    @IBOutlet weak var isSdkActiveLabel: UILabel!
-    @IBOutlet weak var sdkSessionTokenLabel: UILabel!
-    
-    @IBOutlet weak var userIdInput: UITextField!
-    @IBOutlet weak var userEmailInput: UITextField!
-    
-    @IBOutlet weak var amountInput: UITextField!
-    @IBOutlet weak var currencyInput: UITextField!
+    @IBOutlet var isSdkActiveLabel: UILabel!
+    @IBOutlet var sdkSessionTokenLabel: UILabel!
+
+    @IBOutlet var userIdInput: UITextField!
+    @IBOutlet var userEmailInput: UITextField!
+
+    @IBOutlet var amountInput: UITextField!
+    @IBOutlet var currencyInput: UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // Do any additional setup after loading the view, typically from a nib.
     }
-    @IBAction func recheckIsSdkActive(_ sender: Any) {
-        isSdkActiveLabel.text = String(AckooSDKManager.shared().isUserValidForSDK());
-        sdkSessionTokenLabel.text = String(self.getToken());
+
+    @IBAction func recheckIsSdkActive(_: Any) {
+        isSdkActiveLabel.text = String(AckooSDKManager.shared().isUserValidForSDK())
+        sdkSessionTokenLabel.text = String(getToken())
     }
-    @IBAction func purchase(_ sender: Any) {
-         if (amountInput.text == nil || amountInput.text!.isEmpty) {
-             return showAlert(title: "validationError", message: "amount is empty")
-         }
-         
-         if (currencyInput.text == nil || currencyInput.text!.isEmpty) {
-             return showAlert(title: "validationError", message: "currency is empty")
-         }
-        let amount = Double(amountInput.text!);
-        let order = Order(id: "asd", totalAmount: amount! ,symbol: currencyInput.text!, items: []);
-        AckooSDKManager.shared().reportPurchase(order: order) { (succeeded, response) in
-            self.showAlert(title: "Purchase track: \(succeeded)", message: "check logs for errors");
-        };
+
+    @IBAction func purchase(_: Any) {
+        if amountInput.text == nil || amountInput.text!.isEmpty {
+            return showAlert(title: "validationError", message: "amount is empty")
+        }
+
+        if currencyInput.text == nil || currencyInput.text!.isEmpty {
+            return showAlert(title: "validationError", message: "currency is empty")
+        }
+        let amount = Double(amountInput.text!)
+        let order = Order(id: "asd", totalAmount: amount!, symbol: currencyInput.text!, items: [])
+        AckooSDKManager.shared().reportPurchase(order: order) { succeeded, response in
+            var message = ""
+            if succeeded {
+                print(response)
+            } else {
+                if let errorMessage = (response as! [String: Any])["error"] as! String? {
+                    message = errorMessage
+                } else {
+                    message = "unknown error"
+                }
+            }
+            self.showAlert(title: "Purchase track: \(succeeded)", message: message)
+        }
     }
-    
-    @IBAction func login(_ sender: Any) {
-        //self.sendReportActivity(.login);
-        if (userIdInput.text == nil || userIdInput.text!.isEmpty) {
+
+    @IBAction func login(_: Any) {
+        // self.sendReportActivity(.login);
+        if userIdInput.text == nil || userIdInput.text!.isEmpty {
             return showAlert(title: "validationError", message: "userId is empty")
         }
-        
-        if (userEmailInput.text == nil || userEmailInput.text!.isEmpty) {
+
+        if userEmailInput.text == nil || userEmailInput.text!.isEmpty {
             return showAlert(title: "validationError", message: "user email is empty")
         }
-        
-//      print("userId: \(userIdInput.text!),     userEmail: \(userEmailInput.text!)");
-        AckooSDKManager.shared().identify(id: userIdInput.text!, user: ["email": userEmailInput.text!]) { (succeeded, response) in
-            self.showAlert(title: "Login track: \(succeeded)", message: "check logs for errors");
-        };
-        
-//        self.showAlert(title: userIdInput.text , message: userEmailInput);
+        AckooSDKManager.shared().identify(id: userIdInput.text!, user: ["email": userEmailInput.text!]) { succeeded, response in
+            var message = ""
+            if succeeded {
+                print(response)
+            } else {
+                if let errorMessage = (response as! [String: Any])["error"] as! String? {
+                    message = errorMessage
+                } else {
+                    message = "unknown error"
+                }
+            }
+
+            self.showAlert(title: "Login track: \(succeeded)", message: message)
+        }
     }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
     func getToken() -> String {
-        if let token:String = UserDefaults.standard.object(forKey: "AckooSDKSessionToken") as? String {
+        if let token: String = UserDefaults.standard.object(forKey: "AckooSDKSessionToken") as? String {
             return token
         }
-        return "empty";
+        return "empty"
     }
+
     func showAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { action in
-            print("Alert dismissed");
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { _ in
+            print("Alert dismissed")
         }))
-        self.present(alert, animated: true)
-    }
-    func sendReportActivity(_ name: AckooEventType) {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        
-        let date:TimeInterval = Date().timeIntervalSince1970
-       
-        let activity:UserActivity = UserActivity.init(isLoggedIn: true, email: "user@gmail.com")
-        if (name == .purchase) {
-            let item:OrderItem = OrderItem.init(sku: "CM01-R", name: appDelegate.productName ?? "Default Product", amount: 13.35)
-             let order:Order = Order(id: "135497-25943", totalAmount: 13.35, symbol: "USD", items: [item])
-            AckooSDKManager.shared().reportPurchase( order: order) { (succeeded, response) in
-                print(succeeded)
-            }
-        } else {
-            AckooSDKManager.shared().reportActivity(type: name) { (succeeded, response) in
-                print(succeeded)
-            }
-        }
-//        AckooSDKManager.shared().isUserValidForSDK { (isValid) in
-//            if (isValid) {
-//                //report the activity or purchase
-//            }
-//        }
-        
+        present(alert, animated: true)
     }
 }
-

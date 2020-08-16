@@ -1,12 +1,12 @@
 import Foundation
 
 /**
-    Example groups are logical groupings of examples, defined with
-    the `describe` and `context` functions. Example groups can share
-    setup and teardown code.
-*/
-final public class ExampleGroup: NSObject {
-    weak internal var parent: ExampleGroup?
+ Example groups are logical groupings of examples, defined with
+ the `describe` and `context` functions. Example groups can share
+ setup and teardown code.
+ */
+public final class ExampleGroup: NSObject {
+    internal weak var parent: ExampleGroup?
     internal let hooks = ExampleHooks()
 
     internal var phase: HooksPhase = .nothingExecuted
@@ -18,28 +18,28 @@ final public class ExampleGroup: NSObject {
     private var childExamples = [Example]()
 
     internal init(description: String, flags: FilterFlags, isInternalRootExampleGroup: Bool = false) {
-        self.internalDescription = description
+        internalDescription = description
         self.flags = flags
         self.isInternalRootExampleGroup = isInternalRootExampleGroup
     }
 
-    public override var description: String {
+    override public var description: String {
         return internalDescription
     }
 
     /**
-        Returns a list of examples that belong to this example group,
-        or to any of its descendant example groups.
-    */
+         Returns a list of examples that belong to this example group,
+         or to any of its descendant example groups.
+     */
     #if canImport(Darwin)
-    @objc
-    public var examples: [Example] {
-        return childExamples + childGroups.flatMap { $0.examples }
-    }
+        @objc
+        public var examples: [Example] {
+            return childExamples + childGroups.flatMap { $0.examples }
+        }
     #else
-    public var examples: [Example] {
-        return childExamples + childGroups.flatMap { $0.examples }
-    }
+        public var examples: [Example] {
+            return childExamples + childGroups.flatMap { $0.examples }
+        }
     #endif
 
     internal var name: String? {
