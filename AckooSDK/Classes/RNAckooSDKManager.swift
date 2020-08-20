@@ -22,16 +22,9 @@ class RNAckooSDKManager:NSObject {
             RNCallBack(["Not valid type of Event",NSNull()])
             return
         }
-        var email:String? = nil
-        var isLoggedIn:Bool? = nil
-        if let emailStr:String = values["email"] as? String {
-            email = emailStr
-        }
-        if let isLoggedInBool:Bool = values["isLoggedIn"] as? Bool {
-            isLoggedIn = isLoggedInBool
-        }
-        let activity:UserActivity = UserActivity(isLoggedIn: isLoggedIn, email: email)
-        AckooSDKManager.shared().reportActivity(type: typeEnum, activity: activity) { (succeeded, response) in
+       
+        
+        AckooSDKManager.shared().reportActivity(type: typeEnum) { (succeeded, response) in
             if (succeeded) {
                 if let responseAny:AnyHashable = response as? AnyHashable {
                   print("Swift response is \(response)")
@@ -79,24 +72,8 @@ class RNAckooSDKManager:NSObject {
             return
         }
         let symbol:String? = values["symbol"] as? String
-        let createdOn:Double? = values["createdOn"] as? Double
-        let modifiedOn:Double? = values["modifiedOn"] as? Double
-        let validatedOn:Double? = values["validatedOn"] as? Double
-        
-        let order:Order = Order(id: orderId, totalAmount: totalAmount, symbol: symbol, items: orderItems, createdOn: createdOn, modifiedOn: modifiedOn, validatedOn: validatedOn)
-        
-        
-        var email:String? = nil
-        var isLoggedIn:Bool? = nil
-        if let emailStr:String = values["email"] as? String {
-            email = emailStr
-        }
-        if let isLoggedInBool:Bool = values["isLoggedIn"] as? Bool {
-            isLoggedIn = isLoggedInBool
-        }
-        let activity:UserActivity = UserActivity(isLoggedIn: isLoggedIn, email: email)
-        
-        AckooSDKManager.shared().reportPurchase( activity: activity, order: order) { (succeeded, response) in
+        let order:Order = Order(id: orderId, totalAmount: totalAmount, symbol: symbol ?? "USD", items: orderItems)
+        AckooSDKManager.shared().reportPurchase(order: order) { (succeeded, response) in
             if (succeeded) {
                 if let responseAny:AnyHashable = response as? AnyHashable {
                     RNCallBack([NSNull(),responseAny])
