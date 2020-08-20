@@ -68,10 +68,15 @@ public class AckooSDKManager {
             print(response)
         }
     }
-    public func setSDKSessionFromUniversalLink(link:URL) {
-        let params:[String:String] = link.queryParams()
-        if let sessionToken:String = params["sessionToken"] {
-            self.storeSessionInUserDefault(sessionToken: sessionToken)
+    public func setSDKSessionFromUniversalLink(userActivity:NSUserActivity) {
+        if userActivity.activityType == NSUserActivityTypeBrowsingWeb {
+                if let url = userActivity.webpageURL {
+                print(url.absoluteString)
+                let params:[String:String] = url.queryParams()
+                if let sessionToken:String = params["sessionToken"] {
+                    self.storeSessionInUserDefault(sessionToken: sessionToken)
+                }
+            }
         }
     }
     

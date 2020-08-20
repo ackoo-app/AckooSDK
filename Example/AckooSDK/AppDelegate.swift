@@ -44,6 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
         print("Continue User Activity called: ")
+        AckooSDKManager.shared().setSDKSessionFromUniversalLink(userActivity: userActivity)
         if userActivity.activityType == NSUserActivityTypeBrowsingWeb {
             if let url = userActivity.webpageURL {
                 print(url.absoluteString)

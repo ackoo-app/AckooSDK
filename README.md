@@ -17,7 +17,7 @@ AckooSDK is available through [CocoaPods](https://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
-platform :ios, '11.0'
+platform :ios, '9.0'
 source 'https://github.com/ackoo-app/AckooPrivateTrunk.git'
 ...
 pod 'AckooSDK'
@@ -27,23 +27,25 @@ pod 'AckooSDK'
 
 ### AppDelegate
 
+Initalise SDK  in **application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {** in your Appdelegate class 
+
+```swift
+func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+
+    AckooSDK.AckooSDKManager.initaliseSharedInstance(appToken:Bundle.main.bundleIdentifier!)
+    ...
+}
+
+```
 Implement **application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {** in your Appdelegate class or SceneDelegate class
 
 ```swift
 func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
-    print("Continue User Activity called: ")
-    if userActivity.activityType == NSUserActivityTypeBrowsingWeb {
-        let url = userActivity.webpageURL!
-        print(url.absoluteString)
-    }
+    AckooSDKManager.shared().setSDKSessionFromUniversalLink(userActivity: userActivity)
 }
 
 func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
-    print("Continue User Activity called: ")
-    if userActivity.activityType == NSUserActivityTypeBrowsingWeb {
-        let url = userActivity.webpageURL!
-        print(url.absoluteString)
-    }
+    AckooSDKManager.shared().setSDKSessionFromUniversalLink(userActivity: userActivity)
 }
 
 ```
@@ -57,18 +59,18 @@ When user performs any activity. You need to pass on this information to the Ack
 
 /// Type of the event that AckooSDK supports. Which will be sent
 /// When usere performs the particular action (like register, open app, login, purchase)
-public enum AckooEventType {
-    /// When user installs application
-    case installApp
-    
-    /// When user opens app
-    case openApp
+public enum AckooEventTypeString:String,Encodable {
     
     /// when user logs-in in the app
-    case login
+    case login = "PARTNER_APP_LOGIN"
     
     /// When user make the actual purchase of the item
-    case purchase
+    case purchase = "PARTNER_APP_PURCHASE"
+}
+
+/// For React native compatibility
+ public enum AckooEventType: Int,Encodable {
+    case login,purchase
 }
 
 ```

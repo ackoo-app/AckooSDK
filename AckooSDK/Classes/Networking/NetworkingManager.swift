@@ -27,8 +27,10 @@ var BUILD_MODE:BuildMode = BuildMode.qa
 struct Config: Decodable {
     private enum CodingKeys: String, CodingKey {
         case ackooBaseURL
+        case partnerToken
     }
     let ackooBaseURL: String
+    let partnerToken: String
     
 }
 ///
@@ -39,9 +41,14 @@ class NetworkingManager {
     static let sharedInstance = NetworkingManager()
     let currentBuildMode:BuildMode = BUILD_MODE
     var API_BASE_URL:String
+    var partnerToken:String
 
      init() {
         self.API_BASE_URL = NetworkingManager.getApiBaseUrl(buildMode: currentBuildMode)
+        self.partnerToken = NetworkingManager.getPartnerToken()
+        if (self.partnerToken.isEmpty) {
+            fatalError("Please add partner token is the AckooSDK.plist file")
+        }
     }
     
     class func parseConfig() -> Config? {
@@ -62,12 +69,21 @@ class NetworkingManager {
                 if let config:Config = self.parseConfig() {
                     apiBaseURL = config.ackooBaseURL //QA
                 }
+
                 //Read from AckooBaseURL
                 
             break
            
          }
         return apiBaseURL
+     }
+    
+    class func getPartnerToken() -> String {
+        var partnerToken: String = ""
+        if let config:Config = self.parseConfig() {
+            partnerToken = config.partnerToken //QA
+        }
+        return partnerToken
      }
     
     func prepareRequestToServerWith(_ requestString:String, methodType:String,params:Data?) -> URLRequest?  {
@@ -228,7 +244,7 @@ class NetworkingManager {
         if !sessionToken.isEmpty {
             request.addValue(sessionToken, forHTTPHeaderField: "session-token")
         }
-        
+        request.addValue(self.partnerToken, forHTTPHeaderField: "partner-token")
         return request
         ////print(request.allHTTPHeaderFields)
     }
