@@ -17,9 +17,10 @@ private func async<T>(style: ExpectationStyle, predicate: Predicate<T>, timeout:
             timeoutInterval: timeout,
             file: actualExpression.location.file,
             line: actualExpression.location.line,
-            fnName: fnName) {
-                lastPredicateResult = try predicate.satisfies(uncachedExpression)
-                return lastPredicateResult!.toBoolean(expectation: style)
+            fnName: fnName
+        ) {
+            lastPredicateResult = try predicate.satisfies(uncachedExpression)
+            return lastPredicateResult!.toBoolean(expectation: style)
         }
         switch result {
         case .completed: return lastPredicateResult!
@@ -43,9 +44,9 @@ private func async<T>(style: ExpectationStyle, predicate: Predicate<T>, timeout:
 
 private let toEventuallyRequiresClosureError = FailureMessage(
     stringValue: """
-        expect(...).toEventually(...) requires an explicit closure (eg - expect { ... }.toEventually(...) )
-        Swift 1.2 @autoclosure behavior has changed in an incompatible way for Nimble to function
-        """
+    expect(...).toEventually(...) requires an explicit closure (eg - expect { ... }.toEventually(...) )
+    Swift 1.2 @autoclosure behavior has changed in an incompatible way for Nimble to function
+    """
 )
 
 extension Expectation {
@@ -117,7 +118,8 @@ extension Expectation {
     /// This function manages the main run loop (`NSRunLoop.mainRunLoop()`) while this function
     /// is executing. Any attempts to touch the run loop may cause non-deterministic behavior.
     public func toEventually<U>(_ matcher: U, timeout: TimeInterval = AsyncDefaults.Timeout, pollInterval: TimeInterval = AsyncDefaults.PollInterval, description: String? = nil)
-        where U: Matcher, U.ValueType == T {
+        where U: Matcher, U.ValueType == T
+    {
         if expression.isClosure {
             let (pass, msg) = execute(
                 expression,
@@ -146,7 +148,8 @@ extension Expectation {
     /// This function manages the main run loop (`NSRunLoop.mainRunLoop()`) while this function
     /// is executing. Any attempts to touch the run loop may cause non-deterministic behavior.
     public func toEventuallyNot<U>(_ matcher: U, timeout: TimeInterval = AsyncDefaults.Timeout, pollInterval: TimeInterval = AsyncDefaults.PollInterval, description: String? = nil)
-        where U: Matcher, U.ValueType == T {
+        where U: Matcher, U.ValueType == T
+    {
         if expression.isClosure {
             let (pass, msg) = expressionDoesNotMatch(
                 expression,
@@ -175,7 +178,8 @@ extension Expectation {
     /// This function manages the main run loop (`NSRunLoop.mainRunLoop()`) while this function
     /// is executing. Any attempts to touch the run loop may cause non-deterministic behavior.
     public func toNotEventually<U>(_ matcher: U, timeout: TimeInterval = AsyncDefaults.Timeout, pollInterval: TimeInterval = AsyncDefaults.PollInterval, description: String? = nil)
-        where U: Matcher, U.ValueType == T {
+        where U: Matcher, U.ValueType == T
+    {
         return toEventuallyNot(matcher, timeout: timeout, pollInterval: pollInterval, description: description)
     }
 }

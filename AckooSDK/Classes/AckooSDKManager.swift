@@ -37,22 +37,13 @@ public class AckooSDKManager {
         return sdkManager
     }()
     public class func initaliseSharedInstance(appToken:String) {
-        AckooSDKManager.shared().appToken = appToken
+        AckooSDKManager.shared().appToken = appToken;
     }
-    private var isUserActive:Bool = false {
-        didSet {
-            if isUserActive == false {
-                UserDefaults.standard.removeObject(forKey: Constants.SDK_KEYS.SESSION_TOKEN)
-            }
-        }
-    }
+    private var isUserActive:Bool = false
     private var appToken:String = ""
 
     /// Initialization
     private init() {
-       
-        //self.baseURL = baseURL
-         
         let notificationCenter = NotificationCenter.default
                notificationCenter.addObserver(self, selector: #selector(appMovedToForeground), name: UIApplication.didBecomeActiveNotification, object: nil)
     }
@@ -63,24 +54,44 @@ public class AckooSDKManager {
         
         return sharedManager
     }
-  @objc func appMovedToForeground() {
+    @objc func appMovedToForeground() {
         self.validateAckooSession { (succeeded, response) in
             print(response)
         }
     }
+
     public func setSDKSessionFromUniversalLink(userActivity:NSUserActivity) {
-        if userActivity.activityType == NSUserActivityTypeBrowsingWeb {
-                if let url = userActivity.webpageURL {
-                print(url.absoluteString)
-                let params:[String:String] = url.queryParams()
-                if let sessionToken:String = params["sessionToken"] {
-                    self.storeSessionInUserDefault(sessionToken: sessionToken)
-                }
+          if userActivity.activityType == NSUserActivityTypeBrowsingWeb {
+                  if let url = userActivity.webpageURL {
+                  print(url.absoluteString)
+                  let params:[String:String] = url.queryParams()
+                    if let sessionToken:String = params["sessionToken"] {
+                        self.enableSDK(sessionToken: sessionToken)
+                    }
             }
+
         }
     }
     
     
+    public func identify(id: String, user: [String: String], callback: @escaping (_ succeeded: Bool, _ response: Any) -> Void) {
+        var updatedUser = user;
+        updatedUser["userId"] = id;
+        let payload = Payload(name: .login, props: updatedUser);
+        if self.isUserActive {
+            // No need to do anything
+            self.sendEventToServer(payload: payload, callback: callback)
+        } else {
+            self.validateAckooSession { (succeeded, response) in
+                if succeeded {
+                    self.sendEventToServer(payload: payload, callback: callback)
+                } else {
+                    //Session not found
+                    callback(false, [Constants.RESPONSE_KEYS.NEW_ERROR_MESSAGE:Constants.ENGLISH.SESSION_NOT_VALID])
+                }
+            }
+        }
+    }
     /// Report user activity to Ackoo backend
     /// - Attention: callback will be always called on the main thread.
     /// - Parameters:
@@ -88,21 +99,20 @@ public class AckooSDKManager {
     ///   - activity: activity class that holds relevant information like token, email address
     ///   - callback: call back with server response or error.
     
-    public func reportActivity(type:AckooEventType,activity:UserActivity,callback: @escaping (_ succeeded: Bool, _ response: Any) -> Void) {
+    public func reportActivity(type:AckooEventType, callback: @escaping (_ succeeded: Bool, _ response: Any) -> Void) {
+        let payload = Payload(name: getEventTypeName(event:type), props: ["a": "b"]);
         
         // Check if token is acquired
         if !self.isUserActive {
             // No need to do anything
-            self.sendEventToServer(type: type, activity: activity, order: nil, callback: callback)
+            self.sendEventToServer(payload: payload, callback: callback)
         } else {
             self.validateAckooSession { (succeeded, response) in
-                print(response)
                 if succeeded {
-                    self.sendEventToServer(type: type, activity: activity, order: nil, callback: callback)
+                    self.sendEventToServer(payload: payload, callback: callback)
                 } else {
                     //Session not found
                     callback(false, [Constants.RESPONSE_KEYS.NEW_ERROR_MESSAGE:Constants.ENGLISH.SESSION_NOT_VALID])
-                    
                 }
             }
         }
@@ -116,31 +126,33 @@ public class AckooSDKManager {
         return self.isUserActive
     }
     
-    func storeSessionInUserDefault(sessionToken:String) {
+    func enableSDK(sessionToken:String) {
         UserDefaults.standard.set(sessionToken, forKey: Constants.SDK_KEYS.SESSION_TOKEN)
         UserDefaults.standard.synchronize()
         isUserActive = true
+    }
+    func disbaleSDK() {
+        UserDefaults.standard.removeObject(forKey: Constants.SDK_KEYS.SESSION_TOKEN);
+        isUserActive = false
     }
     static func requiresMainQueueSetup() -> Bool {
         return true
     }
     /// Report user purchase activity to Ackoo backend
-       /// - Attention: callback will be always called on the main thread.
-       /// - Parameters:
-       ///   - type: type of event
-       ///   - activity: activity class that holds relevant information like token, email address
-       ///   - callback: call back with server response or error.
-     public func reportPurchase(activity:UserActivity,order:Order,callback: @escaping (_ succeeded: Bool, _ response: Any) -> Void) {
-           
+   /// - Attention: callback will be always called on the main thread.
+   /// - Parameters:
+   ///   - order: order class that holds the reported purchase information
+   ///   - callback: call back with server response or error.
+     public func reportPurchase(order:Order,callback: @escaping (_ succeeded: Bool, _ response: Any) -> Void) {
+        let payload = Payload(name: .purchase, props: order.toDict());
            // Check if token is acquired
         if !self.isUserActive {
-               // No need to do anything
-            self.sendEventToServer(type: .purchase, activity: activity, order: order, callback: callback)
+                // report event to server directly
+                self.sendEventToServer(payload: payload, callback: callback)
            } else {
                self.validateAckooSession { (succeeded, response) in
-                   print(response)
                    if succeeded {
-                    self.sendEventToServer(type: .purchase, activity: activity, order: order, callback: callback)
+                    self.sendEventToServer(payload: payload, callback: callback)
                    } else {
                        //Session not found
                        callback(false, [Constants.RESPONSE_KEYS.NEW_ERROR_MESSAGE:Constants.ENGLISH.SESSION_NOT_VALID])
@@ -150,18 +162,10 @@ public class AckooSDKManager {
            }
        }
     
-    private func sendEventToServer(type:AckooEventType,activity:UserActivity,order:Order?,callback: @escaping (_ succeeded: Bool, _ response: Any) -> Void) {
+    private func sendEventToServer(payload: Payload, callback: @escaping (_ succeeded: Bool, _ response: Any) -> Void) {
         let requestURL = Constants.URL_PATHS.TRACK
-        let payLoad:Payload
-        if (type == .purchase) {
-            let payLoadProperty:PayloadProperty = PayloadProperty(order: order, activity: activity)
-            payLoad = Payload(type: getEventTypeInt(event: type), payload: payLoadProperty)
-        } else {
-            let payLoadProperty:PayloadProperty = PayloadProperty(order: nil, activity: activity)
-            payLoad = Payload(type: getEventTypeInt(event: type), payload: payLoadProperty)
-        }
        do {
-       let jsonData = try JSONEncoder().encode(payLoad)
+       let jsonData = try JSONEncoder().encode(payload)
            NetworkingManager.sharedInstance.postRequest(jsonData, url: requestURL, callback: {(_ succeeded: Bool, _ response: Any) -> Void in
                DispatchQueue.main.async(execute: {() -> Void in
                    callback(succeeded, response)
@@ -172,7 +176,7 @@ public class AckooSDKManager {
            callback(false, [Constants.RESPONSE_KEYS.NEW_ERROR_MESSAGE:Constants.ENGLISH.INVALID_REQUEST])
        }
     }
-    private func getEventTypeInt(event:AckooEventType) -> AckooEventTypeString {
+    private func getEventTypeName(event:AckooEventType) -> AckooEventTypeString {
         switch event {
         case .login:
             return .login
@@ -183,11 +187,10 @@ public class AckooSDKManager {
     
     private func validateAckooSession(callback: @escaping (_ succeeded: Bool, _ response: Any) -> Void) {
         self.getTokenFromServer { (succeeded, response) in
-            print(response)
             if let response:[String:Any] =  response as? [String:Any] ,let responseDict:[String:Any] = response["data"] as? [String:Any], let sessionToken:String = responseDict["sessionToken"] as? String {
-                self.storeSessionInUserDefault(sessionToken: sessionToken)
+                self.enableSDK(sessionToken: sessionToken)
             } else {
-                self.isUserActive = false
+                self.disbaleSDK()
             }
             callback(succeeded,response)
         }
@@ -202,7 +205,6 @@ public class AckooSDKManager {
             //print(String(decoding: jsonData, as: UTF8.self))
             NetworkingManager.sharedInstance.postRequest(jsonData, url: requestURL, callback: {(_ succeeded: Bool, _ response: Any) -> Void in
                 // set token here
-                print(response)
                 callback(succeeded, response)
                 
             })
@@ -212,5 +214,4 @@ public class AckooSDKManager {
             callback(false, [Constants.RESPONSE_KEYS.NEW_ERROR_MESSAGE:Constants.ENGLISH.INVALID_REQUEST])
         }
     }
-
 }

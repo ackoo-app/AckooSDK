@@ -24,7 +24,6 @@ public class UserActivity:BaseActivity {
     /// - Parameters:
     ///   - isLoggedIn: wether user is logged In at the time of performing this activity
     ///   - email: email address of the user
-    ///   - order: Order details
     public init(isLoggedIn:Bool?,email:String?) {
        
         self.isLoggedIn = isLoggedIn

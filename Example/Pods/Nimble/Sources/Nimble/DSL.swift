@@ -6,7 +6,8 @@ public func expect<T>(_ expression: @autoclosure @escaping () throws -> T?, file
         expression: Expression(
             expression: expression,
             location: SourceLocation(file: file, line: line),
-            isClosure: true))
+            isClosure: true
+        ))
 }
 
 /// Make an expectation on a given actual value. The closure is lazily invoked.
@@ -15,7 +16,8 @@ public func expect<T>(_ file: FileString = #file, line: UInt = #line, expression
         expression: Expression(
             expression: expression,
             location: SourceLocation(file: file, line: line),
-            isClosure: true))
+            isClosure: true
+        ))
 }
 
 /// Always fails the test with a message and a specified location.
@@ -36,24 +38,25 @@ public func fail(_ file: FileString = #file, line: UInt = #line) {
 
 /// Like Swift's precondition(), but raises NSExceptions instead of sigaborts
 internal func nimblePrecondition(
-    _ expr: @autoclosure() -> Bool,
-    _ name: @autoclosure() -> String,
-    _ message: @autoclosure() -> String,
+    _ expr: @autoclosure () -> Bool,
+    _ name: @autoclosure () -> String,
+    _ message: @autoclosure () -> String,
     file: StaticString = #file,
-    line: UInt = #line) {
-        let result = expr()
-        if !result {
-#if canImport(Darwin)
+    line: UInt = #line
+) {
+    let result = expr()
+    if !result {
+        #if canImport(Darwin)
             let exception = NSException(
                 name: NSExceptionName(name()),
                 reason: message(),
                 userInfo: nil
             )
             exception.raise()
-#else
+        #else
             preconditionFailure("\(name()) - \(message())", file: file, line: line)
-#endif
-        }
+        #endif
+    }
 }
 
 internal func internalError(_ msg: String, file: FileString = #file, line: UInt = #line) -> Never {

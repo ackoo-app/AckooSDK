@@ -8,7 +8,8 @@ internal func setFailureMessageForError<T: Error>(
     actualError: Error?,
     error: T? = nil,
     errorType: T.Type? = nil,
-    closure: ((T) -> Void)? = nil) {
+    closure: ((T) -> Void)? = nil
+) {
     failureMessage.postfixMessage = "\(postfixMessageVerb) error"
 
     if let error = error {
@@ -19,7 +20,7 @@ internal func setFailureMessageForError<T: Error>(
     if closure != nil {
         failureMessage.postfixMessage += " that satisfies block"
     }
-    if error == nil && errorType == nil && closure == nil {
+    if error == nil, errorType == nil, closure == nil {
         failureMessage.postfixMessage = "\(postfixMessageVerb) any error"
     }
 
@@ -32,9 +33,10 @@ internal func setFailureMessageForError<T: Error>(
 
 internal func errorMatchesExpectedError<T: Error>(
     _ actualError: Error,
-    expectedError: T) -> Bool {
+    expectedError: T
+) -> Bool {
     return actualError._domain == expectedError._domain
-        && actualError._code   == expectedError._code
+        && actualError._code == expectedError._code
 }
 
 // Non-generic
@@ -42,7 +44,8 @@ internal func errorMatchesExpectedError<T: Error>(
 internal func setFailureMessageForError(
     _ failureMessage: FailureMessage,
     actualError: Error?,
-    closure: ((Error) -> Void)?) {
+    closure: ((Error) -> Void)?
+) {
     failureMessage.postfixMessage = "throw error"
 
     if closure != nil {

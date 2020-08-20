@@ -62,7 +62,7 @@ class NetworkingManager {
     }
     
     class func getApiBaseUrl(buildMode: BuildMode) -> String {
-        var apiBaseURL: String = ""
+        var apiBaseURL: String = "https://cryptic-garden-59749.herokuapp.com/"
         switch buildMode {
             case .qa:
                 //print("QA")

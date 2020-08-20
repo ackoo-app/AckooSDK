@@ -3,7 +3,8 @@ import Foundation
 /// A Nimble matcher that succeeds when the actual sequence's last element
 /// is equal to the expected value.
 public func endWith<S: Sequence, T: Equatable>(_ endingElement: T) -> Predicate<S>
-    where S.Iterator.Element == T {
+    where S.Iterator.Element == T
+{
     return Predicate.simple("end with <\(endingElement)>") { actualExpression in
         if let actualValue = try actualExpression.evaluate() {
             var actualGenerator = actualValue.makeIterator()
@@ -12,7 +13,7 @@ public func endWith<S: Sequence, T: Equatable>(_ endingElement: T) -> Predicate<
             repeat {
                 lastItem = item
                 item = actualGenerator.next()
-            } while(item != nil)
+            } while item != nil
 
             return PredicateStatus(bool: lastItem == endingElement)
         }
@@ -51,19 +52,19 @@ public func endWith(_ endingSubstring: String) -> Predicate<String> {
 }
 
 #if canImport(Darwin)
-extension NMBObjCMatcher {
-    @objc public class func endWithMatcher(_ expected: Any) -> NMBMatcher {
-        return NMBPredicate { actualExpression in
-            let actual = try actualExpression.evaluate()
-            if actual is String {
-                let expr = actualExpression.cast { $0 as? String }
-                // swiftlint:disable:next force_cast
-                return try endWith(expected as! String).satisfies(expr).toObjectiveC()
-            } else {
-                let expr = actualExpression.cast { $0 as? NMBOrderedCollection }
-                return try endWith(expected).satisfies(expr).toObjectiveC()
+    extension NMBObjCMatcher {
+        @objc public class func endWithMatcher(_ expected: Any) -> NMBMatcher {
+            return NMBPredicate { actualExpression in
+                let actual = try actualExpression.evaluate()
+                if actual is String {
+                    let expr = actualExpression.cast { $0 as? String }
+                    // swiftlint:disable:next force_cast
+                    return try endWith(expected as! String).satisfies(expr).toObjectiveC()
+                } else {
+                    let expr = actualExpression.cast { $0 as? NMBOrderedCollection }
+                    return try endWith(expected).satisfies(expr).toObjectiveC()
+                }
             }
         }
     }
-}
 #endif

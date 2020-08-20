@@ -137,7 +137,8 @@ public func throwError<T: Error & Equatable>(_ error: T, closure: ((T) -> Void)?
 /// that parameter.
 public func throwError<T: Error>(
     errorType: T.Type,
-    closure: ((T) -> Void)? = nil) -> Predicate<Any> {
+    closure: ((T) -> Void)? = nil
+) -> Predicate<Any> {
     return Predicate { actualExpression in
         var actualError: Error?
         do {

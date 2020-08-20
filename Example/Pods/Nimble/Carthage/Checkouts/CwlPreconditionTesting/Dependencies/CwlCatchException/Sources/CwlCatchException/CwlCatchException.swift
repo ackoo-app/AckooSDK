@@ -21,15 +21,15 @@
 import Foundation
 
 #if canImport(NimbleCwlCatchExceptionSupport)
-import NimbleCwlCatchExceptionSupport
+    import NimbleCwlCatchExceptionSupport
 #endif
 
 private func catchReturnTypeConverter<T: NSException>(_ type: T.Type, block: @escaping () -> Void) -> T? {
-	return catchExceptionOfKind(type, block) as? T
+    return catchExceptionOfKind(type, block) as? T
 }
 
 extension NSException {
-	public static func catchException(in block: @escaping () -> Void) -> Self? {
-		return catchReturnTypeConverter(self, block: block)
-	}
+    public static func catchException(in block: @escaping () -> Void) -> Self? {
+        return catchReturnTypeConverter(self, block: block)
+    }
 }

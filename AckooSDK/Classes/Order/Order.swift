@@ -19,22 +19,11 @@ public class Order:Codable {
     var totalAmount:Double
     
     /// currency string (USD, GBP, EUR)
-    var currencySymbol:String?
+    var currencySymbol:String
     
     /// Order Item
     var items:[OrderItem]
-    
-    /// order created date and time in UTC
-    var createdOn:TimeInterval?
-    
-    /// order last modified date and time in UTC
-    var modifiedOn:TimeInterval?
-    
-    
-    /// order validated date and time in UTC
-    var validatedOn:TimeInterval?
-    
-    
+
     /// Order initializer (consstructor)
     /// - Parameters:
     ///   - id: order id
@@ -45,16 +34,20 @@ public class Order:Codable {
     ///   - modifiedOn: order last modified date and time in UTC
     ///   - validatedOn: order validated date and time in UTC
     
-    public init(id:String,totalAmount:Double,symbol:String?,items:[OrderItem],createdOn:TimeInterval?,modifiedOn:TimeInterval?,validatedOn:TimeInterval?) {
+    public init(id:String,totalAmount:Double,symbol:String,items:[OrderItem]) {
         self.id = id
         self.totalAmount = totalAmount
         self.currencySymbol = symbol
         self.items = items
-        self.createdOn = createdOn
-        self.modifiedOn = modifiedOn
-        self.validatedOn = validatedOn
     }
-  
+    
+    public func toDict() -> [String : String] {
+        return [
+            "orderId": self.id,
+            "amount": "\(self.totalAmount)",
+            "symbol": self.currencySymbol
+        ]
+    }
   static func requiresMainQueueSetup() -> Bool {
       return false
   }

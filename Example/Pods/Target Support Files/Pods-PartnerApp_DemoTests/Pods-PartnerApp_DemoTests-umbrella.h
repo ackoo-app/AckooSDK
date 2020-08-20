@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_AckooSDK_TestsVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_AckooSDK_TestsVersionString[];
+FOUNDATION_EXPORT double Pods_PartnerApp_DemoTestsVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_PartnerApp_DemoTestsVersionString[];
 
