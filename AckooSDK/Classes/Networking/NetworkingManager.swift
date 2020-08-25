@@ -27,9 +27,17 @@ var BUILD_MODE:BuildMode = BuildMode.qa
 struct Config: Decodable {
     private enum CodingKeys: String, CodingKey {
         case ackooBaseURL
-        case partnerToken
+       
     }
     let ackooBaseURL: String
+   
+    
+}
+
+struct AppConfig: Decodable {
+    private enum CodingKeys: String, CodingKey {
+        case partnerToken
+    }
     let partnerToken: String
     
 }
@@ -62,6 +70,16 @@ class NetworkingManager {
         return nil
     }
     
+    class func parseAppConfig() -> AppConfig? {
+        if let url = Bundle.main.url(forResource: "Info", withExtension: "plist") {
+               
+           let data = try! Data(contentsOf: url)
+               let decoder = PropertyListDecoder()
+               return try! decoder.decode(AppConfig.self, from: data)
+           }
+           return nil
+       }
+    
     class func getApiBaseUrl(buildMode: BuildMode) -> String {
         var apiBaseURL: String = "https://cryptic-garden-59749.herokuapp.com/"
         switch buildMode {
@@ -80,11 +98,11 @@ class NetworkingManager {
      }
     
     class func getPartnerToken() -> String {
-//        var partnerToken: String = ""
-//        if let config:Config = self.parseConfig() {
-//            partnerToken = config.partnerToken //QA
-//        }
-        return "ackoo_xcite";
+        var partnerToken: String = ""
+        if let config:AppConfig = self.parseAppConfig() {
+            partnerToken = config.partnerToken 
+        }
+        return partnerToken
      }
     
     func prepareRequestToServerWith(_ requestString:String, methodType:String,params:Data?) -> URLRequest?  {

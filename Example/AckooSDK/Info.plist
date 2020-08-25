@@ -35,5 +35,7 @@
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 	</array>
+	<key>partnerToken</key>
+	<string>ackoo_xcite</string>
 </dict>
 </plist>
