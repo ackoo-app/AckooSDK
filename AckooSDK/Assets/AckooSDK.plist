@@ -5,6 +5,6 @@
 	<key>ackooBaseURL</key>
 	<string>https://cryptic-garden-59749.herokuapp.com/</string>
 	<key>partnerToken</key>
-	<string></string>
+	<string>ackoo_xcite</string>
 </dict>
 </plist>

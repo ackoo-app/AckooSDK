@@ -52,7 +52,8 @@ class NetworkingManager {
     }
     
     class func parseConfig() -> Config? {
-        if let bundle:Bundle = Bundle(identifier: "org.cocoapods.AckooSDK"),let url = bundle.url(forResource: "AckooSDK", withExtension: "plist") {
+        if let bundle:Bundle = Bundle(identifier: "org.cocoapods.AckooSDK"),
+            let url = bundle.url(forResource: "AckooSDK", withExtension: "plist") {
             
         let data = try! Data(contentsOf: url)
             let decoder = PropertyListDecoder()
@@ -79,11 +80,11 @@ class NetworkingManager {
      }
     
     class func getPartnerToken() -> String {
-        var partnerToken: String = ""
-        if let config:Config = self.parseConfig() {
-            partnerToken = config.partnerToken //QA
-        }
-        return partnerToken
+//        var partnerToken: String = ""
+//        if let config:Config = self.parseConfig() {
+//            partnerToken = config.partnerToken //QA
+//        }
+        return "ackoo_xcite";
      }
     
     func prepareRequestToServerWith(_ requestString:String, methodType:String,params:Data?) -> URLRequest?  {
@@ -232,19 +233,17 @@ class NetworkingManager {
         else {
             callback(false, [:])
         }
-
     }
     
     //Set required header parameters to request
     func setHeadersToRequest( _ request: URLRequest) -> URLRequest {
         var request = request
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue(Bundle.main.bundleIdentifier ?? "NA", forHTTPHeaderField: "app-token")
         let sessionToken:String = UserActivity.getToken()
         if !sessionToken.isEmpty {
             request.addValue(sessionToken, forHTTPHeaderField: "session-token")
         }
-        request.addValue(self.partnerToken, forHTTPHeaderField: "partner-token")
+        request.addValue(self.partnerToken, forHTTPHeaderField: "app-token")
         return request
         ////print(request.allHTTPHeaderFields)
     }

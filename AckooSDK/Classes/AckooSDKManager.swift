@@ -60,13 +60,15 @@ public class AckooSDKManager {
         }
     }
 
-    public func setSDKSessionFromUniversalLink(userActivity:NSUserActivity) {
+    public func continueActivity(userActivity:NSUserActivity) {
           if userActivity.activityType == NSUserActivityTypeBrowsingWeb {
                   if let url = userActivity.webpageURL {
-                  print(url.absoluteString)
                   let params:[String:String] = url.queryParams()
                     if let sessionToken:String = params["sessionToken"] {
-                        self.enableSDK(sessionToken: sessionToken)
+                        self.enableSDK(sessionToken: sessionToken);
+                        self.validateAckooSession {
+                            print($0, $1)
+                        }
                     }
             }
 

@@ -44,25 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_: UIApplication, continue userActivity: NSUserActivity, restorationHandler _: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
         print("Continue User Activity called: ")
-        AckooSDKManager.shared().setSDKSessionFromUniversalLink(userActivity: userActivity)
-        if userActivity.activityType == NSUserActivityTypeBrowsingWeb {
-            if let url = userActivity.webpageURL {
-                print(url.absoluteString)
-                productName = url.pathComponents.last
-                let alert = UIAlertController(title: "\(url.absoluteString)", message: "Please Select an Option", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { _ in
-                    print("User click Approve button")
-                }))
-                alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { _ in
-                    print("User click Delete button")
-                }))
-
-                alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: { _ in
-                    print("User click Dismiss button")
-                }))
-                window?.rootViewController?.present(alert, animated: true, completion: nil)
-            }
-        }
+        AckooSDKManager.shared().continueActivity(userActivity: userActivity);
         return true
     }
 }

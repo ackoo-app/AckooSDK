@@ -39,8 +39,11 @@ class ViewController: UIViewController {
         if currencyInput.text == nil || currencyInput.text!.isEmpty {
             return showAlert(title: "validationError", message: "currency is empty")
         }
-        let amount = Double(amountInput.text!)
-        let order = Order(id: "asd", totalAmount: amount!, symbol: currencyInput.text!, items: [])
+        
+        guard let amount = Double(amountInput.text!) else {
+            return showAlert(title: "validationError", message: "currency should be a number")
+        }
+        let order = Order(id: "asd", amount:amount, currency: currencyInput.text!, items: [])
         AckooSDKManager.shared().reportPurchase(order: order) { succeeded, response in
             var message = ""
             if succeeded {

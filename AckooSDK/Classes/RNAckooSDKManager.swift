@@ -67,12 +67,12 @@ class RNAckooSDKManager:NSObject {
         }
         
         
-        guard let totalAmount:Double = values["totalAmount"] as? Double else {
+        guard let amount:Double = values["totalAmount"] as? Double else {
             RNCallBack(["Product total amount doesn't exist",NSNull()])
             return
         }
         let symbol:String? = values["symbol"] as? String
-        let order:Order = Order(id: orderId, totalAmount: totalAmount, symbol: symbol ?? "USD", items: orderItems)
+        let order:Order = Order(id: orderId, amount: amount, currency: symbol ?? "USD", items: orderItems)
         AckooSDKManager.shared().reportPurchase(order: order) { (succeeded, response) in
             if (succeeded) {
                 if let responseAny:AnyHashable = response as? AnyHashable {
