@@ -15,8 +15,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var productName: String?
 
     func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        AckooSDK.AckooSDKManager.initaliseSharedInstance(appToken: Bundle.main.bundleIdentifier!)
+        
+        AckooSDKManager.shared().initSession();
         return true
     }
 

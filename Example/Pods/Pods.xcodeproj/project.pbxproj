@@ -20,6 +20,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		013CD4C024F55D7000F0BEC2 /* AckooSDK.plist in Resources */ = {isa = PBXBuildFile; fileRef = EBE02E9E50134BA1A00649538E5D3834 /* AckooSDK.plist */; };
 		018228C4760DF4F8B80630BC9ACCB39E /* DSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D0DDD2B23A27E18D9C6D89F951817C /* DSL.swift */; };
 		02DD7FC6A855D0675EA8B3BE66C99BBB /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C061463250766C9C05995AB8EE63E66 /* XCTest.framework */; };
 		0892D14FE7A3452423E9129D7917664B /* MatchError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6215B185034E12CB842C044B032F23FB /* MatchError.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
@@ -1098,6 +1099,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D3F54EDADE3AFFD90630463BD006E4A4 /* AckooSDK.bundle in Resources */,
+				013CD4C024F55D7000F0BEC2 /* AckooSDK.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

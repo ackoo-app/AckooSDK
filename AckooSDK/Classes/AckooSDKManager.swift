@@ -23,6 +23,21 @@ public enum AckooEventTypeString:String,Encodable {
     case login,purchase
 }
 
+public enum AckooActivationState {
+    case active(sessionToken: String), inactive(errorCode: String, errorMessage: String)
+}
+
+struct ServerError: Codable {
+    var code: String;
+    var message: String;
+}
+
+struct ServerResponse: Codable {
+    var ok: Bool;
+    var data: [String: String]?;
+    var error: ServerError?;
+}
+
 /// AckooSDKManager class to report all activity to backend
 /// Description
 
@@ -36,22 +51,20 @@ public class AckooSDKManager {
         let sdkManager = AckooSDKManager()
         return sdkManager
     }()
-    public class func initaliseSharedInstance(appToken:String) {
-        AckooSDKManager.shared().appToken = appToken;
+    public func initSession() {
+        
     }
-    private var isUserActive:Bool = false
-    private var appToken:String = ""
+    private var activationState:AckooActivationState?;
 
     /// Initialization
     private init() {
         let notificationCenter = NotificationCenter.default
-               notificationCenter.addObserver(self, selector: #selector(appMovedToForeground), name: UIApplication.didBecomeActiveNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(appMovedToForeground), name: UIApplication.didBecomeActiveNotification, object: nil)
     }
     // MARK: - Accessors
     /// access shared singleton object
      public class func shared() -> AckooSDKManager {
-        // get token in the background here
-        
+        // get token in the background here        
         return sharedManager
     }
     @objc func appMovedToForeground() {
@@ -65,7 +78,7 @@ public class AckooSDKManager {
                   if let url = userActivity.webpageURL {
                   let params:[String:String] = url.queryParams()
                     if let sessionToken:String = params["sessionToken"] {
-                        self.enableSDK(sessionToken: sessionToken);
+                        storeSessionToken(sessionToken: sessionToken)
                         self.validateAckooSession {
                             print($0, $1)
                         }
@@ -75,23 +88,20 @@ public class AckooSDKManager {
         }
     }
     
-    
     public func identify(id: String, user: [String: String], callback: @escaping (_ succeeded: Bool, _ response: Any) -> Void) {
         var updatedUser = user;
         updatedUser["userId"] = id;
         let payload = Payload(name: .login, props: updatedUser);
-        if self.isUserActive {
-            // No need to do anything
-            self.sendEventToServer(payload: payload, callback: callback)
+        
+        guard let activationState = self.activationState else {
+            callback(false, [Constants.RESPONSE_KEYS.ERROR_KEY:Constants.ENGLISH.SESSION_NOT_VALID])
+            return;
+        }
+        if case .active(_) = activationState {
+           self.sendEventToServer(payload: payload, callback: callback)
         } else {
-            self.validateAckooSession { (succeeded, response) in
-                if succeeded {
-                    self.sendEventToServer(payload: payload, callback: callback)
-                } else {
-                    //Session not found
-                    callback(false, [Constants.RESPONSE_KEYS.NEW_ERROR_MESSAGE:Constants.ENGLISH.SESSION_NOT_VALID])
-                }
-            }
+            callback(false, [Constants.RESPONSE_KEYS.ERROR_KEY:Constants.ENGLISH.SESSION_NOT_VALID])
+                
         }
     }
     /// Report user activity to Ackoo backend
@@ -105,7 +115,7 @@ public class AckooSDKManager {
         let payload = Payload(name: getEventTypeName(event:type), props: ["a": "b"]);
         
         // Check if token is acquired
-        if !self.isUserActive {
+        if self.activationState != nil {
             // No need to do anything
             self.sendEventToServer(payload: payload, callback: callback)
         } else {
@@ -114,7 +124,7 @@ public class AckooSDKManager {
                     self.sendEventToServer(payload: payload, callback: callback)
                 } else {
                     //Session not found
-                    callback(false, [Constants.RESPONSE_KEYS.NEW_ERROR_MESSAGE:Constants.ENGLISH.SESSION_NOT_VALID])
+                    callback(false, [Constants.RESPONSE_KEYS.ERROR_KEY:Constants.ENGLISH.SESSION_NOT_VALID])
                 }
             }
         }
@@ -124,19 +134,24 @@ public class AckooSDKManager {
     /// - Parameters:
     ///   - callback: call back with true or false
     
-    public func isUserValidForSDK() -> Bool {
-        return self.isUserActive
+    public func isUserValidForSDK(callback: @escaping (_ activationState: AckooActivationState) -> Void) {
+        if let activationState = self.activationState {
+             callback(activationState)
+        } else {
+            validateAckooSession() {_,_ in
+                callback(self.activationState!);
+            }
+        }
     }
     
-    func enableSDK(sessionToken:String) {
+    func storeSessionToken(sessionToken:String) {
         UserDefaults.standard.set(sessionToken, forKey: Constants.SDK_KEYS.SESSION_TOKEN)
         UserDefaults.standard.synchronize()
-        isUserActive = true
     }
-    func disbaleSDK() {
-        UserDefaults.standard.removeObject(forKey: Constants.SDK_KEYS.SESSION_TOKEN);
-        isUserActive = false
-    }
+//    func disbaleSDK() {
+//        UserDefaults.standard.removeObject(forKey: Constants.SDK_KEYS.SESSION_TOKEN);
+//        isUserActive = false
+//    }
     static func requiresMainQueueSetup() -> Bool {
         return true
     }
@@ -148,7 +163,7 @@ public class AckooSDKManager {
      public func reportPurchase(order:Order,callback: @escaping (_ succeeded: Bool, _ response: Any) -> Void) {
         let payload = Payload(name: .purchase, props: order.toDict());
            // Check if token is acquired
-        if !self.isUserActive {
+        if self.activationState != nil {
                 // report event to server directly
                 self.sendEventToServer(payload: payload, callback: callback)
            } else {
@@ -157,7 +172,7 @@ public class AckooSDKManager {
                     self.sendEventToServer(payload: payload, callback: callback)
                    } else {
                        //Session not found
-                       callback(false, [Constants.RESPONSE_KEYS.NEW_ERROR_MESSAGE:Constants.ENGLISH.SESSION_NOT_VALID])
+                       callback(false, [Constants.RESPONSE_KEYS.ERROR_KEY:Constants.ENGLISH.SESSION_NOT_VALID])
                    }
                    
                }
@@ -175,7 +190,7 @@ public class AckooSDKManager {
            })
        }
        catch {
-           callback(false, [Constants.RESPONSE_KEYS.NEW_ERROR_MESSAGE:Constants.ENGLISH.INVALID_REQUEST])
+           callback(false, [Constants.RESPONSE_KEYS.ERROR_KEY:Constants.ENGLISH.INVALID_REQUEST])
        }
     }
     private func getEventTypeName(event:AckooEventType) -> AckooEventTypeString {
@@ -189,14 +204,26 @@ public class AckooSDKManager {
     
     private func validateAckooSession(callback: @escaping (_ succeeded: Bool, _ response: Any) -> Void) {
         self.getTokenFromServer { (succeeded, response) in
-            if let response:[String:Any] =  response as? [String:Any] ,let responseDict:[String:Any] = response["data"] as? [String:Any], let sessionToken:String = responseDict["sessionToken"] as? String {
-                self.enableSDK(sessionToken: sessionToken)
-            } else {
-                self.disbaleSDK()
+                do {
+                    let serverResponse = try JSONDecoder().decode(ServerResponse.self, from: JSONSerialization.data(withJSONObject: response));
+                    
+                    if serverResponse.ok {
+                        let sessionToken = serverResponse.data!["sessionToken"];
+                        self.activationState = .active(sessionToken: sessionToken!)
+                        callback(true, "");
+                    } else {
+                        let errorCode = serverResponse.error!.code;
+                        let errorMessage = serverResponse.error!.message;
+                        self.activationState = .inactive(errorCode: errorCode, errorMessage: errorMessage);
+                        callback(true, "");
+                    }
+                } catch {
+                    self.activationState = .inactive(errorCode: "SERIALIZATION_ERROR", errorMessage: "backend response structure changed");
+                    callback(succeeded,response)
+                }
             }
-            callback(succeeded,response)
-        }
-    }
+            }
+            
   
     private func getTokenFromServer(callback: @escaping (_ succeeded: Bool, _ response: Any) -> Void) {
         let identity:UserIdentity = UserIdentity()
@@ -213,7 +240,7 @@ public class AckooSDKManager {
         }
         catch {
             print("Error in retrieving token")
-            callback(false, [Constants.RESPONSE_KEYS.NEW_ERROR_MESSAGE:Constants.ENGLISH.INVALID_REQUEST])
+            callback(false, [Constants.RESPONSE_KEYS.ERROR_KEY:Constants.ENGLISH.INVALID_REQUEST])
         }
     }
 }
