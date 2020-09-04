@@ -27,8 +27,16 @@ class ViewController: UIViewController {
     }
 
     @IBAction func recheckIsSdkActive(_: Any) {
-        isSdkActiveLabel.text = String(AckooSDKManager.shared().isUserValidForSDK())
-        sdkSessionTokenLabel.text = String(getToken())
+        AckooSDKManager.shared().isUserValidForSDK {
+            (activationState) in
+            print(activationState)
+            if case .active(let sessionToken) = activationState {
+                self.showAlert(title: "Ackoo SDK is Active", message: "sessionToken : \(sessionToken)")
+            } else if case .inactive(let errorCode, let errorMessage) = activationState {
+                self.showAlert(title: "Ackoo SDK is Inactive", message: "code : \(errorCode), message: \(errorMessage)")
+            }
+            
+        }
     }
 
     @IBAction func purchase(_: Any) {
@@ -79,7 +87,6 @@ class ViewController: UIViewController {
                     message = "unknown error"
                 }
             }
-
             self.showAlert(title: "Login track: \(succeeded)", message: message)
         }
     }
@@ -97,10 +104,13 @@ class ViewController: UIViewController {
     }
 
     func showAlert(title: String, message: String) {
+        DispatchQueue.main.async {
+            
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { _ in
             print("Alert dismissed")
         }))
-        present(alert, animated: true)
+            self.present(alert, animated: true)
+        }
     }
 }

@@ -139,7 +139,7 @@ class NetworkingManager {
         
         if Reachability.isConnectedToNetwork() == false
         {
-            callback(false, [Constants.RESPONSE_KEYS.NEW_ERROR_MESSAGE:Constants.ENGLISH.NO_INTERNET_MESSAGE])
+            callback(false, [Constants.RESPONSE_KEYS.ERROR_KEY:Constants.ENGLISH.NO_INTERNET_MESSAGE])
             return
         }
         
@@ -162,12 +162,12 @@ class NetworkingManager {
         
         if Reachability.isConnectedToNetwork() == false
         {
-            callback(false, [Constants.RESPONSE_KEYS.NEW_ERROR_MESSAGE:Constants.ENGLISH.NO_INTERNET_MESSAGE])
+            callback(false, [Constants.RESPONSE_KEYS.ERROR_KEY:Constants.ENGLISH.NO_INTERNET_MESSAGE])
             return
         }
         
         guard let request:URLRequest = prepareRequestToServerWith(url, methodType: "POST", params: params) else {
-            callback(false, [Constants.RESPONSE_KEYS.NEW_ERROR_MESSAGE:Constants.ENGLISH.INVALID_REQUEST])
+            callback(false, [Constants.RESPONSE_KEYS.ERROR_KEY:Constants.ENGLISH.INVALID_REQUEST])
             return
         }
         self.createDataTastWithRequest(request, callback: callback)
@@ -182,7 +182,7 @@ class NetworkingManager {
         guard let data:Data = data, let response:URLResponse = response, error == nil else {
             
             //print("Error = \(String(describing: error))")
-            let responseDict = [Constants.RESPONSE_KEYS.NEW_ERROR_MESSAGE:error?.localizedDescription]
+            let responseDict = [Constants.RESPONSE_KEYS.ERROR_KEY:error?.localizedDescription]
             
             callback(false, responseDict as Any?)
             return
@@ -220,9 +220,9 @@ class NetworkingManager {
             //print("\(String(describing: response.url))")
             //print("\(String(describing: String(data: data, encoding:String.Encoding.utf8)))")
             
-            let responseDict = [Constants.RESPONSE_KEYS.NEW_ERROR_MESSAGE:HTTPURLResponse.localizedString(forStatusCode: httpResponse?.statusCode ?? 400)]
+            let responseDict = [Constants.RESPONSE_KEYS.ERROR_KEY:HTTPURLResponse.localizedString(forStatusCode: httpResponse?.statusCode ?? 400)]
             
-            let responseDict2 = [Constants.RESPONSE_KEYS.NEW_ERROR_MESSAGE:error.localizedDescription]
+            let responseDict2 = [Constants.RESPONSE_KEYS.ERROR_KEY:error.localizedDescription]
             
             if let httpResponse = response as? HTTPURLResponse {
                 

@@ -10,9 +10,8 @@ import Foundation
 
 class Constants {
     
-    
     struct RESPONSE_KEYS {
-        static let NEW_ERROR_MESSAGE:String = "Message"
+        static let ERROR_KEY:String = "error"
     }
     struct SDK_KEYS {
         static let SESSION_TOKEN:String = "AckooSDKSessionToken"

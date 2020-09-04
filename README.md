@@ -6,10 +6,16 @@
 [![Platform](https://img.shields.io/cocoapods/p/AckooSDK.svg?style=flat)](https://cocoapods.org/pods/AckooSDK)
 
 ## Example
-
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
-## Requirements
+## Usage 
+To be able to run Ackoo SDK correctly you need to enable the following setps
+
+# Table of Contents
+1. [Installation](#installation)
+2. [Configuration](#Configuration)
+3. [Initialization](#Initialization)
+4. [Verification](#Verification)
 
 ## Installation
 
@@ -17,230 +23,74 @@ AckooSDK is available through [CocoaPods](https://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
-platform :ios, '9.0'
-source 'https://github.com/ackoo-app/AckooPrivateTrunk.git'
-...
 pod 'AckooSDK'
 ```
 
-## Usage 
+## Configuration
+> retrive your `universalDomain` , and `app-token` from your Ackoo dashboard or your account manager
+#### 1. Configure Info.plist
+set "app-token" with your partner app token
+#### 2. Configure Associated Domains
+1. in Xcode, go to the Capabilities tab of your project file.
+2. add your universal link under associated domains
+![associateddomans](./associated-domains.png)
 
+## Initialization
 ### AppDelegate
 
-Initalise SDK  in **application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {** in your Appdelegate class 
+1. Initalise SDK  in **application(_ application: UIAfpplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {** in your Appdelegate class 
 
 ```swift
 func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-
-    AckooSDK.AckooSDKManager.initaliseSharedInstance(appToken:Bundle.main.bundleIdentifier!)
-    ...
+    AckooSDKManager.shared().initSession();
 }
-
 ```
-Implement **application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {** in your Appdelegate class or SceneDelegate class
+2. Implement **application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {** in your Appdelegate class or SceneDelegate class
 
 ```swift
 func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
-    AckooSDKManager.shared().setSDKSessionFromUniversalLink(userActivity: userActivity)
+    AckooSDKManager.shared().continueActivity(userActivity: userActivity)
 }
-
+//if you are using scenes
 func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
-    AckooSDKManager.shared().setSDKSessionFromUniversalLink(userActivity: userActivity)
+    AckooSDKManager.shared().continueActivity(userActivity: userActivity)
 }
-
 ```
+
+
 From here you will get information for which product the user has opened you application. 
 
-### Tracking user events in Native Swift or Objective-C app
 
-When user performs any activity. You need to pass on this information to the AckooSDK. Currently SDK supports following events
-
-```swift
-
-/// Type of the event that AckooSDK supports. Which will be sent
-/// When usere performs the particular action (like register, open app, login, purchase)
-public enum AckooEventTypeString:String,Encodable {
-    
-    /// when user logs-in in the app
-    case login = "PARTNER_APP_LOGIN"
-    
-    /// When user make the actual purchase of the item
-    case purchase = "PARTNER_APP_PURCHASE"
-}
-
-/// For React native compatibility
- public enum AckooEventType: Int,Encodable {
-    case login,purchase
-}
-
-```
 You can check if the current user is valid AckooSDK user or not by calling below method 
 ```swift
-AckooSDKManager.shared().isUserValidForSDK { (isValid) in
-    if (isValid) {
-        //report the activity or purchase
+
+AckooSDKManager.shared().isUserValidForSDK {
+    (activationState) in
+
+    if case .active(let sessionToken) = activationState {
+        self.showAlert(title: "Ackoo SDK is Active", message: "sessionToken : \(sessionToken)")
+    } else if case .inactive(let errorCode, let errorMessage) = activationState {
+        self.showAlert(title: "Ackoo SDK is Inactive", message: "code : \(errorCode), message: \(errorMessage)")
     }
-}
-```
-For any of the event to report to the SDK , You need to create instance of UserActivity class. 
-
-```swift
-/// User activity that holds information regarding user's actions
-public class UserActivity:BaseActivity {
-    
-   
-    /// wether user is logged In at the time of performing this activity
-    var isLoggedIn:Bool
-    
-    /// email address of the user
-    var email:String?
-    
-    
-    /// Order details
-    var orderDetail:Order?
     
 }
-
-```
-In case of Reporting actual purchase event to Ackoo you need to create 2 other object 
-
-There are 2 other instance of the class which needs to be created along with UserActivity in case of user has actually purchase anything from the app.
-
-```swift
-/// Order details
-/// Information regarding purchased order
-public class Order:Codable {
-    /// Order Id
-    let id:String
-    
-    /// Total amount of all the order items
-    var totalAmount:Double?
-    
-    /// currency string (USD, GBP, EUR)
-    var currencySymbol:String?
-    
-    /// Order Item
-    var items:[OrderItem]
-    
-    /// order created date and time in UTC
-    var createdOn:TimeInterval
-    
-    /// order last modified date and time in UTC
-    var modifiedOn:TimeInterval
-    
-    
-    /// order validated date and time in UTC
-    var validatedOn:TimeInterval?
-    
-}
-
-/// Order item with details like sku, name amount
-public class OrderItem:Codable {
-    
-
-    /// sku of the product
-    let sku:String
-    
-    /// product name
-    let name:String
-    
-    /// total amount
-    let amount:Double
-}
-
-```
-Once this instance are created with related information. You need to register this event to SDK
-For reporting purchase you need to call **reportPurchase**
-
-```swift
-let date:TimeInterval = Date().timeIntervalSince1970
-let activity:UserActivity = UserActivity.init(isLoggedIn: true, email: "user@gmail.com")
-let item:OrderItem = OrderItem.init(sku: "CM01-R", name: productName, amount: 13.35)
-let order:Order = Order(id: "135497-25943", totalAmount: 13.35, symbol: "USD", items: [item], createdOn:date , modifiedOn: date, validatedOn: date)
-AckooSDKManager.shared().reportPurchase(type: name, activity: activity, order: order) { (succeeded, response) in
-   print(succeeded)
-}
-
-           
-```           
-For reporting normal events like login, openApp etc call **reportActivity**
-
-```swift
- let activity:UserActivity = UserActivity.init(isLoggedIn: true, email: "user@gmail.com")
- AckooSDKManager.shared().reportActivity(type: name, activity: activity) { (succeeded, response) in
-     print(succeeded)
- }
 ```
 
-### Tracking user events from React-Native apps
+### verification 
+##### testing universal
+open the following link on a device with your app installed
+- `https://api.ackoo.app/partner/<partnerId>`
+##### testing working basic integration
+download the ackoo app and click on your partner link
 
-If your application is using react-native app. You can use specially designed **RNAckooSDKManager** class and it's method for ReactNative project integration
-
-You will need to create Objective-C bridging file (.m) inside your iOS project and add following method to export
-
-``` objc
-
-#import <Foundation/Foundation.h>
-#import <React/RCTBridgeModule.h>
-//RCTResponseSenderBlock
-@interface RCT_EXTERN_MODULE(RNAckooSDKManager, NSObject)
-RCT_EXTERN_METHOD(reportActivity:(NSDictionary *)values RNCallBack: (RCTResponseSenderBlock)callback);
-RCT_EXTERN_METHOD(reportPurchase:(NSDictionary *)values RNCallBack: (RCTResponseSenderBlock)callback);
-RCT_EXTERN_METHOD(isTheUSerValidForAckooSDK: (RCTResponseSenderBlock)RNCallBack);
-@end
-
-```
-You can than call these methods directly from the javascript js code
+call `AckooSDKManager.shared().isUserValidForSDK` and make sure it returns a session token
 
 
 
+### error messages
 
-``` javascript
-import {NativeModules} from 'react-native';
-
-...
-...
-
-//Checking if the use is valid Ackoo user
-NativeModules.RNAckooSDKManager.isTheUSerValidForAckooSDK(
-  (error, ...value) => {
-    console.log('error is ' + error);
-    console.log('value is ' + value);
-  },
-);
-
-
-//report user activity
-const event = {type: 2, email: 'info@ackoo.app', IsLoggedIn: false};
-console.log('Before Calling Native 12345');
-NativeModules.RNAckooSDKManager.reportActivity(event, (error, ...values) => {
-  console.log('reportActivity error is ' + JSON.stringify(error));
-  console.log('reportActivity value is ' + JSON.stringify(values));
-});
-
-
-//Report actual purchase
-const items = [{productName: 'Game-Console', sku: '45d04kl4', amount: 35.67}];
-const order = {
-  orderItems: items,
-  orderId: '053509034',
-  totalAmount: 35.67,
-  symbol: 'USD',
-  createdOn: 1595348752205,
-  modifiedOn: 1595348752205,
-  validateOn: 1595348752205,
-};
-
-NativeModules.RNAckooSDKManager.reportPurchase(order, (error, ...values) => {
-  console.log('reportPurchase error is ' + JSON.stringify(error));
-  console.log('reportPurchase value is ' + JSON.stringify(values));
-});
-```
-
-
-
-
-## Importan Note
+ 
+## Important Note
 This SDK uses advertisingIdentifier for purpose if identifying user after fresh installation after navigating from the Ackoo app. When you submit the app please tick **"Attribute this App Installation to a Previously Served Advertisement"** Please refer this screen shot
 
 ![App_Submission_IDFA](https://user-images.githubusercontent.com/1177076/85919226-24758a00-b887-11ea-985c-fa2895c10e99.png)
