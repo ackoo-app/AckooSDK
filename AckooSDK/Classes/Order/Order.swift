@@ -11,7 +11,7 @@ import Foundation
 /// Order details
 /// Information regarding purchased order
 
-public class Order:Codable {
+public class Order:NSObject,Codable {
     /// Order Id
     let id:String
     

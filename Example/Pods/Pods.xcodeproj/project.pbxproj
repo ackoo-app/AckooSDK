@@ -80,6 +80,7 @@
 		7AC93EB6DCDA9226165D5BC354FE7BC6 /* DSL.m in Sources */ = {isa = PBXBuildFile; fileRef = 342245CDCAED8A80176893D7BACEF948 /* DSL.m */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		7CE306C824EEF7DD00E96846 /* RNAckooSDKManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE306C724EEF7DD00E96846 /* RNAckooSDKManager.swift */; };
 		7CE6049975894E447F2D4071C74F6F8F /* Callsite.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD5EC8C8607A147EFE5B95223E15DD2 /* Callsite.swift */; };
+		7CFB406F24F55C8C006F0A47 /* AckooSDK.plist in Resources */ = {isa = PBXBuildFile; fileRef = EBE02E9E50134BA1A00649538E5D3834 /* AckooSDK.plist */; };
 		7DAC86DCBC36C10F43FA5FEB819B7BF1 /* Functional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5828CAF69AFAE7890685DBB9E0AB6CEA /* Functional.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		7EB28FEC3D0ABA1A2A6CFE57C400F74D /* QuickSpec.h in Headers */ = {isa = PBXBuildFile; fileRef = F490F3C0223242F4F2495FE6F0589F37 /* QuickSpec.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		806B9040D79A3DC58FB56EAC16FE19BF /* Stringers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3EB775A2EEC20CBED62E7EA8AEFFA4 /* Stringers.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
@@ -1098,6 +1099,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D3F54EDADE3AFFD90630463BD006E4A4 /* AckooSDK.bundle in Resources */,
+				7CFB406F24F55C8C006F0A47 /* AckooSDK.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

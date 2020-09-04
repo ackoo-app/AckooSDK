@@ -10,7 +10,7 @@ import Foundation
 
 /// Order item with details like sku, name amount
 
-public class OrderItem:Codable {
+public class OrderItem:NSObject,Codable {
     
     
     /// sku of the product

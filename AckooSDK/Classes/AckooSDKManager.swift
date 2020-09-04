@@ -26,7 +26,7 @@ public enum AckooEventTypeString:String,Encodable {
 /// AckooSDKManager class to report all activity to backend
 /// Description
 
-public class AckooSDKManager {
+public class AckooSDKManager:NSObject {
     // MARK: -
     // MARK: - Properties
     
@@ -43,7 +43,8 @@ public class AckooSDKManager {
     private var appToken:String = ""
 
     /// Initialization
-    private init() {
+    private override init() {
+        super.init()
         let notificationCenter = NotificationCenter.default
                notificationCenter.addObserver(self, selector: #selector(appMovedToForeground), name: UIApplication.didBecomeActiveNotification, object: nil)
     }
