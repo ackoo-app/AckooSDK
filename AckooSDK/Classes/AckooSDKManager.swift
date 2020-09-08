@@ -19,6 +19,7 @@ public enum AckooEventTypeString:String,Encodable {
     case purchase = "PARTNER_APP_PURCHASE"
 }
 
+@objc
  public enum AckooEventType: Int,Encodable {
     case login,purchase
 }
@@ -40,7 +41,7 @@ struct ServerResponse: Codable {
 
 /// AckooSDKManager class to report all activity to backend
 /// Description
-
+@objc
 public class AckooSDKManager:NSObject {
     // MARK: -
     // MARK: - Properties
@@ -51,6 +52,7 @@ public class AckooSDKManager:NSObject {
         let sdkManager = AckooSDKManager()
         return sdkManager
     }()
+    @objc
     public func initSession() {
         
     }
@@ -64,8 +66,9 @@ public class AckooSDKManager:NSObject {
     }
     // MARK: - Accessors
     /// access shared singleton object
+    @objc
      public class func shared() -> AckooSDKManager {
-        // get token in the background here        
+        // get token in the background here
         return sharedManager
     }
     @objc func appMovedToForeground() {
@@ -73,7 +76,7 @@ public class AckooSDKManager:NSObject {
             print(response)
         }
     }
-
+    @objc
     public func continueActivity(userActivity:NSUserActivity) {
           if userActivity.activityType == NSUserActivityTypeBrowsingWeb {
                   if let url = userActivity.webpageURL {
@@ -88,7 +91,7 @@ public class AckooSDKManager:NSObject {
 
         }
     }
-    
+    @objc
     public func identify(id: String, user: [String: String], callback: @escaping (_ succeeded: Bool, _ response: Any) -> Void) {
         var updatedUser = user;
         updatedUser["userId"] = id;
@@ -111,7 +114,7 @@ public class AckooSDKManager:NSObject {
     ///   - type: type of event
     ///   - activity: activity class that holds relevant information like token, email address
     ///   - callback: call back with server response or error.
-    
+    @objc
     public func reportActivity(type:AckooEventType, callback: @escaping (_ succeeded: Bool, _ response: Any) -> Void) {
         let payload = Payload(name: getEventTypeName(event:type), props: ["a": "b"]);
         
@@ -145,6 +148,23 @@ public class AckooSDKManager:NSObject {
         }
     }
     
+    @objc
+    public func isUserValidForSDKObjc(callback: @escaping (_ isActive: Bool,_ sessionToken:String?,_ error:NSError?) -> Void) {
+        self.isUserValidForSDK { (state:AckooActivationState) in
+            switch state {
+                
+            case .active(sessionToken: let sessionToken):
+                callback(true,sessionToken,nil)
+            case .inactive(errorCode: let errorCode, errorMessage: let errorMessage):
+                let errorCodeInt:Int  = Int(errorCode) ?? 400
+                let error:NSError = NSError(domain: "Ackoo.Error", code: errorCodeInt, userInfo: ["Message" : errorMessage])
+                callback(false,nil,error)
+            }
+            
+            
+        }
+    }
+    
     func storeSessionToken(sessionToken:String) {
         UserDefaults.standard.set(sessionToken, forKey: Constants.SDK_KEYS.SESSION_TOKEN)
         UserDefaults.standard.synchronize()
@@ -161,6 +181,7 @@ public class AckooSDKManager:NSObject {
    /// - Parameters:
    ///   - order: order class that holds the reported purchase information
    ///   - callback: call back with server response or error.
+    @objc
      public func reportPurchase(order:Order,callback: @escaping (_ succeeded: Bool, _ response: Any) -> Void) {
         let payload = Payload(name: .purchase, props: order.toDict());
            // Check if token is acquired
@@ -245,3 +266,4 @@ public class AckooSDKManager:NSObject {
         }
     }
 }
+

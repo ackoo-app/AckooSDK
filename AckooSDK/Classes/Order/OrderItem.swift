@@ -28,7 +28,7 @@ public class OrderItem:NSObject,Codable {
     ///   - sku: sku of the product
     ///   - name: product name
     ///   - amount: total amount
-    
+    @objc
     public init(sku:String?,name:String,amount:Double) {
         self.sku = sku
         self.name = name
@@ -39,3 +39,4 @@ public class OrderItem:NSObject,Codable {
       return false
   }
 }
+

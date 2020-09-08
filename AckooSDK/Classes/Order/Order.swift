@@ -33,7 +33,7 @@ public class Order:NSObject,Codable {
     ///   - createdOn: order created date and time in UTC
     ///   - modifiedOn: order last modified date and time in UTC
     ///   - validatedOn: order validated date and time in UTC
-    
+    @objc
     public init(id:String,amount:Double,currency:String,items:[OrderItem]) {
         self.id = id
         self.amount = amount
@@ -52,3 +52,4 @@ public class Order:NSObject,Codable {
       return false
   }
 }
+
