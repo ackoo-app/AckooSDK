@@ -40,12 +40,27 @@ set "app-token" with your partner app token
 
 1. Initalise SDK  in **application(_ application: UIAfpplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {** in your Appdelegate class 
 
+### **Swift**
+
 ```swift
 func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     AckooSDKManager.shared().initSession();
 }
 ```
+
+### **ObjectiveC**
+
+```objc
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    // Override point for customization after application launch
+    [[AckooSDKManager shared] initSession];
+    return YES;
+}
+```
+
 2. Implement **application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {** in your Appdelegate class or SceneDelegate class
+
+### **Swift**
 
 ```swift
 func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
@@ -56,12 +71,21 @@ func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
     AckooSDKManager.shared().continueActivity(userActivity: userActivity)
 }
 ```
+### **ObjectiveC**
 
+```objc
+- (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray<id<UIUserActivityRestoring>> * _Nullable))restorationHandler {
+    [[AckooSDKManager shared] continueActivityWithUserActivity:userActivity];
+    return TRUE;
+}
+```
 
 From here you will get information for which product the user has opened you application. 
 
 
 You can check if the current user is valid AckooSDK user or not by calling below method 
+
+### **Swift**
 ```swift
 
 AckooSDKManager.shared().isUserValidForSDK {
@@ -74,6 +98,18 @@ AckooSDKManager.shared().isUserValidForSDK {
     }
     
 }
+```
+
+### **ObjectiveC**
+```objc
+
+[[AckooSDKManager shared] isUserValidForSDKObjcWithCallback:^(BOOL isActive, NSString * _Nullable token, NSError * _Nullable error) {
+    if (isActive && token) {
+            NSLog(@"%@",token);
+        } else {
+             NSLog(@"Inactive");
+        }
+}];
 ```
 
 ### verification 
