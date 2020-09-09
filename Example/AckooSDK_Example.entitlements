@@ -4,7 +4,7 @@
 <dict>
 	<key>com.apple.developer.associated-domains</key>
 	<array>
-		<string>applinks:cryptic-garden-59749.herokuapp.com</string>
+		<string>applinks:api.ackoo.app/</string>
 	</array>
 </dict>
 </plist>

@@ -3,6 +3,6 @@
 <plist version="1.0">
 <dict>
 	<key>ackooBaseURL</key>
-	<string>https://cryptic-garden-59749.herokuapp.com/</string>
+	<string>https://api.ackoo.app/</string>
 </dict>
 </plist>

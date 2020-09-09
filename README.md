@@ -88,7 +88,7 @@ call `AckooSDKManager.shared().isUserValidForSDK` and make sure it returns a ses
 
 
 ### error messages
-
+TBD
  
 ## Important Note
 This SDK uses advertisingIdentifier for purpose if identifying user after fresh installation after navigating from the Ackoo app. When you submit the app please tick **"Attribute this App Installation to a Previously Served Advertisement"** Please refer this screen shot
@@ -97,7 +97,4 @@ This SDK uses advertisingIdentifier for purpose if identifying user after fresh 
 
 
 ## Author
-
 Ackoo, khaled@ackoo.app
-
-
