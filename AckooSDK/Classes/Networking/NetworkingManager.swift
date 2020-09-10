@@ -52,7 +52,7 @@ class NetworkingManager {
     var partnerToken:String
 
      init() {
-        self.API_BASE_URL = NetworkingManager.getApiBaseUrl(buildMode: currentBuildMode)
+        self.API_BASE_URL = "https://api.ackoo.app/"
         self.partnerToken = NetworkingManager.getPartnerToken()
         if (self.partnerToken.isEmpty) {
             fatalError("Please add partner token is the AckooSDK.plist file")
