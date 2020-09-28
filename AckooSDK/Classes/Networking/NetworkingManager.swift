@@ -261,7 +261,7 @@ class NetworkingManager {
         if !sessionToken.isEmpty {
             request.addValue(sessionToken, forHTTPHeaderField: "session-token")
         }
-        request.addValue(self.partnerToken, forHTTPHeaderField: "app-token")
+        request.addValue(self.partnerToken, forHTTPHeaderField: "app-key")
         return request
         ////print(request.allHTTPHeaderFields)
     }
