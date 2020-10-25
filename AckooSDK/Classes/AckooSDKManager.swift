@@ -97,7 +97,7 @@ public class AckooSDKManager:NSObject {
         updatedUser["userId"] = id;
         
         guard let activationState = self.activationState else {
-            callback(false, [Constants.RESPONSE_KEYS.ERROR_KEY:Constants.ENGLISH.SESSION_NOT_VALID])
+            callback(false, Constants.SDK_ERRORS.SDK_INACTIVE)
             return;
         }
         if case .active(_) = activationState {
@@ -215,7 +215,11 @@ public class AckooSDKManager:NSObject {
        let jsonData =  try JSONSerialization.data(withJSONObject: payload)
            NetworkingManager.sharedInstance.postRequest(jsonData, url: requestURL, callback: {(_ succeeded: Bool, _ response: Any) -> Void in
                DispatchQueue.main.async(execute: {() -> Void in
-                   callback(succeeded, response)
+                if(succeeded) {
+                    callback(succeeded, response)
+                } else {
+                    callback(succeeded, self.formatResponseToAckooError(response))
+                }
                })
            })
        }
@@ -229,7 +233,11 @@ public class AckooSDKManager:NSObject {
        let jsonData =  try JSONSerialization.data(withJSONObject: payload)
            NetworkingManager.sharedInstance.postRequest(jsonData, url: requestURL, callback: {(_ succeeded: Bool, _ response: Any) -> Void in
                DispatchQueue.main.async(execute: {() -> Void in
-                   callback(succeeded, response)
+                if(succeeded) {
+                    callback(succeeded, response)
+                } else {
+                    callback(succeeded, self.formatResponseToAckooError(response))
+                }
                })
            })
        }
@@ -243,6 +251,19 @@ public class AckooSDKManager:NSObject {
             return .login
         case .purchase:
             return .purchase
+        }
+    }
+    private func formatResponseToAckooError(_ response: Any) -> AckooSdkError {
+        
+        do {
+            let serverResponse = try JSONDecoder().decode(ServerResponse.self, from: JSONSerialization.data(withJSONObject: response));
+            
+                let errorCode = serverResponse.error!.code;
+                let errorMessage = serverResponse.error!.message;
+                self.activationState = .inactive(errorCode: errorCode, errorMessage: errorMessage);
+                return AckooSdkError(code: errorCode, message: errorMessage);
+        } catch {
+            return Constants.SDK_ERRORS.BACKEND_MISMATCH;
         }
     }
     
@@ -259,7 +280,7 @@ public class AckooSDKManager:NSObject {
                         let errorCode = serverResponse.error!.code;
                         let errorMessage = serverResponse.error!.message;
                         self.activationState = .inactive(errorCode: errorCode, errorMessage: errorMessage);
-                        callback(false, SdkError(code: errorCode, message: errorMessage));
+                        callback(false, AckooSdkError(code: errorCode, message: errorMessage));
                     }
                 } catch {
                     self.activationState = .inactive(errorCode: "String", errorMessage: "String");
@@ -283,7 +304,7 @@ public class AckooSDKManager:NSObject {
             })
         }
         catch {
-            callback(false, ["code": "IOS_SDK_ERROR", "message": "Check Xcode logs for errors"])
+            callback(false, Constants.SDK_ERRORS.BACKEND_MISMATCH)
         }
     }
 }

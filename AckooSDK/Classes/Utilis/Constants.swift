@@ -8,9 +8,9 @@
 import Foundation
 
 
-struct SdkError {
-    var code:String;
-    var message:String;
+public struct AckooSdkError {
+    public var code:String;
+    public var message:String;
 }
 class Constants {
     
@@ -21,8 +21,8 @@ class Constants {
         static let SESSION_TOKEN:String = "AckooSDKSessionToken"
     }
     struct SDK_ERRORS {
-        static let SDK_INACTIVE: SdkError = SdkError(code: "SDK_INACTIVE", message: "The SDK is not active")
-        static let BACKEND_MISMATCH: SdkError = SdkError(code: "SDK_SERIALIZATION_ERROR", message: "backend response structure changed or unexpected")
+        static let SDK_INACTIVE: AckooSdkError = AckooSdkError(code: "SDK_INACTIVE", message: "The SDK is not active")
+        static let BACKEND_MISMATCH: AckooSdkError = AckooSdkError(code: "SDK_SERIALIZATION_ERROR", message: "backend response structure changed or unexpected")
     }
     
     struct ENGLISH {
