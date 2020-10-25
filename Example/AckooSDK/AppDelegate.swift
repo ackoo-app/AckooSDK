@@ -15,8 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var productName: String?
 
     func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
-        AckooSDKManager.shared().initSession();
+        AckooSDKManager.shared().initSession()
         return true
     }
 
@@ -44,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_: UIApplication, continue userActivity: NSUserActivity, restorationHandler _: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
         print("Continue User Activity called: ")
-        AckooSDKManager.shared().continueActivity(userActivity: userActivity);
+        AckooSDKManager.shared().continueActivity(userActivity: userActivity)
         return true
     }
 }

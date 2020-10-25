@@ -36,9 +36,9 @@ struct Config: Decodable {
 
 struct AppConfig: Decodable {
     private enum CodingKeys: String, CodingKey {
-        case partnerToken
+        case ackooToken
     }
-    let partnerToken: String
+    let ackooToken: String
     
 }
 ///
@@ -100,7 +100,7 @@ class NetworkingManager {
     class func getPartnerToken() -> String {
         var partnerToken: String = ""
         if let config:AppConfig = self.parseAppConfig() {
-            partnerToken = config.partnerToken 
+            partnerToken = config.ackooToken
         }
         return partnerToken
      }

@@ -52,7 +52,8 @@ class FingerPrintingOption:Encodable {
 
 class DeviceLocale:Encodable {
     let languageCode = Locale.current.languageCode
-    let regionCode = Locale.current.regionCode
+    let regionCode = Locale.current.regionCode ?? "none"
+    
     let calenderIdentifier:String = "\(Locale.current.calendar.identifier)"
     let timezone = TimeZone.current.identifier
     let keyboards:[String]
@@ -65,8 +66,6 @@ class DeviceLocale:Encodable {
         }
     }
 }
-
-
 
 class DeviceHardware:Encodable {
     let model:String = UIDevice.current.modelName

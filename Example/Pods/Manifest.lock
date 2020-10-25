@@ -1,17 +1,23 @@
 PODS:
-  - AckooSDK (0.2.9.3)
+  - AckooSDK (0.3.10)
+  - Eureka (5.3.1)
+  - Fakery (4.1.1)
   - Nimble (8.1.1)
   - Quick (3.0.0)
   - SwiftFormat/CLI (0.45.6)
 
 DEPENDENCIES:
   - AckooSDK (from `../`)
+  - Eureka
+  - Fakery
   - Nimble
   - Quick
   - SwiftFormat/CLI
 
 SPEC REPOS:
   trunk:
+    - Eureka
+    - Fakery
     - Nimble
     - Quick
     - SwiftFormat
@@ -21,11 +27,13 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AckooSDK: 91ce0c36f55e44b8afa6bab59ce1de5835625b1b
+  AckooSDK: f7827f43ccee79709ea7c33329a48372d419aac7
+  Eureka: 859877ab1e85661b6b7e810015d430e937d9cc7d
+  Fakery: d3380c4aa1efe7631c0831d7e26aa9db4491f014
   Nimble: 5f8a2fb6fa343a7242dfdd9d42f7267419d464b2
   Quick: 6d9559f40647bc4d510103842ef2fdd882d753e2
   SwiftFormat: f1612638c8097ceed03d0149f5f5ab67174ee5dd
 
-PODFILE CHECKSUM: 69ba6b4de3dc7b42c0d99de45b1b846797682e58
+PODFILE CHECKSUM: 6e6c93339cb4e6b25b63fc0420295b3cb76dfdad
 
 COCOAPODS: 1.9.3

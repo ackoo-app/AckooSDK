@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		014D481E2540802E00E789F3 /* IdentifyUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014D481D2540802E00E789F3 /* IdentifyUserViewController.swift */; };
+		014D48202541832F00E789F3 /* TrackViewItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014D481F2541832F00E789F3 /* TrackViewItemController.swift */; };
+		018B0E622543F6B80038FB31 /* TrackAddToCartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018B0E612543F6B80038FB31 /* TrackAddToCartController.swift */; };
+		018B0E642543F6D80038FB31 /* TrackCheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018B0E632543F6D80038FB31 /* TrackCheckoutViewController.swift */; };
 		060B6C8507831865B588C5DE /* Pods_PartnerApp_DemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3C0A27493939688567EFE22 /* Pods_PartnerApp_DemoTests.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
@@ -28,6 +32,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		014D481D2540802E00E789F3 /* IdentifyUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifyUserViewController.swift; sourceTree = "<group>"; };
+		014D481F2541832F00E789F3 /* TrackViewItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackViewItemController.swift; sourceTree = "<group>"; };
+		018B0E612543F6B80038FB31 /* TrackAddToCartController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackAddToCartController.swift; sourceTree = "<group>"; };
+		018B0E632543F6D80038FB31 /* TrackCheckoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackCheckoutViewController.swift; sourceTree = "<group>"; };
 		0B37E071CB4E7FC7AFD040BE /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		19516C15ABB92ACEA6BA80AA /* Pods_AckooSDK_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AckooSDK_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		36536046248BCB38005921F7 /* AckooSDK_Example.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AckooSDK_Example.entitlements; sourceTree = "<group>"; };
@@ -120,6 +128,10 @@
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
+				014D481D2540802E00E789F3 /* IdentifyUserViewController.swift */,
+				014D481F2541832F00E789F3 /* TrackViewItemController.swift */,
+				018B0E612543F6B80038FB31 /* TrackAddToCartController.swift */,
+				018B0E632543F6D80038FB31 /* TrackCheckoutViewController.swift */,
 			);
 			name = "Example for AckooSDK";
 			path = AckooSDK;
@@ -201,6 +213,7 @@
 				BB81761FC94D622F086F89D6 /* [CP] Check Pods Manifest.lock */,
 				607FACCE1AFB9204008FA782 /* Resources */,
 				7C106CC724DEE08C0033CA51 /* ShellScript */,
+				018B0E65254478DC0038FB31 /* ShellScript */,
 				607FACCC1AFB9204008FA782 /* Sources */,
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				C709580DEF8511C346B40771 /* [CP] Embed Pods Frameworks */,
@@ -297,6 +310,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		018B0E65254478DC0038FB31 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/SwiftFormat/CommandLineTool/swiftformat\" \"$SRCROOT\"\n";
+		};
 		31E8BDDCE64D79B36952DEA0 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -386,10 +416,14 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-AckooSDK_Example/Pods-AckooSDK_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AckooSDK/AckooSDK.framework",
+				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
+				"${BUILT_PRODUCTS_DIR}/Fakery/Fakery.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AckooSDK.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Fakery.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -403,8 +437,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				018B0E622543F6B80038FB31 /* TrackAddToCartController.swift in Sources */,
+				014D481E2540802E00E789F3 /* IdentifyUserViewController.swift in Sources */,
+				018B0E642543F6D80038FB31 /* TrackCheckoutViewController.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				014D48202541832F00E789F3 /* TrackViewItemController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

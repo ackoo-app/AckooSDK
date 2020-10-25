@@ -3,6 +3,8 @@ platform :ios, '9.0'
 target 'AckooSDK_Example' do
   pod 'AckooSDK', :path => '../'
   pod 'SwiftFormat/CLI'
+  pod 'Eureka'
+  pod 'Fakery'
 
   target 'PartnerApp_DemoTests' do
     inherit! :search_paths

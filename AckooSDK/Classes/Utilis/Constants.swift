@@ -24,6 +24,7 @@ class Constants {
     }
     struct URL_PATHS {
         static let TRACK:String = "partner/track"
+        static let IDENTIFY:String = "partner/identify"
         static let FINGERPRINT:String = "partner/fingerprint"
     }
     

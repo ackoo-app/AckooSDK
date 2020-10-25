@@ -81,51 +81,85 @@ public class AckooSDKManager:NSObject {
           if userActivity.activityType == NSUserActivityTypeBrowsingWeb {
                   if let url = userActivity.webpageURL {
                   let params:[String:String] = url.queryParams()
-                    if let sessionToken:String = params["sessionToken"] {
+                    if let sessionToken:String = params["session-token"] {
+                        print("sessionToken", sessionToken);
                         storeSessionToken(sessionToken: sessionToken)
                         self.validateAckooSession {
                             print($0, $1)
                         }
                     }
             }
-
         }
     }
     @objc
-    public func identify(id: String, user: [String: String], callback: @escaping (_ succeeded: Bool, _ response: Any) -> Void) {
-        var updatedUser = user;
+    public func identify(id: String, profile: [String: Any], callback: @escaping (_ succeeded: Bool, _ response: Any) -> Void) {
+        var updatedUser = profile;
         updatedUser["userId"] = id;
-        let payload = Payload(name: .login, props: updatedUser);
         
         guard let activationState = self.activationState else {
             callback(false, [Constants.RESPONSE_KEYS.ERROR_KEY:Constants.ENGLISH.SESSION_NOT_VALID])
             return;
         }
         if case .active(_) = activationState {
-           self.sendEventToServer(payload: payload, callback: callback)
+           self.identifyUser(payload: updatedUser, callback: callback)
         } else {
             callback(false, [Constants.RESPONSE_KEYS.ERROR_KEY:Constants.ENGLISH.SESSION_NOT_VALID])
-                
         }
     }
     /// Report user activity to Ackoo backend
     /// - Attention: callback will be always called on the main thread.
     /// - Parameters:
-    ///   - type: type of event
-    ///   - activity: activity class that holds relevant information like token, email address
+    ///   - props: activity class that holds relevant information like token, email address
     ///   - callback: call back with server response or error.
     @objc
-    public func reportActivity(type:AckooEventType, callback: @escaping (_ succeeded: Bool, _ response: Any) -> Void) {
-        let payload = Payload(name: getEventTypeName(event:type), props: ["a": "b"]);
-        
+    public func trackViewItem(_ props: [String: Any], callback: @escaping (_ succeeded: Bool, _ response: Any) -> Void) {
+        let payload: [String : Any] = ["name": "VIEW_ITEM", "props": props];
         // Check if token is acquired
         if self.activationState != nil {
             // No need to do anything
-            self.sendEventToServer(payload: payload, callback: callback)
+            self.trackEvent(payload: payload, callback: callback)
         } else {
             self.validateAckooSession { (succeeded, response) in
                 if succeeded {
-                    self.sendEventToServer(payload: payload, callback: callback)
+                    self.trackEvent(payload: payload, callback: callback)
+                } else {
+                    //Session not found
+                    callback(false, [Constants.RESPONSE_KEYS.ERROR_KEY:Constants.ENGLISH.SESSION_NOT_VALID])
+                }
+            }
+        }
+    }
+    
+    @objc
+    public func trackCheckout(_ props: [String: Any], callback: @escaping (_ succeeded: Bool, _ response: Any) -> Void) {
+        let payload: [String : Any] = ["name": "CHECKOUT", "props": props];
+        // Check if token is acquired
+        if self.activationState != nil {
+            // No need to do anything
+            self.trackEvent(payload: payload, callback: callback)
+        } else {
+            self.validateAckooSession { (succeeded, response) in
+                if succeeded {
+                    self.trackEvent(payload: payload, callback: callback)
+                } else {
+                    //Session not found
+                    callback(false, [Constants.RESPONSE_KEYS.ERROR_KEY:Constants.ENGLISH.SESSION_NOT_VALID])
+                }
+            }
+        }
+    }
+    
+    @objc
+    public func trackAddToCart(_ props: [String: Any], callback: @escaping (_ succeeded: Bool, _ response: Any) -> Void) {
+        let payload: [String : Any] = ["name": "ADD_TO_CART", "props": props];
+        // Check if token is acquired
+        if self.activationState != nil {
+            // No need to do anything
+            self.trackEvent(payload: payload, callback: callback)
+        } else {
+            self.validateAckooSession { (succeeded, response) in
+                if succeeded {
+                    self.trackEvent(payload: payload, callback: callback)
                 } else {
                     //Session not found
                     callback(false, [Constants.RESPONSE_KEYS.ERROR_KEY:Constants.ENGLISH.SESSION_NOT_VALID])
@@ -138,7 +172,7 @@ public class AckooSDKManager:NSObject {
     /// - Parameters:
     ///   - callback: call back with true or false
     
-    public func isUserValidForSDK(callback: @escaping (_ activationState: AckooActivationState) -> Void) {
+    private func isUserValidForSDK(callback: @escaping (_ activationState: AckooActivationState) -> Void) {
         if let activationState = self.activationState {
              callback(activationState)
         } else {
@@ -149,7 +183,7 @@ public class AckooSDKManager:NSObject {
     }
     
     @objc
-    public func isUserValidForSDKObjc(callback: @escaping (_ isActive: Bool,_ sessionToken:String?,_ error:NSError?) -> Void) {
+    public func getSessionToken(callback: @escaping (_ isActive: Bool,_ sessionToken:String?,_ error:NSError?) -> Void) {
         self.isUserValidForSDK { (state:AckooActivationState) in
             switch state {
                 
@@ -160,8 +194,6 @@ public class AckooSDKManager:NSObject {
                 let error:NSError = NSError(domain: "Ackoo.Error", code: errorCodeInt, userInfo: ["Message" : errorMessage])
                 callback(false,nil,error)
             }
-            
-            
         }
     }
     
@@ -181,30 +213,44 @@ public class AckooSDKManager:NSObject {
    /// - Parameters:
    ///   - order: order class that holds the reported purchase information
    ///   - callback: call back with server response or error.
-    @objc
-     public func reportPurchase(order:Order,callback: @escaping (_ succeeded: Bool, _ response: Any) -> Void) {
-        let payload = Payload(name: .purchase, props: order.toDict());
-           // Check if token is acquired
-        if self.activationState != nil {
-                // report event to server directly
-                self.sendEventToServer(payload: payload, callback: callback)
-           } else {
-               self.validateAckooSession { (succeeded, response) in
-                   if succeeded {
-                    self.sendEventToServer(payload: payload, callback: callback)
-                   } else {
-                       //Session not found
-                       callback(false, [Constants.RESPONSE_KEYS.ERROR_KEY:Constants.ENGLISH.SESSION_NOT_VALID])
-                   }
-                   
-               }
-           }
-       }
+//    @objc
+//     public func reportPurchase(order:Order,callback: @escaping (_ succeeded: Bool, _ response: Any) -> Void) {
+//        let payload = Payload(name: "purchase" , props: order.toDict());
+//           // Check if token is acquired
+//        if self.activationState != nil {
+//                // report event to server directly
+//                self.trackEvent(payload: payload, callback: callback)
+//           } else {
+//               self.validateAckooSession { (succeeded, response) in
+//                   if succeeded {
+//                    self.trackEvent(payload: payload, callback: callback)
+//                   } else {
+//                       //Session not found
+//                       callback(false, [Constants.RESPONSE_KEYS.ERROR_KEY:Constants.ENGLISH.SESSION_NOT_VALID])
+//                   }
+//                   
+//               }
+//           }
+//       }
     
-    private func sendEventToServer(payload: Payload, callback: @escaping (_ succeeded: Bool, _ response: Any) -> Void) {
+    private func trackEvent(payload: [String: Any], callback: @escaping (_ succeeded: Bool, _ response: Any) -> Void) {
         let requestURL = Constants.URL_PATHS.TRACK
        do {
-       let jsonData = try JSONEncoder().encode(payload)
+       let jsonData =  try JSONSerialization.data(withJSONObject: payload)
+           NetworkingManager.sharedInstance.postRequest(jsonData, url: requestURL, callback: {(_ succeeded: Bool, _ response: Any) -> Void in
+               DispatchQueue.main.async(execute: {() -> Void in
+                   callback(succeeded, response)
+               })
+           })
+       }
+       catch {
+           callback(false, [Constants.RESPONSE_KEYS.ERROR_KEY:Constants.ENGLISH.INVALID_REQUEST])
+       }
+    }
+    private func identifyUser(payload: [String: Any], callback: @escaping (_ succeeded: Bool, _ response: Any) -> Void) {
+        let requestURL = Constants.URL_PATHS.IDENTIFY
+       do {
+       let jsonData =  try JSONSerialization.data(withJSONObject: payload)
            NetworkingManager.sharedInstance.postRequest(jsonData, url: requestURL, callback: {(_ succeeded: Bool, _ response: Any) -> Void in
                DispatchQueue.main.async(execute: {() -> Void in
                    callback(succeeded, response)
