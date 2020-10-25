@@ -14,25 +14,26 @@ class ViewController: UIViewController {
     @IBOutlet var isSdkActiveLabel: UILabel!
     @IBOutlet var sdkSessionTokenLabel: UILabel!
 
-    @IBOutlet var userIdInput: UITextField!
-    @IBOutlet var userEmailInput: UITextField!
-
-    @IBOutlet var amountInput: UITextField!
-    @IBOutlet var currencyInput: UITextField!
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view, typically from a nib.
     }
 
+    @IBAction func CleanSessionToken(_: Any) {
+        UserDefaults.standard.removeObject(forKey: "AckooSDKSessionToken")
+    }
+
     @IBAction func recheckIsSdkActive(_: Any) {
-        AckooSDKManager.shared().getSessionToken { isActive, sessionToken, error in
+        AckooSDKManager.shared().getSessionToken { isActive, sessionToken, _ in
 
             if isActive {
                 self.showAlert(title: "Ackoo SDK is Active", message: "sessionToken : \(sessionToken)")
+                self.isSdkActiveLabel.text = "true"
+                self.sdkSessionTokenLabel.text = sessionToken
             } else {
-                print(error)
+                self.isSdkActiveLabel.text = "false"
+                self.sdkSessionTokenLabel.text = "none"
                 self.showAlert(title: "Ackoo SDK is Inactive", message: "code")
             }
         }

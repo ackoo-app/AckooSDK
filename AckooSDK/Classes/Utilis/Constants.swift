@@ -8,6 +8,10 @@
 import Foundation
 
 
+struct SdkError {
+    var code:String;
+    var message:String;
+}
 class Constants {
     
     struct RESPONSE_KEYS {
@@ -16,6 +20,11 @@ class Constants {
     struct SDK_KEYS {
         static let SESSION_TOKEN:String = "AckooSDKSessionToken"
     }
+    struct SDK_ERRORS {
+        static let SDK_INACTIVE: SdkError = SdkError(code: "SDK_INACTIVE", message: "The SDK is not active")
+        static let BACKEND_MISMATCH: SdkError = SdkError(code: "SDK_SERIALIZATION_ERROR", message: "backend response structure changed or unexpected")
+    }
+    
     struct ENGLISH {
         
         static let NO_INTERNET_MESSAGE:String = "Internet not reachable"

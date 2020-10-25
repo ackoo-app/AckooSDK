@@ -103,7 +103,7 @@ public class AckooSDKManager:NSObject {
         if case .active(_) = activationState {
            self.identifyUser(payload: updatedUser, callback: callback)
         } else {
-            callback(false, [Constants.RESPONSE_KEYS.ERROR_KEY:Constants.ENGLISH.SESSION_NOT_VALID])
+            callback(false, Constants.SDK_ERRORS.SDK_INACTIVE)
         }
     }
     /// Report user activity to Ackoo backend
@@ -124,7 +124,7 @@ public class AckooSDKManager:NSObject {
                     self.trackEvent(payload: payload, callback: callback)
                 } else {
                     //Session not found
-                    callback(false, [Constants.RESPONSE_KEYS.ERROR_KEY:Constants.ENGLISH.SESSION_NOT_VALID])
+                    callback(false, Constants.SDK_ERRORS.SDK_INACTIVE)
                 }
             }
         }
@@ -143,7 +143,7 @@ public class AckooSDKManager:NSObject {
                     self.trackEvent(payload: payload, callback: callback)
                 } else {
                     //Session not found
-                    callback(false, [Constants.RESPONSE_KEYS.ERROR_KEY:Constants.ENGLISH.SESSION_NOT_VALID])
+                    callback(false, Constants.SDK_ERRORS.SDK_INACTIVE)
                 }
             }
         }
@@ -162,7 +162,7 @@ public class AckooSDKManager:NSObject {
                     self.trackEvent(payload: payload, callback: callback)
                 } else {
                     //Session not found
-                    callback(false, [Constants.RESPONSE_KEYS.ERROR_KEY:Constants.ENGLISH.SESSION_NOT_VALID])
+                    callback(false, Constants.SDK_ERRORS.SDK_INACTIVE)
                 }
             }
         }
@@ -191,7 +191,7 @@ public class AckooSDKManager:NSObject {
                 callback(true,sessionToken,nil)
             case .inactive(errorCode: let errorCode, errorMessage: let errorMessage):
                 let errorCodeInt:Int  = Int(errorCode) ?? 400
-                let error:NSError = NSError(domain: "Ackoo.Error", code: errorCodeInt, userInfo: ["Message" : errorMessage])
+                let error:NSError = NSError(domain: "Ackoo.Error", code: errorCodeInt, userInfo: ["code": errorCode, "message" : errorMessage])
                 callback(false,nil,error)
             }
         }
@@ -208,30 +208,6 @@ public class AckooSDKManager:NSObject {
     static func requiresMainQueueSetup() -> Bool {
         return true
     }
-    /// Report user purchase activity to Ackoo backend
-   /// - Attention: callback will be always called on the main thread.
-   /// - Parameters:
-   ///   - order: order class that holds the reported purchase information
-   ///   - callback: call back with server response or error.
-//    @objc
-//     public func reportPurchase(order:Order,callback: @escaping (_ succeeded: Bool, _ response: Any) -> Void) {
-//        let payload = Payload(name: "purchase" , props: order.toDict());
-//           // Check if token is acquired
-//        if self.activationState != nil {
-//                // report event to server directly
-//                self.trackEvent(payload: payload, callback: callback)
-//           } else {
-//               self.validateAckooSession { (succeeded, response) in
-//                   if succeeded {
-//                    self.trackEvent(payload: payload, callback: callback)
-//                   } else {
-//                       //Session not found
-//                       callback(false, [Constants.RESPONSE_KEYS.ERROR_KEY:Constants.ENGLISH.SESSION_NOT_VALID])
-//                   }
-//                   
-//               }
-//           }
-//       }
     
     private func trackEvent(payload: [String: Any], callback: @escaping (_ succeeded: Bool, _ response: Any) -> Void) {
         let requestURL = Constants.URL_PATHS.TRACK
@@ -278,16 +254,16 @@ public class AckooSDKManager:NSObject {
                     if serverResponse.ok {
                         let sessionToken = serverResponse.data!["sessionToken"];
                         self.activationState = .active(sessionToken: sessionToken!)
-                        callback(true, "");
+                        callback(true, sessionToken as Any);
                     } else {
                         let errorCode = serverResponse.error!.code;
                         let errorMessage = serverResponse.error!.message;
                         self.activationState = .inactive(errorCode: errorCode, errorMessage: errorMessage);
-                        callback(true, "");
+                        callback(false, SdkError(code: errorCode, message: errorMessage));
                     }
                 } catch {
-                    self.activationState = .inactive(errorCode: "SERIALIZATION_ERROR", errorMessage: "backend response structure changed");
-                    callback(succeeded,response)
+                    self.activationState = .inactive(errorCode: "String", errorMessage: "String");
+                    callback(succeeded, Constants.SDK_ERRORS.BACKEND_MISMATCH)
                 }
             }
             }
@@ -307,8 +283,7 @@ public class AckooSDKManager:NSObject {
             })
         }
         catch {
-            print("Error in retrieving token")
-            callback(false, [Constants.RESPONSE_KEYS.ERROR_KEY:Constants.ENGLISH.INVALID_REQUEST])
+            callback(false, ["code": "IOS_SDK_ERROR", "message": "Check Xcode logs for errors"])
         }
     }
 }
