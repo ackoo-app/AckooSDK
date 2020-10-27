@@ -15,6 +15,7 @@
 			dependencies = (
 			);
 			name = SwiftFormat;
+			productName = SwiftFormat;
 		};
 /* End PBXAggregateTarget section */
 
@@ -46,7 +47,6 @@
 		1C86AAE49C9133A6AC1A6135B37A013B /* de.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E6DD057EF3A10268747320B1E856BBF /* de.json */; };
 		1E8C211E65C82544183D9785BEDA9D4E /* Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BA6A4C0917CAA5A37BE27D8EDBE4E8 /* Name.swift */; };
 		209F98BB7B328893FB64BA0393B4BD57 /* HooksPhase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A188DC19EFB6224B5DD0B25B5DDDF03 /* HooksPhase.swift */; };
-		21389628D3B2A0119A9EC4976019FC48 /* RNAckooSDKManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A60D6F943F9C831879C24897A4A071C /* RNAckooSDKManager.swift */; };
 		22B5B4ED0824E7BAF2091AAD6238A73F /* QuickSpecBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 190A4759392395B131CF286200464553 /* QuickSpecBase.m */; };
 		23422A800AC32898C80DA1EDE7911088 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D71BDE71B6FD529609468AAB5FD17AD /* App.swift */; };
 		234849AD309265FD107C74357FC8C0CF /* DSL+Wait.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1481019FD66A025324165C6C184FD1A /* DSL+Wait.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
@@ -347,7 +347,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0043585EDD124B25E00E053E10EAB676 /* uk.json */ = {isa = PBXFileReference; includeInIndex = 1; name = uk.json; path = Resources/Locales/uk.json; sourceTree = "<group>"; };
+		0043585EDD124B25E00E053E10EAB676 /* uk.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; name = uk.json; path = Resources/Locales/uk.json; sourceTree = "<group>"; };
 		009F326F67C4A6F73E56134D72222283 /* Faker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Faker.swift; path = Sources/Fakery/Faker.swift; sourceTree = "<group>"; };
 		0100349BDBBF12CFD3742EA3DC1BA3BA /* QuickSpec.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QuickSpec.h; path = Sources/QuickObjectiveC/QuickSpec.h; sourceTree = "<group>"; };
 		0183E93AD822C88CA78474DF129F0C50 /* MatcherFunc.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MatcherFunc.swift; path = Sources/Nimble/Matchers/MatcherFunc.swift; sourceTree = "<group>"; };
@@ -360,15 +360,15 @@
 		052354E2A33501C1946DCDAE7A7F2533 /* mach_excServer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = mach_excServer.h; path = Carthage/Checkouts/CwlPreconditionTesting/Sources/CwlMachBadInstructionHandler/mach_excServer.h; sourceTree = "<group>"; };
 		055B6685A19FC6BF10DD79BBBD78410D /* SwitchRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwitchRow.swift; path = Source/Rows/SwitchRow.swift; sourceTree = "<group>"; };
 		06096220F078501ED638E97242B90BE6 /* RuleRange.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RuleRange.swift; path = Source/Validations/RuleRange.swift; sourceTree = "<group>"; };
-		06904E35DF2A82B28972D96662E4F8BE /* sk.json */ = {isa = PBXFileReference; includeInIndex = 1; name = sk.json; path = Resources/Locales/sk.json; sourceTree = "<group>"; };
+		06904E35DF2A82B28972D96662E4F8BE /* sk.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; name = sk.json; path = Resources/Locales/sk.json; sourceTree = "<group>"; };
 		0740C528506C3B186F725C406CE0AED0 /* SelectableSection.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SelectableSection.swift; path = Source/Core/SelectableSection.swift; sourceTree = "<group>"; };
 		07604DBD47B5B9690A13CB547C950096 /* PopoverSelectorRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PopoverSelectorRow.swift; path = Source/Rows/PopoverSelectorRow.swift; sourceTree = "<group>"; };
-		082977F3777A7D434AB35C357B487F83 /* Eureka.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Eureka.framework; path = Eureka.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		082977F3777A7D434AB35C357B487F83 /* Eureka.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Eureka.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		08AEEF7182C3FF19A9DC28009DAE800C /* PushRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PushRow.swift; path = Source/Rows/PushRow.swift; sourceTree = "<group>"; };
 		08C69CD4378C90862F1C68D2849E08AF /* QuickConfiguration.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QuickConfiguration.m; path = Sources/QuickObjectiveC/Configuration/QuickConfiguration.m; sourceTree = "<group>"; };
 		0BA7FD1C868139B3217998494022C97B /* Pods-AckooSDK_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-AckooSDK_Example.modulemap"; sourceTree = "<group>"; };
 		0C938E597ABD584D1F2457CA54710441 /* SwiftFormat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftFormat.release.xcconfig; sourceTree = "<group>"; };
-		0D631E9908483F9525A6B3F36F16CC61 /* Quick.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Quick.framework; path = Quick.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0D631E9908483F9525A6B3F36F16CC61 /* Quick.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Quick.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D898EA7C74D7C25D895D0FBEA401A43 /* NMBExpectation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NMBExpectation.swift; path = Sources/Nimble/Adapters/NMBExpectation.swift; sourceTree = "<group>"; };
 		0E06EA9D93E78088685C4BBC14A1E3D2 /* gh.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = gh.png; path = docs/img/gh.png; sourceTree = "<group>"; };
 		0E9D32896CD466E5EC989D75386D814B /* ErrorUtility.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ErrorUtility.swift; path = Sources/Quick/ErrorUtility.swift; sourceTree = "<group>"; };
@@ -378,12 +378,12 @@
 		10720798F5DB94D1CFE0EE52E3A844E1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		1131A5269E28EBBB1EDF92CDD3468AD3 /* HeaderFooterView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HeaderFooterView.swift; path = Source/Core/HeaderFooterView.swift; sourceTree = "<group>"; };
 		113C5C71AA0F8873FE3F910A1F3F1160 /* ExpectationMessage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpectationMessage.swift; path = Sources/Nimble/ExpectationMessage.swift; sourceTree = "<group>"; };
-		1295616EABC84DF4D36645473167F029 /* OrderItem.html */ = {isa = PBXFileReference; includeInIndex = 1; name = OrderItem.html; path = docs/Classes/OrderItem.html; sourceTree = "<group>"; };
+		1295616EABC84DF4D36645473167F029 /* OrderItem.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = OrderItem.html; path = docs/Classes/OrderItem.html; sourceTree = "<group>"; };
 		12C6C7F80299367F1E29FCEE45475331 /* Address.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Address.swift; path = Sources/Fakery/Generators/Address.swift; sourceTree = "<group>"; };
-		134EAC6F6053CFBE7379FD92B90572B4 /* en-CA.json */ = {isa = PBXFileReference; includeInIndex = 1; name = "en-CA.json"; path = "Resources/Locales/en-CA.json"; sourceTree = "<group>"; };
-		135B9EA8498D8BD288DE862D407255AE /* Fakery.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Fakery.framework; path = Fakery.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		134EAC6F6053CFBE7379FD92B90572B4 /* en-CA.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; name = "en-CA.json"; path = "Resources/Locales/en-CA.json"; sourceTree = "<group>"; };
+		135B9EA8498D8BD288DE862D407255AE /* Fakery.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Fakery.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1469A50CA5B869F666B93F92AC5C3DF7 /* Predicate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Predicate.swift; path = Sources/Nimble/Matchers/Predicate.swift; sourceTree = "<group>"; };
-		14D664D426F2783CB567697EFF05029F /* UserActivity.html */ = {isa = PBXFileReference; includeInIndex = 1; name = UserActivity.html; path = docs/Classes/UserActivity.html; sourceTree = "<group>"; };
+		14D664D426F2783CB567697EFF05029F /* UserActivity.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = UserActivity.html; path = docs/Classes/UserActivity.html; sourceTree = "<group>"; };
 		15584903D9C13E4580342F0EDB373359 /* RowType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RowType.swift; path = Source/Core/RowType.swift; sourceTree = "<group>"; };
 		1626A463CC7BB5806B1910034DE15891 /* AdapterProtocols.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AdapterProtocols.swift; path = Sources/Nimble/Adapters/AdapterProtocols.swift; sourceTree = "<group>"; };
 		1681F2B519372DC37E0C1AAC8A391494 /* QuickTestObservation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuickTestObservation.swift; path = Sources/Quick/QuickTestObservation.swift; sourceTree = "<group>"; };
@@ -394,60 +394,60 @@
 		190A4759392395B131CF286200464553 /* QuickSpecBase.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QuickSpecBase.m; path = Sources/QuickObjCRuntime/QuickSpecBase.m; sourceTree = "<group>"; };
 		1923E910287C04D28176A5D36378996F /* BeVoid.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeVoid.swift; path = Sources/Nimble/Matchers/BeVoid.swift; sourceTree = "<group>"; };
 		1ADBD1606EC98136B7FBF2BA5C2095D4 /* Closures.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Closures.swift; path = Sources/Quick/Hooks/Closures.swift; sourceTree = "<group>"; };
-		1BE8FCE8F59B48FB73CE46405CFA9F3B /* AckooSDK.tgz */ = {isa = PBXFileReference; includeInIndex = 1; name = AckooSDK.tgz; path = docs/docsets/AckooSDK.tgz; sourceTree = "<group>"; };
+		1BE8FCE8F59B48FB73CE46405CFA9F3B /* AckooSDK.tgz */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; name = AckooSDK.tgz; path = docs/docsets/AckooSDK.tgz; sourceTree = "<group>"; };
 		1CB7A98EF1C52CB2E094B8863C80AFCC /* Team.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Team.swift; path = Sources/Fakery/Generators/Team.swift; sourceTree = "<group>"; };
 		1CE6523B4ED679A253408D5470E5CF2E /* Config.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Config.swift; path = Sources/Fakery/Config.swift; sourceTree = "<group>"; };
 		1CED0AE5B4917503AA629AA6375E581C /* Equal.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Equal.swift; path = Sources/Nimble/Matchers/Equal.swift; sourceTree = "<group>"; };
-		1D0984D12FC93739DDB51865F004A0F0 /* de-CH.json */ = {isa = PBXFileReference; includeInIndex = 1; name = "de-CH.json"; path = "Resources/Locales/de-CH.json"; sourceTree = "<group>"; };
+		1D0984D12FC93739DDB51865F004A0F0 /* de-CH.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; name = "de-CH.json"; path = "Resources/Locales/de-CH.json"; sourceTree = "<group>"; };
 		1D34DA1D17DDE487C95BA7F9C5041B3D /* PickerRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PickerRow.swift; path = Source/Rows/PickerRow.swift; sourceTree = "<group>"; };
 		1D903AFF7D18B4377FDA19B78B6EB0B2 /* CwlCatchException.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CwlCatchException.h; path = Carthage/Checkouts/CwlPreconditionTesting/Dependencies/CwlCatchException/Sources/CwlCatchExceptionSupport/include/CwlCatchException.h; sourceTree = "<group>"; };
 		1E10E0365FC01189A1268A5132A8A021 /* Eureka-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Eureka-dummy.m"; sourceTree = "<group>"; };
 		1EBAAB7717FDE305647E4AF78824D7EF /* BeLessThanOrEqual.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeLessThanOrEqual.swift; path = Sources/Nimble/Matchers/BeLessThanOrEqual.swift; sourceTree = "<group>"; };
 		2158A1A1BAB1A9E0CB706DBE8EA184E1 /* PickerInlineRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PickerInlineRow.swift; path = Source/Rows/PickerInlineRow.swift; sourceTree = "<group>"; };
-		216CAF164C7F9841C2CB014257D32096 /* pl.json */ = {isa = PBXFileReference; includeInIndex = 1; name = pl.json; path = Resources/Locales/pl.json; sourceTree = "<group>"; };
+		216CAF164C7F9841C2CB014257D32096 /* pl.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; name = pl.json; path = Resources/Locales/pl.json; sourceTree = "<group>"; };
 		21704E8FF4A344FCCCBEF458E9AFE19D /* Bank.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Bank.swift; path = Sources/Fakery/Generators/Bank.swift; sourceTree = "<group>"; };
 		218A8A1B42C728F6E85CD42721F5E405 /* BaseRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BaseRow.swift; path = Source/Core/BaseRow.swift; sourceTree = "<group>"; };
 		22287E395FCDB98050788C5B48D53DF8 /* ActionSheetRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ActionSheetRow.swift; path = Source/Rows/ActionSheetRow.swift; sourceTree = "<group>"; };
 		255A01AAD8BEFAEFE658F2FFD4991AC1 /* Pods-PartnerApp_DemoTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-PartnerApp_DemoTests-frameworks.sh"; sourceTree = "<group>"; };
-		25F1E3493264830B2E50DE3804010DF8 /* en-AU.json */ = {isa = PBXFileReference; includeInIndex = 1; name = "en-AU.json"; path = "Resources/Locales/en-AU.json"; sourceTree = "<group>"; };
-		26CC820E57DE6B4F753E6E0316A30145 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		25F1E3493264830B2E50DE3804010DF8 /* en-AU.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; name = "en-AU.json"; path = "Resources/Locales/en-AU.json"; sourceTree = "<group>"; };
+		26CC820E57DE6B4F753E6E0316A30145 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		29EC880B4075AB8A39AD7D31EFE51219 /* CellType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CellType.swift; path = Source/Core/CellType.swift; sourceTree = "<group>"; };
-		2DCCEB8F8ECD6AB1610A155AE0EAC8A5 /* Order.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Order.html; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/Classes/Order.html; sourceTree = "<group>"; };
+		2DCCEB8F8ECD6AB1610A155AE0EAC8A5 /* Order.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = Order.html; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/Classes/Order.html; sourceTree = "<group>"; };
 		30A4EE98F880EC5410A9B9655E7F2E17 /* CwlDarwinDefinitions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CwlDarwinDefinitions.swift; path = Carthage/Checkouts/CwlPreconditionTesting/Sources/CwlPreconditionTesting/CwlDarwinDefinitions.swift; sourceTree = "<group>"; };
-		3145B5A359E7F1AB0A523A522668ED89 /* de-AT.json */ = {isa = PBXFileReference; includeInIndex = 1; name = "de-AT.json"; path = "Resources/Locales/de-AT.json"; sourceTree = "<group>"; };
+		3145B5A359E7F1AB0A523A522668ED89 /* de-AT.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; name = "de-AT.json"; path = "Resources/Locales/de-AT.json"; sourceTree = "<group>"; };
 		314B25FC63A2DE537971096596F6B6CF /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		318C79F5D46AD780593B7F8C2A1C1AFA /* en-TEST.json */ = {isa = PBXFileReference; includeInIndex = 1; name = "en-TEST.json"; path = "Resources/Locales/en-TEST.json"; sourceTree = "<group>"; };
+		318C79F5D46AD780593B7F8C2A1C1AFA /* en-TEST.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; name = "en-TEST.json"; path = "Resources/Locales/en-TEST.json"; sourceTree = "<group>"; };
 		31B0BBF70380792D4E2DD54335C81EAB /* BeLogical.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeLogical.swift; path = Sources/Nimble/Matchers/BeLogical.swift; sourceTree = "<group>"; };
-		3296D726C4539D7D73CB923A186E18CD /* sv.json */ = {isa = PBXFileReference; includeInIndex = 1; name = sv.json; path = Resources/Locales/sv.json; sourceTree = "<group>"; };
-		32FC53442AC209B34AD6D80431A222B6 /* jquery.min.js */ = {isa = PBXFileReference; includeInIndex = 1; name = jquery.min.js; path = docs/js/jquery.min.js; sourceTree = "<group>"; };
+		3296D726C4539D7D73CB923A186E18CD /* sv.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; name = sv.json; path = Resources/Locales/sv.json; sourceTree = "<group>"; };
+		32FC53442AC209B34AD6D80431A222B6 /* jquery.min.js */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.javascript; name = jquery.min.js; path = docs/js/jquery.min.js; sourceTree = "<group>"; };
 		33A29B0A4D568D60B1BA76352B99C315 /* CwlBadInstructionException.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CwlBadInstructionException.swift; path = Carthage/Checkouts/CwlPreconditionTesting/Sources/CwlPreconditionTesting/CwlBadInstructionException.swift; sourceTree = "<group>"; };
 		34171DC896919D681043615E9AAF9BBF /* DateInlineRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DateInlineRow.swift; path = Source/Rows/DateInlineRow.swift; sourceTree = "<group>"; };
 		34297668A344DC6270813AFF0A508ED3 /* Filter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Filter.swift; path = Sources/Quick/Filter.swift; sourceTree = "<group>"; };
-		34C09887B0399735FBA803A709B81D9C /* AckooEventType.html */ = {isa = PBXFileReference; includeInIndex = 1; name = AckooEventType.html; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/Enums/AckooEventType.html; sourceTree = "<group>"; };
+		34C09887B0399735FBA803A709B81D9C /* AckooEventType.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = AckooEventType.html; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/Enums/AckooEventType.html; sourceTree = "<group>"; };
 		352C18E6E0593134BC56A88F96EE96B2 /* Parser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Parser.swift; path = Sources/Fakery/Data/Parser.swift; sourceTree = "<group>"; };
 		354DC97E74F27E3E6FD721854A82E1A2 /* Fakery-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Fakery-prefix.pch"; sourceTree = "<group>"; };
 		3638D978CAB99853AD0E79626E888C81 /* XCTestObservationCenter+Register.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "XCTestObservationCenter+Register.m"; path = "Sources/NimbleObjectiveC/XCTestObservationCenter+Register.m"; sourceTree = "<group>"; };
 		38843A7A35D15D5A5AE910EBAA5A889A /* Configuration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Configuration.swift; path = Sources/Quick/Configuration/Configuration.swift; sourceTree = "<group>"; };
-		38E6B1EF4519714F38716CB7CE224F9F /* zh-CN.json */ = {isa = PBXFileReference; includeInIndex = 1; name = "zh-CN.json"; path = "Resources/Locales/zh-CN.json"; sourceTree = "<group>"; };
+		38E6B1EF4519714F38716CB7CE224F9F /* zh-CN.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; name = "zh-CN.json"; path = "Resources/Locales/zh-CN.json"; sourceTree = "<group>"; };
 		3AC13DE0848C838CD0E6290E5C048551 /* DSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DSL.swift; path = Sources/Nimble/DSL.swift; sourceTree = "<group>"; };
 		3B115A16E5A6E4CCAAA7EEA18758C8C4 /* Nimble-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Nimble-dummy.m"; sourceTree = "<group>"; };
 		3B377181B15832B287B02BF9DB88138E /* BeIdenticalTo.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeIdenticalTo.swift; path = Sources/Nimble/Matchers/BeIdenticalTo.swift; sourceTree = "<group>"; };
 		3D211BC8DFB7116B371FCEE04CF236F1 /* Date.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Date.swift; path = Sources/Fakery/Generators/Date.swift; sourceTree = "<group>"; };
 		3E55E91A2CD690750ADDA424C2FA4B20 /* Pods-AckooSDK_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-AckooSDK_Example-acknowledgements.plist"; sourceTree = "<group>"; };
-		3EAF2C08FC25842563EFB2684C112D3E /* Pods_AckooSDK_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_AckooSDK_Example.framework; path = "Pods-AckooSDK_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3EAF2C08FC25842563EFB2684C112D3E /* Pods_AckooSDK_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AckooSDK_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3ED89F6E478C8B84D969DDDACF690482 /* BaseActivity.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BaseActivity.swift; sourceTree = "<group>"; };
-		3FD904DDCB5486FA11F0E29C94F9A7D3 /* fa.json */ = {isa = PBXFileReference; includeInIndex = 1; name = fa.json; path = Resources/Locales/fa.json; sourceTree = "<group>"; };
+		3FD904DDCB5486FA11F0E29C94F9A7D3 /* fa.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; name = fa.json; path = Resources/Locales/fa.json; sourceTree = "<group>"; };
 		405FF89F8958994309F55BD59D8AFD8F /* SwipeActions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwipeActions.swift; path = Source/Core/SwipeActions.swift; sourceTree = "<group>"; };
 		40B7DF90B3B8A609862B8303CE796338 /* Hobbit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Hobbit.swift; path = Sources/Fakery/Generators/Hobbit.swift; sourceTree = "<group>"; };
 		40C95F4FF97C868C485AFD53FC239732 /* Pods-PartnerApp_DemoTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-PartnerApp_DemoTests-Info.plist"; sourceTree = "<group>"; };
 		42FA6FD61F939A28B2799CF23B951A9C /* Pods-PartnerApp_DemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PartnerApp_DemoTests.release.xcconfig"; sourceTree = "<group>"; };
-		430DD6D9AB1BAB7073CD0B273EBA81F8 /* docSet.dsidx */ = {isa = PBXFileReference; includeInIndex = 1; name = docSet.dsidx; path = docs/docsets/AckooSDK.docset/Contents/Resources/docSet.dsidx; sourceTree = "<group>"; };
+		430DD6D9AB1BAB7073CD0B273EBA81F8 /* docSet.dsidx */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; name = docSet.dsidx; path = docs/docsets/AckooSDK.docset/Contents/Resources/docSet.dsidx; sourceTree = "<group>"; };
 		435E23D999DC959898C39BC3E87F3FE4 /* TriplePickerInputRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TriplePickerInputRow.swift; path = Source/Rows/TriplePickerInputRow.swift; sourceTree = "<group>"; };
-		447A3FB08010FE46CDDFB77FCB5C07FC /* nl.json */ = {isa = PBXFileReference; includeInIndex = 1; name = nl.json; path = Resources/Locales/nl.json; sourceTree = "<group>"; };
+		447A3FB08010FE46CDDFB77FCB5C07FC /* nl.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; name = nl.json; path = Resources/Locales/nl.json; sourceTree = "<group>"; };
 		458132E6BF7B549807A50F69A208DCC3 /* carat.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = carat.png; path = docs/img/carat.png; sourceTree = "<group>"; };
-		45BCB9E3BB6D7F26FB1B4F7513B40FB4 /* ru.json */ = {isa = PBXFileReference; includeInIndex = 1; name = ru.json; path = Resources/Locales/ru.json; sourceTree = "<group>"; };
+		45BCB9E3BB6D7F26FB1B4F7513B40FB4 /* ru.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; name = ru.json; path = Resources/Locales/ru.json; sourceTree = "<group>"; };
 		4648944DF0BA9FFA1353EA5F220333A4 /* AssertionDispatcher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AssertionDispatcher.swift; path = Sources/Nimble/Adapters/AssertionDispatcher.swift; sourceTree = "<group>"; };
-		46CBD3A9F0AF588988D0F2C22C890F42 /* jazzy.js */ = {isa = PBXFileReference; includeInIndex = 1; name = jazzy.js; path = docs/js/jazzy.js; sourceTree = "<group>"; };
+		46CBD3A9F0AF588988D0F2C22C890F42 /* jazzy.js */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.javascript; name = jazzy.js; path = docs/js/jazzy.js; sourceTree = "<group>"; };
 		480FAF74CE023A58F0D5892F29AC27F1 /* Zelda.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Zelda.swift; path = Sources/Fakery/Generators/Zelda.swift; sourceTree = "<group>"; };
 		4906AC68B92F771764E1D4AC2B793134 /* NMBExceptionCapture.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NMBExceptionCapture.h; path = Sources/NimbleObjectiveC/NMBExceptionCapture.h; sourceTree = "<group>"; };
 		4A61CEF18787979EE2B89161620CB626 /* MultipleSelectorViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MultipleSelectorViewController.swift; path = Source/Rows/Controllers/MultipleSelectorViewController.swift; sourceTree = "<group>"; };
@@ -455,26 +455,26 @@
 		4E574BB21455A722E567E863E8074EDA /* Behavior.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Behavior.swift; path = Sources/Quick/Behavior.swift; sourceTree = "<group>"; };
 		4F701467C0C62E4B63F36EE91B2C6744 /* BeAKindOf.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeAKindOf.swift; path = Sources/Nimble/Matchers/BeAKindOf.swift; sourceTree = "<group>"; };
 		4FDA3DF02BCFDC3549D05B5FFF2D6012 /* AckooSDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AckooSDK.debug.xcconfig; sourceTree = "<group>"; };
-		517EAD2F3052A541D056960A11583999 /* zh-TW.json */ = {isa = PBXFileReference; includeInIndex = 1; name = "zh-TW.json"; path = "Resources/Locales/zh-TW.json"; sourceTree = "<group>"; };
+		517EAD2F3052A541D056960A11583999 /* zh-TW.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; name = "zh-TW.json"; path = "Resources/Locales/zh-TW.json"; sourceTree = "<group>"; };
 		53C6B5BC57912052960B5A9724F0217A /* SatisfyAnyOf.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SatisfyAnyOf.swift; path = Sources/Nimble/Matchers/SatisfyAnyOf.swift; sourceTree = "<group>"; };
 		54A8CA09D899C7FF65D19E45648C6189 /* Cat.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Cat.swift; path = Sources/Fakery/Generators/Cat.swift; sourceTree = "<group>"; };
 		5672AAD61605C713B8C67EC59DBA48EA /* OrderItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = OrderItem.swift; sourceTree = "<group>"; };
-		56A4D43AE43417B502B4EDFE36264439 /* Utils.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Utils.html; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/Classes/Utils.html; sourceTree = "<group>"; };
+		56A4D43AE43417B502B4EDFE36264439 /* Utils.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = Utils.html; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/Classes/Utils.html; sourceTree = "<group>"; };
 		57B059C7752186DBC2B060B714F65593 /* Nimble-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Nimble-umbrella.h"; sourceTree = "<group>"; };
-		57B4A09C62B9046EFA13BDD4E8943181 /* Classes.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Classes.html; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/Classes.html; sourceTree = "<group>"; };
-		58E385C4265B08C9CAD35D7B31D7BA0C /* index.html */ = {isa = PBXFileReference; includeInIndex = 1; name = index.html; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/index.html; sourceTree = "<group>"; };
+		57B4A09C62B9046EFA13BDD4E8943181 /* Classes.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = Classes.html; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/Classes.html; sourceTree = "<group>"; };
+		58E385C4265B08C9CAD35D7B31D7BA0C /* index.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = index.html; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/index.html; sourceTree = "<group>"; };
 		58E440E8631E0C8B4D391FCF0DF4F93A /* SelectorViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SelectorViewController.swift; path = Source/Rows/Controllers/SelectorViewController.swift; sourceTree = "<group>"; };
 		590F4B489D7030B2AC8C4381CE0EE731 /* AckooSDK-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "AckooSDK-Info.plist"; sourceTree = "<group>"; };
 		5AA0EF6CFB1134C44C9864615B9F2F42 /* Fakery.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Fakery.release.xcconfig; sourceTree = "<group>"; };
 		5ADB3730FE431EB1041A3FEA6989F679 /* String+C99ExtendedIdentifier.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "String+C99ExtendedIdentifier.swift"; path = "Sources/Quick/String+C99ExtendedIdentifier.swift"; sourceTree = "<group>"; };
-		5AE19F22F0F9F12A5B771EA8D09A055C /* Enums.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Enums.html; path = docs/Enums.html; sourceTree = "<group>"; };
+		5AE19F22F0F9F12A5B771EA8D09A055C /* Enums.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = Enums.html; path = docs/Enums.html; sourceTree = "<group>"; };
 		5BE626471BE4711ADFAC191925E5D12A /* AckooSDK-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AckooSDK-umbrella.h"; sourceTree = "<group>"; };
 		5CDE3A43D4A708F7FBA55E7BE5D9798A /* NetworkingManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
 		5E5469498751E939BB81A19D155CECF7 /* ResourceBundle-Faker-Fakery-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-Faker-Fakery-Info.plist"; sourceTree = "<group>"; };
 		5E744C6B9ECBD0B1207C17E7B438E7D7 /* Pods-PartnerApp_DemoTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-PartnerApp_DemoTests-umbrella.h"; sourceTree = "<group>"; };
 		5EC87A5AB5D74E6BD80FA6CA4868FDCB /* ElementsEqual.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ElementsEqual.swift; path = Sources/Nimble/Matchers/ElementsEqual.swift; sourceTree = "<group>"; };
-		5FC8EA8BF4E1420ABF3124FB4B450889 /* highlight.css */ = {isa = PBXFileReference; includeInIndex = 1; name = highlight.css; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/css/highlight.css; sourceTree = "<group>"; };
-		605DFBF266E402CC41C2E949C99B846D /* fr.json */ = {isa = PBXFileReference; includeInIndex = 1; name = fr.json; path = Resources/Locales/fr.json; sourceTree = "<group>"; };
+		5FC8EA8BF4E1420ABF3124FB4B450889 /* highlight.css */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.css; name = highlight.css; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/css/highlight.css; sourceTree = "<group>"; };
+		605DFBF266E402CC41C2E949C99B846D /* fr.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; name = fr.json; path = Resources/Locales/fr.json; sourceTree = "<group>"; };
 		60BA6A4C0917CAA5A37BE27D8EDBE4E8 /* Name.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Name.swift; path = Sources/Fakery/Generators/Name.swift; sourceTree = "<group>"; };
 		610C18793912724EE68ACF6C375AB09D /* SliderRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SliderRow.swift; path = Source/Rows/SliderRow.swift; sourceTree = "<group>"; };
 		616CFF3F41EDA61377AE07D0856A2D1D /* RowProtocols.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RowProtocols.swift; path = Source/Core/RowProtocols.swift; sourceTree = "<group>"; };
@@ -482,7 +482,7 @@
 		63879712E43D989B01E4049549A170EE /* AllPass.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AllPass.swift; path = Sources/Nimble/Matchers/AllPass.swift; sourceTree = "<group>"; };
 		63F4AD9C787900CF6BD44D8A44BD10CF /* Utils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		64B396EF9D961D2686604350E862978A /* Form.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Form.swift; path = Source/Core/Form.swift; sourceTree = "<group>"; };
-		653A57CD51B832552E54BBCCA630E7C5 /* Structs.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Structs.html; path = docs/Structs.html; sourceTree = "<group>"; };
+		653A57CD51B832552E54BBCCA630E7C5 /* Structs.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = Structs.html; path = docs/Structs.html; sourceTree = "<group>"; };
 		6634ABB056081D6A75EE119285687F64 /* Nimble-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Nimble-Info.plist"; sourceTree = "<group>"; };
 		6658BFCA61867C13A0158814F2DA8FEE /* Quick-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Quick-Info.plist"; sourceTree = "<group>"; };
 		674272295708CCE6D15E3B2A71164D56 /* RuleRegExp.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RuleRegExp.swift; path = Source/Validations/RuleRegExp.swift; sourceTree = "<group>"; };
@@ -490,7 +490,7 @@
 		682EBA9BF4AC297D118F1981E7BC9270 /* Pods-AckooSDK_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AckooSDK_Example.release.xcconfig"; sourceTree = "<group>"; };
 		6889B545CEB26C72EE98907AEA80437C /* Fakery.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Fakery.debug.xcconfig; sourceTree = "<group>"; };
 		693E0CEBF774B6FE6339670538860F9D /* Ham.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Ham.swift; path = Sources/Fakery/Generators/Ham.swift; sourceTree = "<group>"; };
-		6993928D667C537EC9D1D1D0BCF82CD5 /* AckooSDK.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = AckooSDK.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		6993928D667C537EC9D1D1D0BCF82CD5 /* AckooSDK.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = AckooSDK.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		69D804178060F826D458A05812DE1423 /* DSL.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DSL.h; path = Sources/NimbleObjectiveC/DSL.h; sourceTree = "<group>"; };
 		6A55A57DB9E09B538D13915EDD5CB73B /* NMBStringify.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NMBStringify.h; path = Sources/NimbleObjectiveC/NMBStringify.h; sourceTree = "<group>"; };
 		6A58D8AC7FBF61A8EDD54D70B1F348F3 /* AckooSDK.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = AckooSDK.plist; path = AckooSDK/Assets/AckooSDK.plist; sourceTree = "<group>"; };
@@ -502,16 +502,16 @@
 		6D711CC4C370AC0A88DE2DDD60B50C17 /* dash.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = dash.png; path = docs/img/dash.png; sourceTree = "<group>"; };
 		6D752A2CDDE4CF81C7D4E0239273AD4E /* Pods-PartnerApp_DemoTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-PartnerApp_DemoTests.modulemap"; sourceTree = "<group>"; };
 		6E5A33761CF555FB364A8BDBF73BA4D2 /* Await.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Await.swift; path = Sources/Nimble/Utils/Await.swift; sourceTree = "<group>"; };
-		6E6DD057EF3A10268747320B1E856BBF /* de.json */ = {isa = PBXFileReference; includeInIndex = 1; name = de.json; path = Resources/Locales/de.json; sourceTree = "<group>"; };
+		6E6DD057EF3A10268747320B1E856BBF /* de.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; name = de.json; path = Resources/Locales/de.json; sourceTree = "<group>"; };
 		6F7C7A1052B8EFBB5D40A2CC9E910C96 /* gh.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = gh.png; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/img/gh.png; sourceTree = "<group>"; };
 		702963F2237D2BBCA4C18B4586EE287E /* Gender.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Gender.swift; path = Sources/Fakery/Generators/Gender.swift; sourceTree = "<group>"; };
-		70376951B75E53C0EA335DE65659AC5E /* badge.svg */ = {isa = PBXFileReference; includeInIndex = 1; name = badge.svg; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/badge.svg; sourceTree = "<group>"; };
-		705E4B09F9E5E69A7DBFA0764D1089D0 /* en.json */ = {isa = PBXFileReference; includeInIndex = 1; name = en.json; path = Resources/Locales/en.json; sourceTree = "<group>"; };
+		70376951B75E53C0EA335DE65659AC5E /* badge.svg */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = badge.svg; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/badge.svg; sourceTree = "<group>"; };
+		705E4B09F9E5E69A7DBFA0764D1089D0 /* en.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; name = en.json; path = Resources/Locales/en.json; sourceTree = "<group>"; };
 		70938FB7D1825D024C8CAEF3F2C65082 /* InlineRowType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = InlineRowType.swift; path = Source/Core/InlineRowType.swift; sourceTree = "<group>"; };
 		71D8BA43A9D5E3FE779594845531E4F9 /* Validation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Validation.swift; path = Source/Core/Validation.swift; sourceTree = "<group>"; };
 		71EA58B4360BC70B9EC384C52FEC57D9 /* SelectableRowType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SelectableRowType.swift; path = Source/Core/SelectableRowType.swift; sourceTree = "<group>"; };
-		720B99FF9EBDF8A34A3959E5000FA0CC /* AckooSDKManager.html */ = {isa = PBXFileReference; includeInIndex = 1; name = AckooSDKManager.html; path = docs/Classes/AckooSDKManager.html; sourceTree = "<group>"; };
-		72A407A75177D47B8926B37D5ACF42E8 /* badge.svg */ = {isa = PBXFileReference; includeInIndex = 1; name = badge.svg; path = docs/badge.svg; sourceTree = "<group>"; };
+		720B99FF9EBDF8A34A3959E5000FA0CC /* AckooSDKManager.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = AckooSDKManager.html; path = docs/Classes/AckooSDKManager.html; sourceTree = "<group>"; };
+		72A407A75177D47B8926B37D5ACF42E8 /* badge.svg */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = badge.svg; path = docs/badge.svg; sourceTree = "<group>"; };
 		7336196CA697A81AD4C5A14A7212B56B /* ThrowAssertion.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThrowAssertion.swift; path = Sources/Nimble/Matchers/ThrowAssertion.swift; sourceTree = "<group>"; };
 		739D78E3D84FE719592DFE4CC063FEF9 /* RuleURL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RuleURL.swift; path = Source/Validations/RuleURL.swift; sourceTree = "<group>"; };
 		76F45557EC68698CB27BC6DE25E33BF0 /* NSBundle+CurrentTestBundle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSBundle+CurrentTestBundle.swift"; path = "Sources/Quick/NSBundle+CurrentTestBundle.swift"; sourceTree = "<group>"; };
@@ -522,11 +522,10 @@
 		776AC5F1FAD7D47455BE528288ECEC50 /* DateRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DateRow.swift; path = Source/Rows/DateRow.swift; sourceTree = "<group>"; };
 		77B747ADE110D2841E8DF00DEBB10A79 /* URL+FileName.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "URL+FileName.swift"; path = "Sources/Quick/URL+FileName.swift"; sourceTree = "<group>"; };
 		77BB102421C9CC9406EB8A95733A75FA /* FailureMessage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FailureMessage.swift; path = Sources/Nimble/FailureMessage.swift; sourceTree = "<group>"; };
-		77EA12C7A39ADB659EE40693D42D958E /* en-IND.json */ = {isa = PBXFileReference; includeInIndex = 1; name = "en-IND.json"; path = "Resources/Locales/en-IND.json"; sourceTree = "<group>"; };
+		77EA12C7A39ADB659EE40693D42D958E /* en-IND.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; name = "en-IND.json"; path = "Resources/Locales/en-IND.json"; sourceTree = "<group>"; };
 		78408CC7003AFC613731359F8C46AFCC /* AckooSDK-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "AckooSDK-dummy.m"; sourceTree = "<group>"; };
 		787CD99A7274502D0490274B07A82853 /* ContainElementSatisfying.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ContainElementSatisfying.swift; path = Sources/Nimble/Matchers/ContainElementSatisfying.swift; sourceTree = "<group>"; };
 		78B35265FCC965D12123BB1CFF950251 /* SegmentedRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SegmentedRow.swift; path = Source/Rows/SegmentedRow.swift; sourceTree = "<group>"; };
-		7A60D6F943F9C831879C24897A4A071C /* RNAckooSDKManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RNAckooSDKManager.swift; path = AckooSDK/Classes/RNAckooSDKManager.swift; sourceTree = "<group>"; };
 		7A9389E24E8BD7A973F6D851CB46E178 /* DoublePickerRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DoublePickerRow.swift; path = Source/Rows/DoublePickerRow.swift; sourceTree = "<group>"; };
 		7D71BDE71B6FD529609468AAB5FD17AD /* App.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = App.swift; path = Sources/Fakery/Generators/App.swift; sourceTree = "<group>"; };
 		7E9FF7840971704617ACCE974CA9FCD8 /* MatchError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MatchError.swift; path = Sources/Nimble/Matchers/MatchError.swift; sourceTree = "<group>"; };
@@ -536,8 +535,8 @@
 		8243AE3B132CF861475FD7232F7A93AD /* Pods-AckooSDK_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-AckooSDK_Example-umbrella.h"; sourceTree = "<group>"; };
 		837DC5377FF1FA104776EB0C95391D2E /* Pods-PartnerApp_DemoTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-PartnerApp_DemoTests-acknowledgements.plist"; sourceTree = "<group>"; };
 		8423F0F85C8DFE82ACE08CC086BE2ADF /* Errors.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Errors.swift; path = Sources/Nimble/Utils/Errors.swift; sourceTree = "<group>"; };
-		84320DA64CFC01131F03A07C889ADFA8 /* jazzy.css */ = {isa = PBXFileReference; includeInIndex = 1; name = jazzy.css; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/css/jazzy.css; sourceTree = "<group>"; };
-		84829CE1ADF7C692E640B37FD145BCE9 /* undocumented.json */ = {isa = PBXFileReference; includeInIndex = 1; name = undocumented.json; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/undocumented.json; sourceTree = "<group>"; };
+		84320DA64CFC01131F03A07C889ADFA8 /* jazzy.css */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.css; name = jazzy.css; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/css/jazzy.css; sourceTree = "<group>"; };
+		84829CE1ADF7C692E640B37FD145BCE9 /* undocumented.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; name = undocumented.json; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/undocumented.json; sourceTree = "<group>"; };
 		8641178654CD3F19B8B60DBCEEC271E4 /* NimbleXCTestHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NimbleXCTestHandler.swift; path = Sources/Nimble/Adapters/NimbleXCTestHandler.swift; sourceTree = "<group>"; };
 		86BAAB0E6827A5C0313FA898F6BAE143 /* Cell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Cell.swift; path = Source/Core/Cell.swift; sourceTree = "<group>"; };
 		87A0462C9E7EE5CCE16A67C89857A60A /* HaveCount.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HaveCount.swift; path = Sources/Nimble/Matchers/HaveCount.swift; sourceTree = "<group>"; };
@@ -547,47 +546,47 @@
 		88E362801D0E90710C600388C09499CF /* DateInlineFieldRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DateInlineFieldRow.swift; path = Source/Rows/Common/DateInlineFieldRow.swift; sourceTree = "<group>"; };
 		8A188DC19EFB6224B5DD0B25B5DDDF03 /* HooksPhase.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HooksPhase.swift; path = Sources/Quick/Hooks/HooksPhase.swift; sourceTree = "<group>"; };
 		8CDB2AE1A99273B8F37104AA7969BCE2 /* FieldRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FieldRow.swift; path = Source/Rows/Common/FieldRow.swift; sourceTree = "<group>"; };
-		8DD7E5142417424900CC171C79121E6E /* Classes.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Classes.html; path = docs/Classes.html; sourceTree = "<group>"; };
+		8DD7E5142417424900CC171C79121E6E /* Classes.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = Classes.html; path = docs/Classes.html; sourceTree = "<group>"; };
 		8E1E5FDA3B7D4854F1DA1C20AD9B56DA /* Contain.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Contain.swift; path = Sources/Nimble/Matchers/Contain.swift; sourceTree = "<group>"; };
 		8E6FB1F8A8596EE968E7064DDB6B929A /* AssertionRecorder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AssertionRecorder.swift; path = Sources/Nimble/Adapters/AssertionRecorder.swift; sourceTree = "<group>"; };
-		8F680346C5F3937F18F13F7C4D4898EF /* AckooSDK.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = AckooSDK.bundle; path = "AckooSDK-AckooSDK.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8F680346C5F3937F18F13F7C4D4898EF /* AckooSDK.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AckooSDK.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FCCB946767832E790244C5DBAABD4EA /* SatisfyAllOf.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SatisfyAllOf.swift; path = Sources/Nimble/Matchers/SatisfyAllOf.swift; sourceTree = "<group>"; };
-		903EAC17D475B0C89A679A10A203513A /* AckooEventType.html */ = {isa = PBXFileReference; includeInIndex = 1; name = AckooEventType.html; path = docs/Enums/AckooEventType.html; sourceTree = "<group>"; };
+		903EAC17D475B0C89A679A10A203513A /* AckooEventType.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = AckooEventType.html; path = docs/Enums/AckooEventType.html; sourceTree = "<group>"; };
 		907CE9C61BF2BCAEC339737E5E0DB916 /* QCKDSL.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QCKDSL.m; path = Sources/QuickObjectiveC/DSL/QCKDSL.m; sourceTree = "<group>"; };
 		9219352E7CD09795872E0EC4CCCBCFF2 /* dash.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = dash.png; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/img/dash.png; sourceTree = "<group>"; };
 		924DACC1A5815B337F552961D8215CFD /* AckooSDK.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = AckooSDK.modulemap; sourceTree = "<group>"; };
 		92D90E03BACFCA8368DD08C5042D493F /* AckooSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AckooSDK.release.xcconfig; sourceTree = "<group>"; };
-		935E820BDA694B9BC4AC34A7A8A3BD8A /* AckooSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = AckooSDK.framework; path = AckooSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		935E820BDA694B9BC4AC34A7A8A3BD8A /* AckooSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AckooSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		944D89196DEADA2786E0FC4D5BD0EED0 /* Pods-PartnerApp_DemoTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-PartnerApp_DemoTests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		95AFE2723486405BE171EF175ADCA277 /* UserActivity.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UserActivity.swift; sourceTree = "<group>"; };
 		96AFA208437EB202E4E97AAB02057A10 /* QuickSpec.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QuickSpec.m; path = Sources/QuickObjectiveC/QuickSpec.m; sourceTree = "<group>"; };
-		9A4FF93C6A0D7591EB83091C2B201C67 /* BuildMode.html */ = {isa = PBXFileReference; includeInIndex = 1; name = BuildMode.html; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/Enums/BuildMode.html; sourceTree = "<group>"; };
+		9A4FF93C6A0D7591EB83091C2B201C67 /* BuildMode.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = BuildMode.html; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/Enums/BuildMode.html; sourceTree = "<group>"; };
 		9B1B52908C47655262EC82D5735983AE /* BeGreaterThan.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeGreaterThan.swift; path = Sources/Nimble/Matchers/BeGreaterThan.swift; sourceTree = "<group>"; };
-		9B31145B24DC42A3A8440164D735E74A /* search.json */ = {isa = PBXFileReference; includeInIndex = 1; name = search.json; path = docs/search.json; sourceTree = "<group>"; };
+		9B31145B24DC42A3A8440164D735E74A /* search.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; name = search.json; path = docs/search.json; sourceTree = "<group>"; };
 		9B8E13E6FC5BECD532722BBCADBA5310 /* Business.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Business.swift; path = Sources/Fakery/Generators/Business.swift; sourceTree = "<group>"; };
 		9BF728D043D815F381BAD2526B32D92D /* Example.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Example.swift; path = Sources/Quick/Example.swift; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9E7D1CE77DFBBBF8EFB6865025A1380E /* Enums.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Enums.html; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/Enums.html; sourceTree = "<group>"; };
-		9FC7A4BE938230D8E9685BCDB7ADAC4D /* en-GB.json */ = {isa = PBXFileReference; includeInIndex = 1; name = "en-GB.json"; path = "Resources/Locales/en-GB.json"; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9E7D1CE77DFBBBF8EFB6865025A1380E /* Enums.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = Enums.html; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/Enums.html; sourceTree = "<group>"; };
+		9FC7A4BE938230D8E9685BCDB7ADAC4D /* en-GB.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; name = "en-GB.json"; path = "Resources/Locales/en-GB.json"; sourceTree = "<group>"; };
 		A1C6B7B9EEFAEC41025CE18439DF15B9 /* BeLessThan.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeLessThan.swift; path = Sources/Nimble/Matchers/BeLessThan.swift; sourceTree = "<group>"; };
 		A1EC171EE898025705A91EEBFE84D77C /* World+DSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "World+DSL.swift"; path = "Sources/Quick/DSL/World+DSL.swift"; sourceTree = "<group>"; };
 		A24F8424687C082CE0926553FBC7E4A8 /* PickerInputRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PickerInputRow.swift; path = Source/Rows/PickerInputRow.swift; sourceTree = "<group>"; };
 		A2758FDA5544C17D95E0FE23734AFCCA /* Company.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Company.swift; path = Sources/Fakery/Generators/Company.swift; sourceTree = "<group>"; };
 		A3CC59DFD5F529ABC2F2FBFF58D7E17B /* World.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = World.swift; path = Sources/Quick/World.swift; sourceTree = "<group>"; };
 		A58FE56B8AFC287E2952F9BECAFD62DA /* Provider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Provider.swift; path = Sources/Fakery/Data/Provider.swift; sourceTree = "<group>"; };
-		A72BB16EC940CA5DF133C3A2E3017702 /* jazzy.css */ = {isa = PBXFileReference; includeInIndex = 1; name = jazzy.css; path = docs/css/jazzy.css; sourceTree = "<group>"; };
-		A74829BE4419DBFC9E7ED0EBE3CA516C /* es.json */ = {isa = PBXFileReference; includeInIndex = 1; name = es.json; path = Resources/Locales/es.json; sourceTree = "<group>"; };
+		A72BB16EC940CA5DF133C3A2E3017702 /* jazzy.css */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.css; name = jazzy.css; path = docs/css/jazzy.css; sourceTree = "<group>"; };
+		A74829BE4419DBFC9E7ED0EBE3CA516C /* es.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; name = es.json; path = Resources/Locales/es.json; sourceTree = "<group>"; };
 		A89F4279B4111FF93462656757F1084D /* ButtonRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ButtonRow.swift; path = Source/Rows/ButtonRow.swift; sourceTree = "<group>"; };
 		A93C7323BDAF383856FEE5451B593013 /* CwlMachBadInstructionHandler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CwlMachBadInstructionHandler.m; path = Carthage/Checkouts/CwlPreconditionTesting/Sources/CwlMachBadInstructionHandler/CwlMachBadInstructionHandler.m; sourceTree = "<group>"; };
 		A9945FBC629F130E388CA1483F849311 /* Row.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Row.swift; path = Source/Core/Row.swift; sourceTree = "<group>"; };
 		AA4901C5BC1BF321893E18ED28721A73 /* TriplePickerRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TriplePickerRow.swift; path = Source/Rows/TriplePickerRow.swift; sourceTree = "<group>"; };
-		AA6457715EA3EDD0D8C06084729062BD /* nb-NO.json */ = {isa = PBXFileReference; includeInIndex = 1; name = "nb-NO.json"; path = "Resources/Locales/nb-NO.json"; sourceTree = "<group>"; };
-		AB66CD4D0829D644B7EF279A5D81738F /* Utils.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Utils.html; path = docs/Classes/Utils.html; sourceTree = "<group>"; };
+		AA6457715EA3EDD0D8C06084729062BD /* nb-NO.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; name = "nb-NO.json"; path = "Resources/Locales/nb-NO.json"; sourceTree = "<group>"; };
+		AB66CD4D0829D644B7EF279A5D81738F /* Utils.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = Utils.html; path = docs/Classes/Utils.html; sourceTree = "<group>"; };
 		ABA74BF3FC98314472B483AED984C4D3 /* CwlCatchException.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CwlCatchException.m; path = Carthage/Checkouts/CwlPreconditionTesting/Dependencies/CwlCatchException/Sources/CwlCatchExceptionSupport/CwlCatchException.m; sourceTree = "<group>"; };
 		AED33CF3EA38BFA788B9824EFB4B9F56 /* Stringers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Stringers.swift; path = Sources/Nimble/Utils/Stringers.swift; sourceTree = "<group>"; };
 		AF489F5B57F8D64D1DFB3CA02AFA6EE5 /* SourceLocation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SourceLocation.swift; path = Sources/Nimble/Utils/SourceLocation.swift; sourceTree = "<group>"; };
 		AF4C6CF853AFE8DA9E964AD953A75896 /* Expression.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Expression.swift; path = Sources/Nimble/Expression.swift; sourceTree = "<group>"; };
-		B015D228FAA3AFC01D2319A0B9D868CE /* Pods_PartnerApp_DemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_PartnerApp_DemoTests.framework; path = "Pods-PartnerApp_DemoTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B015D228FAA3AFC01D2319A0B9D868CE /* Pods_PartnerApp_DemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PartnerApp_DemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B02C7D4330D344E98AB94160C9D3121E /* Section.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Section.swift; path = Source/Core/Section.swift; sourceTree = "<group>"; };
 		B16E487DA118A6D73E99DBD07C7B1204 /* Nimble.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Nimble.h; path = Sources/Nimble/Nimble.h; sourceTree = "<group>"; };
 		B1A08F23D35774A5BB55DBE42EC3292C /* EndWith.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EndWith.swift; path = Sources/Nimble/Matchers/EndWith.swift; sourceTree = "<group>"; };
@@ -596,23 +595,23 @@
 		B3723555C12B10561345BED048F1763D /* Nimble.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Nimble.release.xcconfig; sourceTree = "<group>"; };
 		B3EA92B509BBF6F8C3D896F93039D6CE /* Pods-PartnerApp_DemoTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-PartnerApp_DemoTests-dummy.m"; sourceTree = "<group>"; };
 		B62AF874AC768BD82D45AD3C49E00380 /* Eureka-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Eureka-umbrella.h"; sourceTree = "<group>"; };
-		B725FA0F97428036C537226CF2E8032C /* highlight.css */ = {isa = PBXFileReference; includeInIndex = 1; name = highlight.css; path = docs/css/highlight.css; sourceTree = "<group>"; };
+		B725FA0F97428036C537226CF2E8032C /* highlight.css */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.css; name = highlight.css; path = docs/css/highlight.css; sourceTree = "<group>"; };
 		B729321C4783B229F35261F19A91F85B /* AlertOptionsRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AlertOptionsRow.swift; path = Source/Rows/Common/AlertOptionsRow.swift; sourceTree = "<group>"; };
 		B7A4D73DCE88E8B097E1B747C92DC12F /* NMBStringify.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NMBStringify.m; path = Sources/NimbleObjectiveC/NMBStringify.m; sourceTree = "<group>"; };
 		B913ECF7CD2880DB7A77DD2F087AA772 /* LabelRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LabelRow.swift; path = Source/Rows/LabelRow.swift; sourceTree = "<group>"; };
-		B950107F9CB3A5CFCAB5E9F7D72E3DAB /* UserActivity.html */ = {isa = PBXFileReference; includeInIndex = 1; name = UserActivity.html; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/Classes/UserActivity.html; sourceTree = "<group>"; };
+		B950107F9CB3A5CFCAB5E9F7D72E3DAB /* UserActivity.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = UserActivity.html; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/Classes/UserActivity.html; sourceTree = "<group>"; };
 		B974D6B1ABD703F46DA839BE5C0DC893 /* Eureka-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Eureka-prefix.pch"; sourceTree = "<group>"; };
 		B9B1B0CDB3C3EC611DE649F0145AC09F /* Vehicle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Vehicle.swift; path = Sources/Fakery/Generators/Vehicle.swift; sourceTree = "<group>"; };
 		BA6D4C37150FB7E2CE75F1D9C1FD6044 /* ToSucceed.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ToSucceed.swift; path = Sources/Nimble/Matchers/ToSucceed.swift; sourceTree = "<group>"; };
-		BAE263041362D074978BB3B577DF0A05 /* Nimble.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Nimble.framework; path = Nimble.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BB6B3FFAD25003CAFAE383C29944C87B /* Structs.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Structs.html; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/Structs.html; sourceTree = "<group>"; };
+		BAE263041362D074978BB3B577DF0A05 /* Nimble.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Nimble.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB6B3FFAD25003CAFAE383C29944C87B /* Structs.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = Structs.html; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/Structs.html; sourceTree = "<group>"; };
 		BB9E67E01BD19FCCA884F90D0CCD2725 /* MultipleSelectorRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MultipleSelectorRow.swift; path = Source/Rows/MultipleSelectorRow.swift; sourceTree = "<group>"; };
 		BBA2DA9B0D0BBBAA4B7F83D545F7333D /* QuickTestSuite.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuickTestSuite.swift; path = Sources/Quick/QuickTestSuite.swift; sourceTree = "<group>"; };
 		BBC358BADB696C319E2A6D80836BCC6D /* Pods-AckooSDK_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-AckooSDK_Example-dummy.m"; sourceTree = "<group>"; };
 		BC53BE5B71B43060339FD0D8991D4537 /* BeNil.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeNil.swift; path = Sources/Nimble/Matchers/BeNil.swift; sourceTree = "<group>"; };
 		BD2DBE96B2150B6760DF1BFBD466E58B /* PhoneNumber.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PhoneNumber.swift; path = Sources/Fakery/Generators/PhoneNumber.swift; sourceTree = "<group>"; };
-		BD7EE80A11832E32F2C4FE5B0A76C2A9 /* index.html */ = {isa = PBXFileReference; includeInIndex = 1; name = index.html; path = docs/index.html; sourceTree = "<group>"; };
-		BE0938362FA36E6A3B40857A9BC4A4E1 /* undocumented.json */ = {isa = PBXFileReference; includeInIndex = 1; name = undocumented.json; path = docs/undocumented.json; sourceTree = "<group>"; };
+		BD7EE80A11832E32F2C4FE5B0A76C2A9 /* index.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = index.html; path = docs/index.html; sourceTree = "<group>"; };
+		BE0938362FA36E6A3B40857A9BC4A4E1 /* undocumented.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; name = undocumented.json; path = docs/undocumented.json; sourceTree = "<group>"; };
 		BE40585E6E7756E482A33A49BE89CF28 /* QuickSelectedTestSuiteBuilder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuickSelectedTestSuiteBuilder.swift; path = Sources/Quick/QuickSelectedTestSuiteBuilder.swift; sourceTree = "<group>"; };
 		BEC8FED9B9D89914F0A2106A99594A56 /* Internet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Internet.swift; path = Sources/Fakery/Generators/Internet.swift; sourceTree = "<group>"; };
 		C0B5F8F454756F89D17136772EF4C05D /* AckooSDKManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AckooSDKManager.swift; path = AckooSDK/Classes/AckooSDKManager.swift; sourceTree = "<group>"; };
@@ -621,7 +620,7 @@
 		C2730FF4E79724362CCB5886F92BC55B /* CheckRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CheckRow.swift; path = Source/Rows/CheckRow.swift; sourceTree = "<group>"; };
 		C35F14BA8AFA2B5607C8422E0CF3846E /* AckooSDK-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AckooSDK-prefix.pch"; sourceTree = "<group>"; };
 		C41A423F0A3BBB3FB7E98E89530EE6E0 /* Callsite.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Callsite.swift; path = Sources/Quick/Callsite.swift; sourceTree = "<group>"; };
-		C556BD713DDB5368AEE16B6EB6445B2B /* AckooSDKManager.html */ = {isa = PBXFileReference; includeInIndex = 1; name = AckooSDKManager.html; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/Classes/AckooSDKManager.html; sourceTree = "<group>"; };
+		C556BD713DDB5368AEE16B6EB6445B2B /* AckooSDKManager.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = AckooSDKManager.html; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/Classes/AckooSDKManager.html; sourceTree = "<group>"; };
 		C64D885B0FAD9BFD282C20E96FE21FFF /* Car.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Car.swift; path = Sources/Fakery/Generators/Car.swift; sourceTree = "<group>"; };
 		C6B636B59485C44AB5754575A63B07D4 /* Functional.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Functional.swift; path = Sources/Nimble/Utils/Functional.swift; sourceTree = "<group>"; };
 		C92F8F535B917E3C5FC70BEFB0305794 /* NimbleEnvironment.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NimbleEnvironment.swift; path = Sources/Nimble/Adapters/NimbleEnvironment.swift; sourceTree = "<group>"; };
@@ -630,17 +629,17 @@
 		CBE5694740390E3CD370867828E8BCCD /* Number.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Number.swift; path = Sources/Fakery/Generators/Number.swift; sourceTree = "<group>"; };
 		CC00AB217C9AFE2F0EE936D790AB2348 /* SuiteHooks.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SuiteHooks.swift; path = Sources/Quick/Hooks/SuiteHooks.swift; sourceTree = "<group>"; };
 		CC086E49F801090340D36DF37A4493B3 /* ExampleHooks.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExampleHooks.swift; path = Sources/Quick/Hooks/ExampleHooks.swift; sourceTree = "<group>"; };
-		CD3C028AAC579BD8A9D2F2260E610E62 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		CD3C028AAC579BD8A9D2F2260E610E62 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		CF97E679E730065FB9DD06F57ADFB75C /* DecimalFormatter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DecimalFormatter.swift; path = Source/Rows/Common/DecimalFormatter.swift; sourceTree = "<group>"; };
 		CFF127092FAEAB933FC75F2022AABD83 /* Nimble-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Nimble-prefix.pch"; sourceTree = "<group>"; };
 		D267D1EBC30CA8E0DE5064425C32EBCE /* Fakery-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Fakery-umbrella.h"; sourceTree = "<group>"; };
-		D3691608BFE33FE454CCC88ACD1A155B /* en-US.json */ = {isa = PBXFileReference; includeInIndex = 1; name = "en-US.json"; path = "Resources/Locales/en-US.json"; sourceTree = "<group>"; };
+		D3691608BFE33FE454CCC88ACD1A155B /* en-US.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; name = "en-US.json"; path = "Resources/Locales/en-US.json"; sourceTree = "<group>"; };
 		D4B22389723A32B268C25A9237F14C67 /* Async.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Async.swift; path = Sources/Nimble/Matchers/Async.swift; sourceTree = "<group>"; };
 		D4C2DD4C2FA283214DDFE4EBA06B3F56 /* Commerce.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Commerce.swift; path = Sources/Fakery/Generators/Commerce.swift; sourceTree = "<group>"; };
 		D5139693A2439F50D74D248F56CAB16F /* ExampleMetadata.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExampleMetadata.swift; path = Sources/Quick/ExampleMetadata.swift; sourceTree = "<group>"; };
 		D56410462CC0E4428579BA91D8F6609C /* SelectorRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SelectorRow.swift; path = Source/Rows/Common/SelectorRow.swift; sourceTree = "<group>"; };
 		D56885C91951939302799EF951314D7B /* DSL.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DSL.m; path = Sources/NimbleObjectiveC/DSL.m; sourceTree = "<group>"; };
-		D651E68D65258C92ACCD9B50B6FC2D65 /* it.json */ = {isa = PBXFileReference; includeInIndex = 1; name = it.json; path = Resources/Locales/it.json; sourceTree = "<group>"; };
+		D651E68D65258C92ACCD9B50B6FC2D65 /* it.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; name = it.json; path = Resources/Locales/it.json; sourceTree = "<group>"; };
 		D7983948223E1C05F647CDF83051C9BA /* AlertRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AlertRow.swift; path = Source/Rows/AlertRow.swift; sourceTree = "<group>"; };
 		D7C9258148FB73FE1E670B50F08412A6 /* Generator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Generator.swift; path = Sources/Fakery/Generators/Generator.swift; sourceTree = "<group>"; };
 		D7D996980EFA67A4C949183BA85AD23E /* Nimble.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Nimble.debug.xcconfig; sourceTree = "<group>"; };
@@ -649,29 +648,29 @@
 		D92D29AB20649D71739F702787E87EF1 /* Quick-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Quick-dummy.m"; sourceTree = "<group>"; };
 		D9DB12219564D666330F17CD4F7BAFBB /* FieldsRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FieldsRow.swift; path = Source/Rows/FieldsRow.swift; sourceTree = "<group>"; };
 		D9DDD0E2C2D5CC5134AFA04C84139E1D /* Quick.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Quick.modulemap; sourceTree = "<group>"; };
-		DA6244207B68ABCE35F2F3DCC90E23D7 /* BuildMode.html */ = {isa = PBXFileReference; includeInIndex = 1; name = BuildMode.html; path = docs/Enums/BuildMode.html; sourceTree = "<group>"; };
-		DA6EDA06E65E9406412187883D905D7E /* jquery.min.js */ = {isa = PBXFileReference; includeInIndex = 1; name = jquery.min.js; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/js/jquery.min.js; sourceTree = "<group>"; };
+		DA6244207B68ABCE35F2F3DCC90E23D7 /* BuildMode.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = BuildMode.html; path = docs/Enums/BuildMode.html; sourceTree = "<group>"; };
+		DA6EDA06E65E9406412187883D905D7E /* jquery.min.js */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.javascript; name = jquery.min.js; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/js/jquery.min.js; sourceTree = "<group>"; };
 		DADB2B64B791B00510C8DA3B43D41941 /* BeAnInstanceOf.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeAnInstanceOf.swift; path = Sources/Nimble/Matchers/BeAnInstanceOf.swift; sourceTree = "<group>"; };
 		DB1AD3FF9B898C0B199949DC7C9FC1C0 /* ThrowError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThrowError.swift; path = Sources/Nimble/Matchers/ThrowError.swift; sourceTree = "<group>"; };
 		DB5C92A181BF7AFEC8464DCAAAF23D84 /* CwlMachBadInstructionHandler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CwlMachBadInstructionHandler.h; path = Carthage/Checkouts/CwlPreconditionTesting/Sources/CwlMachBadInstructionHandler/include/CwlMachBadInstructionHandler.h; sourceTree = "<group>"; };
-		DC205A26141971D71FC8680E12F45564 /* ko.json */ = {isa = PBXFileReference; includeInIndex = 1; name = ko.json; path = Resources/Locales/ko.json; sourceTree = "<group>"; };
+		DC205A26141971D71FC8680E12F45564 /* ko.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; name = ko.json; path = Resources/Locales/ko.json; sourceTree = "<group>"; };
 		DC40D8A3EF9B4A65104D9EB7B716160D /* DSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DSL.swift; path = Sources/Quick/DSL/DSL.swift; sourceTree = "<group>"; };
 		DCE757E266B4D68C1823DCF0E8F238C9 /* Lorem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Lorem.swift; path = Sources/Fakery/Generators/Lorem.swift; sourceTree = "<group>"; };
 		DCEB29E5B060889DD79EE1DE4ABB34BF /* Payload.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Payload.swift; sourceTree = "<group>"; };
 		DF55507EDBDFC1C4518A666289FC05E1 /* Protocols.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Protocols.swift; path = Source/Rows/Common/Protocols.swift; sourceTree = "<group>"; };
 		DF72B74F617424FB215AB888D4C7267C /* ListCheckRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ListCheckRow.swift; path = Source/Rows/SelectableRows/ListCheckRow.swift; sourceTree = "<group>"; };
 		E049D6F1F0051966EBFB61A7086CB70B /* RuleEqualsToRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RuleEqualsToRow.swift; path = Source/Validations/RuleEqualsToRow.swift; sourceTree = "<group>"; };
-		E083CEFFF0CB03387B3A78C30F6AEC21 /* jazzy.js */ = {isa = PBXFileReference; includeInIndex = 1; name = jazzy.js; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/js/jazzy.js; sourceTree = "<group>"; };
+		E083CEFFF0CB03387B3A78C30F6AEC21 /* jazzy.js */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.javascript; name = jazzy.js; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/js/jazzy.js; sourceTree = "<group>"; };
 		E23AC72FE7624076E2A6E4E01186A260 /* DoublePickerInputRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DoublePickerInputRow.swift; path = Source/Rows/DoublePickerInputRow.swift; sourceTree = "<group>"; };
 		E25B87834386BCFFEEE78E47F7D775BA /* Core.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Core.swift; path = Source/Core/Core.swift; sourceTree = "<group>"; };
 		E2C5C71DE3DF7860520C23B7EFA882AC /* CwlCatchException.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CwlCatchException.swift; path = Carthage/Checkouts/CwlPreconditionTesting/Dependencies/CwlCatchException/Sources/CwlCatchException/CwlCatchException.swift; sourceTree = "<group>"; };
 		E2DB36D2D248C5B09D9D5F0C022E4FF2 /* NMBObjCMatcher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NMBObjCMatcher.swift; path = Sources/Nimble/Adapters/NMBObjCMatcher.swift; sourceTree = "<group>"; };
-		E5BBA76F4E96186EA2AF5D4054AE2E78 /* mach_excServer.c */ = {isa = PBXFileReference; includeInIndex = 1; name = mach_excServer.c; path = Carthage/Checkouts/CwlPreconditionTesting/Sources/CwlMachBadInstructionHandler/mach_excServer.c; sourceTree = "<group>"; };
+		E5BBA76F4E96186EA2AF5D4054AE2E78 /* mach_excServer.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = mach_excServer.c; path = Carthage/Checkouts/CwlPreconditionTesting/Sources/CwlMachBadInstructionHandler/mach_excServer.c; sourceTree = "<group>"; };
 		E76BF4F6099828EE1DB8656F0BA59909 /* QuickConfiguration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuickConfiguration.swift; path = Sources/Quick/Configuration/QuickConfiguration.swift; sourceTree = "<group>"; };
 		E90484B06EC37A33CDBB1A4BDCF131A5 /* Match.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Match.swift; path = Sources/Nimble/Matchers/Match.swift; sourceTree = "<group>"; };
 		E9560B9F913FE898E59D6BBA143C4580 /* ResourceBundle-AckooSDK-AckooSDK-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-AckooSDK-AckooSDK-Info.plist"; sourceTree = "<group>"; };
 		E9654F8AB743B43DABF86D8E907F5A21 /* PostNotification.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PostNotification.swift; path = Sources/Nimble/Matchers/PostNotification.swift; sourceTree = "<group>"; };
-		E967799F639AA170A1A2B2F61633EAB4 /* OrderItem.html */ = {isa = PBXFileReference; includeInIndex = 1; name = OrderItem.html; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/Classes/OrderItem.html; sourceTree = "<group>"; };
+		E967799F639AA170A1A2B2F61633EAB4 /* OrderItem.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = OrderItem.html; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/Classes/OrderItem.html; sourceTree = "<group>"; };
 		EA391CC567DE00F8D98CD1269F971FB2 /* StepperRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StepperRow.swift; path = Source/Rows/StepperRow.swift; sourceTree = "<group>"; };
 		EAE42B8A78EF50F8E8DC44E6EA3A35EA /* ArrayExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ArrayExtension.swift; path = Sources/Fakery/Extensions/ArrayExtension.swift; sourceTree = "<group>"; };
 		ECE7AA18F51BFD19B1C0185E09166974 /* GenericMultipleSelectorRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GenericMultipleSelectorRow.swift; path = Source/Rows/Common/GenericMultipleSelectorRow.swift; sourceTree = "<group>"; };
@@ -679,8 +678,8 @@
 		EFD52F86B48C9127750D68438F71C76A /* NMBExceptionCapture.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NMBExceptionCapture.m; path = Sources/NimbleObjectiveC/NMBExceptionCapture.m; sourceTree = "<group>"; };
 		F10B411A3D747A822A6B0DE4A0537C1E /* House.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = House.swift; path = Sources/Fakery/Generators/House.swift; sourceTree = "<group>"; };
 		F1A6D71E5C164943AB56D2CC2C65C4F8 /* BeGreaterThanOrEqualTo.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeGreaterThanOrEqualTo.swift; path = Sources/Nimble/Matchers/BeGreaterThanOrEqualTo.swift; sourceTree = "<group>"; };
-		F1F340A3B43E801AF9AD74CA2C27B4D5 /* ja.json */ = {isa = PBXFileReference; includeInIndex = 1; name = ja.json; path = Resources/Locales/ja.json; sourceTree = "<group>"; };
-		F20DF68FEE0417C46B308FADBE6B3A9D /* Order.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Order.html; path = docs/Classes/Order.html; sourceTree = "<group>"; };
+		F1F340A3B43E801AF9AD74CA2C27B4D5 /* ja.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; name = ja.json; path = Resources/Locales/ja.json; sourceTree = "<group>"; };
+		F20DF68FEE0417C46B308FADBE6B3A9D /* Order.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = Order.html; path = docs/Classes/Order.html; sourceTree = "<group>"; };
 		F2279DA99090AB3E435B0C41D7787999 /* PresenterRowType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PresenterRowType.swift; path = Source/Core/PresenterRowType.swift; sourceTree = "<group>"; };
 		F26D358824A36384B37D26F0DC627FCB /* Order.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		F360FCA7487E3DE041458CD8C7BE0614 /* Constants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -689,16 +688,16 @@
 		F5E329DC8DE979AEB3F04195D43609E9 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Info.plist; path = docs/docsets/AckooSDK.docset/Contents/Info.plist; sourceTree = "<group>"; };
 		F6320B23D7CCF3CB55EF0E2E67EEC77B /* RowControllerType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RowControllerType.swift; path = Source/Core/RowControllerType.swift; sourceTree = "<group>"; };
 		F675D77DD4844284E31EC3B892080E4B /* Helpers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Helpers.swift; path = Source/Core/Helpers.swift; sourceTree = "<group>"; };
-		F6B2A911122734D093FB9D99874649A0 /* search.json */ = {isa = PBXFileReference; includeInIndex = 1; name = search.json; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/search.json; sourceTree = "<group>"; };
+		F6B2A911122734D093FB9D99874649A0 /* search.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; name = search.json; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/search.json; sourceTree = "<group>"; };
 		F7A346918B86CDA77233515513C2678D /* Eureka.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Eureka.debug.xcconfig; sourceTree = "<group>"; };
 		F8E4CD33B25A6DECBE77498C2BC5087B /* QuickConfiguration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QuickConfiguration.h; path = Sources/QuickObjectiveC/Configuration/QuickConfiguration.h; sourceTree = "<group>"; };
 		FB43F6F6178460B79446603F68FD4CAD /* DatePickerRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DatePickerRow.swift; path = Source/Rows/DatePickerRow.swift; sourceTree = "<group>"; };
-		FB9EDEF446E3F7D484CA4B8085AFEAA6 /* Faker.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = Faker.bundle; path = "Fakery-Faker.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB9EDEF446E3F7D484CA4B8085AFEAA6 /* Faker.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Faker.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBEA4975CB82EA18D4FD234CF5DE10CF /* BeginWith.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeginWith.swift; path = Sources/Nimble/Matchers/BeginWith.swift; sourceTree = "<group>"; };
 		FEBF339D06016DCBF42B9BE4D70A2B03 /* RuleRequired.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RuleRequired.swift; path = Source/Validations/RuleRequired.swift; sourceTree = "<group>"; };
 		FECA73F089DA86E3B469FB551B0A7D82 /* Quick-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Quick-umbrella.h"; sourceTree = "<group>"; };
 		FEE19D9E928C58722E951010962A9BAD /* Pods-AckooSDK_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-AckooSDK_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
-		FF51735E5639D0E10B1B8D99AA08B6CB /* tr-TR.json */ = {isa = PBXFileReference; includeInIndex = 1; name = "tr-TR.json"; path = "Resources/Locales/tr-TR.json"; sourceTree = "<group>"; };
+		FF51735E5639D0E10B1B8D99AA08B6CB /* tr-TR.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; name = "tr-TR.json"; path = "Resources/Locales/tr-TR.json"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -819,7 +818,6 @@
 				4C74F239D2062D0113B59938E2058A09 /* Resources */,
 				B903DC175DFA24062B0F4787356A9DF7 /* Support Files */,
 			);
-			name = Fakery;
 			path = Fakery;
 			sourceTree = "<group>";
 		};
@@ -902,7 +900,6 @@
 				71D8BA43A9D5E3FE779594845531E4F9 /* Validation.swift */,
 				46220622616FBBFFE41EDE0170ACEE03 /* Support Files */,
 			);
-			name = Eureka;
 			path = Eureka;
 			sourceTree = "<group>";
 		};
@@ -948,7 +945,6 @@
 			children = (
 				39AA218E1DC13256E327E1B36062C65A /* Support Files */,
 			);
-			name = SwiftFormat;
 			path = SwiftFormat;
 			sourceTree = "<group>";
 		};
@@ -1130,7 +1126,6 @@
 				3638D978CAB99853AD0E79626E888C81 /* XCTestObservationCenter+Register.m */,
 				C92FB81F8CEFB1A9751AC5641AF470E0 /* Support Files */,
 			);
-			name = Nimble;
 			path = Nimble;
 			sourceTree = "<group>";
 		};
@@ -1171,7 +1166,6 @@
 				7753DBCEBE9F65401080072F33983A75 /* XCTestSuite+QuickTestSuiteBuilder.m */,
 				D871228FFA34C3C6D6341ED3699861DE /* Support Files */,
 			);
-			name = Quick;
 			path = Quick;
 			sourceTree = "<group>";
 		};
@@ -1356,7 +1350,6 @@
 			isa = PBXGroup;
 			children = (
 				C0B5F8F454756F89D17136772EF4C05D /* AckooSDKManager.swift */,
-				7A60D6F943F9C831879C24897A4A071C /* RNAckooSDKManager.swift */,
 				1FDD966CB4C7FCA5574976FA94D3877F /* Activity */,
 				D22C00B5A0CBDEAA62588ACC41F7FBB9 /* Networking */,
 				40FD425F013AF19726315EE13C240AC7 /* Order */,
@@ -1874,7 +1867,6 @@
 				480DFD7C2884CFAED9B8F41DD9F769B7 /* Order.swift in Sources */,
 				AE1F393C5044F33668E8129F50C0E06A /* OrderItem.swift in Sources */,
 				7A9E248F73FC20ECFD3FD9574AAAF56B /* Payload.swift in Sources */,
-				21389628D3B2A0119A9EC4976019FC48 /* RNAckooSDKManager.swift in Sources */,
 				6E6BEFFB0A5C564CAB141907733CD3C5 /* UserActivity.swift in Sources */,
 				DDE9BC49CC3DA30684AE52A0642BF538 /* UserIdentity.swift in Sources */,
 				76F8E1E1DF288DB1D8129D55754770D1 /* Utils.swift in Sources */,
@@ -2452,8 +2444,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};

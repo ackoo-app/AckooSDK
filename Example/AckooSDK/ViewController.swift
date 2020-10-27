@@ -25,16 +25,16 @@ class ViewController: UIViewController {
     }
 
     @IBAction func recheckIsSdkActive(_: Any) {
-        AckooSDKManager.shared().getSessionToken { isActive, sessionToken, _ in
-
-            if isActive {
-                self.showAlert(title: "Ackoo SDK is Active", message: "sessionToken : \(sessionToken)")
+        AckooSDKManager.shared().getSessionToken { sessionToken, response in
+            if sessionToken != nil {
+                self.showAlert(title: "Ackoo SDK is Active", message: "sessionToken : \(String(describing: sessionToken))")
                 self.isSdkActiveLabel.text = "true"
                 self.sdkSessionTokenLabel.text = sessionToken
             } else {
+                let error = response as! AckooSdkError
                 self.isSdkActiveLabel.text = "false"
                 self.sdkSessionTokenLabel.text = "none"
-                self.showAlert(title: "Ackoo SDK is Inactive", message: "code")
+                self.showAlert(title: "Ackoo SDK is Inactive", message: error.message)
             }
         }
     }

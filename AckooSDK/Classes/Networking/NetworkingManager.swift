@@ -84,7 +84,6 @@ class NetworkingManager {
         var apiBaseURL: String = ""
         switch buildMode {
             case .qa:
-                //print("QA")
                 if let config:Config = self.parseConfig() {
                     apiBaseURL = config.ackooBaseURL //QA
                 }
@@ -121,11 +120,15 @@ class NetworkingManager {
             let hData = try JSONSerialization.data(withJSONObject: request.allHTTPHeaderFields ?? [:], options: [])
             
             let hString = String(data: hData, encoding: String.Encoding.utf8)
-            
-            print("URL : \(String(describing: request.url?.absoluteString)) \nHeader : \(String(describing: hString)) \n");
+            if(AckooSDKManager.isDebugMode) {
+                print("URL : \(String(describing: request.url?.absoluteString)) \nHeader : \(String(describing: hString)) \n");
+            }
             if let data = request.httpBody {
                 let str = String(data: data, encoding: String.Encoding.utf8)
-                print("\nBody : \(String(describing: str)) ");
+                if(AckooSDKManager.isDebugMode) {
+                    print("\nBody : \(String(describing: str)) ");
+                }
+                
             }
         return request
         } catch {
@@ -189,8 +192,9 @@ class NetworkingManager {
         }
         
         
-        
-        print("Response: \(String(describing: String(data: data, encoding: String.Encoding.utf8))) for URL \(String(describing: response.url))")
+        if(AckooSDKManager.isDebugMode) {
+            print("Response: \(String(describing: String(data: data, encoding: String.Encoding.utf8))) for URL \(String(describing: response.url))")
+        }
         do {
             
             let json = try JSONSerialization.jsonObject(with: data, options: [])

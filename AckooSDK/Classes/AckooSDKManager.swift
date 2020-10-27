@@ -27,10 +27,15 @@ public enum AckooEventTypeString:String,Encodable {
 public enum AckooActivationState {
     case active(sessionToken: String), inactive(errorCode: String, errorMessage: String)
 }
+struct DetailedError: Codable {
+    var key: String;
+    var message: String;
+}
 
 struct ServerError: Codable {
     var code: String;
     var message: String;
+    var details: [DetailedError]?
 }
 
 struct ServerResponse: Codable {
@@ -57,7 +62,7 @@ public class AckooSDKManager:NSObject {
         
     }
     private var activationState:AckooActivationState?;
-
+    public static var isDebugMode: Bool = false;
     /// Initialization
     private override init() {
         super.init()
@@ -73,7 +78,9 @@ public class AckooSDKManager:NSObject {
     }
     @objc func appMovedToForeground() {
         self.validateAckooSession { (succeeded, response) in
-            print(response)
+            if(AckooSDKManager.isDebugMode) {
+                print(response)
+            }
         }
     }
     @objc
@@ -82,10 +89,11 @@ public class AckooSDKManager:NSObject {
                   if let url = userActivity.webpageURL {
                   let params:[String:String] = url.queryParams()
                     if let sessionToken:String = params["session-token"] {
-                        print("sessionToken", sessionToken);
                         storeSessionToken(sessionToken: sessionToken)
                         self.validateAckooSession {
-                            print($0, $1)
+                            if(AckooSDKManager.isDebugMode) {
+                                print($0, $1)
+                            }
                         }
                     }
             }
@@ -183,16 +191,13 @@ public class AckooSDKManager:NSObject {
     }
     
     @objc
-    public func getSessionToken(callback: @escaping (_ isActive: Bool,_ sessionToken:String?,_ error:NSError?) -> Void) {
+    public func getSessionToken(callback: @escaping (_ sessionToken: String? ,_ error: Any?) -> Void) {
         self.isUserValidForSDK { (state:AckooActivationState) in
             switch state {
-                
             case .active(sessionToken: let sessionToken):
-                callback(true,sessionToken,nil)
+                callback(sessionToken, nil)
             case .inactive(errorCode: let errorCode, errorMessage: let errorMessage):
-                let errorCodeInt:Int  = Int(errorCode) ?? 400
-                let error:NSError = NSError(domain: "Ackoo.Error", code: errorCodeInt, userInfo: ["code": errorCode, "message" : errorMessage])
-                callback(false,nil,error)
+                callback(nil, AckooSdkError(code: errorCode, message: errorMessage))
             }
         }
     }
@@ -259,8 +264,11 @@ public class AckooSDKManager:NSObject {
             let serverResponse = try JSONDecoder().decode(ServerResponse.self, from: JSONSerialization.data(withJSONObject: response));
             
                 let errorCode = serverResponse.error!.code;
-                let errorMessage = serverResponse.error!.message;
-                self.activationState = .inactive(errorCode: errorCode, errorMessage: errorMessage);
+                var errorMessage = serverResponse.error!.message;
+                let errorDetails = serverResponse.error!.details;
+                if(errorDetails != nil && ((errorDetails?[0]) != nil)) {
+                    errorMessage = "\(errorDetails?[0].key ?? "key") : \(errorDetails?[0].message ?? "message")" ;
+                }
                 return AckooSdkError(code: errorCode, message: errorMessage);
         } catch {
             return Constants.SDK_ERRORS.BACKEND_MISMATCH;
@@ -283,7 +291,7 @@ public class AckooSDKManager:NSObject {
                         callback(false, AckooSdkError(code: errorCode, message: errorMessage));
                     }
                 } catch {
-                    self.activationState = .inactive(errorCode: "String", errorMessage: "String");
+                    self.activationState = .inactive(errorCode: Constants.SDK_ERRORS.BACKEND_MISMATCH.code, errorMessage: Constants.SDK_ERRORS.BACKEND_MISMATCH.message);
                     callback(succeeded, Constants.SDK_ERRORS.BACKEND_MISMATCH)
                 }
             }
@@ -296,7 +304,6 @@ public class AckooSDKManager:NSObject {
         
         do {
             let jsonData:Data = try JSONEncoder().encode(identity)
-            //print(String(decoding: jsonData, as: UTF8.self))
             NetworkingManager.sharedInstance.postRequest(jsonData, url: requestURL, callback: {(_ succeeded: Bool, _ response: Any) -> Void in
                 // set token here
                 callback(succeeded, response)

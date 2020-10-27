@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'AckooSDK'
-  s.version          = '0.4.2'
+  s.version          = '0.4.3'
   s.summary          = 'iOS SDK that keep track of the purchase with the help of iOS universal links.'
 
 # This description is used to generate tags and improve search results.
@@ -22,7 +22,7 @@ Pod::Spec.new do |s|
   s.homepage         = 'https://www.ackoo.app/'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'mihirpmehta' => 'mihirpmehta@gmail.com' }
+  s.author           = { 'Ackoo' => 'team@ackoo.app' }
   s.source           = { :git => 'https://github.com/ackoo-app/AckooSDK.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
