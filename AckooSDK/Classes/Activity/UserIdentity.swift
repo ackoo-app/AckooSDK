@@ -10,13 +10,12 @@ import AdSupport
 import CoreTelephony
 import UIKit
 
-
-class UserIdentity:Encodable {
-    var advertisingId:String?
-    var fingerprint:FingerPrintingOption?
-    let batteryLevel:Float
-    let isFirstOpen:Bool
-    private var fingerPrintingParam:FingerPrintingOption = FingerPrintingOption()
+class UserIdentity: Encodable {
+    var advertisingId: String?
+    var fingerprint: FingerPrintingOption?
+    let batteryLevel: Float
+    let isFirstOpen: Bool
+    private var fingerPrintingParam: FingerPrintingOption = FingerPrintingOption()
     init() {
         UIDevice.current.isBatteryMonitoringEnabled = true
         self.advertisingId = UserIdentity.getIDFAOfDevice()
@@ -25,7 +24,7 @@ class UserIdentity:Encodable {
         } else {
             self.batteryLevel = 0.0
         }
-        if let firstOpen:Bool = UserDefaults.standard.object(forKey: "AckooisFirstOpen") as? Bool {
+        if let firstOpen: Bool = UserDefaults.standard.object(forKey: "AckooisFirstOpen") as? Bool {
             self.isFirstOpen = firstOpen
         } else {
             self.isFirstOpen = true
@@ -42,22 +41,21 @@ class UserIdentity:Encodable {
     }
 }
 
-class FingerPrintingOption:Encodable {
-    let locale:DeviceLocale = DeviceLocale()
-    let hardware:DeviceHardware = DeviceHardware()
-    let network:DeviceNetwork = DeviceNetwork()
-    
+class FingerPrintingOption: Encodable {
+    let locale: DeviceLocale = DeviceLocale()
+    let hardware: DeviceHardware = DeviceHardware()
+    let network: DeviceNetwork = DeviceNetwork()
+
 }
 
-
-class DeviceLocale:Encodable {
+class DeviceLocale: Encodable {
     let languageCode = Locale.current.languageCode
     let regionCode = Locale.current.regionCode ?? "none"
-    
-    let calenderIdentifier:String = "\(Locale.current.calendar.identifier)"
+
+    let calenderIdentifier: String = "\(Locale.current.calendar.identifier)"
     let timezone = TimeZone.current.identifier
-    let keyboards:[String]
-    
+    let keyboards: [String]
+
     init() {
         if let keyboardString = UserDefaults.standard.object(forKey: "AppleKeyboards") as? [String] {
             self.keyboards = keyboardString
@@ -67,37 +65,36 @@ class DeviceLocale:Encodable {
     }
 }
 
-class DeviceHardware:Encodable {
-    let model:String = UIDevice.current.modelName
-    let storageCapacity:Int
+class DeviceHardware: Encodable {
+    let model: String = UIDevice.current.modelName
+    let storageCapacity: Int
     let deviceName = UIDevice.current.name
-    
+
     init() {
-        
+
         let fileManager = FileManager.default
         if let path = fileManager.urls(for: .libraryDirectory, in: .systemDomainMask).last?.path,
-            let systemSize = try? fileManager.attributesOfFileSystem(forPath: path)[.systemSize] as? Int
-        {
+            let systemSize = try? fileManager.attributesOfFileSystem(forPath: path)[.systemSize] as? Int {
             self.storageCapacity = systemSize
         } else {
             self.storageCapacity = 0
         }
-        
+
     }
 }
 
-class DeviceNetwork:Encodable {
-    let mobileNetworkCode:String
-    let mobileCountryCode:String
+class DeviceNetwork: Encodable {
+    let mobileNetworkCode: String
+    let mobileCountryCode: String
     init() {
         let networkInfo = CTTelephonyNetworkInfo()
         let carrier = networkInfo.subscriberCellularProvider
-        if let tempCode:String = carrier?.mobileNetworkCode {
+        if let tempCode: String = carrier?.mobileNetworkCode {
             self.mobileNetworkCode = tempCode
         } else {
             self.mobileNetworkCode = "none"
         }
-        if let tempCode:String = carrier?.mobileCountryCode {
+        if let tempCode: String = carrier?.mobileCountryCode {
             self.mobileCountryCode = tempCode
         } else {
             self.mobileCountryCode = "none"
@@ -117,5 +114,3 @@ extension UIDevice {
         return identifier
     }
 }
-
-

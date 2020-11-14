@@ -20,7 +20,7 @@ extension String: AckooType {
 extension NSNumber: AckooType {
     public func isValidNestedType() -> Bool { return true }
     public func encode(to encoder: Encoder) throws {
-        
+
     }
 
 }
@@ -48,20 +48,20 @@ extension NSNumber: AckooType {
 //}
 //
 
-typealias Props = [String: AckooType];
+typealias Props = [String: AckooType]
 
-struct Payload:Encodable {
+struct Payload: Encodable {
     let name: String
-    let props:[String: String]
+    let props: [String: String]
 }
 
-class PayloadProperty:Encodable {
+class PayloadProperty: Encodable {
     /// Order details
-    var orderDetail:Order?
+    var orderDetail: Order?
     /// userActivity
-    var userActivity:UserActivity
-    
-    init(order:Order?,activity:UserActivity) {
+    var userActivity: UserActivity
+
+    init(order: Order?, activity: UserActivity) {
         self.orderDetail = order
         self.userActivity = activity
     }
