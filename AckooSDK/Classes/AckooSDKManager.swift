@@ -138,8 +138,12 @@ public class AckooSDKManager: NSObject {
         }
     }
 
+    enum EventType{
+        case checkOut
+        case addToCart
+    }
     @objc
-    public func trackCheckout(_ props: [String: Any], callback: @escaping (_ succeeded: Bool, _ response: Any) -> Void) {
+    public func trackCheckout( _ event:EventType , _ props: [String: Any], callback: @escaping (_ succeeded: Bool, _ response: Any) -> Void) {
         let payload: [String: Any] = ["name": "CHECKOUT", "props": props]
         // Check if token is acquired
         if self.activationState != nil {
