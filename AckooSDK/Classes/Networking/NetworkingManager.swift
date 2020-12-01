@@ -244,3 +244,14 @@ class NetworkingManager {
     }
 
 }
+
+
+func baseHeaders() -> [String: String]? {
+    var headers =  ["Content-Type": "application/json"]
+    headers["app-key"] = "84771436d141b8107a2cbdd4687603ba86a57ecf"
+    let sessionToken: String = UserActivity.getToken()
+    if !sessionToken.isEmpty {
+        headers["session-token"] = sessionToken
+    }
+    return headers
+}

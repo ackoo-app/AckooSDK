@@ -6,23 +6,26 @@
 //
 
 import Foundation
+struct BackEndError :Codable{
+    let ok: Bool
+    let error: AckooError
+}
 
 protocol AckooErrorType: Error {
     var message: String { get }
     var code: String { get }
 }
-final class AckooError: AckooErrorType, Codable {
+public struct AckooError: AckooErrorType, Codable {
     var code: String
     var message: String
     private(set) var api: String?
-
     init(code: String, message: String, api: String?) {
         self.code = code
         self.message = message
         self.api = api
     }
 
-    convenience init(error: Error, api: String? = nil) {
+     init(error: Error, api: String? = nil) {
         if let error: AckooErrorType = error as? AckooErrorType {
             self.init(code: error.code, message: error.message, api: api)
         } else {

@@ -9,8 +9,9 @@ import Foundation
 
 enum CacheType {
     case userDefault
+    case none
 }
 protocol CachePolicyProtocol {
-    func shouldUseCacheType() -> CacheType
+    func useCacheType() -> CacheType
     func shouldCallAPI() -> Bool
 }

@@ -12,7 +12,7 @@ func executeRequest<T: Codable>(_ request: AckooRequest, success: @escaping (_ r
         let session = URLSession.shared
 
         guard let url = URL(string: request.apiURL) else {
-            failure(AckooError(error: LocalError.noInternetConnection, api: request.apiURL))
+            failure(AckooError(error: LocalError.unknown, api: request.apiURL))
             return
         }
         var urlRequest: URLRequest = URLRequest(url: url)
@@ -46,15 +46,15 @@ func executeRequest<T: Codable>(_ request: AckooRequest, success: @escaping (_ r
                 // try to parse data to error
                 do {
                     let decoder = JSONDecoder()
-                    let object = try decoder.decode(AckooError.self, from: data)
-                    failure(object)
+                    let object = try decoder.decode(BackEndError.self, from: data)
+                    let error = AckooError(code: object.error.code, message: object.error.message, api: request.apiURL)
+                    failure(error)
                 } catch {
                     // parsing error
                     failure(AckooError(error: LocalError.parseErrorFailed, api: request.apiURL))
                 }
             } else {
-                failure(AckooError(error: LocalError.unknown, api: request.apiURL))
-
+                failure(AckooError(error: LocalError.noData, api: request.apiURL))
             }
 
             return ()
@@ -62,6 +62,8 @@ func executeRequest<T: Codable>(_ request: AckooRequest, success: @escaping (_ r
         task.resume()
 
     } else {
+        // TODO:
         /// cache request and retry
+        failure(AckooError(error: LocalError.noInternetConnection, api: request.apiURL))
     }
 }

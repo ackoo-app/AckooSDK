@@ -25,7 +25,8 @@ public enum AckooEventTypeString: String, Encodable {
 }
 
 public enum AckooActivationState {
-    case active(sessionToken: String), inactive(errorCode: String, errorMessage: String)
+    case active(sessionToken: String)
+    case inactive(errorCode: String, errorMessage: String)
 }
 struct DetailedError: Codable {
     var key: String
@@ -44,10 +45,19 @@ struct ServerResponse: Codable {
     var error: ServerError?
 }
 
+@objc public protocol AckooSDKType {
+    func initSession()
+    func continueActivity(userActivity: NSUserActivity)
+    func identify(id: String, profile: [String: Any], callback: @escaping (_ succeeded: Bool, _ response: Any) -> Void)
+    func trackViewItem(_ props: [String: Any], callback: @escaping (_ succeeded: Bool, _ response: Any) -> Void)
+    func trackCheckout(_ props: [String: Any], callback: @escaping (_ succeeded: Bool, _ response: Any) -> Void)
+    func getSessionToken(callback: @escaping (_ sessionToken: String?, _ error: Any?) -> Void)
+}
+
 /// AckooSDKManager class to report all activity to backend
 /// Description
 @objc
-public class AckooSDKManager: NSObject {
+public class AckooSDKManager: NSObject, AckooSDKType {
     // MARK: -
     // MARK: - Properties
 
@@ -138,12 +148,8 @@ public class AckooSDKManager: NSObject {
         }
     }
 
-    enum EventType{
-        case checkOut
-        case addToCart
-    }
     @objc
-    public func trackCheckout( _ event:EventType , _ props: [String: Any], callback: @escaping (_ succeeded: Bool, _ response: Any) -> Void) {
+    public func trackCheckout(_ props: [String: Any], callback: @escaping (_ succeeded: Bool, _ response: Any) -> Void) {
         let payload: [String: Any] = ["name": "CHECKOUT", "props": props]
         // Check if token is acquired
         if self.activationState != nil {
@@ -303,7 +309,6 @@ public class AckooSDKManager: NSObject {
     private func getTokenFromServer(callback: @escaping (_ succeeded: Bool, _ response: Any) -> Void) {
         let identity: UserIdentity = UserIdentity()
         let requestURL = Constants.URL_PATHS.FINGERPRINT
-
         do {
             let jsonData: Data = try JSONEncoder().encode(identity)
             NetworkingManager.sharedInstance.postRequest(jsonData, url: requestURL, callback: {(_ succeeded: Bool, _ response: Any) -> Void in

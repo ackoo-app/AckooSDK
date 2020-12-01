@@ -30,6 +30,10 @@ class Constants {
         static let INVALID_REQUEST: String = "Host is invalid"
         static let SESSION_NOT_VALID: String = "User is not a valid Ackoo user"
     }
+    
+    static let baseURL = "https://api.ackoo.app/"
+    static let tokenQueryKey = "session-token"
+    
     struct URL_PATHS {
         static let TRACK: String = "partner/track"
         static let IDENTIFY: String = "partner/identify"

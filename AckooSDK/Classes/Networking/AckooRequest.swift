@@ -13,6 +13,7 @@ enum RequestHTTPMethod: String {
     case put = "PUT"
 }
 final class AckooRequest: NSObject {
+    var identifer: String = ""
     var apiURL: String = ""
     var parameters: [String: Any]?
     var headers: [String: String]?

@@ -30,18 +30,18 @@ extension LocalError {
         }
     }
 
-    var code: Int {
+    var code: String {
         switch self {
         case .parseErrorFailed:
-            return -1001
+            return "LOCAL_FAILED_PARSE_ERROR"
         case .parseResponseError:
-            return -1002
+            return "LOCAL_FAILED_PARSE_RESPONSE"
         case .noInternetConnection:
-            return -1003
+            return "LOCAL_NO_CONNECTION"
         case .unknown:
-            return -1000
+            return "LOCAL_UNKNOWN"
         case .noData:
-            return -1005
+            return "LOCAL_NO_DATA"
         }
     }
 }
