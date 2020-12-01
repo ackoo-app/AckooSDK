@@ -94,64 +94,77 @@ public class AckooSDKManager1: NSObject, AckooSDKType1 {
     public func identify(id: String, profile: [String : Any], callback: @escaping (Bool, Any) -> Void) {
         var updatedUser = profile
         updatedUser["userId"] = id
-        if checkStateIsActive().0 == true {
-            let requestURL = Constants.URL_PATHS.IDENTIFY
-            let factory = AckooRequestFactory()
-            let request = factory.createRequest(apiMethod: Constants.baseURL + requestURL, httpMethod: .post, parameters: updatedUser, headers: baseHeaders())
-            getData(request: request, cachingPolicy: SessionTokenPolicy()) {(data: SessionTokenModel) in
-                callback(true , data)
-            } failed: {  (error) in
+        checkStateIsActive { (token, error) in
+            if let error = error {
                 callback(false , error)
-
+            }else{
+                
+                let requestURL = Constants.URL_PATHS.IDENTIFY
+                let factory = AckooRequestFactory()
+                let request = factory.createRequest(apiMethod: Constants.baseURL + requestURL, httpMethod: .post, parameters: updatedUser, headers: baseHeaders())
+                getData(request: request, cachingPolicy: DefaultDataPolicy()) {(data: BaseModel) in
+                    callback(true , data)
+                } failed: {  (error) in
+                    callback(false , error)
+                    
+                }
             }
-            
-        }else{
-            callback(false , checkStateIsActive().1 ?? AckooError(error: LocalError.unknown))
         }
+        
         
     }
     
     public func trackViewItem(_ props: [String : Any], callback: @escaping (Bool, Any) -> Void) {
         let payload: [String: Any] = ["name": "VIEW_ITEM", "props": props]
-        if checkStateIsActive().0 == true {
-            let requestURL = Constants.URL_PATHS.TRACK
-            let factory = AckooRequestFactory()
-            let request = factory.createRequest(apiMethod: Constants.baseURL + requestURL, httpMethod: .post, parameters: payload, headers: baseHeaders())
-            getData(request: request, cachingPolicy: SessionTokenPolicy()) {(data: SessionTokenModel) in
-                callback(true , data)
-            } failed: {  (error) in
-                callback(false , error)
-
-            }
-            
-        }else{
-            callback(false , checkStateIsActive().1 ?? AckooError(error: LocalError.unknown))
-        }
-        
+        track(payload: payload, callback: callback)
     }
     
     public func trackCheckout(_ props: [String : Any], callback: @escaping (Bool, Any) -> Void) {
+        let payload: [String: Any] = ["name": "ADD_TO_CART", "props": props]
+        track(payload: payload, callback: callback)
         
         
+    }
+    
+    
+    private func track( payload: [String : Any], callback: @escaping (Bool, Any) -> Void){
+        checkStateIsActive { (token, error) in
+            if let error = error {
+                callback(false , error)
+            }else{
+                let requestURL = Constants.URL_PATHS.TRACK
+                let factory = AckooRequestFactory()
+                let request = factory.createRequest(apiMethod: Constants.baseURL + requestURL, httpMethod: .post, parameters: payload, headers: baseHeaders())
+                getData(request: request, cachingPolicy: DefaultDataPolicy()) {(data: BaseModel) in
+                    callback(true , data)
+                } failed: {  (error) in
+                    callback(false , error)
+                }
+            }
+        }
     }
     
     public func getSessionToken(callback: @escaping (String?, Any?) -> Void) {
-        
+        checkStateIsActive { (token, error) in
+            callback(token , error)
+        }
     }
     
     
-    private func checkStateIsActive() -> (Bool , AckooError?){
+    private func checkStateIsActive(callback: @escaping (_ sessionToken: String?, _ error: AckooError?) -> Void){
         if let activationState = activationState  {
             switch activationState {
-            case .active(sessionToken: _):
-              return  (true , nil)
+            case .active(sessionToken: let token):
+                callback(token , nil)
             case .inactive(error: let error):
-                return  (false , error)
-                
+                callback(nil , error)
+            }
+        }else{
+            validateAckooSession { (sessionToken, error) in
+                callback(sessionToken?.data?.sessionToken , error)
             }
         }
-        return  (false , AckooError(error: LocalError.unknown))
-
+        
     }
     
     

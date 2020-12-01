@@ -6,7 +6,6 @@
 //
 
 import Foundation
-
 // MARK: - SessionTokenModel
 struct SessionTokenModel: Codable {
     let ok: Bool?

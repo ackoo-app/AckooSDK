@@ -17,3 +17,12 @@ final class AckooRequestFactory {
         return request
     }
 }
+func baseHeaders() -> [String: String]? {
+    var headers =  ["Content-Type": "application/json"]
+    headers["app-key"] = parseAppConfig()?.ackooToken
+    let sessionToken: String = UserActivity.getToken()
+    if !sessionToken.isEmpty {
+        headers["session-token"] = sessionToken
+    }
+    return headers
+}
