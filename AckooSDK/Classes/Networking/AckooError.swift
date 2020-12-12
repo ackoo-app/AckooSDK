@@ -15,7 +15,8 @@ protocol AckooErrorType: Error {
     var message: String { get }
     var code: String { get }
 }
-public struct AckooError: AckooErrorType, Codable {
+@objc
+public class AckooError: NSObject,AckooErrorType, Codable {
     var code: String
     var message: String
     private(set) var api: String?
@@ -25,7 +26,7 @@ public struct AckooError: AckooErrorType, Codable {
         self.api = api
     }
 
-     init(error: Error, api: String? = nil) {
+    convenience init(error: Error, api: String? = nil) {
         if let error: AckooErrorType = error as? AckooErrorType {
             self.init(code: error.code, message: error.message, api: api)
         } else {

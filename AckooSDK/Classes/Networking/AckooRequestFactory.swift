@@ -14,12 +14,14 @@ final class AckooRequestFactory {
         request.httpMethod = httpMethod
         request.parameters = parameters
         request.headers = headers
+        request.identifer = apiMethod
         return request
     }
 }
 func baseHeaders() -> [String: String]? {
     var headers =  ["Content-Type": "application/json"]
     headers["app-key"] = parseAppConfig()?.ackooToken
+    headers["sdk-version"] = "0.4.4"
     let sessionToken: String = UserActivity.getToken()
     if !sessionToken.isEmpty {
         headers["session-token"] = sessionToken

@@ -56,7 +56,7 @@ class TrackViewItemController: FormViewController {
                     print("form invalid")
                 } else {
                     let values: [String: Any] = self.form.values() as [String: Any]
-                    AckooSDKManager.shared().trackViewItem(values) { succeeded, response in
+                    AckooSDKManager.shared.trackViewItem(values) { succeeded, response in
                         if succeeded {
                             self.showAlert(title: "success", message: "track view item successful")
                         } else {

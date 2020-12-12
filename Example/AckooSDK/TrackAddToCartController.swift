@@ -71,7 +71,7 @@ class TrackAddToCartViewController: FormViewController {
                     print("form invalid")
                 } else {
                     let values: [String: Any] = self.form.values() as [String: Any]
-                    AckooSDKManager.shared().trackAddToCart(values) { succeeded, response in
+                    AckooSDKManager.shared.trackAddToCart(values) { succeeded, response in
                         if succeeded {
                             self.showAlert(title: "success", message: "track add item to cart successful")
                         } else {

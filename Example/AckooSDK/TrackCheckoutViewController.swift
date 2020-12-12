@@ -61,7 +61,7 @@ class TrackCheckoutViewController: FormViewController {
                 } else {
                     var values: [String: Any] = self.form.values() as [String: Any]
                     values["items"] = true
-                    AckooSDKManager.shared().trackCheckout(values) { succeeded, response in
+                    AckooSDKManager.shared.trackCheckout(values) { succeeded, response in
                         if succeeded {
                             self.showAlert(title: "success", message: "track checkout successful")
                         } else {

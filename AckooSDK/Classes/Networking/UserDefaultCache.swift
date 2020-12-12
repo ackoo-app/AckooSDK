@@ -6,7 +6,7 @@
 //
 
 import Foundation
-final class UserDefaultCache: NSObject, StorageProtocol {
+final class UserDefaultCache: NSObject {
     override private init() {}
 
     static let shared = UserDefaultCache()
