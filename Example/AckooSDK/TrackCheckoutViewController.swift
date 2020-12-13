@@ -61,13 +61,11 @@ class TrackCheckoutViewController: FormViewController {
                 } else {
                     var values: [String: Any] = self.form.values() as [String: Any]
                     values["items"] = true
-                    AckooSDKManager.shared.trackCheckout(values) { succeeded, response in
+                    AckooSDKManager.shared.trackCheckout(values) { succeeded, error in
                         if succeeded {
                             self.showAlert(title: "success", message: "track checkout successful")
-                        } else {
-                            let error = response as? AckooSdkError
-
-                            self.showAlert(title: "error", message: error?.message ?? "not recongnized error")
+                        } else if let error = error {
+                            self.showAlert(title: "error", message: error.message)
                         }
                     }
                 }

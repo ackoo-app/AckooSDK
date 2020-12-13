@@ -50,16 +50,20 @@ public class AckooSDKManager: NSObject, AckooSDKType {
     
     private func validateAckooSession(callback: @escaping (_ data: SessionTokenModel?, _ error:AckooError?) -> Void) {
         let identity: UserIdentity = UserIdentity()
-        let requestURL = Constants.URL_PATHS.FINGERPRINT
+        let requestURL = Constants.URLPaths.fingerprint
         
         let factory = AckooRequestFactory()
         let request = factory.createRequest(apiMethod: Constants.baseURL + requestURL, httpMethod: .post, parameters: identity.dictionary, headers: baseHeaders())
             getData(request: request) {  [weak self] (data: SessionTokenModel) in
             if let token = data.data?.sessionToken {
                 self?.activationState = .active(sessionToken: token)
+                saveSessionToken(token)
             }
             callback(data  , nil)
         } failed: { [weak self] (error) in
+            if error.code ==  "SESSION_TOKEN_NOT_RECONGIZED" ||  error.code ==  "FINGERPRINT_MATCH_NOT_FOUND" ||  error.code ==  "NO_ACTIVE_SESSION" {
+                deleteSessionToken()
+            }
             self?.activationState = .inactive(error: error)
             callback(nil, error)
         }
@@ -100,7 +104,7 @@ public class AckooSDKManager: NSObject, AckooSDKType {
                 callback(false , error)
             }else{
                 
-                let requestURL = Constants.URL_PATHS.IDENTIFY
+                let requestURL = Constants.URLPaths.identify
                 let factory = AckooRequestFactory()
                 let request = factory.createRequest(apiMethod: Constants.baseURL + requestURL, httpMethod: .post, parameters: updatedUser, headers: baseHeaders())
                 getData(request: request) {(data: BaseModel) in
@@ -135,7 +139,7 @@ public class AckooSDKManager: NSObject, AckooSDKType {
             if let error = error {
                 callback(false , error)
             }else{
-                let requestURL = Constants.URL_PATHS.TRACK
+                let requestURL = Constants.URLPaths.track
                 let factory = AckooRequestFactory()
                 let request = factory.createRequest(apiMethod: Constants.baseURL + requestURL, httpMethod: .post, parameters: payload, headers: baseHeaders())
                 getData(request: request) {(data: BaseModel) in

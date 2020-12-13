@@ -22,7 +22,7 @@ func baseHeaders() -> [String: String]? {
     var headers =  ["Content-Type": "application/json"]
     headers["app-key"] = parseAppConfig()?.ackooToken
     headers["sdk-version"] = "0.4.4"
-    let sessionToken: String = UserActivity.getToken()
+    let sessionToken: String = getSessionToken()
     if !sessionToken.isEmpty {
         headers["session-token"] = sessionToken
     }

@@ -17,8 +17,8 @@ protocol AckooErrorType: Error {
 }
 @objc
 public class AckooError: NSObject,AckooErrorType, Codable {
-    var code: String
-    var message: String
+    public var code: String
+    public var message: String
     private(set) var api: String?
     init(code: String, message: String, api: String?) {
         self.code = code

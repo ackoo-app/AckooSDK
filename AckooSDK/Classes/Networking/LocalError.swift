@@ -18,11 +18,11 @@ extension LocalError {
     var message: String {
         switch self {
         case .noInternetConnection:
-            return NSLocalizedString("localError.noInternet.message", comment: "")
+            return Constants.ErrorMessages.noInternent
         case .parseErrorFailed:
-            return NSLocalizedString("localError.parsing.message", comment: "")
+            return Constants.ErrorMessages.failedErrorParsing
         case .parseResponseError:
-            return NSLocalizedString("localError.parsing.message", comment: "")
+            return Constants.ErrorMessages.failedResponseParsing
         case .unknown:
             return NSLocalizedString("localError.unknown.message", comment: "")
         case .noData:

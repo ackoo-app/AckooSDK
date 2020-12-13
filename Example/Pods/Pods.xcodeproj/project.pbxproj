@@ -119,7 +119,6 @@
 		6706FE594A5FC58BE59F7AA454982D93 /* SliderRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610C18793912724EE68ACF6C375AB09D /* SliderRow.swift */; };
 		6D13C3C40D5F2B21B4491B81002F2894 /* RuleEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8236C35EAFDC695612E1D09F8033ADE3 /* RuleEmail.swift */; };
 		6E50479551409B24E039D618C64F6452 /* Business.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8E13E6FC5BECD532722BBCADBA5310 /* Business.swift */; };
-		6E6BEFFB0A5C564CAB141907733CD3C5 /* UserActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AFE2723486405BE171EF175ADCA277 /* UserActivity.swift */; };
 		7005C904B5F05004C2BC6703E8B14F39 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D8BA43A9D5E3FE779594845531E4F9 /* Validation.swift */; };
 		72FB8CEABF346A37D54CC08647489A98 /* ThrowAssertion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7336196CA697A81AD4C5A14A7212B56B /* ThrowAssertion.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		74D66CEA99B31E13EEF6085F588810FE /* AckooSDK.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6A58D8AC7FBF61A8EDD54D70B1F348F3 /* AckooSDK.plist */; };
@@ -153,6 +152,7 @@
 		9231B70907F130F31CF5717C502B780C /* ExampleGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F75D7E9545836A9B6C638911A7240E /* ExampleGroup.swift */; };
 		92AB57FEB547CF332A1FCB19AFFA138F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10720798F5DB94D1CFE0EE52E3A844E1 /* Foundation.framework */; };
 		9391DB502584DB530009F6E0 /* AckooSDKManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9391DB4F2584DB530009F6E0 /* AckooSDKManager.swift */; };
+		9391DB9A25854F6A0009F6E0 /* SessionTokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9391DB9925854F6A0009F6E0 /* SessionTokenManager.swift */; };
 		93BD9ED525767D38003A1C5D /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BD9ED425767D37003A1C5D /* AppConfig.swift */; };
 		93BD9EE125768C10003A1C5D /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BD9EE025768C10003A1C5D /* BaseModel.swift */; };
 		93C91592256E930F0075A53C /* SessionTokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C91585256E930E0075A53C /* SessionTokenModel.swift */; };
@@ -567,6 +567,7 @@
 		92D90E03BACFCA8368DD08C5042D493F /* AckooSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AckooSDK.release.xcconfig; sourceTree = "<group>"; };
 		935E820BDA694B9BC4AC34A7A8A3BD8A /* AckooSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AckooSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9391DB4F2584DB530009F6E0 /* AckooSDKManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AckooSDKManager.swift; path = AckooSDK/Classes/AckooSDKManager.swift; sourceTree = "<group>"; };
+		9391DB9925854F6A0009F6E0 /* SessionTokenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionTokenManager.swift; sourceTree = "<group>"; };
 		93BD9ED425767D37003A1C5D /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
 		93BD9EE025768C10003A1C5D /* BaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
 		93C91585256E930E0075A53C /* SessionTokenModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionTokenModel.swift; sourceTree = "<group>"; };
@@ -580,7 +581,6 @@
 		93C9158F256E930F0075A53C /* LocalError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalError.swift; sourceTree = "<group>"; };
 		93C91591256E930F0075A53C /* HTTPURLResponseEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPURLResponseEx.swift; sourceTree = "<group>"; };
 		944D89196DEADA2786E0FC4D5BD0EED0 /* Pods-PartnerApp_DemoTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-PartnerApp_DemoTests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		95AFE2723486405BE171EF175ADCA277 /* UserActivity.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UserActivity.swift; sourceTree = "<group>"; };
 		96AFA208437EB202E4E97AAB02057A10 /* QuickSpec.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QuickSpec.m; path = Sources/QuickObjectiveC/QuickSpec.m; sourceTree = "<group>"; };
 		9A4FF93C6A0D7591EB83091C2B201C67 /* BuildMode.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = BuildMode.html; path = docs/docsets/AckooSDK.docset/Contents/Resources/Documents/Enums/BuildMode.html; sourceTree = "<group>"; };
 		9B1B52908C47655262EC82D5735983AE /* BeGreaterThan.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeGreaterThan.swift; path = Sources/Nimble/Matchers/BeGreaterThan.swift; sourceTree = "<group>"; };
@@ -927,7 +927,6 @@
 			isa = PBXGroup;
 			children = (
 				3ED89F6E478C8B84D969DDDACF690482 /* BaseActivity.swift */,
-				95AFE2723486405BE171EF175ADCA277 /* UserActivity.swift */,
 				6365B6D0AD7301F65775795B4453C90C /* UserIdentity.swift */,
 			);
 			name = Activity;
@@ -1340,6 +1339,7 @@
 				93BD9EE025768C10003A1C5D /* BaseModel.swift */,
 				93C91588256E930E0075A53C /* UserDefaultCache.swift */,
 				93BD9ED425767D37003A1C5D /* AppConfig.swift */,
+				9391DB9925854F6A0009F6E0 /* SessionTokenManager.swift */,
 			);
 			name = Networking;
 			path = AckooSDK/Classes/Networking;
@@ -1902,13 +1902,13 @@
 				AE1F393C5044F33668E8129F50C0E06A /* OrderItem.swift in Sources */,
 				93BD9EE125768C10003A1C5D /* BaseModel.swift in Sources */,
 				93C91592256E930F0075A53C /* SessionTokenModel.swift in Sources */,
-				6E6BEFFB0A5C564CAB141907733CD3C5 /* UserActivity.swift in Sources */,
 				93C91593256E930F0075A53C /* AckooRequest.swift in Sources */,
 				DDE9BC49CC3DA30684AE52A0642BF538 /* UserIdentity.swift in Sources */,
 				93C91597256E930F0075A53C /* AckooRequestFactory.swift in Sources */,
 				93BD9ED525767D38003A1C5D /* AppConfig.swift in Sources */,
 				93C91598256E930F0075A53C /* AckooError.swift in Sources */,
 				9391DB502584DB530009F6E0 /* AckooSDKManager.swift in Sources */,
+				9391DB9A25854F6A0009F6E0 /* SessionTokenManager.swift in Sources */,
 				76F8E1E1DF288DB1D8129D55754770D1 /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
