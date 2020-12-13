@@ -43,7 +43,7 @@ public class AckooSDKManager: NSObject, AckooSDKType {
             if let data = data{
                 print(data)
             } else if let error = error {
-                print(error)
+                print(error.description)
             }
         }
     }
@@ -61,7 +61,7 @@ public class AckooSDKManager: NSObject, AckooSDKType {
             }
             callback(data  , nil)
         } failed: { [weak self] (error) in
-            if error.code ==  "SESSION_TOKEN_NOT_RECONGIZED" ||  error.code ==  "FINGERPRINT_MATCH_NOT_FOUND" ||  error.code ==  "NO_ACTIVE_SESSION" {
+            if error.code ==  SessionError.fingerprintNotFound.code ||  error.code ==  SessionError.noActiveSession.code  ||  error.code ==  SessionError.sessionTokenExpired.code {
                 deleteSessionToken()
             }
             self?.activationState = .inactive(error: error)
@@ -87,7 +87,7 @@ public class AckooSDKManager: NSObject, AckooSDKType {
                         if let data = data{
                             print(data)
                         } else if let error = error {
-                            print(error)
+                            print(error.description)
                         }
                     }
                     

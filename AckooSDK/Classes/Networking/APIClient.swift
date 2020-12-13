@@ -12,7 +12,7 @@ func executeRequest<T: Codable>(_ request: AckooRequest, success: @escaping (_ r
         let session = URLSession.shared
 
         guard let url = URL(string: request.apiURL) else {
-            failure(AckooError(error: LocalError.unknown, api: request.apiURL))
+            failure(AckooError(error: LocalError.invalidURL, api: request.apiURL))
             return
         }
         var urlRequest: URLRequest = URLRequest(url: url)

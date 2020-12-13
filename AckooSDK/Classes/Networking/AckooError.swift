@@ -19,7 +19,12 @@ protocol AckooErrorType: Error {
 public class AckooError: NSObject,AckooErrorType, Codable {
     public var code: String
     public var message: String
+    public var details: [[String: String]]?
     private(set) var api: String?
+    
+    public override var description: String{
+        return "error is : \(code) with message : \(message) from api : \(String(describing: api))"
+    }
     init(code: String, message: String, api: String?) {
         self.code = code
         self.message = message

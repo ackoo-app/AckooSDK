@@ -10,7 +10,7 @@ enum LocalError: Error {
     case noInternetConnection
     case parseResponseError
     case parseErrorFailed
-    case unknown
+    case invalidURL
     case noData
 }
 
@@ -23,10 +23,10 @@ extension LocalError {
             return Constants.ErrorMessages.failedErrorParsing
         case .parseResponseError:
             return Constants.ErrorMessages.failedResponseParsing
-        case .unknown:
-            return NSLocalizedString("localError.unknown.message", comment: "")
+        case .invalidURL:
+            return Constants.ErrorMessages.invalidURL
         case .noData:
-            return NSLocalizedString("localError.noData.message", comment: "")
+            return Constants.ErrorMessages.noData
         }
     }
 
@@ -38,8 +38,8 @@ extension LocalError {
             return "LOCAL_FAILED_PARSE_RESPONSE"
         case .noInternetConnection:
             return "LOCAL_NO_CONNECTION"
-        case .unknown:
-            return "LOCAL_UNKNOWN"
+        case .invalidURL:
+            return "INVALID_URL"
         case .noData:
             return "LOCAL_NO_DATA"
         }

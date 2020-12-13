@@ -14,6 +14,9 @@ class Constants {
         static let noInternent: String = "Internet not reachable"
         static let failedErrorParsing: String = "failed to parse error"
         static let failedResponseParsing: String = "failed to parse response"
+        static let invalidURL: String = "invalid URL"
+        static let noData: String = "no data response"
+
     }
     
     static let baseURL = "https://api.ackoo.app/"

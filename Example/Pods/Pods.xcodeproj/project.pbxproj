@@ -153,6 +153,7 @@
 		92AB57FEB547CF332A1FCB19AFFA138F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10720798F5DB94D1CFE0EE52E3A844E1 /* Foundation.framework */; };
 		9391DB502584DB530009F6E0 /* AckooSDKManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9391DB4F2584DB530009F6E0 /* AckooSDKManager.swift */; };
 		9391DB9A25854F6A0009F6E0 /* SessionTokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9391DB9925854F6A0009F6E0 /* SessionTokenManager.swift */; };
+		9391DBB1258602AB0009F6E0 /* SessionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9391DBB0258602AB0009F6E0 /* SessionError.swift */; };
 		93BD9ED525767D38003A1C5D /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BD9ED425767D37003A1C5D /* AppConfig.swift */; };
 		93BD9EE125768C10003A1C5D /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BD9EE025768C10003A1C5D /* BaseModel.swift */; };
 		93C91592256E930F0075A53C /* SessionTokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C91585256E930E0075A53C /* SessionTokenModel.swift */; };
@@ -568,6 +569,7 @@
 		935E820BDA694B9BC4AC34A7A8A3BD8A /* AckooSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AckooSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9391DB4F2584DB530009F6E0 /* AckooSDKManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AckooSDKManager.swift; path = AckooSDK/Classes/AckooSDKManager.swift; sourceTree = "<group>"; };
 		9391DB9925854F6A0009F6E0 /* SessionTokenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionTokenManager.swift; sourceTree = "<group>"; };
+		9391DBB0258602AB0009F6E0 /* SessionError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionError.swift; sourceTree = "<group>"; };
 		93BD9ED425767D37003A1C5D /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
 		93BD9EE025768C10003A1C5D /* BaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
 		93C91585256E930E0075A53C /* SessionTokenModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionTokenModel.swift; sourceTree = "<group>"; };
@@ -1333,6 +1335,7 @@
 				93C9158D256E930F0075A53C /* APIClient.swift */,
 				93C91591256E930F0075A53C /* HTTPURLResponseEx.swift */,
 				93C9158F256E930F0075A53C /* LocalError.swift */,
+				9391DBB0258602AB0009F6E0 /* SessionError.swift */,
 				93C9158C256E930E0075A53C /* Reachability.swift */,
 				93C9158E256E930F0075A53C /* Repo.swift */,
 				93C91585256E930E0075A53C /* SessionTokenModel.swift */,
@@ -1902,6 +1905,7 @@
 				AE1F393C5044F33668E8129F50C0E06A /* OrderItem.swift in Sources */,
 				93BD9EE125768C10003A1C5D /* BaseModel.swift in Sources */,
 				93C91592256E930F0075A53C /* SessionTokenModel.swift in Sources */,
+				9391DBB1258602AB0009F6E0 /* SessionError.swift in Sources */,
 				93C91593256E930F0075A53C /* AckooRequest.swift in Sources */,
 				DDE9BC49CC3DA30684AE52A0642BF538 /* UserIdentity.swift in Sources */,
 				93C91597256E930F0075A53C /* AckooRequestFactory.swift in Sources */,
