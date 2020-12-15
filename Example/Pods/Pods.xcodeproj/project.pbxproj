@@ -154,6 +154,7 @@
 		9391DB502584DB530009F6E0 /* AckooSDKManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9391DB4F2584DB530009F6E0 /* AckooSDKManager.swift */; };
 		9391DB9A25854F6A0009F6E0 /* SessionTokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9391DB9925854F6A0009F6E0 /* SessionTokenManager.swift */; };
 		9391DBB1258602AB0009F6E0 /* SessionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9391DBB0258602AB0009F6E0 /* SessionError.swift */; };
+		93B8F18C2588C51200B22EFE /* AckooLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B8F18B2588C51200B22EFE /* AckooLog.swift */; };
 		93BD9ED525767D38003A1C5D /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BD9ED425767D37003A1C5D /* AppConfig.swift */; };
 		93BD9EE125768C10003A1C5D /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BD9EE025768C10003A1C5D /* BaseModel.swift */; };
 		93C91592256E930F0075A53C /* SessionTokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C91585256E930E0075A53C /* SessionTokenModel.swift */; };
@@ -570,6 +571,7 @@
 		9391DB4F2584DB530009F6E0 /* AckooSDKManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AckooSDKManager.swift; path = AckooSDK/Classes/AckooSDKManager.swift; sourceTree = "<group>"; };
 		9391DB9925854F6A0009F6E0 /* SessionTokenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionTokenManager.swift; sourceTree = "<group>"; };
 		9391DBB0258602AB0009F6E0 /* SessionError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionError.swift; sourceTree = "<group>"; };
+		93B8F18B2588C51200B22EFE /* AckooLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AckooLog.swift; sourceTree = "<group>"; };
 		93BD9ED425767D37003A1C5D /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
 		93BD9EE025768C10003A1C5D /* BaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
 		93C91585256E930E0075A53C /* SessionTokenModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionTokenModel.swift; sourceTree = "<group>"; };
@@ -1343,6 +1345,7 @@
 				93C91588256E930E0075A53C /* UserDefaultCache.swift */,
 				93BD9ED425767D37003A1C5D /* AppConfig.swift */,
 				9391DB9925854F6A0009F6E0 /* SessionTokenManager.swift */,
+				93B8F18B2588C51200B22EFE /* AckooLog.swift */,
 			);
 			name = Networking;
 			path = AckooSDK/Classes/Networking;
@@ -1898,6 +1901,7 @@
 				93C9159C256E930F0075A53C /* LocalError.swift in Sources */,
 				93C9159A256E930F0075A53C /* APIClient.swift in Sources */,
 				A0AB82B68D49F849CAEF902B41860480 /* BaseActivity.swift in Sources */,
+				93B8F18C2588C51200B22EFE /* AckooLog.swift in Sources */,
 				93C9159E256E930F0075A53C /* HTTPURLResponseEx.swift in Sources */,
 				93C91595256E930F0075A53C /* UserDefaultCache.swift in Sources */,
 				FE4657B10BEF99F40B92847F219AF274 /* Constants.swift in Sources */,

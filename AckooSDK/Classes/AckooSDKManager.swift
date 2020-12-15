@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 @objc public protocol AckooSDKType {
-    func initSession()
+    func initSession(_ logLevel: AckooLogLevel)
     func continueActivity(userActivity: NSUserActivity)
     func identify(id: String, profile: [String: Any], callback: @escaping (_ succeeded: Bool, _ erorr: AckooError?) -> Void)
     func trackViewItem(_ props: [String: Any], callback: @escaping (_ succeeded: Bool, _ response: AckooError?) -> Void)
@@ -18,7 +18,11 @@ import UIKit
     func getSessionToken(callback: @escaping (_ sessionToken: String?, _ error: AckooError?) -> Void)
 }
 
-
+@objc public enum AckooLogLevel : Int{
+    case critical = 0
+    case debug
+    case none
+}
 public enum AckooActivationState {
     case active(sessionToken: String)
     case inactive(error: AckooError)
@@ -30,7 +34,7 @@ public enum AckooActivationState {
 public class AckooSDKManager: NSObject, AckooSDKType {
     private var activationState: AckooActivationState?
     public static let shared = AckooSDKManager()
-    
+    private var logLevel: AckooLogLevel!
     private override init() {
         super.init()
         let notificationCenter = NotificationCenter.default
@@ -41,9 +45,9 @@ public class AckooSDKManager: NSObject, AckooSDKType {
     @objc func appMovedToForeground() {
         self.validateAckooSession { (data, error) in
             if let data = data{
-                print(data)
+                print("AckooToken\(data.data?.sessionToken ?? "")" , logLevel:.debug)
             } else if let error = error {
-                print(error.description)
+                print(error.description , logLevel:.debug)
             }
         }
     }
@@ -73,8 +77,8 @@ public class AckooSDKManager: NSObject, AckooSDKType {
     static func requiresMainQueueSetup() -> Bool {
         return true
     }
-    public func initSession() {
-        
+    public func initSession(_ logLevel: AckooLogLevel = .none) {
+        self.logLevel = logLevel
     }
     
     public func continueActivity(userActivity: NSUserActivity) {
@@ -85,9 +89,9 @@ public class AckooSDKManager: NSObject, AckooSDKType {
                     UserDefaultCache.shared.saveObject(with: Constants.tokenQueryKey, object: sessionToken)
                     self.validateAckooSession { (data, error) in
                         if let data = data{
-                            print(data)
+                            print("AckooToken\(data.data?.sessionToken ?? "")" , logLevel:.debug)
                         } else if let error = error {
-                            print(error.description)
+                            print(error.description , logLevel:.debug)
                         }
                     }
                     
