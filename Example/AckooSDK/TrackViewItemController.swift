@@ -49,14 +49,14 @@ class TrackViewItemController: FormViewController {
                 $0.add(rule: RuleRequired())
             }
             <<< ButtonRow {
-                $0.title = "track"
+                $0.title = "Track"
             }.onCellSelection { _, _ in
                 let errors = self.form.validate()
                 if errors.count > 0 {
                     print("form invalid")
                 } else {
                     let values: [String: Any] = self.form.values() as [String: Any]
-                    AckooSDKManager.shared().trackViewItem(values) { succeeded, response in
+                    AckooSDKManager.shared.trackViewItem(values) { succeeded, response in
                         if succeeded {
                             self.showAlert(title: "success", message: "track view item successful")
                         } else {

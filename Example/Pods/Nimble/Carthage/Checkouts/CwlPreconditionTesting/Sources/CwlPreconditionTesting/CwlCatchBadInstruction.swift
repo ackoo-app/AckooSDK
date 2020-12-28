@@ -67,7 +67,7 @@
         var behaviors = execTypesCountTuple<exception_behavior_t>()
         var flavors = execTypesCountTuple<thread_state_flavor_t>()
         var currentExceptionPort: mach_port_t = 0
-        var handlerThread: pthread_t? = nil
+        var handlerThread: pthread_t?
 
         static func internalMutablePointers<R>(_ m: UnsafeMutablePointer<execTypesCountTuple<exception_mask_t>>, _ c: UnsafeMutablePointer<mach_msg_type_number_t>, _ p: UnsafeMutablePointer<execTypesCountTuple<mach_port_t>>, _ b: UnsafeMutablePointer<execTypesCountTuple<exception_behavior_t>>, _ f: UnsafeMutablePointer<execTypesCountTuple<thread_state_flavor_t>>, _ block: (UnsafeMutablePointer<exception_mask_t>, UnsafeMutablePointer<mach_msg_type_number_t>, UnsafeMutablePointer<mach_port_t>, UnsafeMutablePointer<exception_behavior_t>, UnsafeMutablePointer<thread_state_flavor_t>) -> R) -> R {
             return m.withMemoryRebound(to: exception_mask_t.self, capacity: 1) { masksPtr in

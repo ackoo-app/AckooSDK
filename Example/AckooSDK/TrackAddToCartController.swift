@@ -61,17 +61,17 @@ class TrackAddToCartViewController: FormViewController {
 
             <<< SegmentedRow<String>("currency") {
             $0.title = "Currency"
-            $0.options = ["USD", "KWD"]
+            $0.options = ["usd", "kwd", "omr", "QAR"]
         }
             <<< ButtonRow {
-                $0.title = "Identify"
+                $0.title = "Track"
             }.onCellSelection { _, _ in
                 let errors = self.form.validate()
                 if errors.count > 0 {
                     print("form invalid")
                 } else {
                     let values: [String: Any] = self.form.values() as [String: Any]
-                    AckooSDKManager.shared().trackAddToCart(values) { succeeded, response in
+                    AckooSDKManager.shared.trackAddToCart(values) { succeeded, response in
                         if succeeded {
                             self.showAlert(title: "success", message: "track add item to cart successful")
                         } else {
@@ -90,7 +90,7 @@ class TrackAddToCartViewController: FormViewController {
                     "name": faker.commerce.productName(),
                     "quantity": faker.number.randomInt(min: 0, max: 10),
                     "price": faker.number.randomDouble(min: 0, max: 1000),
-                    "currency": ["USD", "KWD"][faker.number.randomInt(min: 0, max: 2)],
+                    "currency": ["usd", "kwd", "omr", "QAR"][faker.number.randomInt(min: 0, max: 4)],
 
                 ])
                 self.tableView.reloadData()

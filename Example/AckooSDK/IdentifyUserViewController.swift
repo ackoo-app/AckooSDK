@@ -52,7 +52,7 @@ class IdentifyUserViewController: FormViewController {
                     print("form invalid")
                 } else {
                     let values: [String: Any] = self.form.values() as [String: Any]
-                    AckooSDKManager.shared().identify(id: values["userId"] as! String, profile: values) { succeeded, response in
+                    AckooSDKManager.shared.identify(id: values["userId"] as! String, profile: values) { succeeded, response in
                         print(succeeded, response)
                     }
                 }
