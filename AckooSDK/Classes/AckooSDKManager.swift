@@ -94,7 +94,6 @@ public class AckooSDKManager: NSObject, AckooSDKType {
                             print(error.description , logLevel:.debug)
                         }
                     }
-                    
                 }
             }
         }

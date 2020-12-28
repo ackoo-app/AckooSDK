@@ -47,7 +47,7 @@ func executeRequest<T: Codable>(_ request: AckooRequest, success: @escaping (_ r
                 do {
                     let decoder = JSONDecoder()
                     let object = try decoder.decode(BackEndError.self, from: data)
-                    let error = AckooError(code: object.error.code, message: object.error.message, api: request.apiURL)
+                    let error = AckooError(code: object.error.code, message: object.error.message, details: object.error.details ,api: request.apiURL)
                     failure(error)
                 } catch {
                     // parsing error
