@@ -53,7 +53,7 @@ class TrackCheckoutViewController: FormViewController {
             $0.options = ["USD", "KWD"]
         }
             <<< ButtonRow {
-                $0.title = "Track Checkout"
+                $0.title = "Track"
             }.onCellSelection { _, _ in
                 let errors = self.form.validate()
                 if errors.count > 0 {
@@ -78,7 +78,7 @@ class TrackCheckoutViewController: FormViewController {
                 self.form.setValues([
                     "orderId": faker.lorem.word(),
                     "amount": faker.number.randomInt(min: 0, max: 1000),
-                    "currency": ["USD", "KWD"][faker.number.randomInt(min: 0, max: 2)],
+                    "currency": ["usd", "kwd"][faker.number.randomInt(min: 0, max: 2)],
                 ])
                 self.tableView.reloadData()
             }

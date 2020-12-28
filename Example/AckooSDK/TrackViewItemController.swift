@@ -49,7 +49,7 @@ class TrackViewItemController: FormViewController {
                 $0.add(rule: RuleRequired())
             }
             <<< ButtonRow {
-                $0.title = "track"
+                $0.title = "Track"
             }.onCellSelection { _, _ in
                 let errors = self.form.validate()
                 if errors.count > 0 {
