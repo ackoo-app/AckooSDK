@@ -10,7 +10,7 @@ import Foundation
 func executeRequest<T: Codable>(_ request: AckooRequest, success: @escaping (_ result: T) -> Void, failure: @escaping (_ error: AckooError) -> Void) {
     if Reachability.isConnectedToNetwork() {
         let session = URLSession.shared
-
+        
         guard let url = URL(string: request.apiURL) else {
             failure(AckooError(error: LocalError.invalidURL, api: request.apiURL))
             return
@@ -41,13 +41,14 @@ func executeRequest<T: Codable>(_ request: AckooRequest, success: @escaping (_ r
                     // parsing response error
                     failure(AckooError(error: LocalError.parseResponseError, api: request.apiURL))
                 }
-
+                
             } else if let data = data {
                 // try to parse data to error
                 do {
                     let decoder = JSONDecoder()
                     let object = try decoder.decode(BackEndError.self, from: data)
-                    let error = AckooError(code: object.error.code, message: object.error.message, details: object.error.details ,api: request.apiURL)
+                    object.error.api = request.apiURL
+                    let error =  object.error
                     failure(error)
                 } catch {
                     // parsing error
@@ -56,11 +57,11 @@ func executeRequest<T: Codable>(_ request: AckooRequest, success: @escaping (_ r
             } else {
                 failure(AckooError(error: LocalError.noData, api: request.apiURL))
             }
-
+            
             return ()
         })
         task.resume()
-
+        
     } else {
         // TODO:
         /// cache request and retry

@@ -6,7 +6,9 @@
 //
 
 import Foundation
+var ackooLogLevel: AckooLogLevel?
 public func print(_ object: Any ,logLevel: AckooLogLevel){
+    if ackooLogLevel == logLevel {
     switch logLevel {
     case .critical:
         Swift.print("[AckooSDK]: " ,object)
@@ -14,5 +16,6 @@ public func print(_ object: Any ,logLevel: AckooLogLevel){
         Swift.print("[AckooSDK]: " ,object)
     case.none:
         break
+    }
     }
 }
