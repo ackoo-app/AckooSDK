@@ -5,6 +5,7 @@
 	<key>com.apple.developer.associated-domains</key>
 	<array>
 		<string>applinks:api.ackoo.app/</string>
+		<string>applinks:ackoo-api-develop.herokuapp.com/</string>
 	</array>
 </dict>
 </plist>

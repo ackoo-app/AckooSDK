@@ -90,7 +90,7 @@ class TrackAddToCartViewController: FormViewController {
                     "name": faker.commerce.productName(),
                     "quantity": faker.number.randomInt(min: 0, max: 10),
                     "price": faker.number.randomDouble(min: 0, max: 1000),
-                    "currency": ["usd", "kwd", "omr", "QAR"][faker.number.randomInt(min: 0, max: 4)],
+                    "currency": ["usd", "kwd", "omr", "qar"][faker.number.randomInt(min: 0, max: 4)],
 
                 ])
                 self.tableView.reloadData()

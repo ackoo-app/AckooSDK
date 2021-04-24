@@ -36,28 +36,56 @@ public class AckooSDKManager: NSObject, AckooSDKType {
     public static let shared = AckooSDKManager()
     private var logLevel: AckooLogLevel!
     private override init() {
-        super.init()
-        let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self, selector: #selector(appMovedToForeground), name: UIApplication.didBecomeActiveNotification, object: nil)
+        super.init();
+        surviveInstallation();
     }
     
+    func surviveInstallation() {
+       let isAckooAlreadyInstalled = UserDefaults.standard.bool(forKey: "ackooAlreadyInstalled");
+       if isAckooAlreadyInstalled {
+           return;
+       }
+       UserDefaults.standard.setValue(true, forKey: "ackooAlreadyInstalled")
+        retrieveSessionFromClipboard();
+    }
     
-    @objc func appMovedToForeground() {
-        self.validateAckooSession { (data, error) in
-            if let data = data{
-                print("AckooToken\(data.data?.sessionToken ?? "")" , logLevel:.debug)
-            } else if let error = error {
-                print(error.description , logLevel:.debug)
+    func retrieveSessionFromClipboard(){
+        let pasteboard = UIPasteboard.general
+        if #available(iOS 14.0, *) {
+            pasteboard.detectPatterns(for: [.probableWebURL],  completionHandler: {
+                result in
+                switch(result) {
+                case .success:
+                    if let urlString = pasteboard.string {
+                        if let url: URL = URL(string: urlString ) {
+                                if let sessionToken: String = url.queryParams()[Constants.tokenQueryKey] {
+                                    
+                                    self.startSession(with: sessionToken);
+                                }
+                            }
+                        }
+                case .failure(let error):
+                    print(error,logLevel:.debug);
+                };
+                
+            })
+        } else {
+            if let lastCopiedString = pasteboard.string {
+                if let url: URL = URL(string: lastCopiedString ) {
+                        if let sessionToken: String = url.queryParams()[Constants.tokenQueryKey] {
+                            self.startSession(with: sessionToken);
+                        }
+                    }
+                }
             }
-        }
     }
     
-    private func validateAckooSession(callback: @escaping (_ data: SessionTokenModel?, _ error:AckooError?) -> Void) {
-        let identity: UserIdentity = UserIdentity()
+    
+    func validateAckooSession(callback: @escaping (_ data: SessionTokenModel?, _ error:AckooError?) -> Void) {
         let requestURL = Constants.URLPaths.fingerprint
         
         let factory = AckooRequestFactory()
-        let request = factory.createRequest(apiMethod: Constants.baseURL + requestURL, httpMethod: .post, parameters: identity.dictionary, headers: baseHeaders())
+        let request = factory.createRequest(apiMethod: Constants.baseURL + requestURL, httpMethod: .post, parameters: [:], headers: baseHeaders())
             getData(request: request) {  [weak self] (data: SessionTokenModel) in
             if let token = data.data?.sessionToken {
                 self?.activationState = .active(sessionToken: token)
@@ -86,19 +114,22 @@ public class AckooSDKManager: NSObject, AckooSDKType {
             if let url = userActivity.webpageURL {
                 let params: [String: String] = url.queryParams()
                 if let sessionToken: String = params[Constants.tokenQueryKey] {
-                    UserDefaultCache.shared.saveObject(with: Constants.tokenQueryKey, object: sessionToken)
-                    self.validateAckooSession { (data, error) in
-                        if let data = data{
-                            print("AckooToken\(data.data?.sessionToken ?? "")" , logLevel:.debug)
-                        } else if let error = error {
-                            print(error.description , logLevel:.debug)
-                        }
-                    }
+                    startSession(with: sessionToken);
                 }
             }
         }
     }
     
+    private func startSession (with sessionToken: String) {
+        saveSessionToken(sessionToken)
+        self.validateAckooSession { (data, error) in
+            if let data = data{
+                print("AckooToken\(data.data?.sessionToken ?? "")" , logLevel:.debug)
+            } else if let error = error {
+                print(error.description , logLevel:.debug)
+            }
+        }
+    }
     public func identify(id: String, profile: [String : Any], callback: @escaping (Bool, AckooError?) -> Void) {
         var updatedUser = profile
         updatedUser["userId"] = id

@@ -60,8 +60,7 @@ class TrackViewItemController: FormViewController {
                         if succeeded {
                             self.showAlert(title: "success", message: "track view item successful")
                         } else {
-                            print(response)
-                            self.showAlert(title: "error", message: "track view failed")
+                            self.showAlert(title: "error", message: response!.message)
                         }
                     }
                 }

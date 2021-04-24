@@ -259,7 +259,7 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = 32H6Z63S2K;
+						DevelopmentTeam = ST2FBHBL96;
 						LastSwiftMigration = 1130;
 						ProvisioningStyle = Automatic;
 					};
@@ -600,13 +600,13 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 5;
-				DEVELOPMENT_TEAM = 32H6Z63S2K;
+				DEVELOPMENT_TEAM = ST2FBHBL96;
 				INFOPLIST_FILE = AckooSDK/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 1.0;
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = "app.ackoo.AckooSDK-Example2";
+				PRODUCT_BUNDLE_IDENTIFIER = app.ackoo.sdk.example;
 				PRODUCT_NAME = PartnerApp_Demo;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
@@ -623,13 +623,13 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 5;
-				DEVELOPMENT_TEAM = 32H6Z63S2K;
+				DEVELOPMENT_TEAM = ST2FBHBL96;
 				INFOPLIST_FILE = AckooSDK/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 1.0;
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = "app.ackoo.AckooSDK-Example2";
+				PRODUCT_BUNDLE_IDENTIFIER = app.ackoo.sdk.example;
 				PRODUCT_NAME = PartnerApp_Demo;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
