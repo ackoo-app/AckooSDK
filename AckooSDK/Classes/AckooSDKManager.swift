@@ -10,6 +10,7 @@ import UIKit
 
 @objc public protocol AckooSDKType {
     func initSession(_ logLevel: AckooLogLevel)
+    func initSession(_ logLevel: AckooLogLevel,baseUrl: String)
     func continueActivity(userActivity: NSUserActivity)
     func identify(id: String, profile: [String: Any], callback: @escaping (_ succeeded: Bool, _ erorr: AckooError?) -> Void)
     func trackViewItem(_ props: [String: Any], callback: @escaping (_ succeeded: Bool, _ response: AckooError?) -> Void)
@@ -35,8 +36,7 @@ public class AckooSDKManager: NSObject, AckooSDKType {
     private var activationState: AckooActivationState?
     @objc public static let shared = AckooSDKManager()
     private var logLevel: AckooLogLevel!
-    private var baseUrl: String = Constants.baseURL;
-    
+    private var baseUrl: String = Constants.baseURL
     private override init() {
         super.init();
         surviveInstallation();
@@ -110,11 +110,10 @@ public class AckooSDKManager: NSObject, AckooSDKType {
     public func initSession(_ logLevel: AckooLogLevel = .none) {
         self.logLevel = logLevel
     }
-   public func initSession(_ logLevel: AckooLogLevel = .none, _ baseUrl: String) {
-       self.logLevel = logLevel
-       self.baseUrl = baseUrl;
-   }
-
+    public func initSession(_ logLevel: AckooLogLevel = .none, baseUrl: String) {
+        self.logLevel = logLevel
+        self.baseUrl = baseUrl;
+    }
     public func continueActivity(userActivity: NSUserActivity) {
         if userActivity.activityType == NSUserActivityTypeBrowsingWeb {
             if let url = userActivity.webpageURL {
