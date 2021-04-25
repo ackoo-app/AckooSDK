@@ -21,7 +21,7 @@ final class AckooRequestFactory {
 func baseHeaders() -> [String: String]? {
     var headers =  ["Content-Type": "application/json"]
     headers["app-key"] = parseAppConfig()?.ackooToken
-    headers["sdk-version"] = "0.5.0"
+    headers["sdk-version"] = "0.5.1"
     let sessionToken: String = getSessionToken()
     if !sessionToken.isEmpty {
         headers["session-token"] = sessionToken

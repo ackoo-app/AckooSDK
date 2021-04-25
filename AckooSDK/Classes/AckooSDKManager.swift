@@ -35,6 +35,8 @@ public class AckooSDKManager: NSObject, AckooSDKType {
     private var activationState: AckooActivationState?
     public static let shared = AckooSDKManager()
     private var logLevel: AckooLogLevel!
+    private var baseUrl: String = Constants.baseURL;
+    
     private override init() {
         super.init();
         surviveInstallation();
@@ -85,7 +87,7 @@ public class AckooSDKManager: NSObject, AckooSDKType {
         let requestURL = Constants.URLPaths.fingerprint
         
         let factory = AckooRequestFactory()
-        let request = factory.createRequest(apiMethod: Constants.baseURL + requestURL, httpMethod: .post, parameters: [:], headers: baseHeaders())
+        let request = factory.createRequest(apiMethod: self.baseUrl + requestURL, httpMethod: .post, parameters: [:], headers: baseHeaders())
             getData(request: request) {  [weak self] (data: SessionTokenModel) in
             if let token = data.data?.sessionToken {
                 self?.activationState = .active(sessionToken: token)
@@ -107,6 +109,10 @@ public class AckooSDKManager: NSObject, AckooSDKType {
     }
     public func initSession(_ logLevel: AckooLogLevel = .none) {
         self.logLevel = logLevel
+    }
+    public func initSession(_ logLevel: AckooLogLevel = .none, _ baseUrl: String) {
+        self.logLevel = logLevel
+        self.baseUrl = baseUrl;
     }
     
     public func continueActivity(userActivity: NSUserActivity) {
@@ -140,7 +146,7 @@ public class AckooSDKManager: NSObject, AckooSDKType {
                 
                 let requestURL = Constants.URLPaths.identify
                 let factory = AckooRequestFactory()
-                let request = factory.createRequest(apiMethod: Constants.baseURL + requestURL, httpMethod: .post, parameters: updatedUser, headers: baseHeaders())
+                let request = factory.createRequest(apiMethod: self.baseUrl + requestURL, httpMethod: .post, parameters: updatedUser, headers: baseHeaders())
                 getData(request: request) {(data: BaseModel) in
                     callback(true , nil)
                 } failed: {  (error) in
@@ -175,7 +181,7 @@ public class AckooSDKManager: NSObject, AckooSDKType {
             }else{
                 let requestURL = Constants.URLPaths.track
                 let factory = AckooRequestFactory()
-                let request = factory.createRequest(apiMethod: Constants.baseURL + requestURL, httpMethod: .post, parameters: payload, headers: baseHeaders())
+                let request = factory.createRequest(apiMethod: self.baseUrl + requestURL, httpMethod: .post, parameters: payload, headers: baseHeaders())
                 getData(request: request) {(data: BaseModel) in
                     callback(true , nil)
                 } failed: {  (error) in
