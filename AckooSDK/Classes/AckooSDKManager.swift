@@ -33,7 +33,7 @@ public enum AckooActivationState {
 @objc
 public class AckooSDKManager: NSObject, AckooSDKType {
     private var activationState: AckooActivationState?
-    public static let shared = AckooSDKManager()
+    @objc public static let shared = AckooSDKManager()
     private var logLevel: AckooLogLevel!
     private var baseUrl: String = Constants.baseURL;
     
@@ -110,11 +110,11 @@ public class AckooSDKManager: NSObject, AckooSDKType {
     public func initSession(_ logLevel: AckooLogLevel = .none) {
         self.logLevel = logLevel
     }
-    public func initSession(_ logLevel: AckooLogLevel = .none, _ baseUrl: String) {
-        self.logLevel = logLevel
-        self.baseUrl = baseUrl;
-    }
-    
+   public func initSession(_ logLevel: AckooLogLevel = .none, _ baseUrl: String) {
+       self.logLevel = logLevel
+       self.baseUrl = baseUrl;
+   }
+
     public func continueActivity(userActivity: NSUserActivity) {
         if userActivity.activityType == NSUserActivityTypeBrowsingWeb {
             if let url = userActivity.webpageURL {
